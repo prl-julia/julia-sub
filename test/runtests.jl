@@ -2,11 +2,11 @@
 # Imports
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#using JuliaSub # if it's a registered package
+using JuliaSub # if it's a registered package
 
 # for working without installing JuliaSub it as a package
-include("../src/JuliaSub.jl")
-using Main.JuliaSub
+#include("../src/JuliaSub.jl")
+#using Main.JuliaSub
 
 using Test
 
