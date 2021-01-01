@@ -7,5 +7,8 @@
 ## Dependencies
 
 * [Julia](https://julialang.org/) with the following packages:
+  - `MacroTools` for parsing utilities
+
+???
   - `JSON`
   - `ArgParse`

@@ -3,6 +3,9 @@ uuid = "7a8e1ac7-1981-4f50-b715-6a5b66e1820b"
 authors = ["Julia Belyakova <julbinb@gmail.com> and contributors"]
 version = "0.1.0"
 
+[deps]
+MacroTools = "1914dd2f-81c6-5fcd-8719-6d5c9610ff09"
+
 [compat]
 julia = "1"
 
