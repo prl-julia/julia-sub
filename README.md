@@ -1,5 +1,9 @@
 # Julia Subtyping
 
+[![Build Status](https://github.com/julbinb/julia-sub/workflows/CI/badge.svg)](https://github.com/julbinb/julia-sub/actions?query=workflow%3ACI+branch%3Amain)
+[![codecov.io](http://codecov.io/github/julbinb/julia-sub/coverage.svg?branch=main)](http://codecov.io/github/julbinb/julia-sub?branch=main)
+
+
 ## Repository Organization
 
 * [`README.md`](README.md) this file
