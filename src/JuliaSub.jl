@@ -9,6 +9,7 @@ module JuliaSub
 #--------------------------------------------------
 
 include("utils/utils.jl")
+include("lb-analysis/lib.jl")
 
 #--------------------------------------------------
 # Exports
@@ -18,5 +19,6 @@ include("utils/utils.jl")
 # Code
 #--------------------------------------------------
 
+VERBOSE = true
 
 end

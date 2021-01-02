@@ -27,8 +27,6 @@ parseTest(testee, reference) =
 # Tests
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#--------------------------------------------------
-
 @testset "utils :: parsing Julia" begin
     @test parseTest(parseJuliaCode(""), EMPTY_BLOCK)
     @test parseTest(parseJuliaFile(testFilePath("empty.jl")), EMPTY_BLOCK)
