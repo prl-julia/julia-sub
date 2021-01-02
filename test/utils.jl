@@ -3,6 +3,7 @@
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 using Main.JuliaSub: parseJuliaCode, parseJuliaFile
+using Main.JuliaSub: unionMergeWith!
 
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 # Aux values and functions
@@ -39,8 +40,8 @@ end
 #--------------------------------------------------
 
 @testset "utils :: multiset" begin
-    @test mergewith!(Multiset(1,2,2,3), Multiset(5,1)) ==
+    @test unionMergeWith!(Multiset(1,2,2,3), Multiset(5,1)) ==
             Multiset(1,1,2,2,3,5)
-    @test mergewith!(Multiset(), Multiset(5,1,3)) ==
+    @test unionMergeWith!(Multiset(), Multiset(5,1,3)) ==
             Multiset(1,3,5)
 end

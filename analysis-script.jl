@@ -30,7 +30,7 @@ processPkg(pkgPath :: String) :: Multiset = begin
             filePath = joinpath(root, file)
             try
                 fileInfo = computeStat(read(filePath, String))
-                mergewith!(res, fileInfo)
+                JuliaSub.unionMergeWith!(res, fileInfo)
             catch e
                 @error e
             end
@@ -50,7 +50,7 @@ gatherAllStat(path :: String) = begin
             println(pkgInfo.data)
             println("===========================================\n\n")
         end
-        mergewith!(res, pkgInfo)
+        JuliaSub.unionMergeWith!(res, pkgInfo)
     end
     println(res.data)
 end
