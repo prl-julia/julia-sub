@@ -18,6 +18,12 @@
 # Simple search of text for `<:` and `>:`
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+# For Julia < 1.3 compatibility
+if VERSION < v"1.3"
+    Base.count(pattern :: String, string :: String) =
+        sum(map(_ -> 1, eachmatch(Regex(pattern), string)))
+end
+
 # Returns the number of occurences of constraint `constr` in `text`
 countTextualConstr(constr :: ConstrKind, text :: String) =
     count(CONSTRAINT_PATTERN[constr], text)
