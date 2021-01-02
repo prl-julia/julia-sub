@@ -11,7 +11,8 @@
 ## Dependencies
 
 * [Julia](https://julialang.org/) with the following packages:
-  - `MacroTools` for parsing utilities
+  - `MacroTools` for parsing and expression walking utilities
+  - `Multisets` for counting lower bounds
 
 ???
   - `JSON`

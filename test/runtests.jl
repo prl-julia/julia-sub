@@ -11,6 +11,7 @@ using JuliaSub # if it's a registered package
 using Test
 
 using MacroTools
+using Multisets
 
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 # Aux values and functions
@@ -26,6 +27,7 @@ testFilePath(path :: String) = joinpath(@__DIR__, TEST_FILES_DIR, path)
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 include("utils.jl")
+include("lb-analysis.jl")
 
 @testset "JuliaSub.jl" begin
     # Write your tests here.

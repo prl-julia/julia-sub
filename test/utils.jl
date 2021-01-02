@@ -21,7 +21,7 @@ wrapBlock(expr) = Expr(BLOCK, expr)
 # Checks that after stripping line numbers,
 # `testee` is equal to quoted `reference`
 parseTest(testee, reference) =
-    MacroTools.prewalk(rmlines, testee) == wrapQuote(reference)
+    MacroTools.striplines(testee) == wrapQuote(reference)
 
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 # Tests
