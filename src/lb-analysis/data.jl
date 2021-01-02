@@ -14,9 +14,9 @@
 
 # Regex expressions corresponding to
 # subtype and supertype constraints
-const CONSTRAINT_REGEX = Dict(
-    subtc => r"<:",
-    suptc => r">:"
+const CONSTRAINT_PATTERN = Dict(
+    subtc => "<:",
+    suptc => ">:"
 )
 
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

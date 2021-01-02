@@ -37,3 +37,10 @@ parseTest(testee, reference) =
 end
 
 #--------------------------------------------------
+
+@testset "utils :: multiset" begin
+    @test mergewith!(Multiset(1,2,2,3), Multiset(5,1)) ==
+            Multiset(1,1,2,2,3,5)
+    @test mergewith!(Multiset(), Multiset(5,1,3)) ==
+            Multiset(1,3,5)
+end

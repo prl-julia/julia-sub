@@ -20,7 +20,7 @@
 
 # Returns the number of occurences of constraint `constr` in `text`
 countTextualConstr(constr :: ConstrKind, text :: String) =
-    count(CONSTRAINT_REGEX[constr], text)
+    count(CONSTRAINT_PATTERN[constr], text)
 
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 # Parsing and detecting lower bounds
