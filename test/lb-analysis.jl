@@ -134,9 +134,9 @@ end
     pkgStatGood = PackageStat(
         pkgGood, true, 3, 0, 2,
         FilesLBInfo(
-            "src/fRet10.jl" => 
+            joinpath("src", "fRet10.jl") => 
                 FileLBInfo(TxtConstrStat(2,2), LBStat(LBValsFreq(:Int, :Bool, :Nothing))),
-            "src/id.jl" =>
+            joinpath("src", "id.jl") =>
                 FileLBInfo(TxtConstrStat(0,2), LBStat(LBValsFreq(:Any, :Int)))),
         LBStat(LBValsFreq(:Int,:Int, :Bool, :Nothing, :Any)))
     @test processPkg(testFilePath(joinpath("pkgs", pkgGood)), pkgGood) ==
