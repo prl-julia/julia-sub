@@ -23,6 +23,9 @@
 
 include("src/JuliaSub.jl")
 
+using Main.JuliaSub: PackageStat
+using Main.JuliaSub: LBValsFreq, TxtConstrStat, LBStat, FileLBInfo, FilesLBInfo
+
 #--------------------------------------------------
 # Command line arguments
 #--------------------------------------------------
@@ -34,42 +37,83 @@ end
 
 pkgsFolder = ARGS[1]
 
-#--------------------------------------------------
+#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 # Main
+#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#--------------------------------------------------
+# Printing
 #--------------------------------------------------
 
 const SEP_BIG = "==================================================\n"
 const SEP_SMALL = "------------------------------\n"
+const LB_WIDTH = 8
 
-processPkgsAndPrintLBStat(pkgsPath :: String) = begin
+showFreq(lbsFreq :: LBValsFreq, sep :: String = ",") = join(
+    map(
+        kv -> "$(rpad(kv[1], LB_WIDTH)) => $(kv[2])",
+        sort(collect(pairs(lbsFreq.data)); by=kv->kv[2], rev=true)
+    ),
+    sep)
+
+showTxtStat(txtStat :: TxtConstrStat) =
+    "(<: $(txtStat.subConsr), >: $(txtStat.supConsr))"
+
+showLBStat(::Nothing) = "∅"
+showLBStat(stat :: LBStat, padFreq::String = "  ", sepFreq :: String = ", ") =
+    "{ unique/lbs: $(stat.lbsUnique)/$(stat.lbs),\n" *
+    padFreq * showFreq(stat.lbsFreq, sepFreq) * "\n}"
+
+showFInfo(fileInfo :: FileLBInfo) =
+    showTxtStat(fileInfo.txtStat) * "\n" * showLBStat(fileInfo.lbStat) * "\n"
+
+showFsInfo(stats :: FilesLBInfo) = join(
+    map(
+        info -> "* $(rpad(info[1], LB_WIDTH)) => $(showFInfo(info[2]))",
+        collect(pairs(stats))
+    ),
+    "\n")
+
+#--------------------------------------------------
+# Main analysis
+#--------------------------------------------------
+
+# For sorting packages based on their lower-bounds usage
+interestFactor(pkgStat :: PackageStat) :: UInt =
+    pkgStat.lbStat.lbsUnique*100 + pkgStat.lbStat.lbs
+
+analyzeLBsAndOutputStats(pkgsPath :: String) = begin
+    # analysis
     (badPkgs, goodPkgs, totalStat) = JuliaSub.processPkgsDir(pkgsPath)
-    if length(badPkgs) > 0
-        println("Failed packages (no src folder): $(length(badPkgs))")
-        foreach(pkg -> println(pkg.pkgName), badPkgs)
-    else
+    # sort packages information from most interesting to less interesting
+    goodPkgs = sort(goodPkgs, by=interestFactor, rev=true)
+
+    # failed packages
+    if isempty(badPkgs)
         println("All packages processed successfully")
+    else
+        println("Failed packages (no src folder): $(length(badPkgs))")
+        foreach(pkg -> println(pkg.name), badPkgs)
     end
 
-    println()
-    println("Good packages: $(length(goodPkgs))")
-    interestingPkgs = 0
+    # output good packages
+    println("\nGood packages: $(length(goodPkgs))")
+    nonVacPkgsNum = 0
     for pkgInfo in goodPkgs
-        if pkgInfo.interestingFiles == 0
-            continue
-        end
+        pkgInfo.nonVacFilesNum == 0 && continue
         print(SEP_SMALL)
-        interestingPkgs += 1
-        println("$(pkgInfo.pkgName): $(pkgInfo.pkgLBStat)")
-        println("# non vacuous files: $(pkgInfo.interestingFiles)/$(pkgInfo.totalFiles)")
-        print(pkgInfo.filesInfo)
+        nonVacPkgsNum += 1
+        println("$(pkgInfo.name): " * showLBStat(pkgInfo.lbStat))
+        println("Non vacuous files: $(pkgInfo.nonVacFilesNum)/$(pkgInfo.totalFilesNum)")
+        println(showFsInfo(pkgInfo.filesInfo))
     end
     
     println(SEP_BIG)
-    println("Interesting packages: $interestingPkgs")
+    println("Interesting packages: $nonVacPkgsNum")
     println("Lower bounds: $(totalStat.lbs)")
     println("Unique lower bounds: $(totalStat.lbsUnique)")
-    Base.show(stdout, totalStat.lbsFreq, "\n")
+    println(showFreq(totalStat.lbsFreq, "\n"))
     println()
 end
 
-processPkgsAndPrintLBStat(pkgsFolder)
+analyzeLBsAndOutputStats(pkgsFolder)

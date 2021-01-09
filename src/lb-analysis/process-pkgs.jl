@@ -30,9 +30,9 @@ processFile(filePath::String, pkgPath::String, pkgStat::PackageStat) = begin
         isa(e, Base.IOError) ? @debugonly(@warn e) : @error e
     end
     if fileInfo === nothing || fileInfo.err !== nothing
-        pkgStat.failedFiles += 1
+        pkgStat.failedFilesNum += 1
     elseif nonVacuous(fileInfo.lbStat)
-        pkgStat.interestingFiles += 1
+        pkgStat.nonVacFilesNum += 1
         # cut pkgPath from file name for readability
         pkgStat.filesInfo[filePathWithinPkg(filePath, pkgPath)] = fileInfo
     end
@@ -47,36 +47,37 @@ end
 processFilesInDir(root, files, pkgsPath::String, pkgStat::PackageStat) = begin
     # we are only interested in Julia files
     files = filter(isJuliaFile, files)
-    pkgStat.totalFiles += length(files)
+    pkgStat.totalFilesNum += length(files)
     map(file -> processFile(joinpath(root, file), pkgsPath, pkgStat),
         files)
 end
 
-# Adds up all lower-bounds statistics from `filesInfo`
-accumulateLBStat(filesInfo :: FilesLBInfo) :: LBStat = begin
-    bounds = LBValsFreq()
+# Returns cumulative lower-bound statistics
+# for all files in `filesInfo`
+cumulativeLBStat(filesInfo :: FilesLBInfo) :: LBStat = begin
+    totalLBFreq = LBValsFreq()
     for fInfo in values(filesInfo)
         fInfo.lbStat === nothing ||
-            unionMergeWith!(bounds, fInfo.lbStat.lbsFreq)
+            unionMergeWith!(totalLBFreq, fInfo.lbStat.lbsFreq)
     end
-    LBStat(bounds)
+    LBStat(totalLBFreq)
 end
 
-# Walks `src` directory of package `pkgName` located at `pkgsPath`
-# and collects lower-bounds statistics
-processPkg(pkgsPath :: String, pkgName :: String) :: PackageStat = begin
-    srcPath = joinpath(pkgsPath, "src")
+# Walks `src` directory of package `pkgName` located at `pkgPath`
+# and collects its lower-bounds statistics
+processPkg(pkgPath :: String, pkgName :: String) :: PackageStat = begin
+    srcPath = joinpath(pkgPath, "src")
     # we assume that correct Julia packages have `src` folder,
     # otherwise we are not interested
     pkgStat = PackageStat(pkgName, isdir(srcPath))
     pkgStat.hasSrc || return pkgStat
     # recursively walk all files in [src]
     for (root, _, files) in walkdir(srcPath)
-        processFilesInDir(root, files, pkgsPath, pkgStat)
+        processFilesInDir(root, files, pkgPath, pkgStat)
     end
     # package summary statistics
-    if pkgStat.interestingFiles > 0
-        pkgStat.pkgLBStat = accumulateLBStat(pkgStat.filesInfo)
+    if pkgStat.nonVacFilesNum > 0
+        pkgStat.lbStat = cumulativeLBStat(pkgStat.filesInfo)
     end
     pkgStat
 end
@@ -85,42 +86,44 @@ end
 # Analysis of packages
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-isGoodPackage(pkgStat :: PackageStat) :: Bool = pkgStat.hasSrc
+pkgHasSrc(pkgStat :: PackageStat) :: Bool = pkgStat.hasSrc
 
-interestFactor(pkgStat :: PackageStat) =
-    pkgStat.pkgLBStat.lbsUnique*100 + pkgStat.pkgLBStat.lbs
+# Returns cumulative lower-bound statistics
+# for all packages in `pkgsStat`
+cumulativeLBStat(pkgsStat :: Vector{PackageStat}) :: LBStat = begin
+    totalLBFreq = LBValsFreq()
+    for pkgStat in pkgsStat
+        unionMergeWith!(totalLBFreq, pkgStat.lbStat.lbsFreq)
+    end
+    LBStat(totalLBFreq)
+end
 
 # String → (Vector{PackageStat}, Vector{PackageStat}, LBStat)
 # Processes every folder in `pkgsPath` as a package folder
-# and computes lower-bounds statistics for it.
-# Returns failed packages and stats for successfully processed packages
-function processPkgsDir(pkgsPath :: String)
-    paths = map(name -> (joinpath(pkgsPath, name), name), readdir(pkgsPath))
-    dirs  = filter(d -> isdir(d[1]), paths)
+#   and computes lower-bounds statistics for it.
+# Returns failed packages, successfully processed packages with their stats,
+#   and cumulative statstics of good packages.
+processPkgsDir(pkgsPath :: String) = begin
+    pathsAndNames = subdirPathsWithNames(pkgsPath)
+    processPkgPathAndName(pn) = begin
+        @statusb "Processing package $(pn[2])"
+        processPkg(pn[1], pn[2])
+    end
 
-    pkgsNum = length(dirs)
-    println("Packages to process: $pkgsNum")
+    pkgsNum = length(pathsAndNames)
     pkgsStats = PackageStat[]
     if VERBOSE
         pkgsStats = Vector{PackageStat}(undef, pkgsNum)
         for pkgi in 1:pkgsNum
-            pkgsStats[pkgi] = processPkg(dirs[pkgi][1], dirs[pkgi][2])
-            if pkgi % PKGS_NUM_STEP == 0
-                @info "$pkgi packages processed"
-            end
+            pkgsStats[pkgi] = processPkgPathAndName(pathsAndNames[pkgi])
+            pkgi % PKGS_NUM_STEP == 0 && @info "$pkgi PKGS PROCESSED"
         end
     else
-        pkgsStats = map(d -> processPkg(d[1], d[2]), dirs)
+        pkgsStats = map(processPkgPathAndName, pathsAndNames)
     end
 
     # sort packages information from most interesting to less interesting
-    goodPkgs  = sort(
-        filter(isGoodPackage,  pkgsStats),
-        by=interestFactor, rev=true)
-    badPkgs   = filter(!isGoodPackage, pkgsStats)
-    # gather cumulative statistics
-    totalLBFreq = LBValsFreq()
-    foreach(pkgStat -> unionMergeWith!(totalLBFreq, pkgStat.pkgLBStat.lbsFreq),
-            goodPkgs)
-    (badPkgs, goodPkgs, LBStat(totalLBFreq))
+    goodPkgs = filter(pkgHasSrc, pkgsStats)
+    badPkgs  = filter(!pkgHasSrc, pkgsStats)
+    (badPkgs, goodPkgs, cumulativeLBStat(goodPkgs))
 end

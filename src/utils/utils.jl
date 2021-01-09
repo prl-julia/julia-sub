@@ -1,4 +1,5 @@
 include("status-info.jl")
+include("file-system.jl")
 include("parsing.jl")
 include("multiset.jl")
 include("equality.jl")

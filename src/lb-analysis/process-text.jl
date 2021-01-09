@@ -53,7 +53,7 @@ nonVacuous(stat :: Nothing) :: Bool = false
 # Computes lower-bound statistics for Julia file `file`
 #   - if `isPath`, `file` means file path; otherwise, file text
 # NOTE: parsing might file, in which case it records the error
-lbFileInfo(file :: String; isPath :: Bool = false) :: LBFileInfo = begin
+lbFileInfo(file :: String; isPath :: Bool = false) :: FileLBInfo = begin
     text = file
     if isPath
         text = read(file, String)
@@ -61,17 +61,17 @@ lbFileInfo(file :: String; isPath :: Bool = false) :: LBFileInfo = begin
     txtConstr = countTextualConstr(text)
     if nonVacuous(txtConstr)
         try
-            LBFileInfo(txtConstr, lbStatInfo(text))
+            FileLBInfo(txtConstr, lbStatInfo(text))
         catch e
             fname = isPath ? file : "<no file>"
             info = "lbFileInfo ERR"
             isa(e, Base.Meta.ParseError) ?
                 @debugonly(@warn info fname e) :
                 @error info fname e
-            LBFileInfo(txtConstr, e)
+            FileLBInfo(txtConstr, e)
         end
     else
-        LBFileInfo(txtConstr)
+        FileLBInfo(txtConstr)
     end
 end
 

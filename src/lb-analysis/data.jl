@@ -56,37 +56,37 @@ LBStat(lbsFreq :: LBValsFreq) =
 # - `txtStat`   textual bounds info
 # - `err`       possibly exception during processing
 # - `lbStat`    possibly proper lb-stat if `txtStat` is non-vacuous
-struct LBFileInfo
+struct FileLBInfo
     txtStat :: TxtConstrStat
     err     :: Union{Exception, Nothing}
     lbStat  :: Union{LBStat, Nothing}
 end
-LBFileInfo(txtStat :: TxtConstrStat) =
-    LBFileInfo(txtStat, nothing, nothing)
-LBFileInfo(txtStat :: TxtConstrStat, err :: Exception) =
-    LBFileInfo(txtStat, err, nothing)
-LBFileInfo(txtStat :: TxtConstrStat, lbStat :: LBStat) =
-    LBFileInfo(txtStat, nothing, lbStat)
+FileLBInfo(txtStat :: TxtConstrStat) =
+    FileLBInfo(txtStat, nothing, nothing)
+FileLBInfo(txtStat :: TxtConstrStat, err :: Exception) =
+    FileLBInfo(txtStat, err, nothing)
+FileLBInfo(txtStat :: TxtConstrStat, lbStat :: LBStat) =
+    FileLBInfo(txtStat, nothing, lbStat)
 
 #--------------------------------------------------
 # Package stat
 #--------------------------------------------------
 
 # Files statistics (fileName => statistics)
-FilesLBInfo = Dict{String, LBFileInfo}
+FilesLBInfo = Dict{String, FileLBInfo}
 
 # Single package statistics
 mutable struct PackageStat
-    pkgName          :: String
+    name             :: String
     hasSrc           :: Bool
-    totalFiles       :: UInt # number of source Julia files
-    failedFiles      :: UInt # number of files that failed to process
-    interestingFiles :: UInt # number of files with lower bounds
-    filesInfo        :: FilesLBInfo # fileName => LBFileInfo
-    pkgLBStat        :: LBStat # package cumulative statistics
+    totalFilesNum    :: UInt # number of source Julia files
+    failedFilesNum   :: UInt # number of files that failed to process
+    nonVacFilesNum   :: UInt # number of files with lower bounds
+    filesInfo        :: FilesLBInfo # fileName => FileLBInfo
+    lbStat           :: LBStat      # package cumulative statistics
 end
-PackageStat(pkgName :: String, hasSrc :: Bool) = 
-    PackageStat(pkgName, hasSrc, 0, 0, 0, FilesLBInfo(), LBStat())
+PackageStat(name :: String, hasSrc :: Bool) = 
+    PackageStat(name, hasSrc, 0, 0, 0, FilesLBInfo(), LBStat())
 
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 # Base functions
@@ -100,7 +100,7 @@ Base.:(==)(v1 :: TxtConstrStat, v2 :: TxtConstrStat) = structEqual(v1, v2)
 
 Base.:(==)(v1 :: LBStat, v2 :: LBStat) = structEqual(v1, v2)
 
-Base.:(==)(v1 :: LBFileInfo, v2 :: LBFileInfo) = structEqual(v1, v2)
+Base.:(==)(v1 :: FileLBInfo, v2 :: FileLBInfo) = structEqual(v1, v2)
 
 Base.:(==)(v1 :: PackageStat, v2 :: PackageStat) = structEqual(v1, v2)
 
@@ -110,6 +110,8 @@ Base.:(==)(v1 :: PackageStat, v2 :: PackageStat) = structEqual(v1, v2)
 
 Base.show(io :: IO, un :: UInt) = print(io, string(un, base=10))
 
+
+#=
 Base.show(io :: IO, txtStat :: TxtConstrStat) = print(io,
     "{<: $(txtStat.subConsr), >: $(txtStat.supConsr)}")
 
@@ -125,7 +127,7 @@ Base.show(io :: IO, stat :: LBStat, sep :: String = ", ") = begin
     Base.show(io, stat.lbsFreq, sep)
 end
 
-Base.show(io :: IO, fileInfo :: LBFileInfo) = print(io,
+Base.show(io :: IO, fileInfo :: FileLBInfo) = print(io,
     "$(fileInfo.txtStat)\n" *
     " $(fileInfo.lbStat)\n")
 
@@ -134,3 +136,4 @@ Base.show(io :: IO, stat :: FilesLBInfo) = begin
         println(io, "* $(info[1]) => $(info[2])")
     end
 end
+=#

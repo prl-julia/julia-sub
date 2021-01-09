@@ -4,7 +4,7 @@
 
 using Main.JuliaSub: countTextualConstr
 using Main.JuliaSub: subtc, suptc
-using Main.JuliaSub: TxtConstrStat, LBValsFreq, LBStat, LBFileInfo
+using Main.JuliaSub: TxtConstrStat, LBValsFreq, LBStat, FileLBInfo
 using Main.JuliaSub: extractLowerBound, extractLowerBounds
 using Main.JuliaSub: nonVacuous, lbStatInfo, lbFileInfo
 using Main.JuliaSub: FilesLBInfo, PackageStat
@@ -108,20 +108,20 @@ end
 end
 
 @testset "lb-analysis :: lower-bounds file statistics" begin
-    @test lbFileInfo("")  == LBFileInfo(TxtConstrStat())
-    @test lbFileInfo("<") == LBFileInfo(TxtConstrStat())
+    @test lbFileInfo("")  == FileLBInfo(TxtConstrStat())
+    @test lbFileInfo("<") == FileLBInfo(TxtConstrStat())
     @test lbFileInfo(">:") ==
-        LBFileInfo(TxtConstrStat(0,1), LBStat(LBValsFreq()))
+        FileLBInfo(TxtConstrStat(0,1), LBStat(LBValsFreq()))
     @test lbFileInfo("f(x::T) where {T>:Int, Int<:S<:Number, Q>:Missing} = 0") ==
-        LBFileInfo(TxtConstrStat(2,2), LBStat(LBValsFreq(:Int, :Int, :Missing)))
+        FileLBInfo(TxtConstrStat(2,2), LBStat(LBValsFreq(:Int, :Int, :Missing)))
 
     @test lbFileInfo(testFilePath("fRet10.jl"); isPath=true) ==
-        LBFileInfo(TxtConstrStat(2,2), LBStat(LBValsFreq(:Int, :Bool, :Nothing)))
+        FileLBInfo(TxtConstrStat(2,2), LBStat(LBValsFreq(:Int, :Bool, :Nothing)))
 
-    failedLbFileInfo = lbFileInfo("f(x::T) wher T>:Int = 0")
-    @test failedLbFileInfo.txtStat == TxtConstrStat(0, 1)
-    @test isa(failedLbFileInfo.err, Base.Meta.ParseError)
-    @test failedLbFileInfo.lbStat == nothing
+    failedFileLBInfo = lbFileInfo("f(x::T) wher T>:Int = 0")
+    @test failedFileLBInfo.txtStat == TxtConstrStat(0, 1)
+    @test isa(failedFileLBInfo.err, Base.Meta.ParseError)
+    @test failedFileLBInfo.lbStat == nothing
 end
 
 @testset "lb-analysis :: lower-bounds package statistics" begin
@@ -135,14 +135,17 @@ end
         pkgGood, true, 3, 0, 2,
         FilesLBInfo(
             "src/fRet10.jl" => 
-                LBFileInfo(TxtConstrStat(2,2), LBStat(LBValsFreq(:Int, :Bool, :Nothing))),
+                FileLBInfo(TxtConstrStat(2,2), LBStat(LBValsFreq(:Int, :Bool, :Nothing))),
             "src/id.jl" =>
-                LBFileInfo(TxtConstrStat(0,2), LBStat(LBValsFreq(:Any, :Int)))),
+                FileLBInfo(TxtConstrStat(0,2), LBStat(LBValsFreq(:Any, :Int)))),
         LBStat(LBValsFreq(:Int,:Int, :Bool, :Nothing, :Any)))
     @test processPkg(testFilePath(joinpath("pkgs", pkgGood)), pkgGood) ==
         pkgStatGood
 
-    @test processPkgsDir(testFilePath("pkgs")) ==
-        ([pkgStatBad],
-         [pkgStatGood, PackageStat("FAKE-empty.jl", true)])
+    (badPkgs, goodPkgs, totalStat) = processPkgsDir(testFilePath("pkgs"))
+    getName(pkg :: PackageStat) = pkg.name
+    @test badPkgs == [pkgStatBad]
+    @test sort(goodPkgs, by=getName) == 
+        sort([pkgStatGood, PackageStat("FAKE-empty.jl", true)], by=getName)
+    @test totalStat == LBStat(5, 4, LBValsFreq(:Int,:Int, :Bool, :Nothing, :Any))
 end
