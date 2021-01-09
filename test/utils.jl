@@ -3,7 +3,7 @@
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 using Main.JuliaSub: parseJuliaCode, parseJuliaFile
-using Main.JuliaSub: unionMergeWith!
+using Main.JuliaSub: lengthUnique, unionMergeWith!
 
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 # Aux values and functions
@@ -40,8 +40,21 @@ end
 #--------------------------------------------------
 
 @testset "utils :: multiset" begin
-    @test unionMergeWith!(Multiset(1,2,2,3), Multiset(5,1)) ==
-            Multiset(1,1,2,2,3,5)
+    @test length(Multiset()) == 0
+    @test lengthUnique(Multiset()) == 0
+    @test length(Multiset(5)) == 1
+    @test lengthUnique(Multiset(5)) == 1
+    @test length(Multiset(4,2,4,4,6)) == 5
+    @test lengthUnique(Multiset(4,2,4,4,6)) == 3
+
     @test unionMergeWith!(Multiset(), Multiset(5,1,3)) ==
             Multiset(1,3,5)
+    @test unionMergeWith!(Multiset("d", "b"), Multiset(), Multiset("a")) ==
+            Multiset("a", "b", "d")
+    @test unionMergeWith!(Multiset(1,2,2,3), Multiset(5,1)) ==
+            Multiset(1,1,2,2,3,5)
+    @test unionMergeWith!(Multiset(1,2,2,3), Multiset(5,1), Multiset(0)) ==
+            Multiset(5,3,2,2,1,1,0)
+    @test unionMergeWith!(Multiset("a","a","b"), Multiset("c","b","c","b")) ==
+            Multiset("a","a", "b","b","b", "c","c")
 end

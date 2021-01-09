@@ -1,58 +1,75 @@
+#!/usr/bin/env julia
+
+#######################################################################
+# Analysing Julia file for lower bounds
+###############################
+#
+# The goal is to find all occurrences of lower bounds
+#   on type variables in the text of a Julia program.
+#
+# This can happen in 2 cases:
+#   1) where T >: Int
+#   2) where Int <: T <: Number
+#
+# So first, we need to look for both `>:` and `<:` textually
+#
+# If at least one of those is present, parsing Julia code
+#   can give more precise results.
+#######################################################################
+
+#--------------------------------------------------
+# Imports
+#--------------------------------------------------
+
 include("src/JuliaSub.jl")
 
-using Multisets
+#--------------------------------------------------
+# Command line arguments
+#--------------------------------------------------
 
-folder = ARGS[1]
+if length(ARGS) != 1 || !isdir(ARGS[1])
+    println("One argument—a folder with Julia packages—is expected")
+    exit(1)
+end
 
-computeStat(text :: String) = begin
-    constrsCnt = JuliaSub.countTextualConstr(JuliaSub.subtc, text) +
-        JuliaSub.countTextualConstr(JuliaSub.suptc, text)
-    if constrsCnt == 0
-        Multiset()
+pkgsFolder = ARGS[1]
+
+#--------------------------------------------------
+# Main
+#--------------------------------------------------
+
+const SEP_BIG = "==================================================\n"
+const SEP_SMALL = "------------------------------\n"
+
+processPkgsAndPrintLBStat(pkgsPath :: String) = begin
+    (badPkgs, goodPkgs, totalStat) = JuliaSub.processPkgsDir(pkgsPath)
+    if length(badPkgs) > 0
+        println("Failed packages (no src folder): $(length(badPkgs))")
+        foreach(pkg -> println(pkg.pkgName), badPkgs)
     else
-        JuliaSub.extractLowerBounds(JuliaSub.parseJuliaCode(text))
+        println("All packages processed successfully")
     end
-end
 
-# String → Bool
-isJuliaFile(fname :: String) :: Bool = endswith(fname, ".jl")
-
-processPkg(pkgPath :: String) :: Multiset = begin
-    res = Multiset()
-    # we assume that correct Julia packages have [src] folder
-    srcPath = joinpath(pkgPath, "src")
-    isdir(srcPath) || return res
-    # recursively walk all files in [src]
-    for (root, _, files) in walkdir(srcPath)
-        # we are only interested in Julia files
-        files = filter(isJuliaFile, files)
-        for file in files
-            filePath = joinpath(root, file)
-            try
-                fileInfo = computeStat(read(filePath, String))
-                JuliaSub.unionMergeWith!(res, fileInfo)
-            catch e
-                @error e
-            end
+    println()
+    println("Good packages: $(length(goodPkgs))")
+    interestingPkgs = 0
+    for pkgInfo in goodPkgs
+        if pkgInfo.interestingFiles == 0
+            continue
         end
+        print(SEP_SMALL)
+        interestingPkgs += 1
+        println("$(pkgInfo.pkgName): $(pkgInfo.pkgLBStat)")
+        println("# non vacuous files: $(pkgInfo.interestingFiles)/$(pkgInfo.totalFiles)")
+        print(pkgInfo.filesInfo)
     end
-    res
+    
+    println(SEP_BIG)
+    println("Interesting packages: $interestingPkgs")
+    println("Lower bounds: $(totalStat.lbs)")
+    println("Unique lower bounds: $(totalStat.lbsUnique)")
+    Base.show(stdout, totalStat.lbsFreq, "\n")
+    println()
 end
 
-gatherAllStat(path :: String) = begin
-    paths = map(name -> (joinpath(path, name), name), readdir(path))
-    dirs  = filter(d -> isdir(d[1]), paths)
-    res = Multiset()
-    for pkgPath in dirs
-        pkgInfo = processPkg(pkgPath[1])
-        if length(pkgInfo) != 0
-            println(pkgPath[2])
-            println(pkgInfo.data)
-            println("===========================================\n\n")
-        end
-        JuliaSub.unionMergeWith!(res, pkgInfo)
-    end
-    println(res.data)
-end
-
-gatherAllStat(folder)
+processPkgsAndPrintLBStat(pkgsFolder)

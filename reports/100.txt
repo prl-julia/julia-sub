@@ -1,16 +1,51 @@
-DataFrames.jl
-Dict{Any,Int64}(:Missing => 11)
-===========================================
+Packages to process: 101
+All packages processed successfully
 
+Good packages: 101
+------------------------------
+DataFrames.jl:  lbs: 11, unique: 1,
+  lbsFreq: Missing => 11
+# non vacuous files: 5/28
+* src/abstractdataframe/join.jl => {<: 15, >: 2}
+  lbs: 2, unique: 1,
+  lbsFreq: Missing => 2
 
-FAKE
-Dict{Any,Int64}(:FAKE => 1)
-===========================================
+* src/dataframerow/utils.jl => {<: 4, >: 3}
+  lbs: 4, unique: 1,
+  lbsFreq: Missing => 4
 
+* src/groupeddataframe/fastaggregates.jl => {<: 33, >: 2}
+  lbs: 2, unique: 1,
+  lbsFreq: Missing => 2
 
-StatsBase.jl
-Dict{Any,Int64}(:Missing => 3)
-===========================================
+* src/abstractdataframe/show.jl => {<: 3, >: 1}
+  lbs: 1, unique: 1,
+  lbsFreq: Missing => 1
 
+* src/abstractdataframe/abstractdataframe.jl => {<: 50, >: 2}
+  lbs: 2, unique: 1,
+  lbsFreq: Missing => 2
 
-Dict{Any,Int64}(:Missing => 14,:FAKE => 1)
+------------------------------
+StatsBase.jl:  lbs: 3, unique: 1,
+  lbsFreq: Missing => 3
+# non vacuous files: 1/21
+* src/scalarstats.jl => {<: 28, >: 2}
+  lbs: 3, unique: 1,
+  lbsFreq: Missing => 3
+
+------------------------------
+FAKE:  lbs: 1, unique: 1,
+  lbsFreq: FAKE => 1
+# non vacuous files: 1/1
+* src/FAKE.jl => {<: 0, >: 1}
+  lbs: 1, unique: 1,
+  lbsFreq: FAKE => 1
+
+==================================================
+
+Interesting packages: 3
+Lower bounds: 15
+Unique lower bounds: 2
+Missing => 14
+FAKE => 1

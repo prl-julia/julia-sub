@@ -1,6 +1,18 @@
-FAKE
-Dict{Any,Int64}(:FAKE => 1)
-===========================================
+Packages to process: 11
+All packages processed successfully
 
+Good packages: 11
+------------------------------
+FAKE:  lbs: 1, unique: 1,
+  lbsFreq: FAKE => 1
+# non vacuous files: 1/1
+* src/FAKE.jl => {<: 0, >: 1}
+  lbs: 1, unique: 1,
+  lbsFreq: FAKE => 1
 
-Dict{Any,Int64}(:FAKE => 1)
+==================================================
+
+Interesting packages: 1
+Lower bounds: 1
+Unique lower bounds: 1
+FAKE => 1

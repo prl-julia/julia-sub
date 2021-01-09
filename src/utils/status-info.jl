@@ -12,7 +12,7 @@ const STATUS_END   = " completed"
 macro status(name :: String, action)
     quote
         @statusb $name
-        $action
+        $(esc(action))
         @statuse $name
     end
 end
@@ -30,4 +30,9 @@ end
 # If verbose, prints information about the completion of `name`
 macro statuse(name :: String)
     :(if VERBOSE ; @info($name * $STATUS_END) end)
+end
+
+# If debug mode, performs action
+macro debugonly(action)
+    :(if DEBUG ; $(esc(action)) end)
 end

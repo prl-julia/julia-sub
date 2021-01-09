@@ -1,0 +1,251 @@
+ARFFFiles.jl
+Dict{Any,Int64}(:(CategoricalValue{String, Int32}) => 1,:Missing => 1,:DateTime => 1,:String => 1,:Float64 => 1)
+===========================================
+
+
+Agents.jl
+Dict{Any,Int64}(:Missing => 1)
+===========================================
+
+
+AnyMOD.jl
+Dict{Any,Int64}(:Missing => 2,:Int => 1,:String => 1)
+===========================================
+
+
+ArrayInterface.jl
+Dict{Any,Int64}(:Nothing => 1,:(Union{Missing, Nothing}) => 1,:Missing => 1)
+===========================================
+
+
+Arrow.jl
+Dict{Any,Int64}(:Missing => 7)
+===========================================
+
+
+AxisIndices.jl
+Dict{Any,Int64}(:CheckedAxisLengths => 2,:CheckedOffsets => 1,:CheckedUniqueKeys => 1)
+===========================================
+
+
+BigRationals.jl
+Dict{Any,Int64}(:Missing => 4)
+===========================================
+
+
+CSV.jl
+Dict{Any,Int64}(:Missing => 1)
+===========================================
+
+
+CanonicalTraits.jl
+Dict{Any,Int64}(:($(Expr(:$, :me))) => 1,:($(Expr(:$, :_))) => 2)
+===========================================
+
+
+CategoricalArrays.jl
+Dict{Any,Int64}(:Nothing => 2,:Missing => 44)
+===========================================
+
+
+DataArrays.jl
+Dict{Any,Int64}(:Missing => 2)
+===========================================
+
+
+DataConvenience.jl
+Dict{Any,Int64}(:String => 2)
+===========================================
+
+
+DataFrames.jl
+Dict{Any,Int64}(:Missing => 11)
+===========================================
+
+
+DataStreams.jl
+Dict{Any,Int64}(:Missing => 2)
+===========================================
+
+
+DataValues.jl
+Dict{Any,Int64}(:Any => 1)
+===========================================
+
+
+ECharts.jl
+Dict{Any,Int64}(:Missing => 1)
+===========================================
+
+
+ExprParsers.jl
+Dict{Any,Int64}(:($(Expr(:$, :lb))) => 2)
+===========================================
+
+
+ExprTools.jl
+Dict{Any,Int64}(:($(Expr(:$, :(name_of_type(x.lb))))) => 2)
+===========================================
+
+
+FreqTables.jl
+Dict{Any,Int64}(:Missing => 3)
+===========================================
+
+
+GAP.jl
+Dict{Any,Int64}(:Nothing => 1)
+===========================================
+
+
+GeneralizedGenerated.jl
+Dict{Any,Int64}(:($(Expr(:$, :_))) => 2)
+===========================================
+
+
+GeoStatsBase.jl
+Dict{Any,Int64}(:Missing => 1)
+===========================================
+
+
+HalfIntegers.jl
+Dict{Any,Int64}(:Missing => 4)
+===========================================
+
+
+HomotopyContinuation.jl
+Dict{Any,Int64}(:Tuple => 1)
+===========================================
+
+
+JDF.jl
+Dict{Any,Int64}(:Missing => 2)
+===========================================
+
+
+JuliaVariables.jl
+Dict{Any,Int64}(:($(Expr(:$, :b))) => 2,:($(Expr(:$, :a))) => 2)
+===========================================
+
+
+MLJBase.jl
+Dict{Any,Int64}(:(OrderedFactor{2}) => 1,:(OrderedFactor{nc}) => 1)
+===========================================
+
+
+MLJModelInterface.jl
+Dict{Any,Int64}(:Nothing => 2,:Missing => 2)
+===========================================
+
+
+MLJModels.jl
+Dict{Any,Int64}(:Missing => 1)
+===========================================
+
+
+MLJScientificTypes.jl
+Dict{Any,Int64}(:Missing => 10)
+===========================================
+
+
+MLKernels.jl
+Dict{Any,Int64}(:(ExponentialKernel{T}) => 1,:(ExponentiatedKernel{T}) => 1,:(SigmoidKernel{T}) => 1,:(PolynomialKernel{T}) => 1,:(GammaExponentialKernel{T}) => 1,:(MaternKernel{T}) => 1,:(RationalQuadraticKernel{T}) => 1,:(SquaredExponentialKernel{T}) => 1,:(LogKernel{T}) => 1,:(GammaRationalQuadraticKernel{T}) => 1,:(PowerKernel{T}) => 1)
+===========================================
+
+
+MLStyle.jl
+Dict{Any,Int64}(:($(Expr(:$, :_))) => 2)
+===========================================
+
+
+Missings.jl
+Dict{Any,Int64}(:Missing => 1)
+===========================================
+
+
+ODBC.jl
+Dict{Any,Int64}(:Missing => 1)
+===========================================
+
+
+ParameterisedModule.jl
+Dict{Any,Int64}(:($(Expr(:$, :_))) => 2)
+===========================================
+
+
+PrettyTables.jl
+Dict{Any,Int64}(:Missing => 2)
+===========================================
+
+
+QuantumLattices.jl
+Dict{Any,Int64}(:(typeof(lattice)) => 1)
+===========================================
+
+
+Salsa.jl
+Dict{Any,Int64}(:Runtime => 2)
+===========================================
+
+
+ScientificTypes.jl
+Dict{Any,Int64}(:Missing => 1)
+===========================================
+
+
+ShapesOfVariables.jl
+Dict{Any,Int64}(:T => 1)
+===========================================
+
+
+StatsBase.jl
+Dict{Any,Int64}(:Missing => 3)
+===========================================
+
+
+StatsModels.jl
+Dict{Any,Int64}(:Missing => 1)
+===========================================
+
+
+Stipple.jl
+Dict{Any,Int64}(:valtype => 2,:(typeof(payload["newval"])) => 1,:(typeof(payload["oldval"])) => 1)
+===========================================
+
+
+TableTraitsUtils.jl
+Dict{Any,Int64}(:Missing => 2)
+===========================================
+
+
+Tables.jl
+Dict{Any,Int64}(:Missing => 1)
+===========================================
+
+
+ToStruct.jl
+Dict{Any,Int64}(:Nothing => 1,:Missing => 2)
+===========================================
+
+
+ValueShapes.jl
+Dict{Any,Int64}(:T => 1)
+===========================================
+
+
+WhereTraits.jl
+Dict{Any,Int64}(:($(Expr(:$, :(to_expr(tr.lb))))) => 1,:($(Expr(:$, :(tv.lb)))) => 2)
+===========================================
+
+
+YAXArrays.jl
+Dict{Any,Int64}(:Missing => 2)
+===========================================
+
+
+Zarr.jl
+Dict{Any,Int64}(:Missing => 1)
+===========================================
+
+
+Dict{Any,Int64}(:($(Expr(:$, :b))) => 2,:valtype => 2,:($(Expr(:$, :a))) => 2,:Runtime => 2,:(Union{Missing, Nothing}) => 1,:Missing => 117,:Int => 1,:(ExponentialKernel{T}) => 1,:String => 4,:(typeof(payload["oldval"])) => 1,:Tuple => 1,:(ExponentiatedKernel{T}) => 1,:(SigmoidKernel{T}) => 1,:(PolynomialKernel{T}) => 1,:(GammaExponentialKernel{T}) => 1,:(OrderedFactor{2}) => 1,:(MaternKernel{T}) => 1,:($(Expr(:$, :(to_expr(tr.lb))))) => 1,:CheckedUniqueKeys => 1,:(RationalQuadraticKernel{T}) => 1,:($(Expr(:$, :(name_of_type(x.lb))))) => 2,:(CategoricalValue{String, Int32}) => 1,:($(Expr(:$, :_))) => 8,:(typeof(payload["newval"])) => 1,:Any => 1,:(OrderedFactor{nc}) => 1,:Float64 => 1,:(SquaredExponentialKernel{T}) => 1,:T => 2,:(LogKernel{T}) => 1,:Nothing => 7,:($(Expr(:$, :me))) => 1,:($(Expr(:$, :lb))) => 2,:(GammaRationalQuadraticKernel{T}) => 1,:CheckedAxisLengths => 2,:CheckedOffsets => 1,:DateTime => 1,:(PowerKernel{T}) => 1,:(typeof(lattice)) => 1,:($(Expr(:$, :(tv.lb)))) => 2)

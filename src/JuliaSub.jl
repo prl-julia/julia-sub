@@ -23,5 +23,9 @@ include("lb-analysis/lib.jl")
 #--------------------------------------------------
 
 VERBOSE = true
+DEBUG = true
+
+# print analysis info every this number of packages
+const PKGS_NUM_STEP = 100
 
 end
