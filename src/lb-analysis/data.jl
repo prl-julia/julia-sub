@@ -109,31 +109,3 @@ Base.:(==)(v1 :: PackageStat, v2 :: PackageStat) = structEqual(v1, v2)
 #--------------------------------------------------
 
 Base.show(io :: IO, un :: UInt) = print(io, string(un, base=10))
-
-
-#=
-Base.show(io :: IO, txtStat :: TxtConstrStat) = print(io,
-    "{<: $(txtStat.subConsr), >: $(txtStat.supConsr)}")
-
-Base.show(io :: IO, lbsFreq :: LBValsFreq, sep :: String = ", ") = print(io, 
-    join(map(kv -> "$(kv[1]) => $(kv[2])",
-            sort(collect(pairs(lbsFreq.data)); by=kv->kv[2], rev=true)),
-         sep))
-
-Base.show(io :: IO, stat :: LBStat, sep :: String = ", ") = begin
-    print(io,
-        " lbs: $(stat.lbs), unique: $(stat.lbsUnique),\n" *
-        "  lbsFreq: ")
-    Base.show(io, stat.lbsFreq, sep)
-end
-
-Base.show(io :: IO, fileInfo :: FileLBInfo) = print(io,
-    "$(fileInfo.txtStat)\n" *
-    " $(fileInfo.lbStat)\n")
-
-Base.show(io :: IO, stat :: FilesLBInfo) = begin
-    for info in stat
-        println(io, "* $(info[1]) => $(info[2])")
-    end
-end
-=#
