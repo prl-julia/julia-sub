@@ -1,9 +1,9 @@
 # Analysis of lower bounds in  registered Julia packages
 
-As of January 2020, there are 50/4774 packages
+As of January 2020, there are 50/4838 packages
 that use lower bounds according to the static analysis.
 
-The most popular lower bound is `Missing`: 117 uses
+The most popular lower bound is `Missing`: 116 uses
 (but turned out that a lot of them are from run-time checks).
 
 ## Bounds analysis
@@ -20,7 +20,7 @@ lower bounds, so submitted an [issue](https://github.com/JuliaLang/julia/issues/
 `DataValues.jl` uses `>: Any`, which doesn't seem to be different from `Any`,
 so we asked why in an [issue](https://github.com/queryverse/DataValues.jl/issues/82).
 
-### `Missing` 117, `DateTime` 1, `Float64` 1, `CategoricalValue{String, Int32}` 1
+### `Missing` 116, `DateTime` 1, `Float64` 1, `CategoricalValue{String, Int32}` 1
 
 Seems to be used for parsing and in combination with `Type{T}`, e.g.
 `ARFFFiles.jl/src/ARFFFiles.jl`, `AnyMOD.jl/src/dataHandling/readIn.jl`,
@@ -207,10 +207,10 @@ function parse_traitsfunction(env, func_parsed::EP.Function_Parsed, expr_origina
 
 `JuliaVariables.jl` matching, looks somewhat similar to `$_` stuff.
 
-### `T` 2 (interesting)
+### `T` 1 (interesting)
 
 ```julia
-# ShapesOfVariables.jl, copy of ValueShapes.jl/src/array_shape.jl
+# ValueShapes.jl/src/array_shape.jl
 
 function _bcasted_view_unchanged(data::AbstractArray{<:AbstractVector{T}}, shape::ArrayShape{U,1}) where {T<:Real,U>:T}
     _checkcompat_inner(shape, data)
@@ -268,6 +268,25 @@ end
 ```
 
 and `RationalQuadraticKernel{T}` is a concrete struct.
+
+### `IsMeasurable` and similar 1 each
+
+These are traits from `MeasureTheory.jl/src/traits.jl`,
+not lower bounds.
+
+```julia
+@trait IsMeasure{M, X} >: HasDensity{M, X} where {X = eltype(M)} begin
+    logdensity :: [M, X] => Real
+end
+
+@trait IsMeasure{M,X} >: IsMeasurable{M,S,X} where {X = eltype(S)} begin
+    measure :: [M, S] => Real
+end
+
+@trait IsMeasure{M,X} >: HasRand{M,X} where {X = eltype(M)} begin
+    rand :: [M] => eltype(M)
+end
+```
 
 ### `Tuple` 1
 
@@ -330,47 +349,50 @@ $me => 1
 ## Raw data
 
 ```
-Interesting packages: 50/4774
-Lower bounds: 181
-Unique lower bounds: 40
-Missing => 117
-$_ => 8
-Nothing => 7
-String => 4
-$b => 2
-valtype => 2
-$a => 2
-Runtime => 2
+Interesting packages: 50/4838
+Lower bounds: 182
+Unique lower bounds: 43
+Missing  => 116
+$_       => 8
+Nothing  => 7
+String   => 4
+$b       => 2
+$lb      => 2
+Runtime  => 2
+$a       => 2
 $(name_of_type(x.lb)) => 2
-T => 2
-$lb => 2
-CheckedAxisLengths => 2
 $(tv.lb) => 2
+valtype  => 2
+CheckedAxisLengths => 2
+CheckedUniqueKeys => 1
+CheckedOffsets => 1
 Union{Missing, Nothing} => 1
-Int => 1
-ExponentialKernel{T} => 1
-typeof(payload["oldval"]) => 1
+IsMeasurable{M, S, X} where (X = eltype(S)) => 1
+HasRand{M, X} where (X = eltype(M)) => 1
+HasDensity{M, X} where (X = eltype(M)) => 1
 ExponentiatedKernel{T} => 1
-Tuple => 1
+GammaExponentialKernel{T} => 1
+PowerKernel{T} => 1
+ExponentialKernel{T} => 1
+MaternKernel{T} => 1
+SquaredExponentialKernel{T} => 1
 SigmoidKernel{T} => 1
 PolynomialKernel{T} => 1
-GammaExponentialKernel{T} => 1
-OrderedFactor{2} => 1
-MaternKernel{T} => 1
-$(to_expr(tr.lb)) => 1
-CheckedUniqueKeys => 1
 RationalQuadraticKernel{T} => 1
-CategoricalValue{String, Int32} => 1
-typeof(payload["newval"]) => 1
-OrderedFactor{nc} => 1
-Any => 1
-Float64 => 1
-SquaredExponentialKernel{T} => 1
 LogKernel{T} => 1
 GammaRationalQuadraticKernel{T} => 1
-$me => 1
-PowerKernel{T} => 1
+T        => 1
+Tuple    => 1
+Any      => 1
+Float64  => 1
 DateTime => 1
-CheckedOffsets => 1
+Int      => 1
+$(to_expr(tr.lb)) => 1
+$me      => 1
+OrderedFactor{2} => 1
+CategoricalValue{String, Int32} => 1
+typeof(payload["oldval"]) => 1
+typeof(payload["newval"]) => 1
+OrderedFactor{nc} => 1
 typeof(lattice) => 1
 ```

@@ -32,6 +32,26 @@ The two patterns can be found in `extractLowerBound` function,
 because we don't specificly match `where`, just `T >: LB`.
 Thus, we also find run-time checks for lower bounds.
 
+### Getting the data
+
+Assuming the directory structure:
+```
+.
+|
+-- julia-sub
+-- utils
+     |
+     -- JuliaPkgsList.jl
+```
+
+and `jl-wa` with clonning
+
+```
+$ ../../utils/JuliaPkgsList.jl/gen-pkgs-list.jl 0 -o pkgs-list/pkgs-list.txt -r
+
+$ julia -p 8 ../../jl-wa/src/utils/clone.jl -s pkgs-list/pkgs-list.txt -d pkgs/4886/
+```
+
 ## Repository Organization
 
 - [``]()
