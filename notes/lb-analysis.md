@@ -251,7 +251,37 @@ end
 
 `AxisIndices.jl` seems to be using lower bounds as flags that
 something has been checked.
-Instead of keeping a run-time value with bools, they rely on types.
+Instead of keeping a run-time value with booleans, they rely on types.
+
+```julia
+# AxisIndices.jl/src/errors.jl 
+
+struct AxisArrayChecks{T}
+    AxisArrayChecks{T}() where {T} = new{T}()
+    AxisArrayChecks() = AxisArrayChecks{Union{}}()
+end
+
+struct CheckedAxisLengths end
+checked_axis_lengths(::AxisArrayChecks{T}) where {T} = AxisArrayChecks{Union{T,CheckedAxisLengths}}()
+check_axis_length(ks, inds, ::AxisArrayChecks{T}) where {T >: CheckedAxisLengths} = nothing
+function check_axis_length(ks, inds, ::AxisArrayChecks{T}) where {T}
+    if length(ks) != length(inds)
+        throw(DimensionMismatch(
+            "keys and indices must have same length, got length(keys) = $(length(ks))" *
+            " and length(indices) = $(length(inds)).")
+        )
+    end
+    return nothing
+end
+
+# AxisIndices.jl/src/axis_array.jl 
+
+function compose_axis(ks, inds, checks)
+    check_axis_length(ks, inds, checks)
+    return _compose_axis(ks, inds, checked_axis_lengths(checks))
+end
+
+```
 
 ### `ExponentialKernel{T}, *Kernel{T}` 1 each
 
