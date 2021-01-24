@@ -9,7 +9,7 @@ The most popular lower bound is `Missing`: 132 uses
 ## Bounds analysis
 
 The most interesting case seems to be `AbstractVector` (existential type) in
-[`DynamicPPL.jl`](https://github.com/TuringLang/DynamicPPL.jl/blob/master/src/context_implementations.jl):
+[`DynamicPPL.jl`](https://github.com/TuringLang/DynamicPPL.jl/blob/fac4515ccdd46981524018fa16602c2bb5f47df1/src/context_implementations.jl#L430-L438):
 
 ```julia
 # DynamicPPL.jl/src/context_implementations.jl
@@ -38,7 +38,7 @@ end
 ```
 
 Another existential lower bound `TrackedReal` appears in
-[`Tracker.jl`](https://github.com/FluxML/Tracker.jl/blob/master/src/lib/real.jl):
+[`Tracker.jl`](https://github.com/FluxML/Tracker.jl/blob/4f44c2356862ed67f904583d34baf9bf929ef15f/src/lib/real.jl#L159-L160):
 
 ```julia
 mutable struct TrackedReal{T<:Real} <: Real
@@ -51,12 +51,16 @@ collectmemaybe(xs::AbstractArray{>:TrackedReal}) = collect(xs)
 collectmemaybe(xs::AbstractArray{<:TrackedReal}) = collect(xs)
 ```
 
-The next interesting case is `T => 1`.
+The next interesting case is `T => 1` in
+[`ValueShapes.jl`](https://github.com/oschulz/ValueShapes.jl/blob/6daae40d1ad79f3aca7f1ba5588ba925e74263e0/src/array_shape.jl#L185-L188).
+The package also has abstract
+[`Real`](https://github.com/oschulz/ValueShapes.jl/blob/6daae40d1ad79f3aca7f1ba5588ba925e74263e0/src/value_shape.jl#L18).
 
 `AxisIndices.jl` with `CheckedAxisLengths => 2` is a neat use case where
 singletons in a union are used as flags.
 
-`HomotopyContinuation.jl` use `>: Tuple`, and `Tuple` is not concrete.
+[`HomotopyContinuation.jl`](https://github.com/JuliaHomotopyContinuation/HomotopyContinuation.jl/blob/a24d71335ce21e2f76b554fff6dda53a6b7d6e5b/src/model_kit/instructions.jl#L147-L150)
+use `>: Tuple`, and `Tuple` is not concrete.
 The use doesn't seem to be doing anything to dispatch in that case,
 so we asked about it in an
 [issue](https://github.com/JuliaHomotopyContinuation/HomotopyContinuation.jl/issues/447).
@@ -65,9 +69,9 @@ We also found suspicious behavior related to Tuple lower bounds,
 so submitted an [issue](https://github.com/JuliaLang/julia/issues/39277)
 to Julia. Turns out, it's not a bug, but the implementation is unclear.
 
-`DataValues.jl` uses `>: Any`, which doesn't seem to be different from `Any`,
+[`DataValues.jl`](https://github.com/queryverse/DataValues.jl/blob/d568d258d8735e8478b4974dfa0bc5816088c5cb/src/array/constructors.jl#L78)
+uses `>: Any`, which doesn't seem to be different from `Any`,
 so we asked why in an [issue](https://github.com/queryverse/DataValues.jl/issues/82).
-
 
 ### `Missing` 132, `DateTime` 1, `Float64` 1, `CategoricalValue{String, Int32}` 1
 
