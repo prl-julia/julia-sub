@@ -1,0 +1,779 @@
+Failed packages (no src folder): 2
+dash-html-components
+libCEED
+
+Good packages: 4838
+------------------------------
+MLKernels.jl: { unique/lbs: 11/11,
+  ExponentialKernel{T} => 1, ExponentiatedKernel{T} => 1, SigmoidKernel{T} => 1, PolynomialKernel{T} => 1, GammaExponentialKernel{T} => 1, MaternKernel{T} => 1, RationalQuadraticKernel{T} => 1, SquaredExponentialKernel{T} => 1, LogKernel{T} => 1, GammaRationalQuadraticKernel{T} => 1, PowerKernel{T} => 1
+}
+Non vacuous files: 8/18
+* src/kernelfunctions/mercer/matern.jl => (<: 5, >: 1)
+{ unique/lbs: 1/1,
+  MaternKernel{T} => 1
+}
+
+* src/kernelfunctions/mercer/exponentiated.jl => (<: 4, >: 1)
+{ unique/lbs: 1/1,
+  ExponentiatedKernel{T} => 1
+}
+
+* src/kernelfunctions/mercer/rationalquadratic.jl => (<: 13, >: 2)
+{ unique/lbs: 2/2,
+  GammaRationalQuadraticKernel{T} => 1, RationalQuadraticKernel{T} => 1
+}
+
+* src/kernelfunctions/negativedefinite/power.jl => (<: 4, >: 1)
+{ unique/lbs: 1/1,
+  PowerKernel{T} => 1
+}
+
+* src/kernelfunctions/sigmoid.jl => (<: 5, >: 1)
+{ unique/lbs: 1/1,
+  SigmoidKernel{T} => 1
+}
+
+* src/kernelfunctions/mercer/polynomial.jl => (<: 6, >: 1)
+{ unique/lbs: 1/1,
+  PolynomialKernel{T} => 1
+}
+
+* src/kernelfunctions/negativedefinite/log.jl => (<: 5, >: 1)
+{ unique/lbs: 1/1,
+  LogKernel{T} => 1
+}
+
+* src/kernelfunctions/mercer/exponential.jl => (<: 15, >: 3)
+{ unique/lbs: 3/3,
+  GammaExponentialKernel{T} => 1, ExponentialKernel{T} => 1, SquaredExponentialKernel{T} => 1
+}
+
+------------------------------
+ARFFFiles.jl: { unique/lbs: 5/5,
+  CategoricalValue{String, Int32} => 1, Missing  => 1, DateTime => 1, String   => 1, Float64  => 1
+}
+Non vacuous files: 1/1
+* src/ARFFFiles.jl => (<: 6, >: 5)
+{ unique/lbs: 5/5,
+  CategoricalValue{String, Int32} => 1, Missing  => 1, DateTime => 1, String   => 1, Float64  => 1
+}
+
+------------------------------
+ValueShapes.jl: { unique/lbs: 5/5,
+  T        => 1, Real     => 1, Complex{Float64} => 1, Int      => 1, Float64  => 1
+}
+Non vacuous files: 2/13
+* src/array_shape.jl => (<: 53, >: 1)
+{ unique/lbs: 1/1,
+  T        => 1
+}
+
+* src/value_shape.jl => (<: 41, >: 5)
+{ unique/lbs: 4/4,
+  Real     => 1, Complex{Float64} => 1, Int      => 1, Float64  => 1
+}
+
+------------------------------
+AnyMOD.jl: { unique/lbs: 3/4,
+  Missing  => 2, Int      => 1, String   => 1
+}
+Non vacuous files: 1/14
+* src/dataHandling/readIn.jl => (<: 0, >: 3)
+{ unique/lbs: 3/4,
+  Missing  => 2, Int      => 1, String   => 1
+}
+
+------------------------------
+AxisIndices.jl: { unique/lbs: 3/4,
+  CheckedAxisLengths => 2, CheckedOffsets => 1, CheckedUniqueKeys => 1
+}
+Non vacuous files: 2/28
+* src/padded_axis.jl => (<: 32, >: 1)
+{ unique/lbs: 1/1,
+  CheckedAxisLengths => 1
+}
+
+* src/errors.jl => (<: 0, >: 3)
+{ unique/lbs: 3/3,
+  CheckedAxisLengths => 1, CheckedOffsets => 1, CheckedUniqueKeys => 1
+}
+
+------------------------------
+Stipple.jl: { unique/lbs: 3/4,
+  valtype  => 2, typeof(payload["newval"]) => 1, typeof(payload["oldval"]) => 1
+}
+Non vacuous files: 1/9
+* src/Stipple.jl => (<: 11, >: 4)
+{ unique/lbs: 3/4,
+  valtype  => 2, typeof(payload["newval"]) => 1, typeof(payload["oldval"]) => 1
+}
+
+------------------------------
+ArrayInterface.jl: { unique/lbs: 3/3,
+  Nothing  => 1, Union{Missing, Nothing} => 1, Missing  => 1
+}
+Non vacuous files: 1/8
+* src/static.jl => (<: 26, >: 3)
+{ unique/lbs: 3/3,
+  Nothing  => 1, Union{Missing, Nothing} => 1, Missing  => 1
+}
+
+------------------------------
+MeasureTheory.jl: { unique/lbs: 3/3,
+  IsMeasurable{M, S, X} where (X = eltype(S)) => 1, HasRand{M, X} where (X = eltype(M)) => 1, HasDensity{M, X} where (X = eltype(M)) => 1
+}
+Non vacuous files: 1/29
+* src/traits.jl => (<: 0, >: 4)
+{ unique/lbs: 3/3,
+  IsMeasurable{M, S, X} where (X = eltype(S)) => 1, HasRand{M, X} where (X = eltype(M)) => 1, HasDensity{M, X} where (X = eltype(M)) => 1
+}
+
+------------------------------
+CategoricalArrays.jl: { unique/lbs: 2/51,
+  Missing  => 49, Nothing  => 2
+}
+Non vacuous files: 7/10
+* src/recode.jl => (<: 1, >: 9)
+{ unique/lbs: 1/7,
+  Missing  => 7
+}
+
+* src/value.jl => (<: 27, >: 3)
+{ unique/lbs: 1/2,
+  Missing  => 2
+}
+
+* src/subarray.jl => (<: 22, >: 4)
+{ unique/lbs: 1/4,
+  Missing  => 4
+}
+
+* src/array.jl => (<: 34, >: 28)
+{ unique/lbs: 2/28,
+  Missing  => 26, Nothing  => 2
+}
+
+* src/extras.jl => (<: 5, >: 5)
+{ unique/lbs: 1/4,
+  Missing  => 4
+}
+
+* src/typedefs.jl => (<: 22, >: 1)
+{ unique/lbs: 1/1,
+  Missing  => 1
+}
+
+* src/missingarray.jl => (<: 1, >: 5)
+{ unique/lbs: 1/5,
+  Missing  => 5
+}
+
+------------------------------
+JuliaVariables.jl: { unique/lbs: 2/4,
+  $b       => 2, $a       => 2
+}
+Non vacuous files: 1/2
+* src/JuliaVariables.jl => (<: 6, >: 6)
+{ unique/lbs: 2/4,
+  $b       => 2, $a       => 2
+}
+
+------------------------------
+MLJModelInterface.jl: { unique/lbs: 2/4,
+  Nothing  => 2, Missing  => 2
+}
+Non vacuous files: 1/9
+* src/model_def.jl => (<: 2, >: 2)
+{ unique/lbs: 2/4,
+  Nothing  => 2, Missing  => 2
+}
+
+------------------------------
+WhereTraits.jl: { unique/lbs: 2/4,
+  $(to_expr(tr.lb)) => 2, $(tv.lb) => 2
+}
+Non vacuous files: 2/13
+* src/Utils/exprparsers.jl => (<: 3, >: 1)
+{ unique/lbs: 1/2,
+  $(tv.lb) => 2
+}
+
+* src/Syntax/Parsing.jl => (<: 7, >: 1)
+{ unique/lbs: 1/2,
+  $(to_expr(tr.lb)) => 2
+}
+
+------------------------------
+CanonicalTraits.jl: { unique/lbs: 2/3,
+  $_       => 2, $me      => 1
+}
+Non vacuous files: 1/4
+* src/Utils.jl => (<: 8, >: 4)
+{ unique/lbs: 2/3,
+  $_       => 2, $me      => 1
+}
+
+------------------------------
+DynamicPPL.jl: { unique/lbs: 2/3,
+  AbstractVector => 2, Missing  => 1
+}
+Non vacuous files: 2/15
+* src/context_implementations.jl => (<: 16, >: 2)
+{ unique/lbs: 1/2,
+  AbstractVector => 2
+}
+
+* src/compiler.jl => (<: 11, >: 1)
+{ unique/lbs: 1/1,
+  Missing  => 1
+}
+
+------------------------------
+ToStruct.jl: { unique/lbs: 2/3,
+  Missing  => 2, Nothing  => 1
+}
+Non vacuous files: 1/1
+* src/ToStruct.jl => (<: 2, >: 2)
+{ unique/lbs: 2/3,
+  Missing  => 2, Nothing  => 1
+}
+
+------------------------------
+MLJBase.jl: { unique/lbs: 2/2,
+  OrderedFactor{2} => 1, OrderedFactor{nc} => 1
+}
+Non vacuous files: 1/39
+* src/measures/confusion_matrix.jl => (<: 10, >: 2)
+{ unique/lbs: 2/2,
+  OrderedFactor{2} => 1, OrderedFactor{nc} => 1
+}
+
+------------------------------
+DataFrames.jl: { unique/lbs: 1/11,
+  Missing  => 11
+}
+Non vacuous files: 5/29
+* src/abstractdataframe/join.jl => (<: 15, >: 2)
+{ unique/lbs: 1/2,
+  Missing  => 2
+}
+
+* src/dataframerow/utils.jl => (<: 4, >: 3)
+{ unique/lbs: 1/4,
+  Missing  => 4
+}
+
+* src/groupeddataframe/fastaggregates.jl => (<: 33, >: 2)
+{ unique/lbs: 1/2,
+  Missing  => 2
+}
+
+* src/abstractdataframe/show.jl => (<: 3, >: 1)
+{ unique/lbs: 1/1,
+  Missing  => 1
+}
+
+* src/abstractdataframe/abstractdataframe.jl => (<: 50, >: 2)
+{ unique/lbs: 1/2,
+  Missing  => 2
+}
+
+------------------------------
+MLJScientificTypes.jl: { unique/lbs: 1/10,
+  Missing  => 10
+}
+Non vacuous files: 3/7
+* src/convention/scitype.jl => (<: 10, >: 1)
+{ unique/lbs: 1/1,
+  Missing  => 1
+}
+
+* src/autotype.jl => (<: 8, >: 1)
+{ unique/lbs: 1/1,
+  Missing  => 1
+}
+
+* src/convention/coerce.jl => (<: 33, >: 10)
+{ unique/lbs: 1/8,
+  Missing  => 8
+}
+
+------------------------------
+Arrow.jl: { unique/lbs: 1/6,
+  Missing  => 6
+}
+Non vacuous files: 5/23
+* src/utils.jl => (<: 2, >: 1)
+{ unique/lbs: 1/1,
+  Missing  => 1
+}
+
+* src/write.jl => (<: 1, >: 1)
+{ unique/lbs: 1/1,
+  Missing  => 1
+}
+
+* src/arraytypes/primitive.jl => (<: 2, >: 2)
+{ unique/lbs: 1/2,
+  Missing  => 2
+}
+
+* src/arraytypes/arraytypes.jl => (<: 5, >: 1)
+{ unique/lbs: 1/1,
+  Missing  => 1
+}
+
+* src/arraytypes/bool.jl => (<: 2, >: 1)
+{ unique/lbs: 1/1,
+  Missing  => 1
+}
+
+------------------------------
+HalfIntegers.jl: { unique/lbs: 1/6,
+  Missing  => 6
+}
+Non vacuous files: 1/1
+* src/HalfIntegers.jl => (<: 79, >: 6)
+{ unique/lbs: 1/6,
+  Missing  => 6
+}
+
+------------------------------
+BigRationals.jl: { unique/lbs: 1/4,
+  Missing  => 4
+}
+Non vacuous files: 1/3
+* src/functions.jl => (<: 13, >: 4)
+{ unique/lbs: 1/4,
+  Missing  => 4
+}
+
+------------------------------
+StatsBase.jl: { unique/lbs: 1/4,
+  Missing  => 4
+}
+Non vacuous files: 2/21
+* src/scalarstats.jl => (<: 28, >: 2)
+{ unique/lbs: 1/3,
+  Missing  => 3
+}
+
+* src/ranking.jl => (<: 0, >: 1)
+{ unique/lbs: 1/1,
+  Missing  => 1
+}
+
+------------------------------
+Zarr.jl: { unique/lbs: 1/4,
+  Missing  => 4
+}
+Non vacuous files: 2/13
+* src/metadata.jl => (<: 14, >: 2)
+{ unique/lbs: 1/1,
+  Missing  => 1
+}
+
+* src/ZArray.jl => (<: 24, >: 3)
+{ unique/lbs: 1/3,
+  Missing  => 3
+}
+
+------------------------------
+FreqTables.jl: { unique/lbs: 1/3,
+  Missing  => 3
+}
+Non vacuous files: 1/2
+* src/freqtable.jl => (<: 12, >: 2)
+{ unique/lbs: 1/3,
+  Missing  => 3
+}
+
+------------------------------
+DataArrays.jl: { unique/lbs: 1/2,
+  Missing  => 2
+}
+Non vacuous files: 1/19
+* src/dataarray.jl => (<: 9, >: 2)
+{ unique/lbs: 1/2,
+  Missing  => 2
+}
+
+------------------------------
+DataConvenience.jl: { unique/lbs: 1/2,
+  String   => 2
+}
+Non vacuous files: 1/13
+* src/DataConvenience.jl => (<: 0, >: 2)
+{ unique/lbs: 1/2,
+  String   => 2
+}
+
+------------------------------
+DataStreams.jl: { unique/lbs: 1/2,
+  Missing  => 2
+}
+Non vacuous files: 1/4
+* src/DataStreams.jl => (<: 12, >: 2)
+{ unique/lbs: 1/2,
+  Missing  => 2
+}
+
+------------------------------
+ExprParsers.jl: { unique/lbs: 1/2,
+  $lb      => 2
+}
+Non vacuous files: 1/7
+* src/expr_parsers_with_parsed.jl => (<: 19, >: 5)
+{ unique/lbs: 1/2,
+  $lb      => 2
+}
+
+------------------------------
+ExprTools.jl: { unique/lbs: 1/2,
+  $(name_of_type(x.lb)) => 2
+}
+Non vacuous files: 1/4
+* src/method.jl => (<: 5, >: 1)
+{ unique/lbs: 1/2,
+  $(name_of_type(x.lb)) => 2
+}
+
+------------------------------
+GeneralizedGenerated.jl: { unique/lbs: 1/2,
+  $_       => 2
+}
+Non vacuous files: 1/8
+* src/func_arg_decs.jl => (<: 3, >: 3)
+{ unique/lbs: 1/2,
+  $_       => 2
+}
+
+------------------------------
+JDF.jl: { unique/lbs: 1/2,
+  Missing  => 2
+}
+Non vacuous files: 1/23
+* src/savejdf.jl => (<: 0, >: 1)
+{ unique/lbs: 1/2,
+  Missing  => 2
+}
+
+------------------------------
+MLStyle.jl: { unique/lbs: 1/2,
+  $_       => 2
+}
+Non vacuous files: 1/32
+* src/ExprTools.jl => (<: 3, >: 3)
+{ unique/lbs: 1/2,
+  $_       => 2
+}
+
+------------------------------
+ParameterisedModule.jl: { unique/lbs: 1/2,
+  $_       => 2
+}
+Non vacuous files: 1/1
+* src/ParameterisedModule.jl => (<: 6, >: 3)
+{ unique/lbs: 1/2,
+  $_       => 2
+}
+
+------------------------------
+PrettyTables.jl: { unique/lbs: 1/2,
+  Missing  => 2
+}
+Non vacuous files: 1/34
+* src/misc.jl => (<: 1, >: 2)
+{ unique/lbs: 1/2,
+  Missing  => 2
+}
+
+------------------------------
+Salsa.jl: { unique/lbs: 1/2,
+  Runtime  => 2
+}
+Non vacuous files: 1/4
+* src/Salsa.jl => (<: 24, >: 2)
+{ unique/lbs: 1/2,
+  Runtime  => 2
+}
+
+------------------------------
+TableTraitsUtils.jl: { unique/lbs: 1/2,
+  Missing  => 2
+}
+Non vacuous files: 1/2
+* src/TableTraitsUtils.jl => (<: 1, >: 2)
+{ unique/lbs: 1/2,
+  Missing  => 2
+}
+
+------------------------------
+YAXArrays.jl: { unique/lbs: 1/2,
+  Missing  => 2
+}
+Non vacuous files: 2/13
+* src/DatasetAPI/Datasets.jl => (<: 12, >: 2)
+{ unique/lbs: 1/1,
+  Missing  => 1
+}
+
+* src/Cubes/Axes.jl => (<: 26, >: 1)
+{ unique/lbs: 1/1,
+  Missing  => 1
+}
+
+------------------------------
+Agents.jl: { unique/lbs: 1/1,
+  Missing  => 1
+}
+Non vacuous files: 1/30
+* src/simulations/collect.jl => (<: 8, >: 1)
+{ unique/lbs: 1/1,
+  Missing  => 1
+}
+
+------------------------------
+CSV.jl: { unique/lbs: 1/1,
+  Missing  => 1
+}
+Non vacuous files: 1/9
+* src/header.jl => (<: 2, >: 1)
+{ unique/lbs: 1/1,
+  Missing  => 1
+}
+
+------------------------------
+DataKnots.jl: { unique/lbs: 1/1,
+  Missing  => 1
+}
+Non vacuous files: 1/8
+* src/knots.jl => (<: 4, >: 1)
+{ unique/lbs: 1/1,
+  Missing  => 1
+}
+
+------------------------------
+DataValues.jl: { unique/lbs: 1/1,
+  Any      => 1
+}
+Non vacuous files: 1/13
+* src/array/constructors.jl => (<: 3, >: 1)
+{ unique/lbs: 1/1,
+  Any      => 1
+}
+
+------------------------------
+DisplayAs.jl: { unique/lbs: 1/1,
+  $MIMEType => 1
+}
+Non vacuous files: 1/1
+* src/DisplayAs.jl => (<: 6, >: 1)
+{ unique/lbs: 1/1,
+  $MIMEType => 1
+}
+
+------------------------------
+ECharts.jl: { unique/lbs: 1/1,
+  Missing  => 1
+}
+Non vacuous files: 1/46
+* src/plots/xy_plot.jl => (<: 2, >: 1)
+{ unique/lbs: 1/1,
+  Missing  => 1
+}
+
+------------------------------
+GAP.jl: { unique/lbs: 1/1,
+  Nothing  => 1
+}
+Non vacuous files: 1/17
+* src/convert.jl => (<: 0, >: 1)
+{ unique/lbs: 1/1,
+  Nothing  => 1
+}
+
+------------------------------
+GeoStatsBase.jl: { unique/lbs: 1/1,
+  Missing  => 1
+}
+Non vacuous files: 1/118
+* src/convention.jl => (<: 4, >: 1)
+{ unique/lbs: 1/1,
+  Missing  => 1
+}
+
+------------------------------
+HomotopyContinuation.jl: { unique/lbs: 1/1,
+  Tuple    => 1
+}
+Non vacuous files: 1/55
+* src/model_kit/instructions.jl => (<: 1, >: 1)
+{ unique/lbs: 1/1,
+  Tuple    => 1
+}
+
+------------------------------
+LibPQ.jl: { unique/lbs: 1/1,
+  Missing  => 1
+}
+Non vacuous files: 1/14
+* src/results.jl => (<: 4, >: 1)
+{ unique/lbs: 1/1,
+  Missing  => 1
+}
+
+------------------------------
+MLJModels.jl: { unique/lbs: 1/1,
+  Missing  => 1
+}
+Non vacuous files: 1/11
+* src/builtins/Transformers.jl => (<: 59, >: 1)
+{ unique/lbs: 1/1,
+  Missing  => 1
+}
+
+------------------------------
+MemPool.jl: { unique/lbs: 1/1,
+  Missing  => 1
+}
+Non vacuous files: 1/4
+* src/io.jl => (<: 8, >: 1)
+{ unique/lbs: 1/1,
+  Missing  => 1
+}
+
+------------------------------
+Missings.jl: { unique/lbs: 1/1,
+  Missing  => 1
+}
+Non vacuous files: 1/1
+* src/Missings.jl => (<: 9, >: 1)
+{ unique/lbs: 1/1,
+  Missing  => 1
+}
+
+------------------------------
+ODBC.jl: { unique/lbs: 1/1,
+  Missing  => 1
+}
+Non vacuous files: 1/7
+* src/dbinterface.jl => (<: 5, >: 1)
+{ unique/lbs: 1/1,
+  Missing  => 1
+}
+
+------------------------------
+QuantumLattices.jl: { unique/lbs: 1/1,
+  typeof(lattice) => 1
+}
+Non vacuous files: 1/20
+* src/Essentials/Spatials.jl => (<: 258, >: 1)
+{ unique/lbs: 1/1,
+  typeof(lattice) => 1
+}
+
+------------------------------
+ScientificTypes.jl: { unique/lbs: 1/1,
+  Missing  => 1
+}
+Non vacuous files: 1/2
+* src/scitype.jl => (<: 4, >: 2)
+{ unique/lbs: 1/1,
+  Missing  => 1
+}
+
+------------------------------
+StatsModels.jl: { unique/lbs: 1/1,
+  Missing  => 1
+}
+Non vacuous files: 1/10
+* src/modelframe.jl => (<: 9, >: 1)
+{ unique/lbs: 1/1,
+  Missing  => 1
+}
+
+------------------------------
+Tables.jl: { unique/lbs: 1/1,
+  Missing  => 1
+}
+Non vacuous files: 1/7
+* src/dicts.jl => (<: 4, >: 1)
+{ unique/lbs: 1/1,
+  Missing  => 1
+}
+
+------------------------------
+Tracker.jl: { unique/lbs: 1/1,
+  TrackedReal => 1
+}
+Non vacuous files: 1/9
+* src/lib/real.jl => (<: 7, >: 1)
+{ unique/lbs: 1/1,
+  TrackedReal => 1
+}
+
+------------------------------
+YAXArrayBase.jl: { unique/lbs: 1/1,
+  Missing  => 1
+}
+Non vacuous files: 1/10
+* src/datasets/zarr.jl => (<: 0, >: 1)
+{ unique/lbs: 1/1,
+  Missing  => 1
+}
+
+==================================================
+
+Interesting packages: 57
+Lower bounds: 207
+Unique lower bounds: 48
+Missing  => 132
+$_       => 8
+Nothing  => 7
+String   => 4
+AbstractVector => 2
+$a       => 2
+$b       => 2
+$lb      => 2
+$(to_expr(tr.lb)) => 2
+$(name_of_type(x.lb)) => 2
+$(tv.lb) => 2
+valtype  => 2
+Float64  => 2
+Int      => 2
+Runtime  => 2
+CheckedAxisLengths => 2
+CheckedUniqueKeys => 1
+CheckedOffsets => 1
+Union{Missing, Nothing} => 1
+IsMeasurable{M, S, X} where (X = eltype(S)) => 1
+HasDensity{M, X} where (X = eltype(M)) => 1
+HasRand{M, X} where (X = eltype(M)) => 1
+ExponentiatedKernel{T} => 1
+LogKernel{T} => 1
+GammaRationalQuadraticKernel{T} => 1
+SigmoidKernel{T} => 1
+PolynomialKernel{T} => 1
+GammaExponentialKernel{T} => 1
+RationalQuadraticKernel{T} => 1
+PowerKernel{T} => 1
+ExponentialKernel{T} => 1
+MaternKernel{T} => 1
+SquaredExponentialKernel{T} => 1
+$MIMEType => 1
+DateTime => 1
+$me      => 1
+CategoricalValue{String, Int32} => 1
+OrderedFactor{2} => 1
+OrderedFactor{nc} => 1
+typeof(payload["newval"]) => 1
+typeof(payload["oldval"]) => 1
+typeof(lattice) => 1
+Complex{Float64} => 1
+T        => 1
+Real     => 1
+TrackedReal => 1
+Tuple    => 1
+Any      => 1
+
