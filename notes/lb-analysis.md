@@ -63,11 +63,34 @@ singletons in a union are used as flags.
 use `>: Tuple`, and `Tuple` is not concrete.
 The use doesn't seem to be doing anything to dispatch in that case,
 so we asked about it in an
-[issue](https://github.com/JuliaHomotopyContinuation/HomotopyContinuation.jl/issues/447).
+[issue](https://github.com/JuliaHomotopyContinuation/HomotopyContinuation.jl/issues/447).  
+**Update.** Based on the [reply](https://github.com/JuliaHomotopyContinuation/HomotopyContinuation.jl/issues/447#issuecomment-766436678),
+`>:Tuple` lower bound seems unnecessary.
 
 We also found suspicious behavior related to Tuple lower bounds,
 so submitted an [issue](https://github.com/JuliaLang/julia/issues/39277)
-to Julia. Turns out, it's not a bug, but the implementation is unclear.
+to Julia. Turns out, it's not a bug, but the implementation is unclear.  
+And the problem is not limited to `Tuple`, but to (abstract?) lower bounds
+in general. Sometimes Julia doesn’t know how to instantiate a type variable
+with a lower bound even though subtyping is clear:
+```julia
+julia> f(::T) where T>:Number = (0, T)
+
+julia> f(5)
+ERROR: UndefVarError: T not defined
+
+julia> g(::T) where T>:Int = (666, T)
+
+julia> g(5)
+(666, Int64)
+
+julia> g(5.5)
+ERROR: UndefVarError: T not defined
+```
+It seems that when the lower bound of a covariant variable is concrete,
+Julia knows the minimal type to instantiate `T` with.
+But in other cases it doesn’t.
+
 
 [`DataValues.jl`](https://github.com/queryverse/DataValues.jl/blob/d568d258d8735e8478b4974dfa0bc5816088c5cb/src/array/constructors.jl#L78)
 uses `>: Any`, which doesn't seem to be different from `Any`,
@@ -159,7 +182,7 @@ function Base.Broadcast.broadcasted(::typeof(levelcode), A::CategoricalArray{T})
 end
 ```
 
-### `$_` 8 and `$me` 1`
+### `$_` 8 and `$me` 1
 
 2 of those (and `$me`) are from `CanonicalTraits.jl` where it means
 traits entailment (`X >: Y` means that `Y` is based on `X`)
