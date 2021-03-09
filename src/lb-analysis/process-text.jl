@@ -16,7 +16,7 @@
 #######################################################################
 
 # For Julia < 1.3 compatibility, we need `count` on strings
-if VERSION < v"1.3"
+@static if VERSION < v"1.3"
     Base.count(pattern :: String, string :: String) :: Int =
         sum(map(_ -> 1, eachmatch(Regex(pattern), string)))
 end

@@ -3,7 +3,7 @@
 #######################################################################
 
 # For Julia < 1.5 compatibility
-const DICT_MERGE! = VERSION >= v"1.5" ? mergewith! : merge!
+const DICT_MERGE! = @static VERSION >= v"1.5" ? mergewith! : merge!
 
 # Multiset → Int
 # Returns the number of unique values in `ms`
