@@ -1,20 +1,17 @@
 #!/usr/bin/env julia
 
 #######################################################################
-# Analysing Julia file for lower bounds
+# Analysing Julia packages for lower bounds
 ###############################
 #
-# The goal is to find all occurrences of lower bounds
-#   on type variables in the text of a Julia program.
+# $ julia analysis-script.jl <pkgs-folder>
 #
-# This can happen in 2 cases:
-#   1) where T >: Int
-#   2) where Int <: T <: Number
-#
-# So first, we need to look for both `>:` and `<:` textually
-#
-# If at least one of those is present, parsing Julia code
-#   can give more precise results.
+# For all `src` directories of packages in `<pkgs-folder>`,
+# statically analyzes Julia code and looks for the uses of
+# lower bounds in types.
+# 
+# Outputs information about all lower bounds and their frequencies
+# per file, package, and in total.
 #######################################################################
 
 #--------------------------------------------------

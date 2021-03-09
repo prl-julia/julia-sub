@@ -16,20 +16,24 @@ and manually inspect them.
 
 ## Static analysis of lower bounds
 
-As of Julia 1.5.3, there are only two accepted patterns of lower bounds:
+As of Julia 1.5.3, there are only two accepted patterns of lower bounds
+in the full form of where-types,
 
 1. `where T >: Int`
 2. `where Int <: T <: Number`
+
+as well as one shorthand form `Vector{>:Int}`
+(which means `Vector{T} where T>:Int`).
 
 Everything else (e.g. `where Int <: T`) doesn't work,
 and [`test/lb-analysis.jl`](test/lb-analysis.jl) tests for that
 in the tests set `"lb-analysis :: type bounds format"`.
 
-The two patterns can be found in `extractLowerBound` function,
+The three patterns can be found in `extractLowerBound` function,
 [`src/lb-analysis/process-code.jl`](src/lb-analysis/process-code.jl).
 
 **Note.** Not all lower bounds that we find are in function definitions
-because we don't specificly match `where`, just `T >: LB`.
+because we don't specifically match `where`, just `T >: LB`.
 Thus, we also find run-time checks for lower bounds.
 
 ### Getting the data
@@ -44,7 +48,7 @@ Assuming the directory structure:
      -- JuliaPkgsList.jl
 ```
 
-and `jl-wa` with clonning
+and `jl-wa` with a clonning script
 
 ```
 $ ../../utils/JuliaPkgsList.jl/gen-pkgs-list.jl 0 -o pkgs-list/pkgs-list.txt -r
@@ -52,11 +56,22 @@ $ ../../utils/JuliaPkgsList.jl/gen-pkgs-list.jl 0 -o pkgs-list/pkgs-list.txt -r
 $ julia -p 8 ../../jl-wa/src/utils/clone.jl -s pkgs-list/pkgs-list.txt -d pkgs/4886/
 ```
 
+### Running the analysis
+
+```
+$ julia analysis-script.jl <pkgs>
+```
+
+where `<pkgs` is a folder with Julia packages.
+
 ## Repository Organization
 
 - [``]()
 
 - [`README.md`](README.md) this file
+
+- [`analysis-script.jl`](analysis-script.jl) script that performs
+  a complete analysis of lower bounds in the given folder with Julia packages
 
 - [`src`](src) source code
   - [`JuliaSub.jl`](src/JuliaSub.jl) main module
@@ -83,6 +98,9 @@ $ julia -p 8 ../../jl-wa/src/utils/clone.jl -s pkgs-list/pkgs-list.txt -d pkgs/4
     - [`parsing.jl`](src/utils/parsing.jl)
       helpers for parsing Julia files
     - [`status-info.jl`](src/utils/status-info.jl) custom logging
+
+- [`test-script.jl`](test-script.jl) convenience script for running the tests
+  (`$ julia test-script.jl`)
 
 - [`Project.toml`](Project.toml) dependencies 
 
