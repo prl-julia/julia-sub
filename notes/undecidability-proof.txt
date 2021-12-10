@@ -1,0 +1,71 @@
+[T] = T
+[Top] = Bot
+[forall alpha<=u.t] = Tuple{Ref{alpha}, [t]} where alpha>=[u]
+
+[G; alpha <= t] = [G]; alpha >= [t]
+[;] = ;
+
+weakening: if E |- t1 <:_J t2 -| E', then E;E1 |- t1 <:_J t2 -| E';E1 if 
+		forall alpha in E, alpha not in E'
+	and t1, t2, WF in E
+
+forward:
+(1) G  |-  t1  <:_F  t2 
+-> [G] |- [t2] <:_j [t1]
+
+proceed by rule induction on (1)
+
+case NTop: t1 = sigma; t2 = Top; Gamma = ...
+wts: [G] |- [Top] <: [sigma]
+wts: [G] |- Bot <: [sigma]
+trivial by UNION_LEFT
+
+case NRefl: t1 = alpha; t2 = alpha; Gamma = ...
+wts: [G] |- [alpha] <: [alpha]
+wts: [G] |- alpha <: alpha
+holds by REFL
+
+case NVar: t1 = alpha; t2 = tau; Gamma = ...
+wts: [G; alpha <= u] |- [tau] <: [alpha]
+know: [G]; alpha>=[u] |- [tau] <: [u]
+wts: [G; alpha <= u] |- [tau] <: alpha
+apply L_RIGHT with l = [u] and follows from IH
+
+case NAll: t1 = forall alpha<=l1.l2, t2 = forall alpha<=r1.r2
+by ih: [G] |- [l1] <: [r1] -| [G]
+       [G]; alpha>=[r1] |- [r2] <: [l2] 
+wts: [G] |- [forall alpha<=r1.r2] <: [forall alpha<=l1.l2]
+wts: [G] |- Tuple{Ref{alpha}, [r2]} where alpha>=[r1] <: 
+            Tuple{Ref{alpha}, [l2]} where alpha>=[l1] 
+L_INTRO:
+wts: [G]; L^alpha>=[r1] |- Tuple{Ref{alpha}, [r2]} <: 
+                         Tuple{Ref{alpha}, [l2]} where alpha>=[l1] 
+R_INTRO:
+wts: [G]; L^alpha>=[r1]; R^beta>=[l1] |- Tuple{Ref{alpha}, [r2]} <: Tuple{Ref{beta}, [l2[alpha |-> beta]]} 
+
+TUPLE:
+wts (1): [G]; L^alpha>=[r1]; R^beta>=[l1] |- Ref{alpha} <: Ref{beta} -| E'
+and (2): E' |- [r2] <: [l2[alpha |-> beta]]
+
+
+(1):
+	APP_INV:
+	wts (3): [G]; L^alpha>=[r1]; R^beta>=[l1] |- alpha <: beta -| E1
+	and (4):                               E1 |- beta <: alpha -| E'
+	(3): apply R_RIGHT with [G]; L^alpha>=[r1]; R^beta>=[l1] |- alpha <: Top (by TOP)
+		 E1 = [G]; L^alpha>=[r1]; R^(beta>=Union{[l1],alpha})
+	(4): wts: [G]; L^alpha>=[r1]; R^(beta>=Union{[l1],alpha}) |- beta <: alpha -| E'
+		 try to apply R_LEFT
+		 wts: E1 |- Union{[l1], alpha} <: alpha |- E'
+		 apply UNION_LEFT, wts:
+		 (5) E1 |- [l1] <: alpha -| E1
+		 (6) E1 |- alpha <: alpha -| E' (trivial, focus on 5)
+		 
+		 (5):
+		 	E1 |- [l1] <: [r1] -| E1 by IH and weakening; 5 follows from L_RIGHT
+		 E' = [G]; L^alpha>=[r1]; R^(Union{[l1],alpha}<=beta<=alpha)
+(2):
+wts: E' |- [r2] <: [l2[alpha |-> beta]]
+
+
+backward:
