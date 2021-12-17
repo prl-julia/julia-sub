@@ -66,6 +66,77 @@ and (2): E' |- [r2] <: [l2[alpha |-> beta]]
 		 E' = [G]; L^alpha>=[r1]; R^(Union{[l1],alpha}<=beta<=alpha)
 (2):
 wts: E' |- [r2] <: [l2[alpha |-> beta]]
+apply lemma subst
+
+
+lemma subst: ? tl <: alpha ? if E[L^alpha>=t] |- t1 <: t2 -| E'[L^alpha>=t] then 
+		  E[L^alpha>=t][R^(Union{tl,alpha})<=beta<=alpha] |- 
+		  	t1 <: t2[alpha |-> beta] -| E'[...]
+
+REFL:
+	(by lemma refl)
+
+L_RIGHT:
+	wts: E[L^alpha>=t][R^(Union{tl,alpha})<=beta<=alpha] |- 
+			  	t' <: alpha[alpha |-> beta] -| E'[...]
+	given E[L^alpha>=t][R^(Union{tl,alpha})<=beta<=alpha] |- 
+			  	t' <: t -| E''[...]
+
+
+	wts: E[L^alpha>=t][R^(Union{tl,alpha})<=beta<=alpha] |- 
+			  	t' <: beta -| E'[...]
+	to apply R_RIGHT wts: E[L^alpha>=t][R^(Union{tl,alpha})<=beta<=alpha] |- 
+			  	t' <: alpha -| E'[...]
+	apply L_RIGHT on IH, done
+
+R_L:
+	wts: E[L^alpha>=t][R^(Union{tl,alpha})<:beta<:alpha][R^(t1l<:T1<:t1u)] |- 
+			  	T1 <: alpha[alpha |-> beta] -| E'[...]
+	wts: E[L^alpha>=t][R^(Union{tl,alpha})<:beta<:alpha][R^(t1l<:T1<:t1u)] |- 
+			  	T1 <: beta -| E'[...]
+	wts: E[L^alpha>=t][R^(Union{tl,alpha})<:beta<:alpha][R^(t1l<:T1<:t1u)] |- 
+			  	t1l <: beta -| E'[...]
+
+
+
+lemma refl:
+forall E, exists E': E[L^alpha>=t][R^(Union{tl,alpha})<=beta<=alpha] |- 
+		  	t <: t[alpha |-> beta] -| E'[...]
+structural induction on t;
+case Any, DataType, Union, UnionAll trivial
+case Union{t1,...,tn}:
+	wts forall E, exists E':  
+		E[L^alpha>=t][R^(Union{tl,alpha})<=beta<=alpha] |- 
+		  Union{t1,...,tn} <: Union{t1,...,tn}[alpha |-> beta] -| E'[...]
+	given forall E, exists E': 
+		E[L^alpha>=t][R^(Union{tl,alpha})<=beta<=alpha] |- 
+		  ti <: ti[alpha |-> beta] -| E'[...] for 1<=i<=n
+	apply UNION_LEFT repeatedly, concluding with UNION_RIGHT on ih.
+case Tuple{a1,...,an}:
+		E[L^alpha>=t][R^(Union{tl,alpha})<=beta<=alpha] |- 
+		  Union{a1,...,an} <: Union{a1,...,an}[alpha |-> beta] -| E'[...]
+	[application of TUPLE on IH]
+case name{a1,...,an}:
+	[same thing as TUPLE with APP_INV]
+case t where t1<:T<:t2:
+	wts forall E, exists E':  
+		E[L^alpha>=t][R^(Union{tl,alpha})<=beta<=alpha] |- 
+		  t where t1<:T<:t2 <: (t where t1<:T<:t2)[alpha |-> beta] -| E'[...]
+    wts E[L^alpha>=t][R^(Union{tl,alpha})<=beta<=alpha]; L^(t1<:T<:t2) |-
+    	t <: (t where t1<:T<:t2)[alpha |-> beta] -| E'[...]
+    	consistent check in R_INTRO ???????? TODO TODO TODO
+    wts E[L^alpha>=t][R^(Union{tl,alpha})<=beta<=alpha]; 
+    		L^(t1<:T<:t2); R^(t1<:T<:t2) |-
+    	t <: t[alpha |-> beta] -| E'[...]
+    holds by IH
+case T:
+	wts: E[L^alpha>=t][R^(Union{tl,alpha})<=beta<=alpha] |- 
+			  	alpha <: alpha[alpha |-> beta] -| E'[...]
+	wts: E[L^alpha>=t][R^(Union{tl,alpha})<=beta<=alpha] |- alpha <: beta -| E'[...]
+	R_RIGHT wts: E[L^alpha>=t][R^(Union{tl,alpha})<=beta<=alpha] |- alpha <: alpha -| E'[...]
+	by REFL E'=E
+case Type{a}:
+	[TYPE_TYPE on IH]
 
 
 backward:
