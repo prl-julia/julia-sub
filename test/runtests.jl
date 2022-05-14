@@ -4,7 +4,7 @@
 
 using JuliaSub # if it's a registered package
 
-# for working without installing JuliaSub it as a package
+# for working without installing JuliaSub as a package
 #include("../src/JuliaSub.jl")
 #using Main.JuliaSub
 

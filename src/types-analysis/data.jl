@@ -1,0 +1,2 @@
+
+SplitFunDef = Dict{Symbol, Any}

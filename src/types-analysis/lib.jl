@@ -1,4 +1,5 @@
 
+include("data.jl")
 
 # Checks if the expression represents a function definition
 # Copies https://github.com/FluxML/MacroTools.jl/blob/639d1a62c3d6bc37325cddbaa13d4c993d1448fb/src/utils.jl#L292-L294
@@ -12,18 +13,23 @@ end
 collectTypeAnnotations(expr) = begin
     isFunDef(expr) || return expr
     funDefParts = splitdef(expr)
-    methodArgTuple = combineTupleType!(
-        map(getArgTypeAnn, vcat(funDefParts[:args], funDefParts[:kwargs])),
-        funDefParts[:whereparams]
-    )
+    methodArgTuple = getMethodTupleType(funDefParts)
 
 end
 
+# getMethodTupleType :: SplitFunDef → Expr
+# Returns AST of the tuple type corresponding to the method signature
+# of the method represented by `splitFDef`
+getMethodTupleType(splitFDef :: SplitFunDef) :: Expr =
+    combineTupleType!(
+        map(getArgTypeAnn, vcat(splitFDef[:args], splitFDef[:kwargs])),
+        splitFDef[:whereparams]
+    )
 
 # combineTupleType :: Any[], Tuple → Expr
 # Returns AST of the tuple type combined from `argTypes` and `whereParams`
 # EFFECT: modifies `argTypes` 
-combineTupleType!(argTypes :: Vector, whereParams :: Tuple) = begin
+combineTupleType!(argTypes :: Vector, whereParams :: Tuple) :: Expr = begin
     insert!(argTypes, 1, :Tuple)
     tuple = Expr(:curly, argTypes...)
     if length(whereParams) == 0
@@ -36,8 +42,6 @@ combineTupleType!(argTypes :: Vector, whereParams :: Tuple) = begin
         )
     end
 end
-
-# TODO: test for combineTupleType!
 
 # getArgTypeAnn :: Expr → TypeExpr|nothing
 # Returns a type annotation corresponding to the argument `arg`.
