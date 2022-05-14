@@ -5,6 +5,45 @@
 
 Developing decidable subtyping for the Julia language.
 
+- Lower bounds aren't the only reason for the undecidability of Julia subtyping.
+- We need to analyze type annotations used in Julia programs to see if they
+  satisfy either the scoping or wildcards-like restriction.
+
+## Static analysis of types
+
+Usually, type annotations appear after `::` in the code:
+- as a part of the method signature
+  (either as an argument or return type annotation),
+- as a type assertion in the method body.
+
+When methods are generic, there can be an extra `where` sequence
+in the method signature, outside of the argument list.
+
+**Examples:**
+
+- `foo(x :: Int) :: Bool`
+- `foo(x :: Vector{T} where T)`
+- `foo(x :: T, xs :: Vector{T}) where T`
+- `x :: Int`
+
+**Note.** `MacroTools.jl` package has a handy function `isdef` to check
+for function definitions, but it seems to
+[always return true](https://github.com/FluxML/MacroTools.jl/issues/172).
+~~We can use that to process method signatures.~~
+
+But we also want to collect information from nested function definitions
+and stand-alone type assertions.
+
+- `longdef` turns all functions into long forms, including nested expressions
+- `splitdef` conveniently processes any function definition form
+  (short, long, anonymous) except for the do-notation
+
+
+
+---
+
+# Notes from 2021
+
 - We know that Julia subtyping is undecidable due to lower bounds.
 - Can we restrict lower bounds to make subtyping decidable,
   at the same time allowing all the practical uses of lower bounds
@@ -86,6 +125,7 @@ where `<pkgs` is a folder with Julia packages.
       textual and parse-based analysis of lower bounds in text 
     - [`process-pkgs.jl`](src/lb-analysis/process-pkgs.jl)
       lower-bounds analysis of files, packages, and folders with packages
+  - [`types-analysis`](src/types-analysis) analysis of type annotations
   - [`utils`](src/utils) auxiliary
     - [`lib.jl`](src/utils/lib.jl)
       main file combining all utilities

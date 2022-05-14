@@ -13,6 +13,7 @@ using Multisets
 
 include("utils/lib.jl")
 include("lb-analysis/lib.jl")
+include("types-analysis/lib.jl")
 
 #--------------------------------------------------
 # Exports
