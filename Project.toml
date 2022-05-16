@@ -4,6 +4,7 @@ authors = ["Julia Belyakova <julbinb@gmail.com> and contributors"]
 version = "0.1.0"
 
 [deps]
+DataStructures = "864edb3b-99cc-5e75-8d2d-829cb0a9cfe8"
 MacroTools = "1914dd2f-81c6-5fcd-8719-6d5c9610ff09"
 Multisets = "3b2b4ff1-bcff-5658-a3ee-dbcf1ce5ac09"
 

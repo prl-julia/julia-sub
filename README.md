@@ -39,6 +39,64 @@ and stand-alone type assertions.
   (short, long, anonymous) except for the do-notation
 
 
+## Repository Organization
+
+- [``]()
+
+- [`README.md`](README.md) this file
+
+- [`analysis-script.jl`](analysis-script.jl) script that performs
+  a complete analysis of lower bounds in the given folder with Julia packages
+
+- [`src`](src) source code
+  - [`JuliaSub.jl`](src/JuliaSub.jl) main module
+  - [`lb-analysis`](src/lb-analysis) analysis of lower bounds
+    - [`lib.jl`](src/lb-analysis/lib.jl)
+      main file combining everything related to the analysis
+    - [`data.jl`](src/lb-analysis/data.jl)
+      data types used for the analysis
+    - [`process-code.jl`](src/lb-analysis/process-code.jl)
+      extraction and counting lower bounds in Julia expressions
+    - [`process-text.jl`](src/lb-analysis/process-text.jl)
+      textual and parse-based analysis of lower bounds in text 
+    - [`process-pkgs.jl`](src/lb-analysis/process-pkgs.jl)
+      lower-bounds analysis of files, packages, and folders with packages
+  - [`types-analysis`](src/types-analysis) analysis of type annotations
+  - [`utils`](src/utils) auxiliary
+    - [`lib.jl`](src/utils/lib.jl)
+      main file combining all utilities
+    - [`equality.jl`](src/utils/equality.jl)
+      generic definition of structural equality
+    - [`file-system.jl`](src/utils/file-system.jl)
+      file system helpers
+    - [`multiset.jl`](src/utils/multiset.jl)
+      multiset merging via adding frequencies (instead of default max)
+    - [`parsing.jl`](src/utils/parsing.jl)
+      helpers for parsing Julia files
+    - [`status-info.jl`](src/utils/status-info.jl) custom logging
+
+- [`test-script.jl`](test-script.jl) convenience script for running the tests
+  (`$ julia test-script.jl`)
+
+- [`Project.toml`](Project.toml) dependencies 
+
+
+## Dependencies
+
+* [Julia](https://julialang.org/) with the following packages:
+  - [`MacroTools`](https://github.com/FluxML/MacroTools.jl)
+    for working with Julia AST  
+    *Note.* Another package that could have been useful is
+    [`Match`](https://github.com/kmsquire/Match.jl)
+  - [`Multisets`](https://github.com/scheinerman/Multisets.jl)
+    for counting frequencies of lower bounds
+  - [`DataStructures`](https://github.com/JuliaCollections/DataStructures.jl)
+    for linked lists, to efficiently collect annotations
+
+???
+  - `JSON`
+  - `ArgParse`
+
 
 ---
 
@@ -103,58 +161,3 @@ $ julia analysis-script.jl <pkgs>
 
 where `<pkgs` is a folder with Julia packages.
 
-## Repository Organization
-
-- [``]()
-
-- [`README.md`](README.md) this file
-
-- [`analysis-script.jl`](analysis-script.jl) script that performs
-  a complete analysis of lower bounds in the given folder with Julia packages
-
-- [`src`](src) source code
-  - [`JuliaSub.jl`](src/JuliaSub.jl) main module
-  - [`lb-analysis`](src/lb-analysis) analysis of lower bounds
-    - [`lib.jl`](src/lb-analysis/lib.jl)
-      main file combining everything related to the analysis
-    - [`data.jl`](src/lb-analysis/data.jl)
-      data types used for the analysis
-    - [`process-code.jl`](src/lb-analysis/process-code.jl)
-      extraction and counting lower bounds in Julia expressions
-    - [`process-text.jl`](src/lb-analysis/process-text.jl)
-      textual and parse-based analysis of lower bounds in text 
-    - [`process-pkgs.jl`](src/lb-analysis/process-pkgs.jl)
-      lower-bounds analysis of files, packages, and folders with packages
-  - [`types-analysis`](src/types-analysis) analysis of type annotations
-  - [`utils`](src/utils) auxiliary
-    - [`lib.jl`](src/utils/lib.jl)
-      main file combining all utilities
-    - [`equality.jl`](src/utils/equality.jl)
-      generic definition of structural equality
-    - [`file-system.jl`](src/utils/file-system.jl)
-      file system helpers
-    - [`multiset.jl`](src/utils/multiset.jl)
-      multiset merging via adding frequencies (instead of default max)
-    - [`parsing.jl`](src/utils/parsing.jl)
-      helpers for parsing Julia files
-    - [`status-info.jl`](src/utils/status-info.jl) custom logging
-
-- [`test-script.jl`](test-script.jl) convenience script for running the tests
-  (`$ julia test-script.jl`)
-
-- [`Project.toml`](Project.toml) dependencies 
-
-
-## Dependencies
-
-* [Julia](https://julialang.org/) with the following packages:
-  - [`MacroTools`](https://github.com/FluxML/MacroTools.jl)
-    for working with Julia AST  
-    *Note.* Another package that could have been useful is
-    [`Match.jl`](https://github.com/kmsquire/Match.jl)
-  - [`Multisets`](https://github.com/scheinerman/Multisets.jl)
-    for counting frequencies of lower bounds
-
-???
-  - `JSON`
-  - `ArgParse`

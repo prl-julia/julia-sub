@@ -12,6 +12,7 @@ using Test
 
 using MacroTools
 using Multisets
+using DataStructures
 
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 # Aux values and functions
@@ -26,8 +27,8 @@ testFilePath(path :: String) = joinpath(@__DIR__, TEST_FILES_DIR, path)
 # Tests
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#include("utils.jl")
-#include("lb-analysis.jl")
+include("utils.jl")
+include("lb-analysis.jl")
 include("types-analysis.jl")
 
 @testset "JuliaSub.jl" begin

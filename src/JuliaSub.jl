@@ -6,6 +6,7 @@ module JuliaSub
 
 using MacroTools
 using Multisets
+using DataStructures
 
 #--------------------------------------------------
 # Files

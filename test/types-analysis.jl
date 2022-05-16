@@ -2,7 +2,12 @@
 # Imports
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+using Main.JuliaSub: BadMethodParamAST
+
+using Main.JuliaSub: TypeAnnInfo, mtsig, retty, tyass
 using Main.JuliaSub: getArgTypeAnn, getMethodTupleType
+using Main.JuliaSub: collectFunDefTypeAnnotations, collectTypeAnnotations
+
 
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 # Aux values and functions
@@ -39,11 +44,30 @@ fdefWhereRet = :(
     end
 )
 
+fdefsSimpleX2 = :(begin
+    $fdefNoArg
+
+    $fdefWhereTriv
+end)
+
+fdefsSimpleNested = :(module X
+    foo(x::Int) = 0
+
+    struct Bar end
+
+    function baz(xs::Vector{T}, y::T) where T
+        bar() = Bar()
+        "abc"
+    end
+
+    println()
+end)
+
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 # Tests
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-@testset "types-analysis :: get arg type annotation" begin
+@testset "types-analysis :: get argument type annotation" begin
     # leading `;` tricks Julia into parsing `(...)` as argument list
     paramsList = 
         :( (; x, y = 0, z :: Int, w :: Bool = false, v :: Vector{T} where T) )
@@ -59,10 +83,11 @@ fdefWhereRet = :(
     @test getArgTypeAnn(params[4]) == :Bool
     # v :: Vector{T} where T
     @test getArgTypeAnn(params[5]) == :(Vector{T} where T)
+
+    @test_throws BadMethodParamAST getArgTypeAnn(:(T <: Number))
 end
 
-#@testset "types-analysis :: get arg type annotation"
-@testset "types-analysis :: get method tuple type  " begin
+@testset "types-analysis :: get method type signature   " begin
     splitDefs = Dict(map(
         fdef -> (namify(fdef) => splitdef(fdef)),
         [
@@ -85,3 +110,41 @@ end
         :( Tuple{Any, Any, Int, T, S, Vector{T}} where T<:S where S>:AbstractArray )
 end
 
+# FIXME: collectFunDefTypeAnnotations currently extracts only method signature
+@testset "types-analysis :: collect all ty-anns in mtdef" begin
+    tyAnns = nil(TypeAnnInfo)
+
+    tyAnns = collectFunDefTypeAnnotations(fdefNoArg, tyAnns)
+    @test tyAnns ==
+        list(TypeAnnInfo(:fdefNoArg, mtsig, :( Tuple{} )))
+    
+    tyAnns = collectFunDefTypeAnnotations(fdefWhereTriv, tyAnns)
+    @test tyAnns ==
+        list(
+            TypeAnnInfo(:fdefWhereTriv, mtsig, :( Tuple{T} where T )),
+            TypeAnnInfo(:fdefNoArg, mtsig, :( Tuple{} ))
+        )
+
+    @test collectFunDefTypeAnnotations(fdefWhereRetSimp, nil(TypeAnnInfo)) ==
+        list(TypeAnnInfo(
+            :fdefWhereRetSimp, mtsig, 
+            :( Tuple{Dict{T, S}, Any} where S where T )))
+    
+    @test collectFunDefTypeAnnotations(:(f()), nil(TypeAnnInfo)) == nil()
+end
+
+# FIXME: collectFunDefTypeAnnotations currently extracts only method signature
+@testset "types-analysis :: collect all ty-anns in expr " begin
+    @test collectTypeAnnotations(:(x)) == nil()
+
+    @test collectTypeAnnotations(fdefsSimpleX2) == list(
+        TypeAnnInfo(:fdefWhereTriv, mtsig, :( Tuple{T} where T )),
+        TypeAnnInfo(:fdefNoArg, mtsig, :( Tuple{} ))
+    )
+
+    @test collectTypeAnnotations(fdefsSimpleNested) == list(
+        TypeAnnInfo(:bar, mtsig, :( Tuple{} )),
+        TypeAnnInfo(:baz, mtsig, :( Tuple{Vector{T}, T} where T )),
+        TypeAnnInfo(:foo, mtsig, :( Tuple{Int} ))
+    )
+end
