@@ -143,7 +143,23 @@ Assuming the directory structure:
 -- utils
      |
      -- JuliaPkgsList.jl
+     -- JuliaPkgDownloader
 ```
+
+run
+
+```
+$ JuliaPkgsList.jl/gen-pkgs-list.jl 0 -p data/julia-pkgs-info.json --name --includeversion --includeuuid -o data/pkgs-list/all-pkgs-list.txt
+
+$ JuliaPkgsList.jl/gen-pkgs-list.jl 100 -p data/julia-pkgs-info.json --name --includeversion --includeuuid -o data/pkgs-list/top-pkgs-list.txt
+
+$ julia -p 32 JuliaPkgDownloader.jl/download-pkgs.jl -s data/pkgs-list/100-top-pkgs-list.txt -d data/100
+
+$ julia -p 32 JuliaPkgDownloader.jl/download-pkgs.jl -s data/pkgs-list/all-pkgs-list.txt -d data/all
+```
+
+
+**Old stuff below**
 
 and `jl-wa` with a clonning script
 
@@ -157,6 +173,11 @@ $ julia -p 8 ../../jl-wa/src/utils/clone.jl -s pkgs-list/pkgs-list.txt -d pkgs/4
 
 ```
 $ julia analysis-script.jl <pkgs>
+```
+
+where `<pkgs` is a folder with Julia packages.
+
+lia analysis-script.jl <pkgs>
 ```
 
 where `<pkgs` is a folder with Julia packages.

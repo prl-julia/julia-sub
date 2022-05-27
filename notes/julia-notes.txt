@@ -1,0 +1,7 @@
+Stupid question: could you encode the Julia type system in Datalog? All Datalog programs terminate, so that would be one way to guarantee decidability. 
+There was a recent OOPSLA/ECOOP paper where they implemented a type system in Datalog, so they could use it for incremental type checking in an IDE. 
+
+https://2020.splashcon.org/details/splash-2020-oopsla/3/A-Systematic-Approach-to-Deriving-Incremental-Type-Checkers 
+
+Use simpler subtyping' for resolving bounds. Not use general subtyping for it.
+

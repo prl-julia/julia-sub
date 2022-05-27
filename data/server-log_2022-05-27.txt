@@ -1,0 +1,205 @@
+      From worker 7:	┌ Error: Downloads.RequestError("https://pkg.julialang.org/package/502467ad-4a4a-57e4-9860-6b433130b33f/a1e57d453ddbc655c74d480450e5eac3ee8ebe2a", 28, "Operation too slow. Less than 1 bytes/sec transferred the last 20 seconds", Downloads.Response("https", "https://eu-central.pkg.julialang.org/package/502467ad-4a4a-57e4-9860-6b433130b33f/a1e57d453ddbc655c74d480450e5eac3ee8ebe2a", 301, "HTTP/2 301", ["server" => "Varnish", "retry-after" => "0", "location" => "https://eu-central.pkg.julialang.org/package/502467ad-4a4a-57e4-9860-6b433130b33f/a1e57d453ddbc655c74d480450e5eac3ee8ebe2a", "x-geo-continent" => "EU", "x-geo-country" => "CZ", "x-geo-region" => "10", "accept-ranges" => "bytes", "date" => "Fri, 27 May 2022 19:41:27 GMT", "via" => "1.1 varnish", "x-served-by" => "cache-vie6320-VIE", "x-cache" => "HIT", "x-cache-hits" => "0", "x-timer" => "S1653680488.925693,VS0,VE0", "content-length" => "0"]))
+      From worker 7:	└ @ JuliaPkgDownloader ~/subtyping/utils/JuliaPkgDownloader.jl/src/lib.jl:156
+      From worker 7:	[ Info: ✗ UBPF_jll
+      From worker 14:	[ Info: ✓ zimg_jll
+      From worker 3:	[ Info: ✓ SimradEK60TestData
+[ Info: Successfully processed 7561/7658 packages
+
+real	6m37.425s
+user	8m12.657s
+sys	2m20.664s
+
+
+
+
+
+time julia -p 32 JuliaPkgDownloader.jl/download-pkgs.jl -s data/pkgs-list/all-pkgs-list.txt -d data/all -q
+[ Info: Initiating packages downloading...
+      From worker 16:	┌ Error: Couldn't retrieve sha of <NA-version> for Query
+      From worker 16:	│   e = ArgumentError: invalid version string: <NA-version>
+      From worker 16:	└ @ JuliaPkgDownloader ~/subtyping/utils/JuliaPkgDownloader.jl/src/lib.jl:77
+      From worker 8:	┌ Error: Couldn't retrieve sha of <NA-version> for JSExpr
+      From worker 8:	│   e = ArgumentError: invalid version string: <NA-version>
+      From worker 8:	└ @ JuliaPkgDownloader ~/subtyping/utils/JuliaPkgDownloader.jl/src/lib.jl:77
+      From worker 8:	┌ Error: Couldn't retrieve sha of <NA-version> for DataFitting
+      From worker 8:	│   e = ArgumentError: invalid version string: <NA-version>
+      From worker 8:	└ @ JuliaPkgDownloader ~/subtyping/utils/JuliaPkgDownloader.jl/src/lib.jl:77
+      From worker 32:	┌ Error: Couldn't retrieve sha of <NA-version> for DifferentialDynamicProgramming
+      From worker 32:	│   e = ArgumentError: invalid version string: <NA-version>
+      From worker 32:	└ @ JuliaPkgDownloader ~/subtyping/utils/JuliaPkgDownloader.jl/src/lib.jl:77
+      From worker 8:	┌ Error: Couldn't retrieve sha of <NA-version> for PSSFSS
+      From worker 8:	│   e = ArgumentError: invalid version string: <NA-version>
+      From worker 8:	└ @ JuliaPkgDownloader ~/subtyping/utils/JuliaPkgDownloader.jl/src/lib.jl:77
+      From worker 22:	┌ Error: Couldn't retrieve sha of <NA-version> for QuantumCumulants
+      From worker 22:	│   e = ArgumentError: invalid version string: <NA-version>
+      From worker 22:	└ @ JuliaPkgDownloader ~/subtyping/utils/JuliaPkgDownloader.jl/src/lib.jl:77
+      From worker 25:	┌ Error: Couldn't retrieve sha of <NA-version> for ROCArrays
+      From worker 25:	│   e = ArgumentError: invalid version string: <NA-version>
+      From worker 25:	└ @ JuliaPkgDownloader ~/subtyping/utils/JuliaPkgDownloader.jl/src/lib.jl:77
+      From worker 7:	┌ Error: Couldn't retrieve sha of 0.1.0 for TensorFunction
+      From worker 7:	│   e = KeyError: key UUID("b5bf068d-715e-43a4-ab5f-ce272ccd184b") not found
+      From worker 7:	└ @ JuliaPkgDownloader ~/subtyping/utils/JuliaPkgDownloader.jl/src/lib.jl:77
+      From worker 17:	┌ Error: Couldn't retrieve sha of <NA-version> for LibFTD2XX
+      From worker 17:	│   e = ArgumentError: invalid version string: <NA-version>
+      From worker 17:	└ @ JuliaPkgDownloader ~/subtyping/utils/JuliaPkgDownloader.jl/src/lib.jl:77
+      From worker 28:	┌ Error: Couldn't retrieve sha of <NA-version> for Arena
+      From worker 28:	│   e = ArgumentError: invalid version string: <NA-version>
+      From worker 28:	└ @ JuliaPkgDownloader ~/subtyping/utils/JuliaPkgDownloader.jl/src/lib.jl:77
+      From worker 23:	┌ Error: Couldn't retrieve sha of <NA-version> for Qecsim
+      From worker 23:	│   e = ArgumentError: invalid version string: <NA-version>
+      From worker 23:	└ @ JuliaPkgDownloader ~/subtyping/utils/JuliaPkgDownloader.jl/src/lib.jl:77
+      From worker 17:	┌ Error: Couldn't retrieve sha of <NA-version> for MicrobiomePlots
+      From worker 17:	│   e = ArgumentError: invalid version string: <NA-version>
+      From worker 17:	└ @ JuliaPkgDownloader ~/subtyping/utils/JuliaPkgDownloader.jl/src/lib.jl:77
+      From worker 12:	┌ Error: Couldn't retrieve sha of 0.1.0 for SuiteSparse
+      From worker 12:	│   e = KeyError: key UUID("4607b0f0-06f3-5cda-b6b1-a6196a1729e9") not found
+      From worker 12:	└ @ JuliaPkgDownloader ~/subtyping/utils/JuliaPkgDownloader.jl/src/lib.jl:77
+      From worker 24:	┌ Error: Couldn't retrieve sha of <NA-version> for PolynomialRings
+      From worker 24:	│   e = ArgumentError: invalid version string: <NA-version>
+      From worker 24:	└ @ JuliaPkgDownloader ~/subtyping/utils/JuliaPkgDownloader.jl/src/lib.jl:77
+      From worker 7:	┌ Error: Couldn't retrieve sha of 0.1.0 for ConstantExtension
+      From worker 7:	│   e = KeyError: key UUID("015e97f4-45c8-4214-a4dc-47accb159b32") not found
+      From worker 7:	└ @ JuliaPkgDownloader ~/subtyping/utils/JuliaPkgDownloader.jl/src/lib.jl:77
+      From worker 4:	
+      From worker 4:	gzip: stdin: unexpected end of file
+      From worker 4:	tar: Unexpected EOF in archive
+      From worker 4:	tar: Unexpected EOF in archive
+      From worker 4:	tar: Error is not recoverable: exiting now
+      From worker 8:	┌ Error: Couldn't retrieve sha of <NA-version> for SPH
+      From worker 8:	│   e = ArgumentError: invalid version string: <NA-version>
+      From worker 8:	└ @ JuliaPkgDownloader ~/subtyping/utils/JuliaPkgDownloader.jl/src/lib.jl:77
+      From worker 32:	┌ Error: Couldn't retrieve sha of <NA-version> for BigMacro
+      From worker 32:	│   e = ArgumentError: invalid version string: <NA-version>
+      From worker 32:	└ @ JuliaPkgDownloader ~/subtyping/utils/JuliaPkgDownloader.jl/src/lib.jl:77
+      From worker 26:	┌ Error: Couldn't retrieve sha of 0.1.0 for DictExtension
+      From worker 26:	│   e = KeyError: key UUID("0f7716a5-5f77-4abc-9223-ccb88496a673") not found
+      From worker 26:	└ @ JuliaPkgDownloader ~/subtyping/utils/JuliaPkgDownloader.jl/src/lib.jl:77
+      From worker 18:	┌ Error: Couldn't retrieve sha of <NA-version> for IJuliaBell
+      From worker 18:	│   e = ArgumentError: invalid version string: <NA-version>
+      From worker 18:	└ @ JuliaPkgDownloader ~/subtyping/utils/JuliaPkgDownloader.jl/src/lib.jl:77
+      From worker 22:	┌ Error: Couldn't retrieve sha of 0.1.0 for VectorExtension
+      From worker 22:	│   e = KeyError: key UUID("5dc7f3b2-d000-489c-bcc0-daa77f8356fb") not found
+      From worker 22:	└ @ JuliaPkgDownloader ~/subtyping/utils/JuliaPkgDownloader.jl/src/lib.jl:77
+      From worker 33:	┌ Error: Couldn't retrieve sha of <NA-version> for FDDerivatives
+      From worker 33:	│   e = ArgumentError: invalid version string: <NA-version>
+      From worker 33:	└ @ JuliaPkgDownloader ~/subtyping/utils/JuliaPkgDownloader.jl/src/lib.jl:77
+      From worker 2:	
+      From worker 2:	gzip: stdin: unexpected end of file
+      From worker 2:	tar: Unexpected EOF in archive
+      From worker 2:	tar: Unexpected EOF in archive
+      From worker 2:	tar: Error is not recoverable: exiting now
+      From worker 9:	┌ Error: Couldn't retrieve sha of <NA-version> for LinearAdjoints
+      From worker 9:	│   e = ArgumentError: invalid version string: <NA-version>
+      From worker 9:	└ @ JuliaPkgDownloader ~/subtyping/utils/JuliaPkgDownloader.jl/src/lib.jl:77
+      From worker 13:	┌ Error: Couldn't retrieve sha of 0.1.1 for KalmanFilter
+      From worker 13:	│   e = KeyError: key UUID("ccb8ac20-7a30-532b-8683-d8c5251adc90") not found
+      From worker 13:	└ @ JuliaPkgDownloader ~/subtyping/utils/JuliaPkgDownloader.jl/src/lib.jl:77
+      From worker 13:	┌ Error: Couldn't retrieve sha of <NA-version> for MiletusPro
+      From worker 13:	│   e = KeyError: key UUID("c7b882f0-8aa7-5bdf-8f4f-e96920fd44ac") not found
+      From worker 13:	└ @ JuliaPkgDownloader ~/subtyping/utils/JuliaPkgDownloader.jl/src/lib.jl:77
+      From worker 9:	┌ Error: Couldn't retrieve sha of <NA-version> for NormalMaps
+      From worker 9:	│   e = ArgumentError: invalid version string: <NA-version>
+      From worker 9:	└ @ JuliaPkgDownloader ~/subtyping/utils/JuliaPkgDownloader.jl/src/lib.jl:77
+      From worker 13:	┌ Error: Couldn't retrieve sha of <NA-version> for Pumas
+      From worker 13:	│   e = KeyError: key UUID("4f2c3c20-a4ac-11e9-067b-e5872d3484cf") not found
+      From worker 13:	└ @ JuliaPkgDownloader ~/subtyping/utils/JuliaPkgDownloader.jl/src/lib.jl:77
+      From worker 20:	┌ Error: Couldn't retrieve sha of <NA-version> for Blpapi
+      From worker 20:	│   e = KeyError: key UUID("7292b099-15aa-5b42-8bfb-0c9b5836b372") not found
+      From worker 20:	└ @ JuliaPkgDownloader ~/subtyping/utils/JuliaPkgDownloader.jl/src/lib.jl:77
+      From worker 33:	┌ Error: Couldn't retrieve sha of 0.1.0 for FreudenthalTriangulation
+      From worker 33:	│   e = KeyError: key UUID("9b64c142-f029-458f-81dd-46a209467a7b") not found
+      From worker 33:	└ @ JuliaPkgDownloader ~/subtyping/utils/JuliaPkgDownloader.jl/src/lib.jl:77
+      From worker 26:	┌ Error: Couldn't retrieve sha of <NA-version> for MofonBase
+      From worker 26:	│   e = ArgumentError: invalid version string: <NA-version>
+      From worker 26:	└ @ JuliaPkgDownloader ~/subtyping/utils/JuliaPkgDownloader.jl/src/lib.jl:77
+      From worker 21:	┌ Error: Couldn't retrieve sha of <NA-version> for JuliaHubClient
+      From worker 21:	│   e = KeyError: key UUID("a1216acd-9fc2-4d5e-aac3-a28721b16c80") not found
+      From worker 21:	└ @ JuliaPkgDownloader ~/subtyping/utils/JuliaPkgDownloader.jl/src/lib.jl:77
+      From worker 15:	┌ Error: Couldn't retrieve sha of <NA-version> for Bioequivalence
+      From worker 15:	│   e = KeyError: key UUID("4ece37e6-a012-11e8-38cd-91247efc2c34") not found
+      From worker 15:	└ @ JuliaPkgDownloader ~/subtyping/utils/JuliaPkgDownloader.jl/src/lib.jl:77
+      From worker 8:	┌ Error: Couldn't retrieve sha of <NA-version> for NCA
+      From worker 8:	│   e = KeyError: key UUID("29142fd5-e082-4e84-b14f-4d7220ed3f6b") not found
+      From worker 8:	└ @ JuliaPkgDownloader ~/subtyping/utils/JuliaPkgDownloader.jl/src/lib.jl:77
+      From worker 8:	┌ Error: Couldn't retrieve sha of <NA-version> for TracyProfiler_jll
+      From worker 8:	│   e = ArgumentError: invalid version string: <NA-version>
+      From worker 8:	└ @ JuliaPkgDownloader ~/subtyping/utils/JuliaPkgDownloader.jl/src/lib.jl:77
+      From worker 16:	┌ Error: Couldn't retrieve sha of <NA-version> for PumasPlots
+      From worker 16:	│   e = KeyError: key UUID("0c61e9cd-e02e-46f2-b961-0746d5a16e3b") not found
+      From worker 16:	└ @ JuliaPkgDownloader ~/subtyping/utils/JuliaPkgDownloader.jl/src/lib.jl:77
+      From worker 13:	┌ Error: Couldn't retrieve sha of <NA-version> for Tetris
+      From worker 13:	│   e = ArgumentError: invalid version string: <NA-version>
+      From worker 13:	└ @ JuliaPkgDownloader ~/subtyping/utils/JuliaPkgDownloader.jl/src/lib.jl:77
+      From worker 32:	┌ Error: Couldn't retrieve sha of <NA-version> for PumasPostProcessing
+      From worker 32:	│   e = KeyError: key UUID("634d3b9d-ee7a-5ddf-bec0-22491ea816e0") not found
+      From worker 32:	└ @ JuliaPkgDownloader ~/subtyping/utils/JuliaPkgDownloader.jl/src/lib.jl:77
+      From worker 21:	┌ Error: Couldn't retrieve sha of <NA-version> for Vortice
+      From worker 21:	│   e = ArgumentError: invalid version string: <NA-version>
+      From worker 21:	└ @ JuliaPkgDownloader ~/subtyping/utils/JuliaPkgDownloader.jl/src/lib.jl:77
+      From worker 6:	┌ Error: Couldn't retrieve sha of <NA-version> for JuliaHubData
+      From worker 6:	│   e = KeyError: key UUID("e241c0f9-2941-4184-86f1-92558f4420e8") not found
+      From worker 6:	└ @ JuliaPkgDownloader ~/subtyping/utils/JuliaPkgDownloader.jl/src/lib.jl:77
+      From worker 3:	┌ Error: Couldn't retrieve sha of <NA-version> for PumasTutorials
+      From worker 3:	│   e = KeyError: key UUID("b7b41870-aa11-11e9-048a-09266ec4a62f") not found
+      From worker 3:	└ @ JuliaPkgDownloader ~/subtyping/utils/JuliaPkgDownloader.jl/src/lib.jl:77
+      From worker 15:	┌ Error: Couldn't retrieve sha of <NA-version> for Abaco
+      From worker 15:	│   e = ArgumentError: invalid version string: <NA-version>
+      From worker 15:	└ @ JuliaPkgDownloader ~/subtyping/utils/JuliaPkgDownloader.jl/src/lib.jl:77
+      From worker 5:	┌ Error: Couldn't retrieve sha of <NA-version> for Unicode2LaTeX
+      From worker 5:	│   e = ArgumentError: invalid version string: <NA-version>
+      From worker 5:	└ @ JuliaPkgDownloader ~/subtyping/utils/JuliaPkgDownloader.jl/src/lib.jl:77
+      From worker 4:	┌ Error: ProcessFailedException(Base.Process[Process(`tar -xzf data/all/GridapMakie.jl.tar.gz -C data/all/GridapMakie.jl`, ProcessExited(2))])
+      From worker 4:	└ @ JuliaPkgDownloader ~/subtyping/utils/JuliaPkgDownloader.jl/src/lib.jl:156
+      From worker 23:	┌ Error: Downloads.RequestError("https://pkg.julialang.org/package/c0d8f697-7833-4eed-a9bd-1f3da4013f1a/413b876a2f31cb736e536ae1c48b38e7561e05e2", 0, "", Downloads.Response("https", "https://eu-central.pkg.julialang.org/package/c0d8f697-7833-4eed-a9bd-1f3da4013f1a/413b876a2f31cb736e536ae1c48b38e7561e05e2", 404, "HTTP/2 404", ["server" => "nginx/1.21.6", "date" => "Fri, 27 May 2022 19:47:37 GMT"]))
+      From worker 23:	└ @ JuliaPkgDownloader ~/subtyping/utils/JuliaPkgDownloader.jl/src/lib.jl:156
+      From worker 2:	┌ Error: ProcessFailedException(Base.Process[Process(`tar -xzf data/all/KongYiji.jl.tar.gz -C data/all/KongYiji.jl`, ProcessExited(2))])
+      From worker 2:	└ @ JuliaPkgDownloader ~/subtyping/utils/JuliaPkgDownloader.jl/src/lib.jl:156
+      From worker 20:	
+      From worker 20:	gzip: stdin: unexpected end of file
+      From worker 20:	tar: Unexpected EOF in archive
+      From worker 20:	tar: Unexpected EOF in archive
+      From worker 20:	tar: Error is not recoverable: exiting now
+      From worker 30:	
+      From worker 30:	gzip: stdin: unexpected end of file
+      From worker 30:	tar: Unexpected EOF in archive
+      From worker 30:	tar: Unexpected EOF in archive
+      From worker 30:	tar: Error is not recoverable: exiting now
+      From worker 20:	┌ Error: ProcessFailedException(Base.Process[Process(`tar -xzf data/all/SimpleLexica.jl.tar.gz -C data/all/SimpleLexica.jl`, ProcessExited(2))])
+      From worker 20:	└ @ JuliaPkgDownloader ~/subtyping/utils/JuliaPkgDownloader.jl/src/lib.jl:156
+      From worker 30:	┌ Error: ProcessFailedException(Base.Process[Process(`tar -xzf data/all/TrajOptPlots.jl.tar.gz -C data/all/TrajOptPlots.jl`, ProcessExited(2))])
+      From worker 30:	└ @ JuliaPkgDownloader ~/subtyping/utils/JuliaPkgDownloader.jl/src/lib.jl:156
+      From worker 31:	
+      From worker 31:	gzip: stdin: unexpected end of file
+      From worker 31:	tar: Unexpected EOF in archive
+      From worker 31:	tar: Unexpected EOF in archive
+      From worker 31:	tar: Error is not recoverable: exiting now
+      From worker 31:	┌ Error: ProcessFailedException(Base.Process[Process(`tar -xzf data/all/CloudCovErr.jl.tar.gz -C data/all/CloudCovErr.jl`, ProcessExited(2))])
+      From worker 31:	└ @ JuliaPkgDownloader ~/subtyping/utils/JuliaPkgDownloader.jl/src/lib.jl:156
+      From worker 11:	
+      From worker 11:	gzip: stdin: unexpected end of file
+      From worker 11:	tar: Unexpected EOF in archive
+      From worker 11:	tar: Unexpected EOF in archive
+      From worker 11:	tar: Error is not recoverable: exiting now
+      From worker 11:	┌ Error: ProcessFailedException(Base.Process[Process(`tar -xzf data/all/JUDI.jl.tar.gz -C data/all/JUDI.jl`, ProcessExited(2))])
+      From worker 11:	└ @ JuliaPkgDownloader ~/subtyping/utils/JuliaPkgDownloader.jl/src/lib.jl:156
+      From worker 27:	
+      From worker 27:	gzip: stdin: unexpected end of file
+      From worker 27:	tar: Unexpected EOF in archive
+      From worker 27:	tar: Unexpected EOF in archive
+      From worker 27:	tar: Error is not recoverable: exiting now
+      From worker 27:	┌ Error: ProcessFailedException(Base.Process[Process(`tar -xzf data/all/uCSV.jl.tar.gz -C data/all/uCSV.jl`, ProcessExited(2))])
+      From worker 27:	└ @ JuliaPkgDownloader ~/subtyping/utils/JuliaPkgDownloader.jl/src/lib.jl:156
+      From worker 14:	┌ Error: Downloads.RequestError("https://pkg.julialang.org/package/6cf23378-2c47-544c-b0c3-6efefe57ca11/e746a4a5ab9c26d897239e722b0f19d4bb3bd77e", 18, "transfer closed with 898053718 bytes remaining to read", Downloads.Response("https", "https://eu-central.pkg.julialang.org/package/6cf23378-2c47-544c-b0c3-6efefe57ca11/e746a4a5ab9c26d897239e722b0f19d4bb3bd77e", 200, "HTTP/2 200", ["server" => "nginx/1.21.6", "date" => "Fri, 27 May 2022 19:47:36 GMT", "content-type" => "application/x-gzip", "content-length" => "1988162859", "last-modified" => "Sun, 15 May 2022 11:32:24 GMT", "etag" => "\"6280e4c8-7680f52b\"", "accept-ranges" => "bytes", "x-lb-strategy" => "pkgservers_hashed"]))
+      From worker 14:	└ @ JuliaPkgDownloader ~/subtyping/utils/JuliaPkgDownloader.jl/src/lib.jl:156[ 
+Info: Successfully processed 7608/7658 packages
+
+
+real	1m44.239s
+user	4m47.213s
+sys	0m35.844s
+
+
+
+
+
+
