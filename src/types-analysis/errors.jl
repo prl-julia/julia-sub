@@ -8,6 +8,6 @@ abstract type TypesAnalysisException <: Exception end
 # Extracting type annotations
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-struct BadMethodParamAST
+struct TypesAnlsBadMethodParamAST
     ast :: Any
 end

@@ -18,10 +18,11 @@ using DataStructures
 # Aux values and functions
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-const TEST_FILES_DIR = "test-files"
+const TEST_FILES_DIR      = "test-files"
+const TEST_FILES_DIR_PATH = joinpath(@__DIR__, TEST_FILES_DIR)
 
 # String → String
-testFilePath(path :: String) = joinpath(@__DIR__, TEST_FILES_DIR, path)
+testFilePath(path :: AbstractString) = joinpath(TEST_FILES_DIR_PATH, path)
 
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 # Tests

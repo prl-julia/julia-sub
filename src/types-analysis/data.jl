@@ -19,7 +19,7 @@ Kind of a type annotation:
 
 "Information about a type annotation in some file"
 struct TypeAnnInfo
-    funName :: Symbol
+    funName :: JlASTTypeExpr
     kind    :: TypeAnnKind
     tyExpr  :: JlASTTypeExpr
 end

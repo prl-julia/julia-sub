@@ -14,6 +14,13 @@
 # We start with 1) and ignore 2-3 for now.
 #######################################################################
 
+parseAndCollectTypeAnnotations(
+    juliaFileName :: AbstractString
+) :: TypeAnnInfoList = begin
+    expr = parseJuliaFile(juliaFileName)
+    collectTypeAnnotations(expr)
+end
+
 """
     :: Any → TypeAnnInfoList
 Collects type annotations from all method definitions in `expr`
@@ -21,7 +28,11 @@ Collects type annotations from all method definitions in `expr`
 collectTypeAnnotations(expr) :: TypeAnnInfoList = begin
     tyAnns = nil(TypeAnnInfo)
     recordFunDefTyAnns(e) = begin
-        tyAnns = collectFunDefTypeAnnotations(e, tyAnns)
+        try 
+            tyAnns = collectFunDefTypeAnnotations(e, tyAnns)
+        catch err
+            @error "Couldn't process expression" e err
+        end
         e # return the same expr for `prewalk` to work
     end
     MacroTools.prewalk(recordFunDefTyAnns, expr)
@@ -52,7 +63,9 @@ of the method represented by `splitFDef`
 """
 getMethodTupleType(splitFDef :: SplitFunDef) :: Expr =
     combineTupleType!(
-        map(getArgTypeAnn, vcat(splitFDef[:args], splitFDef[:kwargs])),
+        Vector{JlASTTypeExpr}(
+            map(getArgTypeAnn, vcat(splitFDef[:args], splitFDef[:kwargs]))
+        ),
         splitFDef[:whereparams]
     )
 
@@ -76,10 +89,13 @@ getArgTypeAnn(arg :: Symbol) :: JlASTTypeExpr =
 getArgTypeAnn(arg :: Expr) :: JlASTTypeExpr = begin
     if arg.head == :(::)
         arg.args[2]
-    elseif arg.head == :(kw) # kw means default value
+    elseif arg.head == :(kw)    # kw means default value
         getArgTypeAnn(arg.args[1])
+    elseif arg.head == :(...)   # vararg
+        tyAnn = getArgTypeAnn(arg.args[1])
+        :( Vararg{$tyAnn} )
     else
-        throw(BadMethodParamAST(arg))
+        throw(TypesAnlsBadMethodParamAST(arg))
     end
 end
 
@@ -107,7 +123,9 @@ Returns AST of the tuple type combined from `argTypes` and `whereParams`
 
 EFFECT: modifies `argTypes`
 """
-combineTupleType!(argTypes :: Vector, whereParams :: Tuple) :: Expr = begin
+combineTupleType!(
+    argTypes :: Vector{JlASTTypeExpr}, whereParams :: Tuple
+) :: Expr = begin
     insert!(argTypes, 1, :Tuple)
     tuple = Expr(:curly, argTypes...)
     if length(whereParams) == 0

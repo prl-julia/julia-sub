@@ -2,11 +2,12 @@
 # Imports
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-using Main.JuliaSub: BadMethodParamAST
+using Main.JuliaSub: TypesAnlsBadMethodParamAST
 
 using Main.JuliaSub: TypeAnnInfo, mtsig, retty, tyass
 using Main.JuliaSub: getArgTypeAnn, getMethodTupleType
 using Main.JuliaSub: collectFunDefTypeAnnotations, collectTypeAnnotations
+using Main.JuliaSub: parseAndCollectTypeAnnotations
 
 
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -84,7 +85,7 @@ end)
     # v :: Vector{T} where T
     @test getArgTypeAnn(params[5]) == :(Vector{T} where T)
 
-    @test_throws BadMethodParamAST getArgTypeAnn(:(T <: Number))
+    @test_throws TypesAnlsBadMethodParamAST getArgTypeAnn(:(T <: Number))
 end
 
 @testset "types-analysis :: get method type signature   " begin
@@ -147,4 +148,25 @@ end
         TypeAnnInfo(:baz, mtsig, :( Tuple{Vector{T}, T} where T )),
         TypeAnnInfo(:foo, mtsig, :( Tuple{Int} ))
     )
+end
+
+# FIXME: collectFunDefTypeAnnotations currently extracts only method signature
+@testset "types-analysis :: collect all ty-anns in file " begin
+    @test parseAndCollectTypeAnnotations(testFilePath("empty.jl")) == nil()
+
+    @test parseAndCollectTypeAnnotations(
+            testFilePath("Multisets-cut.jl")
+        ) == list(
+            TypeAnnInfo(:push!, mtsig, :( Tuple{Multiset{T}, Any, Int} where T )),
+            TypeAnnInfo(:getindex, mtsig, :( Tuple{Multiset{T}, Any} where T )),
+            TypeAnnInfo(:clean!, mtsig, :( Tuple{Multiset} )),
+            TypeAnnInfo(:Multiset, mtsig, :( Tuple{Base.AbstractSet{T}} where T )),
+            TypeAnnInfo(:Multiset, mtsig, :(( Tuple{AbstractArray{T, d}} where d) where T )), 
+            TypeAnnInfo(:eltype, mtsig, :( Tuple{Multiset{T}} where T )),
+            TypeAnnInfo(:(Base.empty!), mtsig, :( Tuple{Multiset{T}} where T )),
+            TypeAnnInfo(:(Base.copy), mtsig, :( Tuple{Multiset{T}} where T )),
+            TypeAnnInfo(:Multiset, mtsig, :( Tuple{Vararg{Any}} )),
+            TypeAnnInfo(:Multiset, mtsig, :( Tuple{} )),
+            TypeAnnInfo(:Multiset, mtsig, :( Tuple{} where T ))
+        )
 end

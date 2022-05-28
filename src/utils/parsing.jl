@@ -19,10 +19,10 @@ parsecode(code::String)::Vector =
 
 # String → AST
 # Parses `text` as Julia code
-parseJuliaCode(text :: String) =
+parseJuliaCode(text :: AbstractString) =
     Meta.parse(join(["quote", text, "end"], "\n"))
 
 # String → AST
 # Parses file `filePath` as Julia code
-parseJuliaFile(filePath :: String) =
+parseJuliaFile(filePath :: AbstractString) =
     parseJuliaCode(read(filePath, String))
