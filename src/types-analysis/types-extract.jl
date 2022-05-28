@@ -51,7 +51,11 @@ collectFunDefTypeAnnotations(expr, tyAnns :: TypeAnnInfoList) = begin
     funDefParts = splitdef(expr)
     methodArgTuple = getMethodTupleType(funDefParts)
     cons(
-        TypeAnnInfo(funDefParts[:name], mtsig, methodArgTuple),
+        TypeAnnInfo(
+            get(funDefParts, :name, "<NA-name>"), 
+            mtsig, 
+            methodArgTuple
+        ),
         tyAnns
     )
 end
@@ -85,15 +89,19 @@ getArgTypeAnn(arg :: Symbol) :: JlASTTypeExpr =
 """
     (x :: T)|(x :: T = 0) → :T
     (x = 0) → :Any
+FIXME: in case of a tuple argument, only TUPLE_ARG is recorded rather than
+the right type annotation
 """
 getArgTypeAnn(arg :: Expr) :: JlASTTypeExpr = begin
     if arg.head == :(::)
-        arg.args[2]
+        arg.args[end]
     elseif arg.head == :(kw)    # kw means default value
         getArgTypeAnn(arg.args[1])
     elseif arg.head == :(...)   # vararg
         tyAnn = getArgTypeAnn(arg.args[1])
         :( Vararg{$tyAnn} )
+    elseif arg.head == :tuple
+        :TUPLE_ARG
     else
         throw(TypesAnlsBadMethodParamAST(arg))
     end

@@ -11,3 +11,6 @@ subdirPathsWithNames(dirPath :: String) :: Vector{Tuple{String, String}} = begin
     )
     filter(pn -> isdir(pn[1]), pathsWithNames)
 end
+
+"Checks if `filePath` is a Julia file"
+isJuliaFile(filePath :: String) :: Bool = endswith(filePath, ".jl")

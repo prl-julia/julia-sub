@@ -45,6 +45,14 @@ fdefWhereRet = :(
     end
 )
 
+fdefNoArgName = :(
+    fdefNoArgName(::Int) = 0
+)
+
+fdefQualName = :(
+    Base.fdefQualName(x::Int) = 0
+)
+
 fdefsSimpleX2 = :(begin
     $fdefNoArg
 
@@ -96,7 +104,9 @@ end
             fdefArgs,
             fdefWhereTriv,
             fdefWhereRetSimp,
-            fdefWhereRet
+            fdefWhereRet,
+            fdefNoArgName,
+            fdefQualName
         ])...)
     # resulting tuple types
     tts = Dict(
@@ -109,6 +119,7 @@ end
     @test tts[:fdefWhereRetSimp] == :( Tuple{Dict{T, S}, Any} where S where T )
     @test tts[:fdefWhereRet]     == 
         :( Tuple{Any, Any, Int, T, S, Vector{T}} where T<:S where S>:AbstractArray )
+    @test tts[:fdefNoArgName] == :( Tuple{Int} )
 end
 
 # FIXME: collectFunDefTypeAnnotations currently extracts only method signature
@@ -131,6 +142,9 @@ end
             :fdefWhereRetSimp, mtsig, 
             :( Tuple{Dict{T, S}, Any} where S where T )))
     
+    @test collectFunDefTypeAnnotations(fdefQualName, nil(TypeAnnInfo)) == 
+        list(TypeAnnInfo(:(Base.fdefQualName), mtsig, :( Tuple{Int} )))
+
     @test collectFunDefTypeAnnotations(:(f()), nil(TypeAnnInfo)) == nil()
 end
 

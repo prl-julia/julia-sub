@@ -10,9 +10,6 @@
 # Analysis of files
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-# Checks if `filePath` is a Julia file
-isJuliaFile(filePath :: String) :: Bool = endswith(filePath, ".jl")
-
 # Assuming that `pkgPath` is a prefix of `filePath`,
 # carves out the path to the file within ``pkgPath``
 filePathWithinPkg(filePath::String, pkgPath::String) :: String =

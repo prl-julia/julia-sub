@@ -140,7 +140,7 @@ end
 @testset "lb-analysis :: lower-bounds package statistics" begin
     pkgBad = "FAKE-bad.jl"
     pkgStatBad = PackageStat(pkgBad, false)
-    @test processPkg(testFilePath(joinpath("pkgs", pkgBad)), pkgBad) ==
+    @test processPkg(testFilePath(joinpath("pkgs-lb", pkgBad)), pkgBad) ==
         pkgStatBad
         
     pkgGood = "FAKE-fRet10.jl"
@@ -152,10 +152,10 @@ end
             joinpath("src", "id.jl") =>
                 FileLBInfo(TxtConstrStat(0,2), LBStat(LBValsFreq(:Any, :Int)))),
         LBStat(LBValsFreq(:Int,:Int, :Bool, :Nothing, :Any, :String, :T)))
-    @test processPkg(testFilePath(joinpath("pkgs", pkgGood)), pkgGood) ==
+    @test processPkg(testFilePath(joinpath("pkgs-lb", pkgGood)), pkgGood) ==
         pkgStatGood
 
-    (badPkgs, goodPkgs, totalStat) = processPkgsDir(testFilePath("pkgs"))
+    (badPkgs, goodPkgs, totalStat) = processPkgsDir(testFilePath("pkgs-lb"))
     getName(pkg :: PackageStat) = pkg.name
     @test badPkgs == [pkgStatBad]
     @test sort(goodPkgs, by=getName) == 

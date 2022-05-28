@@ -40,3 +40,13 @@ SplitFunDef = Dict{Symbol, Any}
 #--------------------------------------------------
 
 Base.:(==)(v1 :: TypeAnnInfo, v2 :: TypeAnnInfo) = structEqual(v1, v2)
+
+#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+# Extra functions
+#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+csvLineString(ta :: TypeAnnInfo) =
+    join(
+        map(v -> "\"" * string(v) * "\"", Any[ta.funName, ta.kind, ta.tyExpr]),
+        ","
+    ) * "\n"
