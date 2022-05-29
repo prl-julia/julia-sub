@@ -9,6 +9,10 @@ using Main.JuliaSub: getArgTypeAnn, getMethodTupleType
 using Main.JuliaSub: collectFunDefTypeAnnotations, collectTypeAnnotations
 using Main.JuliaSub: parseAndCollectTypeAnnotations
 
+using Main.JuliaSub: TyVarSummary, TypeTyVarsSummary
+using Main.JuliaSub: DEFAULT_LB, DEFAULT_UB, tcsempty
+using Main.JuliaSub: TCTuple, TCInvar, TCUnion, TCWhere, TCLoBnd, TCUpBnd, TCVar
+using Main.JuliaSub: collectTyVarsSummary
 
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 # Aux values and functions
@@ -75,6 +79,10 @@ end)
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 # Tests
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#--------------------------------------------------
+# Extracting type annotations
+#--------------------------------------------------
 
 @testset "types-analysis :: get argument type annotation" begin
     # leading `;` tricks Julia into parsing `(...)` as argument list
@@ -183,4 +191,43 @@ end
             TypeAnnInfo(:Multiset, mtsig, :( Tuple{} )),
             TypeAnnInfo(:Multiset, mtsig, :( Tuple{} where T ))
         )
+end
+
+#--------------------------------------------------
+# Analyzing type annotations
+#--------------------------------------------------
+
+@testset "types-analysis :: collect type vars summary   " begin
+    @test collectTyVarsSummary(:(Int)) == TypeTyVarsSummary()
+
+    @test collectTyVarsSummary(:(T where T)) ==
+        [TyVarSummary(:T, DEFAULT_LB, DEFAULT_UB, [tcsempty()])]
+
+    @test collectTyVarsSummary(:(Tuple{T, Pair{T, S} where S>:T} where T<:Number)) == [
+            TyVarSummary(:S, :T, DEFAULT_UB, [list(TCInvar)]),
+            TyVarSummary(:T, DEFAULT_LB, :Number, 
+                [
+                    list(TCTuple),
+                    list(TCLoBnd, TCTuple),
+                    list(TCInvar, TCWhere, TCTuple)
+                ]),
+        ]
+
+    #=
+    @test parseAndCollectTypeAnnotations(
+            testFilePath("Multisets-cut.jl")
+        ) == list(
+            TypeAnnInfo(:push!, mtsig, :( Tuple{Multiset{T}, Any, Int} where T )),
+            TypeAnnInfo(:getindex, mtsig, :( Tuple{Multiset{T}, Any} where T )),
+            TypeAnnInfo(:clean!, mtsig, :( Tuple{Multiset} )),
+            TypeAnnInfo(:Multiset, mtsig, :( Tuple{Base.AbstractSet{T}} where T )),
+            TypeAnnInfo(:Multiset, mtsig, :(( Tuple{AbstractArray{T, d}} where d) where T )), 
+            TypeAnnInfo(:eltype, mtsig, :( Tuple{Multiset{T}} where T )),
+            TypeAnnInfo(:(Base.empty!), mtsig, :( Tuple{Multiset{T}} where T )),
+            TypeAnnInfo(:(Base.copy), mtsig, :( Tuple{Multiset{T}} where T )),
+            TypeAnnInfo(:Multiset, mtsig, :( Tuple{Vararg{Any}} )),
+            TypeAnnInfo(:Multiset, mtsig, :( Tuple{} )),
+            TypeAnnInfo(:Multiset, mtsig, :( Tuple{} where T ))
+        )
+    =#
 end

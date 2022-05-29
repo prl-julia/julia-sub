@@ -11,3 +11,11 @@ abstract type TypesAnalysisException <: Exception end
 struct TypesAnlsBadMethodParamAST
     ast :: Any
 end
+
+#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+# Analyzing type annotations
+#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+struct TypesAnlsUnsupportedTypeAnnotation
+    ast :: Any
+end

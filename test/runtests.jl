@@ -28,8 +28,9 @@ testFilePath(path :: AbstractString) = joinpath(TEST_FILES_DIR_PATH, path)
 # Tests
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-include("utils.jl")
-include("lb-analysis.jl")
+# FIXME
+#include("utils.jl")
+#include("lb-analysis.jl")
 include("types-analysis.jl")
 
 @testset "JuliaSub.jl" begin
