@@ -6,6 +6,37 @@
 #
 #######################################################################
 
+const TYPE_ANNS_FNAME = "type-annotations.csv"
+
+collectAndSaveTypeAnns2CSV(
+    pkgsDirPath :: AbstractString, destDirPath :: AbstractString
+) = begin
+    if !isdir(pkgsDirPath)
+        @error "Packages directory doesn't exist: $pkgsDirPath"
+        return nothing
+    end
+    isdir(destDirPath) || mkdir(destDirPath)
+
+    pkgsWithPaths = map(
+            pkgDir -> (pkgDir, joinpath(pkgsDirPath, pkgDir)),
+            readdir(pkgsDirPath)
+        )
+    pkgsWithPaths = filter(pkg -> isdir(pkg[2]), pkgsWithPaths)
+
+    processPkg((pkgDir, pkgPath)) = begin
+        @info "Processing $pkgDir..."
+        destPkgInfoPath = joinpath(destDirPath, pkgDir)
+        isdir(destPkgInfoPath) || mkdir(destPkgInfoPath)
+        tyAnnFilePath = joinpath(destPkgInfoPath, TYPE_ANNS_FNAME)
+        pkgLog = collectAndSavePkgTypeAnns2CSV(pkgPath, tyAnnFilePath)
+        @info "$pkgDir done"
+        pkgDir => pkgLog
+    end
+
+    mapfunc = nprocs() > 1 ? pmap : map
+    Dict(mapfunc(processPkg, pkgsWithPaths))
+end
+
 collectAndSavePkgTypeAnns2CSV(
     pkgPath :: AbstractString, destFilePath :: AbstractString
 ) = begin

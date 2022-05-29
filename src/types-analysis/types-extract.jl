@@ -65,13 +65,18 @@ end
 Returns AST of the tuple type corresponding to the method signature
 of the method represented by `splitFDef`
 """
-getMethodTupleType(splitFDef :: SplitFunDef) :: Expr =
+getMethodTupleType(splitFDef :: SplitFunDef) :: Expr = begin
+    args = splitFDef[:args]
+    if length(args) == 1 && args[1] isa Expr && args[1].head == :parameters
+        args = args[1].args
+    end
     combineTupleType!(
         Vector{JlASTTypeExpr}(
-            map(getArgTypeAnn, vcat(splitFDef[:args], splitFDef[:kwargs]))
+            map(getArgTypeAnn, vcat(args, splitFDef[:kwargs]))
         ),
         splitFDef[:whereparams]
     )
+end
 
 """
     :: Expr → TypeExpr|nothing
@@ -102,6 +107,10 @@ getArgTypeAnn(arg :: Expr) :: JlASTTypeExpr = begin
         :( Vararg{$tyAnn} )
     elseif arg.head == :tuple
         :TUPLE_ARG
+    elseif arg.head == :macrocall
+        arg.args[1] == :(@nospecialize) ? :NOSPECIALIZE : :MACROCALL
+    elseif arg.head == :call
+        :CALL
     else
         throw(TypesAnlsBadMethodParamAST(arg))
     end

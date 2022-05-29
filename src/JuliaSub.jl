@@ -7,6 +7,7 @@ module JuliaSub
 using MacroTools
 using Multisets
 using DataStructures
+using Distributed
 
 #--------------------------------------------------
 # Files
@@ -19,6 +20,8 @@ include("types-analysis/lib.jl")
 #--------------------------------------------------
 # Exports
 #--------------------------------------------------
+
+export collectAndSaveTypeAnns2CSV
 
 #--------------------------------------------------
 # Code
