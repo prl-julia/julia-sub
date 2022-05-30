@@ -11,7 +11,7 @@ using Main.JuliaSub: parseAndCollectTypeAnnotations
 
 using Main.JuliaSub: TyVarSummary, TypeTyVarsSummary
 using Main.JuliaSub: DEFAULT_LB, DEFAULT_UB, tcsempty, ANONYMOUS_TY_VAR
-using Main.JuliaSub: TCTuple, TCInvar, TCUnion, TCWhere, TCLoBnd, TCUpBnd, TCVar, TCLBVar1, TCUBVar1, TCCall
+using Main.JuliaSub: TCTuple, TCInvar, TCUnion, TCWhere, TCLoBnd, TCUpBnd, TCVar, TCLBVar1, TCUBVar1, TCCall, TCMCall
 using Main.JuliaSub: collectTyVarsSummary
 using Main.JuliaSub: tyVarRestrictedScopePreserved, tyVarOccursAsUsedSiteVariance, tyVarUsedOnce
 
@@ -199,12 +199,12 @@ end
 #--------------------------------------------------
 
 @testset "types-analysis :: collect type vars summary   " begin
-    @test collectTyVarsSummary(:(Int)) == TypeTyVarsSummary()
+    @test collectTyVarsSummary(:(Int)) == (TypeTyVarsSummary(), false)
 
     @test collectTyVarsSummary(:(T where T)) ==
-        [TyVarSummary(:T, DEFAULT_LB, DEFAULT_UB, [tcsempty()])]
+        ([TyVarSummary(:T, DEFAULT_LB, DEFAULT_UB, [tcsempty()])], false)
 
-    @test collectTyVarsSummary(:(Tuple{T, Pair{T, S} where S>:T} where T<:Number)) == [
+    @test collectTyVarsSummary(:(Tuple{T, Pair{T, S} where S>:T} where T<:Number)) == ([
             TyVarSummary(:S, :T, DEFAULT_UB, [list(TCInvar)]),
             TyVarSummary(:T, DEFAULT_LB, :Number, 
                 [
@@ -212,52 +212,54 @@ end
                     list(TCLoBnd, TCTuple),
                     list(TCInvar, TCWhere, TCTuple)
                 ]),
-        ]
+        ], false)
 
-    @test collectTyVarsSummary(:(Pair{<:Number, T} where Int<:T<:Foo{>:Int})) == [
+    @test collectTyVarsSummary(:(Pair{<:Number, T} where Int<:T<:Foo{>:Int})) == ([
         TyVarSummary(ANONYMOUS_TY_VAR, :Int, DEFAULT_UB, [list(TCLBVar1)]),
         TyVarSummary(ANONYMOUS_TY_VAR, DEFAULT_LB, :Number, [list(TCUBVar1)]),
         TyVarSummary(:T, :Int, :(Foo{>:Int}), [list(TCInvar)]),
-    ]
+    ], false)
 end
 
 @testset "types-analysis :: analysis of type vars usage " begin
-    tvsInt = collectTyVarsSummary(:(Int))
+    tvsInt = collectTyVarsSummary(:(Int))[1]
     @test tyVarUsedOnce(tvsInt)
     @test tyVarOccursAsUsedSiteVariance(tvsInt)
     @test tyVarRestrictedScopePreserved(tvsInt)
 
-    tvsVector = collectTyVarsSummary(:(Vector{T} where T))
+    tvsVector = collectTyVarsSummary(:(Vector{T} where T))[1]
     @test tyVarUsedOnce(tvsVector)
     @test tyVarOccursAsUsedSiteVariance(tvsVector)
     @test tyVarRestrictedScopePreserved(tvsVector)
 
-    tvsPair = collectTyVarsSummary(:(Pair{T, T} where T))
+    tvsPair = collectTyVarsSummary(:(Pair{T, T} where T))[1]
     @test !tyVarUsedOnce(tvsPair)
     @test !tyVarOccursAsUsedSiteVariance(tvsPair)
     @test tyVarRestrictedScopePreserved(tvsPair)
 
-    tvsTuple = collectTyVarsSummary(:(Tuple{T, Tuple{T, Int}} where T))
+    tvsTuple = collectTyVarsSummary(:(Tuple{T, Tuple{T, Int}} where T))[1]
     @test !tyVarUsedOnce(tvsTuple)
     @test tyVarOccursAsUsedSiteVariance(tvsTuple)
     @test tyVarRestrictedScopePreserved(tvsTuple)
 
-    tvsTupleRef = collectTyVarsSummary(:(Tuple{T, Ref{T}} where T))
+    tvsTupleRef = collectTyVarsSummary(:(Tuple{T, Ref{T}} where T))[1]
     @test !tyVarUsedOnce(tvsTupleRef)
     @test !tyVarOccursAsUsedSiteVariance(tvsTupleRef)
     @test tyVarRestrictedScopePreserved(tvsTupleRef)
 
-    tvsRefUnion = collectTyVarsSummary(:(Vector{Union{T, Int}} where T))
+    tvsRefUnion = collectTyVarsSummary(:(Vector{Union{T, Int}} where T))[1]
     @test tyVarUsedOnce(tvsRefUnion)
     @test !tyVarOccursAsUsedSiteVariance(tvsRefUnion)
     @test !tyVarRestrictedScopePreserved(tvsRefUnion)
 
-    tvsRefWhereRef = collectTyVarsSummary(:(Ref{Ref{T} where T} where T))
-    @test tyVarUsedOnce(tvsRefWhereRef)
+    tvsRefWhereRef = collectTyVarsSummary(:(Ref{Ref{T} where T} where T))[1]
+    @test !tyVarUsedOnce(tvsRefWhereRef)
+    @test tyVarUsedOnce(tvsRefWhereRef[1]) # inner T
+    @test !tyVarUsedOnce(tvsRefWhereRef[2]) # outer T
     @test tyVarOccursAsUsedSiteVariance(tvsRefWhereRef)
     @test tyVarRestrictedScopePreserved(tvsRefWhereRef)
 
-    tvsRefWherePair = collectTyVarsSummary(:(Ref{Pair{T, S} where S} where T))
+    tvsRefWherePair = collectTyVarsSummary(:(Ref{Pair{T, S} where S} where T))[1]
     @test tyVarUsedOnce(tvsRefWherePair)
     @test !tyVarOccursAsUsedSiteVariance(tvsRefWherePair)
     @test tyVarOccursAsUsedSiteVariance(tvsRefWherePair[1]) # S
@@ -266,7 +268,7 @@ end
     @test tyVarRestrictedScopePreserved(tvsRefWherePair[1]) # S
     @test !tyVarRestrictedScopePreserved(tvsRefWherePair[2]) # T
 
-    tvsPairWherePair = collectTyVarsSummary(:(Pair{S, Pair{Int, T} where T<:S} where S))
+    tvsPairWherePair = collectTyVarsSummary(:(Pair{S, Pair{Int, T} where T<:S} where S))[1]
     @test !tyVarUsedOnce(tvsPairWherePair)
     @test tyVarUsedOnce(tvsPairWherePair[1]) # T
     @test !tyVarUsedOnce(tvsPairWherePair[2]) # S
@@ -277,7 +279,7 @@ end
     @test tyVarRestrictedScopePreserved(tvsPairWherePair[1]) # T
     @test !tyVarRestrictedScopePreserved(tvsPairWherePair[2]) # S
 
-    tvsTupleWherePair = collectTyVarsSummary(:(Tuple{S, Pair{T, S} where T<:S} where S))
+    tvsTupleWherePair = collectTyVarsSummary(:(Tuple{S, Pair{T, S} where T<:S} where S))[1]
     @test !tyVarUsedOnce(tvsTupleWherePair)
     @test !tyVarOccursAsUsedSiteVariance(tvsTupleWherePair)
     @test tyVarRestrictedScopePreserved(tvsTupleWherePair)

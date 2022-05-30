@@ -39,7 +39,7 @@ Kind of type constructor
 - TCVar means that the variable is used as a target of {}, e.g. X{Int} where X
 - TCLBVar1 means that the variable has a single anonymous usage in lower bound, e.g. Ref{>:Int}
 """
-@enum TypeConstructor TCTuple TCInvar TCUnion TCWhere TCLoBnd TCUpBnd TCVar TCLBVar1 TCUBVar1 TCCall
+@enum TypeConstructor TCTuple TCInvar TCUnion TCWhere TCLoBnd TCUpBnd TCVar TCLBVar1 TCUBVar1 TCCall TCMCall
 
 "Stack of type constructors"
 TypeConstrStack = LinkedList{TypeConstructor}

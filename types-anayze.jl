@@ -26,17 +26,13 @@ function parse_command_line_args()
         description = "Collects type annotations from Julia source files"
     )
     @add_arg_table! argsStr begin
-        "pkgs"
-            help = "directory with Julia packages"
-            arg_type = String
-            required = true
-        "dest"
-            help = "directory for outputting CSV files with extracted type annotations"
+        "pkginfos"
+            help = "directory of folders with collected type annotations for packages"
             arg_type = String
             required = true
         
         "--reload", "-r"
-            help = "flag specifying if packages information must be reloaded"
+            help = "flag specifying if analysis files should be rewritten"
             action = :store_true
     end
     parse_args(argsStr)
@@ -49,12 +45,8 @@ const PARAMS = parse_command_line_args()
 # Main
 #--------------------------------------------------
 
-@info "Initiating type annotations collection..."
-result = collectAndSaveTypeAnns2CSV(
-    PARAMS["pkgs"], PARAMS["dest"]
-)
-for (k, v) in result
-    println(k)
-    println(v)
-    println("\n")
+@info "Initiating type annotations analysis..."
+resultStats = analyzePkgTypeAnnsAndSave2CSV(PARAMS["pkginfos"])
+for (k,v) in resultStats
+    @info "Total $k:" v
 end
