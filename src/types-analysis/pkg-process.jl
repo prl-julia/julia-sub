@@ -99,12 +99,10 @@ collectAndWritePkgFileTypeAnns2IO!(
             destFileIO,
             jlFilePathInPkg * "," * csvLineString(tyAnn)
         )=#
-        show(destFileIO, jlFilePathInPkg)
-        write(destFileIO, ",")
-        show(destFileIO, string(tyAnn.funName))
-        write(destFileIO, ",")
-        show(destFileIO, string(tyAnn.kind))
-        write(destFileIO, ",")
+        for info in [jlFilePathInPkg, tyAnn.funName, tyAnn.kind]
+            show(destFileIO, string(info))
+            write(destFileIO, ",")
+        end
         show(destFileIO, string(tyAnn.tyExpr))
         write(destFileIO, "\n")
     end
@@ -171,8 +169,8 @@ analyzePkgTypeAnns(pkgPath :: AbstractString) = begin
         return failedResult
     end
     try
-        #CSV.read(typeAnnsPath, DataFrame) # fails to properly recognize \" in strings
-        df = load(typeAnnsPath; escapechar='\\') |> DataFrame
+        df = CSV.read(typeAnnsPath, DataFrame; escapechar='\\')
+        #df = load(typeAnnsPath; escapechar='\\') |> DataFrame
         df = addTypeAnnsAnalysis!(df)
         dfSumm = summarizeTypeAnnsAnalysis(df)
         CSV.write(

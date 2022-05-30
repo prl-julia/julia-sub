@@ -5,11 +5,9 @@ version = "0.1.0"
 
 [deps]
 CSV = "336ed68f-0bac-5ca0-87d4-7b16caf5d00b"
-CSVFiles = "5d742f6a-9f54-50ce-8119-2520741973ca"
 DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
 DataStructures = "864edb3b-99cc-5e75-8d2d-829cb0a9cfe8"
 Distributed = "8ba89e20-285c-5b6f-9357-94700520ee1b"
-FileIO = "5789e2e9-d7fb-5bc7-8068-2c6fae9b9549"
 MacroTools = "1914dd2f-81c6-5fcd-8719-6d5c9610ff09"
 Multisets = "3b2b4ff1-bcff-5658-a3ee-dbcf1ce5ac09"
 

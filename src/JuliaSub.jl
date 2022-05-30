@@ -10,8 +10,6 @@ using DataStructures
 using Distributed
 using DataFrames
 using CSV
-using FileIO
-using CSVFiles
 
 #--------------------------------------------------
 # Files
