@@ -49,7 +49,6 @@ const PARAMS = parse_command_line_args()
 # Main
 #--------------------------------------------------
 
-#=
 @info "Initiating type annotations collection..."
 result = collectAndSaveTypeAnns2CSV(
     PARAMS["pkgs"], PARAMS["dest"]
@@ -59,7 +58,6 @@ for (k, v) in result
     println(v)
     println("\n")
 end
-=#
 
 println("\n***********************************************\n\n")
 
