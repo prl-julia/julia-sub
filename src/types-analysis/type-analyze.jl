@@ -36,6 +36,17 @@ tyVarRestrictedScopePreserved(
 end
 
 
+tyVarOccursAsImpredicativeUsedSiteVariance(tytvs :: TypeTyVarsSummary) = 
+    all(tyVarOccursAsImpredicativeUsedSiteVariance, tytvs)
+
+tyVarOccursAsImpredicativeUsedSiteVariance(tvs :: TyVarSummary) = begin
+    useSite = tyVarOccursAsUsedSiteVariance(tvs)
+    # if it doesn't look like use-site variance, check variable context:
+    # we are interested in positions that are not strictly covariant
+    useSite || tyVarOccIsCovariant(tvs.context)
+end
+
+
 tyVarOccursAsUsedSiteVariance(tytvs :: TypeTyVarsSummary) = 
     all(tyVarOccursAsUsedSiteVariance, tytvs)
 
@@ -73,7 +84,7 @@ tyVarUsedOnce(tvs :: TyVarSummary) = length(tvs.occurrs) == 1
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 collectTyVarsSummary(ty :: JlASTTypeExpr) = 
-    collectTyVarsSummary!(ty, envempty(), TypeTyVarsSummary())
+    collectTyVarsSummary!(ty, tcsempty(), envempty(), TypeTyVarsSummary())
 
 
 """
@@ -82,7 +93,7 @@ The second return value indicates if any potential problems were encountered
 EFFECT: modifies `tvsumm`
 """
 collectTyVarsSummary!(
-    ty :: JlASTTypeExpr,
+    ty :: JlASTTypeExpr, context :: TypeConstrStack,
     env :: TyVarEnv, tvsumm :: TypeTyVarsSummary
 ) = isprimitivetype(typeof(ty)) || ty isa String ?
     (tvsumm, false) :
@@ -97,7 +108,7 @@ collectTyVarsSummary!(
 Symbol may represent a variable occurrence
 """
 collectTyVarsSummary!(
-    ty :: Symbol,
+    ty :: Symbol, context :: TypeConstrStack,
     env :: TyVarEnv, tvsumm :: TypeTyVarsSummary
 ) = begin
     tvInfo = envlookup(env, ty)
@@ -107,7 +118,7 @@ collectTyVarsSummary!(
 end
 
 collectTyVarsSummary!(
-    ty :: Expr,
+    ty :: Expr, context :: TypeConstrStack,
     env :: TyVarEnv, tvsumm :: TypeTyVarsSummary
 ) = begin
     if ty.head == :(.) # qualified name
@@ -117,10 +128,13 @@ collectTyVarsSummary!(
         # with single variables, i.e.
         # `t where X where Y`` instead of `t where {X, Y}`
         @assert length(ty.args) == 2 "Expected single variable in a where type"
-        collectTyVarsSummaryWhere!(ty.args[1], ty.args[2], env, tvsumm)
+        collectTyVarsSummaryWhere!(ty.args[1], ty.args[2], context, env, tvsumm)
     elseif ty.head == :curly
         @assert length(ty.args) >= 1 "Unsupported {} $ty"
-        collectTyVarsSummaryCurly!(ty.args, env, tvsumm)
+        collectTyVarsSummaryCurly!(ty.args, context, env, tvsumm)
+    elseif ty.head == :(<:) || ty.head == :(>:)
+        @error "Shorthand forms <: >: are not expected" ty
+    #=
     elseif ty.head == :(<:) # Ref{<:ub}
         @assert length(ty.args) == 1 "Unsupported short-hand <:" ty
         envUB = envpushconstr(env, TCUpBnd)
@@ -135,11 +149,12 @@ collectTyVarsSummary!(
         push!(tvsumm,
             TyVarSummary(ANONYMOUS_TY_VAR, ty.args[1], DEFAULT_UB, [list(TCLBVar1)]))
         (tvsumm, problemEncountered)
+    =#
     elseif ty.head == :call
         envArg = envpushconstr(env, TCCall)
         problemEncountered = false
         for arg in ty.args
-            (_, problem) = collectTyVarsSummary!(arg, envArg, tvsumm)
+            (_, problem) = collectTyVarsSummary!(arg, cons(TCCall, context), envArg, tvsumm)
             problem && (problemEncountered = true)
         end
         (tvsumm, problemEncountered)
@@ -147,7 +162,7 @@ collectTyVarsSummary!(
         envArg = envpushconstr(env, TCMCall)
         problemEncountered = false
         for arg in ty.args
-            (_, problem) = collectTyVarsSummary!(arg, envArg, tvsumm)
+            (_, problem) = collectTyVarsSummary!(arg, cons(TCMCall, context), envArg, tvsumm)
             problem && (problemEncountered = true)
         end
         (tvsumm, problemEncountered)
@@ -164,12 +179,12 @@ collectTyVarsSummary!(
 end
 
 collectTyVarsSummary!(
-    ty :: LineNumberNode,
+    ty :: LineNumberNode, context :: TypeConstrStack,
     env :: TyVarEnv, tvsumm :: TypeTyVarsSummary
 ) = (tvsumm, false)
 
 collectTyVarsSummary!(
-    ty :: QuoteNode,
+    ty :: QuoteNode, context :: TypeConstrStack,
     env :: TyVarEnv, tvsumm :: TypeTyVarsSummary
 ) = (tvsumm, true)
 # conservatively assuming that something relevant may be in the quote
@@ -179,19 +194,19 @@ collectTyVarsSummary!(
 #--------------------------------------------------
 
 collectTyVarsSummaryWhere!(
-    body :: JlASTTypeExpr, tvDecl :: JlASTTypeExpr,
+    body :: JlASTTypeExpr, tvDecl :: JlASTTypeExpr, context :: TypeConstrStack,
     env :: TyVarEnv, tvsumm :: TypeTyVarsSummary
 ) = begin
     (name, lb, ub) = splitTyVarDecl(tvDecl) # type var info
     envLB = envpushconstr(env, TCLoBnd)
-    (_, prblb) = collectTyVarsSummary!(lb, envLB, tvsumm)
+    (_, prblb) = collectTyVarsSummary!(lb, cons(TCLoBnd, context), envLB, tvsumm)
     envUB = envpushconstr(env, TCUpBnd)
-    (_, prbub) = collectTyVarsSummary!(ub, envUB, tvsumm)
+    (_, prbub) = collectTyVarsSummary!(ub, cons(TCUpBnd, context), envUB, tvsumm)
     envBody = envpushconstr(env, TCWhere)
     tv = TyVarInfo(name, lb, ub)
     envBody = envadd(envBody, tv)
-    (_, prbbd) = collectTyVarsSummary!(body, envBody, tvsumm)
-    push!(tvsumm, TyVarSummary(name, lb, ub, tv.occurrs))
+    (_, prbbd) = collectTyVarsSummary!(body, cons(TCWhere, context), envBody, tvsumm)
+    push!(tvsumm, TyVarSummary(name, lb, ub, tv.occurrs, context))
     (tvsumm, prblb || prbub || prbbd)
 end
 
@@ -228,7 +243,7 @@ tyVarDeclIsComparison(tvDecl :: Expr) = tvDecl.head == :comparison &&
 #--------------------------------------------------
 
 collectTyVarsSummaryCurly!(
-    curlyArgs :: Vector,
+    curlyArgs :: Vector, context :: TypeConstrStack,
     env :: TyVarEnv, tvsumm :: TypeTyVarsSummary
 ) = begin
     problemEncountered = false
@@ -257,7 +272,7 @@ collectTyVarsSummaryCurly!(
     end
     envArg = envpushconstr(env, constr)
     for i in 2:length(curlyArgs)
-        (_, problem) = collectTyVarsSummary!(curlyArgs[i], envArg, tvsumm)
+        (_, problem) = collectTyVarsSummary!(curlyArgs[i], cons(constr, context), envArg, tvsumm)
         problem && (problemEncountered = true)
     end
     (tvsumm, problemEncountered)
@@ -267,9 +282,7 @@ end
 # Converting short-hand types into complete form
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#transformShortHand(ty :: JlASTTypeExpr) :: TypeTransInfo
-
-transformShortHand(ty :: JlASTTypeExpr) = 
+transformShortHand(ty :: JlASTTypeExpr) :: TypeTransInfo = 
     isprimitivetype(typeof(ty)) || ty isa String ?
     TypeTransInfo(ty) :
     begin
@@ -316,6 +329,18 @@ transformShortHand(ty :: Expr) = begin
             arg -> transformShortHand(arg).expr,
             ty.args)...
         )
+        # unroll where if applicable
+        if ty.head == :where
+            @assert length(ty.args) >= 2 "Where with at least 2 parts is expected" ty
+            if length(ty.args) > 2
+                tyNew = Expr(:where, ty.args[1], ty.args[2])
+                extraWheres = ty.args[3:end]
+                for tv in extraWheres
+                    tyNew = :($tyNew where $tv)
+                end
+                return TypeTransInfo(tyNew)
+            end
+        end
         TypeTransInfo(ty)
     end
 end

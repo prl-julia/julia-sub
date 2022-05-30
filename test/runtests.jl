@@ -24,14 +24,16 @@ const TEST_FILES_DIR_PATH = joinpath(@__DIR__, TEST_FILES_DIR)
 # String → String
 testFilePath(path :: AbstractString) = joinpath(TEST_FILES_DIR_PATH, path)
 
+tryrm(path :: AbstractString) =
+    try rm(path; recursive=true); catch err @warn(err) end
+
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 # Tests
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+JuliaSub.setVerbose(false)
+
 include("utils.jl")
 include("lb-analysis.jl")
 include("types-analysis.jl")
-
-@testset "JuliaSub.jl" begin
-    # Write your tests here.
-end
+include("pkg-process.jl")

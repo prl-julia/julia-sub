@@ -85,6 +85,7 @@ struct TyVarSummary
     lb      :: JlASTTypeExpr
     ub      :: JlASTTypeExpr
     occurrs :: Vector{TypeConstrStack}
+    context :: TypeConstrStack
 end
 
 TypeTyVarsSummary = Vector{TyVarSummary}

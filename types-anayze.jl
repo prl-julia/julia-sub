@@ -6,7 +6,7 @@
 #
 # $ 
 #
-# 
+# FIXME: reload
 #######################################################################
 
 #--------------------------------------------------
@@ -31,9 +31,11 @@ function parse_command_line_args()
             arg_type = String
             required = true
         
+        #=
         "--reload", "-r"
             help = "flag specifying if analysis files should be rewritten"
             action = :store_true
+        =#
     end
     parse_args(argsStr)
 end

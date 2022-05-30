@@ -35,4 +35,8 @@ DEBUG = true
 # print analysis info every this number of packages
 const PKGS_NUM_STEP = 100
 
+setVerbose(verbose :: Bool) = begin
+    global VERBOSE = verbose
+end
+
 end

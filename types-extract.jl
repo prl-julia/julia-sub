@@ -6,7 +6,7 @@
 #
 # $ 
 #
-# 
+# FIXME: reload parameter is not supported
 #######################################################################
 
 #--------------------------------------------------
@@ -34,10 +34,11 @@ function parse_command_line_args()
             help = "directory for outputting CSV files with extracted type annotations"
             arg_type = String
             required = true
-        
+        #=
         "--reload", "-r"
             help = "flag specifying if packages information must be reloaded"
             action = :store_true
+        =#
     end
     parse_args(argsStr)
 end
@@ -49,7 +50,7 @@ const PARAMS = parse_command_line_args()
 # Main
 #--------------------------------------------------
 
-@info "Initiating type annotations collection..."
+println("Initiating type annotations collection...")
 result = collectAndSaveTypeAnns2CSV(
     PARAMS["pkgs"], PARAMS["dest"]
 )

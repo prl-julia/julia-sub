@@ -30,12 +30,12 @@ collectAndSaveTypeAnns2CSV(
     pkgsWithPaths = filter(pkg -> isdir(pkg[2]), pkgsWithPaths)
 
     processPkg((pkgDir, pkgPath)) = begin
-        @info "Processing $pkgDir..."
+        @status "Processing $pkgDir..."
         destPkgInfoPath = joinpath(destDirPath, pkgDir)
         isdir(destPkgInfoPath) || mkdir(destPkgInfoPath)
         tyAnnFilePath = joinpath(destPkgInfoPath, TYPE_ANNS_FNAME)
         pkgLog = collectAndSavePkgTypeAnns2CSV(pkgPath, tyAnnFilePath)
-        @info "$pkgDir done"
+        @status "$pkgDir done"
         pkgDir => pkgLog
     end
 
@@ -114,9 +114,10 @@ end
 
 "Should coincide with the new columns in `addTypeAnnsAnalysis!`"
 const ANALYSIS_COLS = [
+    :UnrolledTypeAnnotation,
     :Error, :Warning,
-    :VarCnt, :HasWhere, :VarsUsedOnce,
-    :UseSiteVariance, :RestrictedScope
+    :VarCnt, :HasWhere, :VarsUsedOnce, :UseSiteVariance,
+    :ImprUseSiteVariance, :RestrictedScope
 ]
 
 analyzePkgTypeAnnsAndSave2CSV(
@@ -134,7 +135,7 @@ analyzePkgTypeAnnsAndSave2CSV(
     pkgsWithPaths = filter(pkg -> isdir(pkg[2]), pkgsWithPaths)
 
     processPkg((pkgDir, pkgPath)) = begin
-        @info "Processing $pkgDir..."
+        @status "Processing $pkgDir..."
         analyzePkgTypeAnns(pkgPath)
     end
     mapfunc = nprocs() > 1 ? pmap : map
@@ -146,6 +147,9 @@ analyzePkgTypeAnnsAndSave2CSV(
             d[key] = d1[key] + d2[key]
         end
         d[:statnames] = d1[:statnames]
+        for key in [:pkgwarn, :pkgusesite, :pkgintr]
+            d[key] = vcat(d1[key], d2[key])
+        end
         d
     end
     reduce(combineResults, pkgResults)
@@ -157,7 +161,10 @@ analyzePkgTypeAnns(pkgPath :: AbstractString) = begin
         :badPkg     => 1,
         :totalta    => 0,
         :statnames  => ANALYSIS_COLS,
-        :statsums   => fill(0, length(ANALYSIS_COLS))
+        :statsums   => fill(0, length(ANALYSIS_COLS)),
+        :pkgwarn    => [],
+        :pkgusesite => [],
+        :pkgintr    => [],
     )
     if !isdir(pkgPath)
         @error "Packages directory doesn't exist: $pkgPath"
@@ -179,12 +186,21 @@ analyzePkgTypeAnns(pkgPath :: AbstractString) = begin
             df[:, Not("TypeVarsSummary")]
         )
         CSV.write(joinpath(pkgPath, TYPE_ANNS_SUMMARY_FNAME), dfSumm)
+        errOrWarn = dfSumm.sum[1] > 0 || dfSumm.sum[2] > 0
+        totalta = size(df, 1)
+        strongRestrictionFailed = any(
+            ind -> dfSumm.sum[ind] < totalta,
+            [7, 8]
+        )
         Dict(
             :goodPkg    => 1, 
             :badPkg     => 0,
-            :totalta    => size(df, 1),
+            :totalta    => totalta,
             :statnames  => dfSumm.variable,
-            :statsums   => dfSumm.sum
+            :statsums   => dfSumm.sum,
+            :pkgwarn    => errOrWarn ? [pkgPath] : [],
+            :pkgusesite => dfSumm.sum[6] < totalta ? [pkgPath] : [],
+            :pkgintr    => strongRestrictionFailed ? [pkgPath] : [],
         )
     catch err
         @error "Problem when processing CSVs" err
@@ -193,20 +209,25 @@ analyzePkgTypeAnns(pkgPath :: AbstractString) = begin
 end
 
 addTypeAnnsAnalysis!(df :: DataFrame) = begin
-    df.TypeVarsSummary = ByRow(
-        tastr -> 
+    df.UnrolledTypeAnnotation = ByRow(tastr -> 
         try
-            collectTyVarsSummary(Meta.parse(tastr))
+            string(transformShortHand(Meta.parse(tastr)).expr)
         catch err
-            @error "Couldn't process type annotation" tastr err
-            #TypeTyVarsSummary() #missing
+            @error "Couldn't transform type annotation" tastr err
             missing
         end
     )(df.TypeAnnotation)
+    df.TypeVarsSummary = ByRow(tastr -> 
+        try
+            collectTyVarsSummary(Meta.parse(tastr))
+        catch err
+            @error "Couldn't analyze type annotation" tastr err
+            missing
+        end
+    )(df.UnrolledTypeAnnotation)
     df.Error = ByRow(ismissing)(df.TypeVarsSummary)
     df.Warning = ByRow(
-        tasumm ->
-        ismissing(tasumm) ? true : tasumm[2]
+        tasumm -> ismissing(tasumm) ? true : tasumm[2]
     )(df.TypeVarsSummary) 
     df.VarCnt = mkDFAnalysisFunction(length, df.TypeVarsSummary)
     df.HasWhere = ByRow(
@@ -214,6 +235,7 @@ addTypeAnnsAnalysis!(df :: DataFrame) = begin
     )(df.VarCnt)
     df.VarsUsedOnce = mkDFAnalysisFunction(tyVarUsedOnce, df.TypeVarsSummary)
     df.UseSiteVariance = mkDFAnalysisFunction(tyVarOccursAsUsedSiteVariance, df.TypeVarsSummary)
+    df.ImprUseSiteVariance = mkDFAnalysisFunction(tyVarOccursAsImpredicativeUsedSiteVariance, df.TypeVarsSummary)
     df.RestrictedScope = mkDFAnalysisFunction(tyVarRestrictedScopePreserved, df.TypeVarsSummary)
     df
 end
@@ -233,5 +255,10 @@ summarizeTypeAnnsAnalysis(df :: DataFrame) = describe(df,
     :mean, :min, :median, :max,
     :nmissing,
     sum => :sum,
-    cols=[:Error, :Warning, :VarCnt, :HasWhere, :VarsUsedOnce, :UseSiteVariance, :RestrictedScope]
+    cols = [
+        :Error, :Warning, 
+        :VarCnt, :HasWhere, 
+        :VarsUsedOnce, :UseSiteVariance, 
+        :ImprUseSiteVariance, :RestrictedScope
+    ]
 )
