@@ -262,3 +262,64 @@ collectTyVarsSummaryCurly!(
     end
     (tvsumm, problemEncountered)
 end
+
+#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+# Converting short-hand types into complete form
+#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#transformShortHand(ty :: JlASTTypeExpr) :: TypeTransInfo
+
+transformShortHand(ty :: JlASTTypeExpr) = 
+    isprimitivetype(typeof(ty)) || ty isa String ?
+    TypeTransInfo(ty) :
+    begin
+        #@warn "Unsupported type annotation" ty
+        @error "Unsupported type annotation" ty typeof(ty)
+        throw(TypesAnlsUnsupportedTypeAnnotation(ty))
+    end
+
+transformShortHand(ty :: Symbol) = TypeTransInfo(ty)
+
+transformShortHand(ty :: Expr) = begin
+    if ty.head == :curly
+        @assert length(ty.args) >= 1 "Unsupported {} $ty"
+        # the first argument is a receiver on the left: it shouldn't contain
+        # any shorthands
+        curlyRecvTr = transformShortHand(ty.args[1])
+        @assert curlyRecvTr.kind == TTok "Receiver of {...} shouldn't contain shorthand type variables"
+        # transform other arguments and combine into a where type
+        appArgTransforms = map(transformShortHand, ty.args[2:end])
+        ty = Expr(
+            ty.head, curlyRecvTr.expr,
+            map(argtr -> argtr.expr, appArgTransforms)...)
+        for argTr in appArgTransforms
+            if argTr.kind == TTlb
+                ty = :($ty where $(argTr.expr) >: $(argTr.bound))
+            elseif argTr.kind == TTub
+                ty = :($ty where $(argTr.expr) <: $(argTr.bound))
+            end
+        end
+        TypeTransInfo(ty)
+    elseif ty.head == :(<:) && length(ty.args) == 1 # <:ub like in Ref{<:ub}
+        newVar = gensym(ANONYMOUS_TY_VAR)
+        boundTr = transformShortHand(ty.args[1])
+        @assert boundTr.kind == TTok "Unexpected transformation in upper bound" ty boundTr
+        TypeTransInfo(TTub, newVar, boundTr.expr)
+    elseif ty.head == :(>:) && length(ty.args) == 1 # >:lb like in Ref{>:ub}
+        newVar = gensym(ANONYMOUS_TY_VAR)
+        boundTr = transformShortHand(ty.args[1])
+        @assert boundTr.kind == TTok "Unexpected transformation in lower bound" ty boundTr
+        TypeTransInfo(TTlb, newVar, boundTr.expr)
+    else 
+        # simply call transformation recursively
+        ty = Expr(ty.head, map(
+            arg -> transformShortHand(arg).expr,
+            ty.args)...
+        )
+        TypeTransInfo(ty)
+    end
+end
+
+transformShortHand(ty :: LineNumberNode) = TypeTransInfo(ty)
+
+transformShortHand(ty :: QuoteNode) = TypeTransInfo(ty)

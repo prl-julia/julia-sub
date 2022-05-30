@@ -118,6 +118,25 @@ envpushconstr(
     )
 end
 
+
+#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+# Converting short-hand types into complete form
+#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+@enum TypeTransformationKind TTok TTlb TTub
+
+struct TypeTransInfo
+    kind  :: TypeTransformationKind
+    expr  :: JlASTTypeExpr
+    bound :: Union{JlASTTypeExpr, Nothing} # !== nothing only if kind != TTok
+end
+
+TypeTransInfo(kind :: TypeTransformationKind, expr :: JlASTTypeExpr) =
+    TypeTransInfo(kind, expr, nothing)
+
+TypeTransInfo(expr :: JlASTTypeExpr) =
+    TypeTransInfo(TTok, expr)
+
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 # Base functions
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -131,6 +150,8 @@ Base.:(==)(v1 :: TypeAnnInfo,  v2 :: TypeAnnInfo)   = structEqual(v1, v2)
 Base.:(==)(v1 :: TyVarInfo,    v2 :: TyVarInfo)     = structEqual(v1, v2)
 
 Base.:(==)(v1 :: TyVarSummary, v2 :: TyVarSummary)  = structEqual(v1, v2)
+
+Base.:(==)(v1 :: TypeTransInfo, v2 :: TypeTransInfo)= structEqual(v1, v2)
 
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 # Extra functions
