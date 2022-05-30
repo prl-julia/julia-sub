@@ -11,7 +11,7 @@ using Main.JuliaSub: parseAndCollectTypeAnnotations
 
 using Main.JuliaSub: TyVarSummary, TypeTyVarsSummary
 using Main.JuliaSub: DEFAULT_LB, DEFAULT_UB, tcsempty, ANONYMOUS_TY_VAR
-using Main.JuliaSub: TCTuple, TCInvar, TCUnion, TCWhere, TCLoBnd, TCUpBnd, TCVar, TCLBVar1, TCUBVar1
+using Main.JuliaSub: TCTuple, TCInvar, TCUnion, TCWhere, TCLoBnd, TCUpBnd, TCVar, TCLBVar1, TCUBVar1, TCCall
 using Main.JuliaSub: collectTyVarsSummary
 using Main.JuliaSub: tyVarRestrictedScopePreserved, tyVarOccursAsUsedSiteVariance, tyVarUsedOnce
 

@@ -6,7 +6,13 @@
 #
 #######################################################################
 
+#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+# Collecting type annotations
+#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 const TYPE_ANNS_FNAME = "type-annotations.csv"
+const TYPE_ANNS_ANALYSIS_FNAME = "analyzed-type-annotations.csv"
+const TYPE_ANNS_SUMMARY_FNAME = "summary.csv"
 
 collectAndSaveTypeAnns2CSV(
     pkgsDirPath :: AbstractString, destDirPath :: AbstractString
@@ -89,10 +95,116 @@ collectAndWritePkgFileTypeAnns2IO!(
     reversedTypeAnns = parseAndCollectTypeAnnotations(jlFilePath)
     jlFilePathInPkg = jlFilePath[pkgPathLen1:end]
     for tyAnn in reverse(reversedTypeAnns)
-        write(
+        #=write(
             destFileIO,
             jlFilePathInPkg * "," * csvLineString(tyAnn)
-        )
+        )=#
+        show(destFileIO, jlFilePathInPkg)
+        write(destFileIO, ",")
+        show(destFileIO, string(tyAnn.funName))
+        write(destFileIO, ",")
+        show(destFileIO, string(tyAnn.kind))
+        write(destFileIO, ",")
+        show(destFileIO, string(tyAnn.tyExpr))
+        write(destFileIO, "\n")
     end
 end
 
+#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+# Analysing type annotations
+#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+analyzePkgTypeAnnsAndSave2CSV(
+    pkgsDirPath :: AbstractString
+) = begin
+    if !isdir(pkgsDirPath)
+        @error "Packages directory doesn't exist: $pkgsDirPath"
+        return nothing
+    end
+
+    pkgsWithPaths = map(
+            pkgDir -> (pkgDir, joinpath(pkgsDirPath, pkgDir)),
+            readdir(pkgsDirPath)
+        )
+    pkgsWithPaths = filter(pkg -> isdir(pkg[2]), pkgsWithPaths)
+
+    (goodPkgs, badPkgs, totalTyAnns, allSums) = (0, 0, 0, [0,0,0,0])
+
+    processPkg((pkgDir, pkgPath)) = begin
+        @info "Processing $pkgDir..."
+        analyzePkgTypeAnns(pkgPath)
+    end
+
+    mapfunc = nprocs() > 1 ? pmap : map
+    for (good, bad, total, sums) in mapfunc(processPkg, pkgsWithPaths)
+        goodPkgs += good
+        badPkgs += bad
+        totalTyAnns += total
+        allSums += sums
+    end
+    (goodPkgs, badPkgs, totalTyAnns, allSums)
+end
+
+analyzePkgTypeAnns(pkgPath :: AbstractString) = begin
+    if !isdir(pkgPath)
+        @error "Packages directory doesn't exist: $pkgsDirPath"
+        return (0, 1, 0, [0,0,0,0])
+    end
+    typeAnnsPath = joinpath(pkgPath, TYPE_ANNS_FNAME)
+    if !isfile(typeAnnsPath)
+        @error "Type annotations file doesn't exist: $typeAnnsPath"
+        return (0, 1, 0, [0,0,0,0])
+    end
+    try
+        df = load(typeAnnsPath; escapechar='\\') |> DataFrame #CSV.read(typeAnnsPath, DataFrame)
+        df = addTypeAnnsAnalysis!(df)
+        dfSumm = summarizeTypeAnns(df)
+        CSV.write(
+            joinpath(pkgPath, TYPE_ANNS_ANALYSIS_FNAME),
+            df[:, [:File, :Function, :Kind, :TypeAnnotation, :VarCnt, :VarsUsedOnce, :UseSiteVariance, :RestrictedScope]]
+        )
+        CSV.write(joinpath(pkgPath, TYPE_ANNS_SUMMARY_FNAME), dfSumm)
+        (1, 0, size(df)[1], dfSumm.sum)
+    catch err
+        @error "Problem when processing CSVs" err
+        (0, 1, 0, [0,0,0,0])
+    end
+end
+
+addTypeAnnsAnalysis!(df :: DataFrame) = begin
+    df.TypeVarsSummary = ByRow(
+        tastr -> 
+        try
+            collectTyVarsSummary(Meta.parse(tastr))
+        catch err
+            @error "Couldn't process type annotation" tastr err
+            TypeTyVarsSummary() #missing
+        end
+    )(df.TypeAnnotation)
+    df.VarCnt = ByRow(length)(df.TypeVarsSummary)
+    df.VarsUsedOnce = mkDFAnalysisFunction(tyVarUsedOnce, df.TypeVarsSummary)
+    df.UseSiteVariance = mkDFAnalysisFunction(tyVarOccursAsUsedSiteVariance, df.TypeVarsSummary)
+    df.RestrictedScope = mkDFAnalysisFunction(tyVarRestrictedScopePreserved, df.TypeVarsSummary)
+    df
+end
+
+mkDFAnalysisFunction(fun :: Function, dfrow) = ByRow(summ ->
+    try
+        fun(summ)
+    catch err
+        @error "Couldn't analyze $(Symbol(fun)) for type vars summary" summ err
+        missing
+    end
+)(dfrow)
+
+summarizeTypeAnns(df :: DataFrame) = describe(df, 
+    :mean, :min, :median, :max,
+    :nmissing,
+    sum => :sum,
+    cols=[:VarCnt, :VarsUsedOnce, :UseSiteVariance, :RestrictedScope]
+)
+
+Base.length(::Missing) = missing
+tyVarUsedOnce(::Missing) = missing
+tyVarOccursAsUsedSiteVariance(::Missing) = missing
+tyVarRestrictedScopePreserved(::Missing) = missing

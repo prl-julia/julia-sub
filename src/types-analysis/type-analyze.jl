@@ -25,7 +25,7 @@ tyVarRestrictedScopePreserved(
 tyVarRestrictedScopePreserved(
     constrStack :: Cons{TypeConstructor}; invarCrossed :: Bool = false
 ) = begin
-    (hd, tl) = (head(constrStack), tail(constrStack))
+    (hd, tl) = (DataStructures.head(constrStack), DataStructures.tail(constrStack))
     if hd == TCInvar || hd == TCLoBnd || hd == TCLBVar1
         tyVarRestrictedScopePreserved(tl; invarCrossed = true)
     elseif hd == TCWhere || hd == TCLoBnd || hd == TCUpBnd || hd == TCUnion 
@@ -53,13 +53,13 @@ end
 
 tyVarOccIsCovariant(constrStack :: Nil{TypeConstructor}) = true
 tyVarOccIsCovariant(constrStack :: Cons{TypeConstructor}) =
-    head(constrStack) in [TCTuple, TCUnion, TCWhere, TCUpBnd, TCUBVar1] &&
-    tyVarOccIsCovariant(tail(constrStack))
+    DataStructures.head(constrStack) in [TCTuple, TCUnion, TCWhere, TCUpBnd, TCUBVar1] &&
+    tyVarOccIsCovariant(DataStructures.tail(constrStack))
 
 tyVarNonCovOccIsImmediate(constrStack :: Nil{TypeConstructor}) = true
 tyVarNonCovOccIsImmediate(constrStack :: Cons{TypeConstructor}) = 
-    head(constrStack) in [TCTuple, TCUnion, TCWhere, TCUpBnd, TCUBVar1] ||
-    isempty(tail(constrStack))
+    DataStructures.head(constrStack) in [TCTuple, TCUnion, TCWhere, TCUpBnd, TCUBVar1] ||
+    isempty(DataStructures.tail(constrStack))
 
 
 "No more than once"
@@ -83,7 +83,13 @@ EFFECT: modifies `tvsumm`
 collectTyVarsSummary!(
     ty :: JlASTTypeExpr,
     env :: TyVarEnv, tvsumm :: TypeTyVarsSummary
-) = throw(TypesAnlsUnsupportedTypeAnnotation(ty))
+) = isprimitivetype(typeof(ty)) ?
+    tvsumm :
+    begin
+        #throw(TypesAnlsUnsupportedTypeAnnotation(ty))
+        @warn "Unsupported type annotation" ty
+        tvsumm
+    end
 
 """
 Symbol may represent a variable occurrence
@@ -113,6 +119,12 @@ collectTyVarsSummary!(
     elseif ty.head == :curly
         @assert length(ty.args) >= 1 "Unsupported {} $ty"
         collectTyVarsSummaryCurly!(ty.args, env, tvsumm)
+    elseif ty.head == :call
+        envArg = envpushconstr(env, TCCall)
+        for arg in ty.args
+            collectTyVarsSummary!(arg, envArg, tvsumm)
+        end
+        tvsumm
     elseif ty.head == :(<:) # Ref{<:ub}
         @assert length(ty.args) == 1 "Unsupported short-hand <: $ty"
         envUB = envpushconstr(env, TCUpBnd)
@@ -128,7 +140,9 @@ collectTyVarsSummary!(
             TyVarSummary(ANONYMOUS_TY_VAR, ty.args[1], DEFAULT_UB, [list(TCLBVar1)]))
         tvsumm
     else
-        throw(TypesAnlsUnsupportedTypeAnnotation(ty))
+        @warn "Unsupported type annotation" ty
+        tvsumm
+        #throw(TypesAnlsUnsupportedTypeAnnotation(ty))
     end
 end
 
@@ -200,8 +214,11 @@ collectTyVarsSummaryCurly!(
             push!(tvInfo.occurrs, tvInfo.currPos)
             constr = TCVar
         end
+    elseif curlyArgs[1] isa Expr && curlyArgs[1].head == :(.) # qualified name
+        # nothing to do
     else
-        @assert false "Unsupported target of {...} $(curlyArgs[1])"    
+        #@assert false "Unsupported target of {...} $(curlyArgs[1])"    
+        @warn "Unsupported target of {...} $(curlyArgs[1])"
     end
     envArg = envpushconstr(env, constr)
     for i in 2:length(curlyArgs)

@@ -39,7 +39,7 @@ Kind of type constructor
 - TCVar means that the variable is used as a target of {}, e.g. X{Int} where X
 - TCLBVar1 means that the variable has a single anonymous usage in lower bound, e.g. Ref{>:Int}
 """
-@enum TypeConstructor TCTuple TCInvar TCUnion TCWhere TCLoBnd TCUpBnd TCVar TCLBVar1 TCUBVar1
+@enum TypeConstructor TCTuple TCInvar TCUnion TCWhere TCLoBnd TCUpBnd TCVar TCLBVar1 TCUBVar1 TCCall
 
 "Stack of type constructors"
 TypeConstrStack = LinkedList{TypeConstructor}
@@ -99,9 +99,9 @@ envlookup(
     env :: TyVarEnv, name :: Symbol
 ) :: Union{TyVarInfo, Nothing} = begin
     isempty(env) && return nothing
-    head(env).name == name ?
-        head(env) :
-        envlookup(tail(env), name)
+    DataStructures.head(env).name == name ?
+    DataStructures.head(env) :
+        envlookup(DataStructures.tail(env), name)
 end
 
 envadd(env :: TyVarEnv, tv :: TyVarInfo) = cons(tv, env)
@@ -141,3 +141,5 @@ csvLineString(ta :: TypeAnnInfo) =
         map(v -> "\"" * string(v) * "\"", Any[ta.funName, ta.kind, ta.tyExpr]),
         ","
     ) * "\n"
+    
+

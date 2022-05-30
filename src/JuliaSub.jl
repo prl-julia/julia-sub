@@ -8,6 +8,10 @@ using MacroTools
 using Multisets
 using DataStructures
 using Distributed
+using DataFrames
+using CSV
+using FileIO
+using CSVFiles
 
 #--------------------------------------------------
 # Files
@@ -21,7 +25,7 @@ include("types-analysis/lib.jl")
 # Exports
 #--------------------------------------------------
 
-export collectAndSaveTypeAnns2CSV
+export collectAndSaveTypeAnns2CSV, analyzePkgTypeAnnsAndSave2CSV
 
 #--------------------------------------------------
 # Code
