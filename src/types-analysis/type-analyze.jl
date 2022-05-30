@@ -6,7 +6,71 @@
 #
 #######################################################################
 
-const ANONYMOUS_TYPE_VARIABLE = :ANON_TV
+const ANONYMOUS_TY_VAR = :ANON_TV
+
+#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+# Analyzing type variable summaries for restrictions
+#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+tyVarRestrictedScopePreserved(tytvs :: TypeTyVarsSummary) = 
+    all(tyVarRestrictedScopePreserved, tytvs)
+
+tyVarRestrictedScopePreserved(tvs :: TyVarSummary) = 
+    all(tyVarRestrictedScopePreserved, map(reverse, tvs.occurrs))
+
+tyVarRestrictedScopePreserved(
+    constrStack :: Nil{TypeConstructor}; invarCrossed :: Bool = false
+) = true
+tyVarRestrictedScopePreserved(
+    constrStack :: Cons{TypeConstructor}; invarCrossed :: Bool = false
+) = begin
+    (hd, tl) = (head(constrStack), tail(constrStack))
+    if hd == TCInvar || hd == TCLoBnd || hd == TCLBVar1
+        tyVarRestrictedScopePreserved(tl; invarCrossed = true)
+    elseif hd == TCWhere || hd == TCLoBnd || hd == TCUpBnd || hd == TCUnion 
+        invarCrossed ? false : tyVarRestrictedScopePreserved(tl)
+    else 
+        tyVarRestrictedScopePreserved(tl)
+    end
+end
+
+
+tyVarOccursAsUsedSiteVariance(tytvs :: TypeTyVarsSummary) = 
+    all(tyVarOccursAsUsedSiteVariance, tytvs)
+
+"""
+For wildcards-like restriction, type variable can be used only once
+in an invariant or cotravariant position
+"""
+tyVarOccursAsUsedSiteVariance(tvs :: TyVarSummary) = begin
+    covOccs = count(tyVarOccIsCovariant, map(reverse, tvs.occurrs))
+    # either all occurrences are covariant, or there is only one
+    # non-covariant occurrence
+    covOccs == length(tvs.occurrs) || 
+    length(tvs.occurrs) == 1 && tyVarNonCovOccIsImmediate(reverse(tvs.occurrs[1]))
+end
+
+tyVarOccIsCovariant(constrStack :: Nil{TypeConstructor}) = true
+tyVarOccIsCovariant(constrStack :: Cons{TypeConstructor}) =
+    head(constrStack) in [TCTuple, TCUnion, TCWhere, TCUpBnd, TCUBVar1] &&
+    tyVarOccIsCovariant(tail(constrStack))
+
+tyVarNonCovOccIsImmediate(constrStack :: Nil{TypeConstructor}) = true
+tyVarNonCovOccIsImmediate(constrStack :: Cons{TypeConstructor}) = 
+    head(constrStack) in [TCTuple, TCUnion, TCWhere, TCUpBnd, TCUBVar1] ||
+    isempty(tail(constrStack))
+
+
+"No more than once"
+tyVarUsedOnce(tytvs :: TypeTyVarsSummary) = 
+    all(tyVarUsedOnce, tytvs)
+
+tyVarUsedOnce(tvs :: TyVarSummary) = length(tvs.occurrs) <= 1
+
+#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+# Summarizing type variable usage
+#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 collectTyVarsSummary(ty :: JlASTTypeExpr) = 
     collectTyVarsSummary!(ty, envempty(), TypeTyVarsSummary())
@@ -20,15 +84,6 @@ collectTyVarsSummary!(
     ty :: JlASTTypeExpr,
     env :: TyVarEnv, tvsumm :: TypeTyVarsSummary
 ) = throw(TypesAnlsUnsupportedTypeAnnotation(ty))
-
-#=
-collectTyVarsSummary!(
-    ty :: JlASTTypeExpr,
-    env :: TyVarEnv, tvsumm :: TypeTyVarsSummary
-) = begin
-    
-end
-=#
 
 """
 Symbol may represent a variable occurrence
@@ -58,6 +113,20 @@ collectTyVarsSummary!(
     elseif ty.head == :curly
         @assert length(ty.args) >= 1 "Unsupported {} $ty"
         collectTyVarsSummaryCurly!(ty.args, env, tvsumm)
+    elseif ty.head == :(<:) # Ref{<:ub}
+        @assert length(ty.args) == 1 "Unsupported short-hand <: $ty"
+        envUB = envpushconstr(env, TCUpBnd)
+        collectTyVarsSummary!(ty.args[1], envUB, tvsumm)
+        push!(tvsumm,
+            TyVarSummary(ANONYMOUS_TY_VAR, DEFAULT_LB, ty.args[1], [list(TCUBVar1)]))
+        tvsumm
+    elseif ty.head == :(>:) # Ref{>:lb}
+        @assert length(ty.args) == 1 "Unsupported short-hand >: $ty"
+        envLB = envpushconstr(env, TCLoBnd)
+        collectTyVarsSummary!(ty.args[1], envLB, tvsumm)
+        push!(tvsumm,
+            TyVarSummary(ANONYMOUS_TY_VAR, ty.args[1], DEFAULT_UB, [list(TCLBVar1)]))
+        tvsumm
     else
         throw(TypesAnlsUnsupportedTypeAnnotation(ty))
     end
@@ -88,7 +157,7 @@ splitTyVarDecl(tvDecl :: Symbol) =
     (tvDecl, DEFAULT_LB, DEFAULT_UB)
 
 splitTyVarDecl(tvDecl :: Expr) = begin
-    name = ANONYMOUS_TYPE_VARIABLE
+    name = ANONYMOUS_TY_VAR
     lb = DEFAULT_LB
     ub = DEFAULT_UB
     if tvDecl.head == :(<:)
@@ -110,7 +179,7 @@ end
 
 tyVarDeclIsComparison(tvDecl :: Expr) = tvDecl.head == :comparison && 
     length(tvDecl.args) == 5 && tvDecl.args[3] isa Symbol &&
-    tvDecl.args[2] == :(<:) && tvDecl.args[4] == :(>:)
+    tvDecl.args[2] == :(<:) && tvDecl.args[4] == :(<:)
 
 #--------------------------------------------------
 # ...{...} type
