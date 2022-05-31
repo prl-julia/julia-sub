@@ -158,6 +158,12 @@ $ julia -p 32 JuliaPkgDownloader.jl/download-pkgs.jl -s data/pkgs-list/100-top-p
 $ julia -p 32 JuliaPkgDownloader.jl/download-pkgs.jl -s data/pkgs-list/all-pkgs-list.txt -d data/all
 ```
 
+new 
+
+```
+julia -p 32 types-anayze.jl ../data/ta-info/100 > ../data/ta-info/log-analysis-100_2022-05-30.txt 2>&1
+```
+
 
 **Old stuff below**
 

@@ -16,5 +16,7 @@
     @test isfile(testFilePath("ta-info/2/DataStructures.jl/summary.csv"))
     @test isfile(testFilePath("ta-info/2/Gen.jl/summary.csv"))
 
+    @test isfile(testFilePath("ta-info/2/interesting-type-annotations.csv"))
+
     tryrm(testFilePath("ta-info"))
 end

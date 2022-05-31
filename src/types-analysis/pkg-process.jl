@@ -14,6 +14,8 @@ const TYPE_ANNS_FNAME = "type-annotations.csv"
 const TYPE_ANNS_ANALYSIS_FNAME = "analyzed-type-annotations.csv"
 const TYPE_ANNS_SUMMARY_FNAME = "summary.csv"
 
+const INTR_TYPE_ANNS_FNAME = "interesting-type-annotations.csv"
+
 collectAndSaveTypeAnns2CSV(
     pkgsDirPath :: AbstractString, destDirPath :: AbstractString
 ) = begin
@@ -114,7 +116,6 @@ end
 
 "Should coincide with the new columns in `addTypeAnnsAnalysis!`"
 const ANALYSIS_COLS = [
-    :UnrolledTypeAnnotation,
     :Error, :Warning,
     :VarCnt, :HasWhere, :VarsUsedOnce, :UseSiteVariance,
     :ImprUseSiteVariance, :RestrictedScope
@@ -147,12 +148,18 @@ analyzePkgTypeAnnsAndSave2CSV(
             d[key] = d1[key] + d2[key]
         end
         d[:statnames] = d1[:statnames]
-        for key in [:pkgwarn, :pkgusesite, :pkgintr]
+        for key in [:pkgwarn, :pkgusesite, :pkgintr, :tasintr]
             d[key] = vcat(d1[key], d2[key])
         end
         d
     end
-    reduce(combineResults, pkgResults)
+    rslt = reduce(combineResults, pkgResults)
+
+    try CSV.write(joinpath(pkgsDirPath, INTR_TYPE_ANNS_FNAME), rslt[:tasintr])
+    catch err
+        @error "Problem when saving interesting type annotations" err
+    end
+    rslt
 end
 
 analyzePkgTypeAnns(pkgPath :: AbstractString) = begin
@@ -165,6 +172,7 @@ analyzePkgTypeAnns(pkgPath :: AbstractString) = begin
         :pkgwarn    => [],
         :pkgusesite => [],
         :pkgintr    => [],
+        :tasintr    => DataFrame(),
     )
     if !isdir(pkgPath)
         @error "Packages directory doesn't exist: $pkgPath"
@@ -192,6 +200,9 @@ analyzePkgTypeAnns(pkgPath :: AbstractString) = begin
             ind -> dfSumm.sum[ind] < totalta,
             [7, 8]
         )
+        dfta = df[.!(ismissing.(df.ImprUseSiteVariance)) .&& 
+            (.!df.ImprUseSiteVariance .|| .!df.RestrictedScope), :]
+        dfta.Package = fill(pkgPath, size(dfta, 1))
         Dict(
             :goodPkg    => 1, 
             :badPkg     => 0,
@@ -201,6 +212,7 @@ analyzePkgTypeAnns(pkgPath :: AbstractString) = begin
             :pkgwarn    => errOrWarn ? [pkgPath] : [],
             :pkgusesite => dfSumm.sum[6] < totalta ? [pkgPath] : [],
             :pkgintr    => strongRestrictionFailed ? [pkgPath] : [],
+            :tasintr    => dfta,
         )
     catch err
         @error "Problem when processing CSVs" err
@@ -217,13 +229,13 @@ addTypeAnnsAnalysis!(df :: DataFrame) = begin
             missing
         end
     )(df.TypeAnnotation)
-    df.TypeVarsSummary = ByRow(tastr -> 
+    df.TypeVarsSummary = ByRow(tastr -> (ismissing(tastr) ? missing :
         try
             collectTyVarsSummary(Meta.parse(tastr))
         catch err
             @error "Couldn't analyze type annotation" tastr err
             missing
-        end
+        end)
     )(df.UnrolledTypeAnnotation)
     df.Error = ByRow(ismissing)(df.TypeVarsSummary)
     df.Warning = ByRow(
@@ -255,10 +267,5 @@ summarizeTypeAnnsAnalysis(df :: DataFrame) = describe(df,
     :mean, :min, :median, :max,
     :nmissing,
     sum => :sum,
-    cols = [
-        :Error, :Warning, 
-        :VarCnt, :HasWhere, 
-        :VarsUsedOnce, :UseSiteVariance, 
-        :ImprUseSiteVariance, :RestrictedScope
-    ]
+    cols = ANALYSIS_COLS
 )
