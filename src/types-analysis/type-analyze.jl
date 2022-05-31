@@ -60,25 +60,33 @@ tyVarOccursAsUsedSiteVariance(tytvs :: TypeTyVarsSummary) =
     all(tyVarOccursAsUsedSiteVariance, tytvs)
 
 """
-For wildcards-like restriction, type variable can be used only once
-in an invariant or cotravariant position
+For wildcards-like restriction, type variable can be used only once.
+Because of the diagonal rule, multiple covariant occurrences are of interest.
+If a variable occurs in an invariant or cotravariant position, it cannot cross
+multiple constructors after invariant (it is be okay to cross covariant
+constructors before the invariant one, e.g. `Tuple{Ref{T}} where T`,
+because it's the same as `Tuple{Ref{T} where T}`)
 """
 tyVarOccursAsUsedSiteVariance(tvs :: TyVarSummary) = begin
+    isempty(tvs.occurrs) && return true
     covOccs = count(tyVarOccIsCovariant, map(reverse, tvs.occurrs))
-    # either all occurrences are covariant, or there is only one
-    # non-covariant occurrence
-    covOccs == length(tvs.occurrs) || 
-    length(tvs.occurrs) == 1 && tyVarNonCovOccIsImmediate(reverse(tvs.occurrs[1]))
+    # either the single occurrence is covariant,
+    # or the variable is bound immediately outside
+    length(tvs.occurrs) == 1 &&
+        (covOccs == 1 || 
+         tyVarNonCovOccIsImmediate(reverse(tvs.occurrs[1])))
 end
 
-tyVarOccIsCovariant(constrStack :: Nil{TypeConstructor}) = true
-tyVarOccIsCovariant(constrStack :: Cons{TypeConstructor}) =
-    DataStructures.head(constrStack) in [TCTuple, TCUnion, TCWhere, TCUpBnd, TCUBVar1] &&
-    tyVarOccIsCovariant(DataStructures.tail(constrStack))
+tyVarOccIsCovariant(constrStack :: TypeConstrStack) = 
+    all(
+        constr -> constr in [TCTuple, TCUnion, TCWhere, TCUpBnd, TCUBVar1],
+        constrStack)
 
 tyVarNonCovOccIsImmediate(constrStack :: Nil{TypeConstructor}) = true
 tyVarNonCovOccIsImmediate(constrStack :: Cons{TypeConstructor}) = 
-    DataStructures.head(constrStack) in [TCTuple, TCUnion, TCWhere, TCUpBnd, TCUBVar1] ||
+    (DataStructures.head(constrStack) in 
+        [TCTuple, TCUnion, TCWhere, TCUpBnd, TCUBVar1] &&
+        tyVarNonCovOccIsImmediate(DataStructures.tail(constrStack))) ||
     isempty(DataStructures.tail(constrStack))
 
 

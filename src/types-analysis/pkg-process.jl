@@ -244,13 +244,13 @@ addTypeAnnsAnalysis!(df :: DataFrame) = begin
     df.HasWhere = ByRow(
         varcnt -> ismissing(varcnt) ? missing : varcnt > 0
     )(df.VarCnt)
-    for (col, fun) in Dict(
+    for (col, fun) in [
        :VarsUsedOnce        => tyVarUsedOnce,
        :UseSiteVariance     => tyVarOccursAsUsedSiteVariance,
        :ImprUseSiteVariance => tyVarOccursAsImpredicativeUsedSiteVariance,
        :RestrictedScope     => tyVarRestrictedScopePreserved,
        :OpenLowerBound      => tyVarIsNotInLowerBound,
-    )
+    ]
         df[!, col] = mkDFAnalysisFunction(fun, df.TypeVarsSummary)
     end
     df
