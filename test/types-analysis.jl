@@ -15,7 +15,7 @@ using Main.JuliaSub: TTok, TTlb, TTub, TypeTransInfo, transformShortHand
 using Main.JuliaSub: TCTuple, TCInvar, TCUnion, TCWhere, TCLoBnd, TCUpBnd, TCVar, TCLBVar1, TCUBVar1, TCCall, TCMCall
 using Main.JuliaSub: collectTyVarsSummary
 using Main.JuliaSub: tyVarRestrictedScopePreserved, tyVarOccursAsImpredicativeUsedSiteVariance
-using Main.JuliaSub: tyVarOccursAsUsedSiteVariance, tyVarUsedOnce
+using Main.JuliaSub: tyVarOccursAsUsedSiteVariance, tyVarUsedOnce, tyVarIsNotInLowerBound
 
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 # Aux values and functions
@@ -250,6 +250,7 @@ end
     @test tyVarOccursAsUsedSiteVariance(tvsInt)
     @test tyVarOccursAsImpredicativeUsedSiteVariance(tvsInt)
     @test tyVarRestrictedScopePreserved(tvsInt)
+    @test tyVarIsNotInLowerBound(tvsInt)
 
     tvsVector = collectTyVarsSummary(:(Vector{T} where T))[1]
     @test tyVarUsedOnce(tvsVector)
@@ -322,6 +323,7 @@ end
     @test !tyVarOccursAsUsedSiteVariance(tvsTupleWherePair)
     @test tyVarOccursAsImpredicativeUsedSiteVariance(tvsTupleWherePair)
     @test tyVarRestrictedScopePreserved(tvsTupleWherePair)
+    @test tyVarIsNotInLowerBound(tvsTupleWherePair)
 
     tvsPairInLb = collectTyVarsSummary(:(Tuple{T} where T>:(Pair{S,S} where S)))[1]
     @test !tyVarUsedOnce(tvsPairInLb)
@@ -331,4 +333,12 @@ end
     @test !tyVarOccursAsImpredicativeUsedSiteVariance(tvsPairInLb)
     @test tyVarOccursAsImpredicativeUsedSiteVariance(tvsPairInLb[2]) # T
     @test tyVarRestrictedScopePreserved(tvsPairInLb)
+    @test tyVarIsNotInLowerBound(tvsPairInLb)
+
+    tvsTupleRefLB = collectTyVarsSummary(:(Tuple{Ref{T} where T>:S} where S))[1]
+    @test tyVarUsedOnce(tvsTupleRefLB)
+    @test tyVarOccursAsUsedSiteVariance(tvsTupleRefLB)
+    @test tyVarOccursAsImpredicativeUsedSiteVariance(tvsTupleRefLB)
+    @test tyVarRestrictedScopePreserved(tvsTupleRefLB)
+    @test !tyVarIsNotInLowerBound(tvsTupleRefLB)
 end

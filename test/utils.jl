@@ -28,7 +28,7 @@ parseTest(testee, reference) =
 # Tests
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-@testset "utils :: parsing Julia" begin
+@testset "utils :: parsing Julia                        " begin
     @test parseTest(parseJuliaCode(""), EMPTY_BLOCK)
     @test parseTest(parseJuliaFile(testFilePath("empty.jl")), EMPTY_BLOCK)
 
@@ -39,7 +39,7 @@ end
 
 #--------------------------------------------------
 
-@testset "utils :: multiset" begin
+@testset "utils :: multiset                             " begin
     @test length(Multiset()) == 0
     @test lengthUnique(Multiset()) == 0
     @test length(Multiset(5)) == 1

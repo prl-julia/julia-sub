@@ -22,7 +22,7 @@ using Main.JuliaSub: processPkg, processPkgsDir
 # where a lower bound can appear.
 # If language changes and there are more, the analysis needs
 # to be extended
-@testset "lb-analysis :: type bounds format" begin
+@testset "lb-analysis :: type bounds format             " begin
     @test (Meta.parse("f(x::T) where T = 0"); true)
     @test (Meta.parse("f(x::T) where T<:Number = 0"); true)
     @test (Meta.parse("f(x::T) where T>:Int = 0"); true)
@@ -33,7 +33,7 @@ using Main.JuliaSub: processPkg, processPkgsDir
     @test_throws UndefVarError (eval(Meta.parse("f(x::T) where Int<:T = 0")); true)
 end
 
-@testset "lb-analysis :: sub/sup symbols" begin
+@testset "lb-analysis :: sub/sup symbols                " begin
     @test countTextualConstr(subtc, "")  == 0
     @test countTextualConstr(subtc, ":") == 0
     @test countTextualConstr(subtc, "<") == 0
@@ -58,7 +58,7 @@ end
         TxtConstrStat(0, 4)
 end
 
-@testset "lb-analysis :: capture direct lower bound" begin
+@testset "lb-analysis :: capture direct lower bound     " begin
     @test extractLowerBound(:(<:Int)) == nothing
     @test extractLowerBound(:(T <: Number)) == nothing
     @test extractLowerBound(:(Number>:T>:Int)) == nothing
@@ -69,7 +69,7 @@ end
     @test extractLowerBound(:(Int <: T <: Bool)) == :Int
 end
 
-@testset "lb-analysis :: capture lower bounds" begin
+@testset "lb-analysis :: capture lower bounds           " begin
     @test extractLowerBounds(:(g(xs::Vector{<:Real}) = 0)) ==
         Multiset()
     @test extractLowerBounds(:(f(x::T) where T = 0)) ==
@@ -104,14 +104,14 @@ end
         Multiset(:Int, :S, :Int, :Bool, :Missing)
 end
 
-@testset "lb-analysis :: nonVacuous" begin
+@testset "lb-analysis :: nonVacuous                     " begin
     @test nonVacuous(TxtConstrStat(1, 0))
     @test nonVacuous(TxtConstrStat(0, 6))
     @test nonVacuous(TxtConstrStat(4, 1))
     @test !nonVacuous(TxtConstrStat(0, 0))
 end
 
-@testset "lb-analysis :: lower-bounds statistics" begin
+@testset "lb-analysis :: lower-bounds statistics        " begin
     @test lbStatInfo("f(x::T) where T>:Int = 0") ==
         LBStat(1, 1, LBValsFreq(:Int))
     @test lbStatInfo("f(x::T) where {T>:Int, Int<:S<:Number} = 0") ==
@@ -120,7 +120,7 @@ end
         LBStat(3, 2, LBValsFreq(:Int, :Int, :Missing))
 end
 
-@testset "lb-analysis :: lower-bounds file statistics" begin
+@testset "lb-analysis :: lower-bounds file statistics   " begin
     @test lbFileInfo("")  == FileLBInfo(TxtConstrStat())
     @test lbFileInfo("<") == FileLBInfo(TxtConstrStat())
     @test lbFileInfo(">:") ==

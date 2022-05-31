@@ -12,6 +12,15 @@ const ANONYMOUS_TY_VAR = :ANON_TV
 # Analyzing type variable summaries for restrictions
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+tyVarIsNotInLowerBound(tytvs :: TypeTyVarsSummary) = 
+    all(tyVarIsNotInLowerBound, tytvs)
+
+tyVarIsNotInLowerBound(tvs :: TyVarSummary) = 
+    all(tyVarIsNotInLowerBound, map(reverse, tvs.occurrs))
+
+tyVarIsNotInLowerBound(tvs :: TypeConstrStack) = 
+    all(constr -> !(constr in [TCLoBnd, TCLBVar1]), tvs)
+
 
 tyVarRestrictedScopePreserved(tytvs :: TypeTyVarsSummary) = 
     all(tyVarRestrictedScopePreserved, tytvs)
@@ -78,6 +87,7 @@ tyVarUsedOnce(tytvs :: TypeTyVarsSummary) =
     all(tyVarUsedOnce, tytvs)
 
 tyVarUsedOnce(tvs :: TyVarSummary) = length(tvs.occurrs) == 1
+
 
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 # Summarizing type variable usage

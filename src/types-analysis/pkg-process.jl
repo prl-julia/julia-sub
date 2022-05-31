@@ -2,7 +2,7 @@
 # Processing package source code for type annotations
 ###############################
 #
-# TODO
+# TODO collection ana analysis of type annotations
 #
 #######################################################################
 
@@ -118,7 +118,7 @@ end
 const ANALYSIS_COLS = [
     :Error, :Warning,
     :VarCnt, :HasWhere, :VarsUsedOnce, :UseSiteVariance,
-    :ImprUseSiteVariance, :RestrictedScope
+    :ImprUseSiteVariance, :RestrictedScope, :OpenLowerBound
 ]
 
 analyzePkgTypeAnnsAndSave2CSV(
@@ -185,7 +185,6 @@ analyzePkgTypeAnns(pkgPath :: AbstractString) = begin
     end
     try
         df = CSV.read(typeAnnsPath, DataFrame; escapechar='\\')
-        #df = load(typeAnnsPath; escapechar='\\') |> DataFrame
         df = addTypeAnnsAnalysis!(df)
         dfSumm = summarizeTypeAnnsAnalysis(df)
         CSV.write(
@@ -198,7 +197,7 @@ analyzePkgTypeAnns(pkgPath :: AbstractString) = begin
         totalta = size(df, 1)
         strongRestrictionFailed = any(
             ind -> dfSumm.sum[ind] < totalta,
-            [7, 8]
+            [7, 8, 9]
         )
         dfta = df[.!(ismissing.(df.ImprUseSiteVariance)) .&& 
             (.!df.ImprUseSiteVariance .|| .!df.RestrictedScope), :]
@@ -245,10 +244,15 @@ addTypeAnnsAnalysis!(df :: DataFrame) = begin
     df.HasWhere = ByRow(
         varcnt -> ismissing(varcnt) ? missing : varcnt > 0
     )(df.VarCnt)
-    df.VarsUsedOnce = mkDFAnalysisFunction(tyVarUsedOnce, df.TypeVarsSummary)
-    df.UseSiteVariance = mkDFAnalysisFunction(tyVarOccursAsUsedSiteVariance, df.TypeVarsSummary)
-    df.ImprUseSiteVariance = mkDFAnalysisFunction(tyVarOccursAsImpredicativeUsedSiteVariance, df.TypeVarsSummary)
-    df.RestrictedScope = mkDFAnalysisFunction(tyVarRestrictedScopePreserved, df.TypeVarsSummary)
+    for (col, fun) in Dict(
+       :VarsUsedOnce        => tyVarUsedOnce,
+       :UseSiteVariance     => tyVarOccursAsUsedSiteVariance,
+       :ImprUseSiteVariance => tyVarOccursAsImpredicativeUsedSiteVariance,
+       :RestrictedScope     => tyVarRestrictedScopePreserved,
+       :OpenLowerBound      => tyVarIsNotInLowerBound,
+    )
+        df[!, col] = mkDFAnalysisFunction(fun, df.TypeVarsSummary)
+    end
     df
 end
 

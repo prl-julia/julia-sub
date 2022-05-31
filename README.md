@@ -45,8 +45,15 @@ and stand-alone type assertions.
 
 - [`README.md`](README.md) this file
 
-- [`analysis-script.jl`](analysis-script.jl) script that performs
-  a complete analysis of lower bounds in the given folder with Julia packages
+- [`init-script.jl`](init-script.jl) to install dependencies into
+  the global Julia environment
+- [`types-extract.jl`](types-extract.jl) script for extracting type annotations
+  from source code of packages
+- [`types-analyze.jl`](types-analyze.jl) script for analyzing extracted
+  type annotations
+
+- [`run-tests.jl`](run-tests.jl) convenience script for running the tests
+  (`$ julia run-tests.jl` or `$ ./run-tests.jl`)
 
 - [`src`](src) source code
   - [`JuliaSub.jl`](src/JuliaSub.jl) main module
@@ -75,8 +82,8 @@ and stand-alone type assertions.
       helpers for parsing Julia files
     - [`status-info.jl`](src/utils/status-info.jl) custom logging
 
-- [`test-script.jl`](test-script.jl) convenience script for running the tests
-  (`$ julia test-script.jl`)
+- [`lb-analysis.jl`](lb-analysis.jl) script that performs
+  a complete analysis of lower bounds in the given folder with Julia packages
 
 - [`Project.toml`](Project.toml) dependencies 
 
@@ -92,11 +99,43 @@ and stand-alone type assertions.
     for counting frequencies of lower bounds
   - [`DataStructures`](https://github.com/JuliaCollections/DataStructures.jl)
     for linked lists, to efficiently collect annotations
+  - `CSV.jl`
+  - `DataFrames.jl`
+  - `Distributed.jl`
+  - `ArgParse`
 
 ???
   - `JSON`
-  - `ArgParse`
 
+## Running type annotations analysis
+
+To extract type annotations:
+
+```
+$ julia -p 32 types-extract.jl ../data/100 ../data/ta-info/100 > ../data/ta-info/log-extract-100.txt 2>&1
+
+$ julia -p 32 types-extract.jl ../data/all ../data/ta-info/all > ../data/ta-info/log-extract-all.txt 2>&1
+```
+
+To analyze type annotations:
+
+```
+$ julia -p 32 types-anaylze.jl ../data/ta-info/100 > ../data/ta-info/log-analysis-100.txt 2>&1
+
+$ julia -p 32 types-anaylze.jl ../data/ta-info/100 > ../data/ta-info/log-analysis-100.txt 2>&1
+```
+
+**Getting packages data:**
+
+```
+$ JuliaPkgsList.jl/gen-pkgs-list.jl 100 -p data/julia-pkgs-info.json --name --includeversion --includeuuid -o data/pkgs-list/top-pkgs-list.txt
+
+$ JuliaPkgsList.jl/gen-pkgs-list.jl 0 -p data/julia-pkgs-info.json --name --includeversion --includeuuid -o data/pkgs-list/all-pkgs-list.txt
+
+$ julia -p 32 JuliaPkgDownloader.jl/download-pkgs.jl -s data/pkgs-list/100-top-pkgs-list.txt -d data/100
+
+$ julia -p 32 JuliaPkgDownloader.jl/download-pkgs.jl -s data/pkgs-list/all-pkgs-list.txt -d data/all
+```
 
 ---
 
@@ -145,25 +184,6 @@ Assuming the directory structure:
      -- JuliaPkgsList.jl
      -- JuliaPkgDownloader
 ```
-
-run
-
-```
-$ JuliaPkgsList.jl/gen-pkgs-list.jl 0 -p data/julia-pkgs-info.json --name --includeversion --includeuuid -o data/pkgs-list/all-pkgs-list.txt
-
-$ JuliaPkgsList.jl/gen-pkgs-list.jl 100 -p data/julia-pkgs-info.json --name --includeversion --includeuuid -o data/pkgs-list/top-pkgs-list.txt
-
-$ julia -p 32 JuliaPkgDownloader.jl/download-pkgs.jl -s data/pkgs-list/100-top-pkgs-list.txt -d data/100
-
-$ julia -p 32 JuliaPkgDownloader.jl/download-pkgs.jl -s data/pkgs-list/all-pkgs-list.txt -d data/all
-```
-
-new 
-
-```
-julia -p 32 types-anayze.jl ../data/ta-info/100 > ../data/ta-info/log-analysis-100_2022-05-30.txt 2>&1
-```
-
 
 **Old stuff below**
 
