@@ -118,7 +118,7 @@ end
 const ANALYSIS_COLS = [
     :Error, :Warning,
     :VarCnt, :HasWhere, :VarsUsedOnce, :UseSiteVariance,
-    :ImprUseSiteVariance, :RestrictedScope, :OpenLowerBound
+    :ImprUseSiteVariance, :RestrictedScope, :ClosedLowerBound
 ]
 
 analyzePkgTypeAnnsAndSave2CSV(
@@ -249,7 +249,7 @@ addTypeAnnsAnalysis!(df :: DataFrame) = begin
        :UseSiteVariance     => tyVarOccursAsUsedSiteVariance,
        :ImprUseSiteVariance => tyVarOccursAsImpredicativeUsedSiteVariance,
        :RestrictedScope     => tyVarRestrictedScopePreserved,
-       :OpenLowerBound      => tyVarIsNotInLowerBound,
+       :ClosedLowerBound    => tyVarIsNotInLowerBound,
     ]
         df[!, col] = mkDFAnalysisFunction(fun, df.TypeVarsSummary)
     end
