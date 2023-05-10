@@ -5,6 +5,9 @@
 - `Tuple{OneHotLike{X1, L} where X1 <: Any, Vararg{OneHotLike{X2, L} where X2 <: Any}, Int} where L`
 - `Tuple{Type{ReshapedDistribution{<:Any, <:ValueSupport, D}}} where D`
 
+Varargs are special, so it's probably ok.
+
+
 ## Impredicative non use-site variance
 
 ```julia

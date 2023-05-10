@@ -9,6 +9,10 @@ Developing decidable subtyping for the Julia language.
 - We need to analyze type annotations used in Julia programs to see if they
   satisfy either the scoping or wildcards-like restriction.
 
+**TODO:** count annotations that do not literally correspond to the restriction
+from JB's thesis proposal on decidable subtyping.
+Currently, types that can be equivalently rewritten are not reported.
+
 ## Static analysis of types
 
 Usually, type annotations appear after `::` in the code:
@@ -127,14 +131,16 @@ $ julia -p 32 types-anaylze.jl ../data/ta-info/100 > ../data/ta-info/log-analysi
 
 **Getting packages data:**
 
+Assumes `../utils/JuliaPkgsList.jl`
+
 ```
-$ JuliaPkgsList.jl/gen-pkgs-list.jl 100 -p data/julia-pkgs-info.json --name --includeversion --includeuuid -o data/pkgs-list/top-pkgs-list.txt
+$ ../utils/JuliaPkgsList.jl/gen-pkgs-list.jl 100 -p data/julia-pkgs-info.json --name --includeversion --includeuuid -o data/pkgs-list/top-pkgs-list.txt
 
-$ JuliaPkgsList.jl/gen-pkgs-list.jl 0 -p data/julia-pkgs-info.json --name --includeversion --includeuuid -o data/pkgs-list/all-pkgs-list.txt
+$ ../utils/JuliaPkgsList.jl/gen-pkgs-list.jl 0 -p data/julia-pkgs-info.json --name --includeversion --includeuuid -o data/pkgs-list/all-pkgs-list.txt
 
-$ julia -p 32 JuliaPkgDownloader.jl/download-pkgs.jl -s data/pkgs-list/100-top-pkgs-list.txt -d data/100
+$ julia -p 32 ../utils/JuliaPkgDownloader.jl/download-pkgs.jl -s data/pkgs-list/100-top-pkgs-list.txt -d data/100
 
-$ julia -p 32 JuliaPkgDownloader.jl/download-pkgs.jl -s data/pkgs-list/all-pkgs-list.txt -d data/all
+$ julia -p 32 ../utils/JuliaPkgDownloader.jl/download-pkgs.jl -s data/pkgs-list/all-pkgs-list.txt -d data/all
 ```
 
 ---

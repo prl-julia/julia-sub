@@ -63,7 +63,7 @@ tyVarOccursAsUsedSiteVariance(tytvs :: TypeTyVarsSummary) =
 For wildcards-like restriction, type variable can be used only once.
 Because of the diagonal rule, multiple covariant occurrences are of interest.
 If a variable occurs in an invariant or cotravariant position, it cannot cross
-multiple constructors after invariant (it is be okay to cross covariant
+multiple constructors after invariant (it is okay to cross covariant
 constructors before the invariant one, e.g. `Tuple{Ref{T}} where T`,
 because it's the same as `Tuple{Ref{T} where T}`)
 """

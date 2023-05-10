@@ -354,4 +354,18 @@ end
     @test tyVarOccursAsImpredicativeUsedSiteVariance(tvsTupleRefLB)
     @test tyVarRestrictedScopePreserved(tvsTupleRefLB)
     @test !tyVarIsNotInLowerBound(tvsTupleRefLB)
+
+    tvsVectorVectorUnionTInt = collectTyVarsSummary(:(Vector{Vector{Union{T, Int}} where T}))[1]
+    @test tyVarUsedOnce(tvsVectorVectorUnionTInt)
+    @test !tyVarOccursAsUsedSiteVariance(tvsVectorVectorUnionTInt)
+    @test !tyVarOccursAsImpredicativeUsedSiteVariance(tvsVectorVectorUnionTInt)
+    @test !tyVarRestrictedScopePreserved(tvsVectorVectorUnionTInt)
+    @test tyVarIsNotInLowerBound(tvsVectorVectorUnionTInt)
+
+    tvsVectorRefTupleT = collectTyVarsSummary(:(Vector{Ref{Tuple{T}} where T}))[1]
+    @test tyVarUsedOnce(tvsVectorRefTupleT)
+    @test !tyVarOccursAsUsedSiteVariance(tvsVectorRefTupleT)
+    @test !tyVarOccursAsImpredicativeUsedSiteVariance(tvsVectorRefTupleT)
+    @test tyVarRestrictedScopePreserved(tvsVectorRefTupleT)
+    @test tyVarIsNotInLowerBound(tvsVectorRefTupleT)
 end
