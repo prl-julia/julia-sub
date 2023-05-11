@@ -14,9 +14,9 @@ JlASTTypeExpr = Any
 Kind of a type annotation:
 - complete method type signature (without return type)
 - return type
-- type assertion (in the method body)
+- type assertion (in the method body) or type annotation (in the field)
 """
-@enum TypeAnnKind mtsig retty tyass
+@enum TypeAnnKind mtsig retty tyassorann
 
 "Information about a type annotation in some file"
 struct TypeAnnInfo
@@ -30,6 +30,8 @@ TypeAnnInfoList = LinkedList{TypeAnnInfo}
 
 "Data returned by `MacroTools.splitdef`"
 SplitFunDef = Dict{Symbol, Any}
+
+NOTAFUNSIG = "<NOT A FUNSIG>"
 
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 # Analyzing type annotations

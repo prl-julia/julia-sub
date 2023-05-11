@@ -2,16 +2,16 @@
 # Extracting method type signatures from the source code
 ###############################
 #
-# The goal is to extract all type annotations from method definitions.
+# The goal is to extract all type annotations from method definitions
+# and field declarations.
 #
-# There are 3 sources of type annotations:
+# There are 4 sources of type annotations:
 #
 #   1) method arguments signature (e.g. `f(x::Vector{T}) where T`
 #      corresponds to `Tuple{Vector{T}} where T`)
 #   2) return type annotation (e.g. `f() :: Int`)
 #   3) type assertions in the method body (e.g. `x :: Int`)
-#
-# We start with 1) and ignore 2-3 for now.
+#   4) field type annotations
 #######################################################################
 
 parseAndCollectTypeAnnotations(
@@ -27,38 +27,62 @@ Collects type annotations from all method definitions in `expr`
 """
 collectTypeAnnotations(expr) :: TypeAnnInfoList = begin
     tyAnns = nil(TypeAnnInfo)
-    recordFunDefTyAnns(e) = begin
+    recordTyAnns(e) = begin
         try 
-            tyAnns = collectFunDefTypeAnnotations(e, tyAnns)
+            if isFunDef(e)
+                (e, tyAnns) = collectFunDefTypeSignature(e, tyAnns)
+            end
+            (e, tyAnns) = collectDeclaredTypeAnnotation(e, tyAnns)
         catch err
             @error "Couldn't process expression" e err
         end
-        e # return the same expr for `prewalk` to work
+        e # return expr for `prewalk` to work
     end
-    MacroTools.prewalk(recordFunDefTyAnns, expr)
+    MacroTools.prewalk(recordTyAnns, expr)
     tyAnns
 end
 
 """
-    :: (Any, TypeAnnInfoList) → TypeAnnInfoList
-Returns type annotations from `expr` concatenated with the list `tyAnns`
-if `expr` is a method definition.
+    :: (Any, TypeAnnInfoList) → (Any, TypeAnnInfoList)
+ASSUME: `expr` is a method definition.
 
-FIXME: currently only extracts a method signature,
-but we might be interested in type assertions, too
+Returns:
+- the body of the method encoded by `expr`
+- method signature type and return type (if present) concatenated
+  with the list `tyAnns`.
 """
-collectFunDefTypeAnnotations(expr, tyAnns :: TypeAnnInfoList) = begin
-    isFunDef(expr) || return tyAnns
+collectFunDefTypeSignature(expr, tyAnns :: TypeAnnInfoList) = begin
     funDefParts = splitdef(expr)
     methodArgTuple = getMethodTupleType(funDefParts)
-    cons(
-        TypeAnnInfo(
-            get(funDefParts, :name, "<NA-name>"), 
-            mtsig, 
-            methodArgTuple
-        ),
-        tyAnns
-    )
+    fname = get(funDefParts, :name, "<NA-name>")
+    tyAnns = cons(
+        TypeAnnInfo(fname, mtsig, methodArgTuple),
+        tyAnns)
+    if haskey(funDefParts, :rtype)
+        tyAnns = cons(
+            TypeAnnInfo(fname, retty, funDefParts[:rtype]),
+            tyAnns)
+    end
+    (get(funDefParts, :body, "<NA-body>"), tyAnns)
+end
+
+"""
+    :: (Any, TypeAnnInfoList) → (Any, TypeAnnInfoList)
+ASSUME: `expr` is NOT a method definition
+(nothing bad happens if it is a method definition, but this method is supposed
+to be called for something else to avoid the collection of duplicate annotations)
+
+Returns:
+- `expr` as is or with the type annotation removed if it had one
+- type annotation `ty` if `expr` is `e :: ty` concatenated
+  with the list `tyAnns`, or `tyAnns` otherwise
+"""
+collectDeclaredTypeAnnotation(expr, tyAnns :: TypeAnnInfoList) = begin
+    if @capture(expr, E_ :: TY_)
+        tyAnns = cons(TypeAnnInfo(NOTAFUNSIG, tyassorann, TY), tyAnns)
+        expr = E
+    end
+    (expr, tyAnns)
 end
 
 """

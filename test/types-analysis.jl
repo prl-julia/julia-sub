@@ -4,9 +4,9 @@
 
 using Main.JuliaSub: TypesAnlsBadMethodParamAST
 
-using Main.JuliaSub: TypeAnnInfo, mtsig, retty, tyass
+using Main.JuliaSub: TypeAnnInfo, mtsig, retty, tyassorann, NOTAFUNSIG
 using Main.JuliaSub: getArgTypeAnn, getMethodTupleType
-using Main.JuliaSub: collectFunDefTypeAnnotations, collectTypeAnnotations
+using Main.JuliaSub: collectFunDefTypeSignature, collectTypeAnnotations
 using Main.JuliaSub: parseAndCollectTypeAnnotations
 
 using Main.JuliaSub: TyVarSummary, TypeTyVarsSummary
@@ -31,6 +31,7 @@ dfedNoArgRet = :(
 
 fdefArgs = :(
     function fdefArgs(x, y::Vector{Bool}, z::Int = 0)
+        baz :: Vector{<:Int}
         "blah"
     end
 )
@@ -57,7 +58,7 @@ fdefNoArgName = :(
 )
 
 fdefQualName = :(
-    Base.fdefQualName(x::Int) = 0
+    Base.fdefQualName(x::Int) :: Int = 0
 )
 
 fdefsSimpleX2 = :(begin
@@ -71,9 +72,13 @@ fdefsSimpleNested = :(module X
 
     struct Bar end
 
+    struct Zoo
+        x :: Bar
+    end
+
     function baz(xs::Vector{T}, y::T) where T
         bar() = Bar()
-        "abc"
+        "abc" :: String
     end
 
     println()
@@ -133,33 +138,41 @@ end
     @test tts[:fdefNoArgName] == :( Tuple{Int} )
 end
 
-# FIXME: collectFunDefTypeAnnotations currently extracts only method signature
-@testset "types-analysis :: collect all ty-anns in mtdef" begin
+@testset "types-analysis :: collect ty sig in mtdef     " begin
     tyAnns = nil(TypeAnnInfo)
+    e = :()
 
-    tyAnns = collectFunDefTypeAnnotations(fdefNoArg, tyAnns)
+    (e, tyAnns) = collectFunDefTypeSignature(fdefNoArg, tyAnns)
     @test tyAnns ==
         list(TypeAnnInfo(:fdefNoArg, mtsig, :( Tuple{} )))
     
-    tyAnns = collectFunDefTypeAnnotations(fdefWhereTriv, tyAnns)
+    (e, tyAnns) = collectFunDefTypeSignature(fdefWhereTriv, tyAnns)
     @test tyAnns ==
         list(
             TypeAnnInfo(:fdefWhereTriv, mtsig, :( Tuple{T} where T )),
             TypeAnnInfo(:fdefNoArg, mtsig, :( Tuple{} ))
         )
 
-    @test collectFunDefTypeAnnotations(fdefWhereRetSimp, nil(TypeAnnInfo)) ==
-        list(TypeAnnInfo(
-            :fdefWhereRetSimp, mtsig, 
-            :( Tuple{Dict{T, S}, Any} where S where T )))
+    @test collectFunDefTypeSignature(fdefWhereRetSimp, nil(TypeAnnInfo))[2] ==
+        list(
+            TypeAnnInfo(
+                :fdefWhereRetSimp, retty,
+                :( Vector{T} ) 
+            ),
+            TypeAnnInfo(
+                :fdefWhereRetSimp, mtsig, 
+                :( Tuple{Dict{T, S}, Any} where S where T )
+            )
+        )
     
-    @test collectFunDefTypeAnnotations(fdefQualName, nil(TypeAnnInfo)) == 
-        list(TypeAnnInfo(:(Base.fdefQualName), mtsig, :( Tuple{Int} )))
-
-    @test collectFunDefTypeAnnotations(:(f()), nil(TypeAnnInfo)) == nil()
+    @test collectFunDefTypeSignature(fdefQualName, nil(TypeAnnInfo))[2] == 
+        list(
+            TypeAnnInfo(:(Base.fdefQualName), retty, :Int),
+            TypeAnnInfo(:(Base.fdefQualName), mtsig, :( Tuple{Int} ))
+        )
 end
 
-# FIXME: collectFunDefTypeAnnotations currently extracts only method signature
+# FIXME: collectFunDefTypeSignature currently extracts only method signature
 @testset "types-analysis :: collect all ty-anns in expr " begin
     @test collectTypeAnnotations(:(x)) == nil()
 
@@ -169,13 +182,20 @@ end
     )
 
     @test collectTypeAnnotations(fdefsSimpleNested) == list(
+        TypeAnnInfo(NOTAFUNSIG, tyassorann, :String),
         TypeAnnInfo(:bar, mtsig, :( Tuple{} )),
         TypeAnnInfo(:baz, mtsig, :( Tuple{Vector{T}, T} where T )),
+        TypeAnnInfo(NOTAFUNSIG, tyassorann, :Bar),
         TypeAnnInfo(:foo, mtsig, :( Tuple{Int} ))
+    )
+
+    @test collectTypeAnnotations(fdefArgs) == list(
+        TypeAnnInfo(NOTAFUNSIG, tyassorann, :( Vector{<:Int} )),
+        TypeAnnInfo(:fdefArgs, mtsig, :( Tuple{Any, Vector{Bool}, Int} ))
     )
 end
 
-# FIXME: collectFunDefTypeAnnotations currently extracts only method signature
+# FIXME: collectFunDefTypeSignature currently extracts only method signature
 @testset "types-analysis :: collect all ty-anns in file " begin
     @test parseAndCollectTypeAnnotations(testFilePath("empty.jl")) == nil()
 
@@ -183,6 +203,7 @@ end
             testFilePath("Multisets-cut.jl")
         ) == list(
             TypeAnnInfo(:push!, mtsig, :( Tuple{Multiset{T}, Any, Int} where T )),
+            TypeAnnInfo(:getindex, retty, :Int), 
             TypeAnnInfo(:getindex, mtsig, :( Tuple{Multiset{T}, Any} where T )),
             TypeAnnInfo(:clean!, mtsig, :( Tuple{Multiset} )),
             TypeAnnInfo(:Multiset, mtsig, :( Tuple{Base.AbstractSet{T}} where T )),
@@ -192,7 +213,8 @@ end
             TypeAnnInfo(:(Base.copy), mtsig, :( Tuple{Multiset{T}} where T )),
             TypeAnnInfo(:Multiset, mtsig, :( Tuple{Vararg{Any}} )),
             TypeAnnInfo(:Multiset, mtsig, :( Tuple{} )),
-            TypeAnnInfo(:Multiset, mtsig, :( Tuple{} where T ))
+            TypeAnnInfo(:Multiset, mtsig, :( Tuple{} where T )),
+            TypeAnnInfo(NOTAFUNSIG, tyassorann, :( Dict{T,Int} ))
         )
 end
 
