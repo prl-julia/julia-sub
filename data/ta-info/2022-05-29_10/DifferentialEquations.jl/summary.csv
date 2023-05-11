@@ -1,0 +1,8 @@
+variable,mean,min,median,max,nmissing,sum
+Error,0.0,false,0.0,false,0,0
+Warning,0.02631578947368421,false,0.0,true,0,1
+VarCnt,0.7894736842105263,0,0.0,4,0,30
+HasWhere,0.21052631578947367,false,0.0,true,0,8
+VarsUsedOnce,1.0,true,1.0,true,0,38
+UseSiteVariance,1.0,true,1.0,true,0,38
+RestrictedScope,1.0,true,1.0,true,0,38

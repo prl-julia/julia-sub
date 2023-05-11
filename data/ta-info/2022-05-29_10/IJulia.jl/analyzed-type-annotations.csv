@@ -1,0 +1,220 @@
+File,Function,Kind,TypeAnnotation,Error,Warning,VarCnt,HasWhere,VarsUsedOnce,UseSiteVariance,RestrictedScope
+deps/build.jl,write_if_changed,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+deps/kspec.jl,copy_config,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+deps/kspec.jl,appdata,mtsig,Tuple{},false,false,0,false,true,true,true
+deps/kspec.jl,default_jupyter_data_dir,mtsig,Tuple{},false,false,0,false,true,true,true
+deps/kspec.jl,default_jupyter_data_dir,mtsig,Tuple{},false,false,0,false,true,true,true
+deps/kspec.jl,default_jupyter_data_dir,mtsig,Tuple{},false,false,0,false,true,true,true
+deps/kspec.jl,default_jupyter_data_dir,mtsig,Tuple{},false,false,0,false,true,true,true
+deps/kspec.jl,default_jupyter_data_dir,mtsig,Tuple{},false,false,0,false,true,true,true
+deps/kspec.jl,jupyter_data_dir,mtsig,Tuple{},false,false,0,false,true,true,true
+deps/kspec.jl,kerneldir,mtsig,Tuple{},false,false,0,false,true,true,true
+deps/kspec.jl,exe,mtsig,Tuple{AbstractString},false,false,0,false,true,true,true
+deps/kspec.jl,exe,mtsig,"Tuple{AbstractString, AbstractString}",false,false,0,false,true,true,true
+deps/kspec.jl,exe,mtsig,Tuple{AbstractString},false,false,0,false,true,true,true
+deps/kspec.jl,exe,mtsig,"Tuple{AbstractString, AbstractString}",false,false,0,false,true,true,true
+deps/kspec.jl,installkernel,mtsig,"Tuple{AbstractString, Vararg{AbstractString}, Cmd, AbstractString, Dict{<:AbstractString}}",false,false,1,true,true,true,true
+deps/kspec.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/IJulia.jl,set_verbose,mtsig,Tuple{Bool},false,false,0,false,true,true,true
+src/IJulia.jl,set_current_module,mtsig,Tuple{Module},false,false,0,false,true,true,true
+src/IJulia.jl,load_string,mtsig,"Tuple{AbstractString, Bool}",false,false,0,false,true,true,true
+src/IJulia.jl,load,mtsig,"Tuple{AbstractString, Bool}",false,false,0,false,true,true,true
+src/IJulia.jl,clear_history,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/IJulia.jl,clear_history,mtsig,Tuple{AbstractRange{<:Integer}},false,false,1,true,true,true,true
+src/IJulia.jl,clear_history,mtsig,Tuple{},false,false,0,false,true,true,true
+src/IJulia.jl,history,mtsig,"Tuple{IO, AbstractVector{<:Integer}}",false,false,1,true,true,true,true
+src/IJulia.jl,history,mtsig,"Tuple{IO, Vararg{Union{Integer, AbstractVector{<:Integer}}}}",false,false,1,true,true,true,true
+src/IJulia.jl,history,mtsig,Tuple{Vararg{Any}},false,false,0,false,true,true,true
+src/IJulia.jl,history,mtsig,"Tuple{IO, Vararg{Any}}",false,false,0,false,true,true,true
+src/IJulia.jl,history,mtsig,Tuple{},false,false,0,false,true,true,true
+src/IJulia.jl,push_postexecute_hook,mtsig,Tuple{Function},false,false,0,false,true,true,true
+src/IJulia.jl,pop_postexecute_hook,mtsig,Tuple{Function},false,false,0,false,true,true,true
+src/IJulia.jl,push_preexecute_hook,mtsig,Tuple{Function},false,false,0,false,true,true,true
+src/IJulia.jl,pop_preexecute_hook,mtsig,Tuple{Function},false,false,0,false,true,true,true
+src/IJulia.jl,push_posterror_hook,mtsig,Tuple{Function},false,false,0,false,true,true,true
+src/IJulia.jl,pop_posterror_hook,mtsig,Tuple{Function},false,false,0,false,true,true,true
+src/IJulia.jl,clear_output,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/IJulia.jl,set_max_stdio,mtsig,Tuple{Integer},false,false,0,false,true,true,true
+src/comm_manager.jl,::Type{Comm{target}},mtsig,"Tuple{Any, Any, Any, Any} where target",false,false,1,true,false,true,true
+src/comm_manager.jl,noop_callback,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/comm_manager.jl,Comm,mtsig,"Tuple{Any, Any, Any, Any, Any, Any, Any}",false,false,0,false,true,true,true
+src/comm_manager.jl,comm_target,mtsig,Tuple{Comm{target}} where target,false,false,1,true,true,true,true
+src/comm_manager.jl,comm_info_request,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/comm_manager.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/comm_manager.jl,msg_comm,mtsig,"Tuple{Comm, IJulia.Msg, Any, Any, Any, Vararg{Any}}",false,false,0,false,true,true,true
+src/comm_manager.jl,send_comm,mtsig,"Tuple{Comm, Dict, Dict, Vararg{Any}}",false,false,0,false,true,true,true
+src/comm_manager.jl,close_comm,mtsig,"Tuple{Comm, Dict, Dict, Vararg{Any}}",false,false,0,false,true,true,true
+src/comm_manager.jl,register_comm,mtsig,"Tuple{Comm, Any}",false,false,0,false,true,true,true
+src/comm_manager.jl,comm_open,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/comm_manager.jl,comm_msg,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/comm_manager.jl,comm_close,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/display.jl,_showable,mtsig,"Tuple{AbstractVector{<:MIME}, Any}",false,false,1,true,true,true,true
+src/display.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/display.jl,_showable,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/display.jl,register_mime,mtsig,"Tuple{Union{MIME, Vector{MIME}}}",false,false,0,false,true,true,true
+src/display.jl,register_mime,mtsig,Tuple{AbstractVector{<:MIME}},false,false,1,true,true,true,true
+src/display.jl,register_jsonmime,mtsig,"Tuple{Union{MIME, Vector{MIME}}}",false,false,0,false,true,true,true
+src/display.jl,register_jsonmime,mtsig,Tuple{AbstractVector{<:MIME}},false,false,1,true,true,true,true
+src/display.jl,metadata,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/display.jl,display_mimestring,mtsig,"Tuple{Vector{MIME}, Any}",false,false,0,false,true,true,true
+src/display.jl,display_mimestring,mtsig,"Tuple{MIME, Any}",false,false,0,false,true,true,true
+src/display.jl,display_mimestring,mtsig,"Tuple{MIME""text/plain"", Any}",false,false,0,false,true,true,true
+src/display.jl,display_mimejson,mtsig,"Tuple{Vector{MIME}, Any}",false,false,0,false,true,true,true
+src/display.jl,display_mimejson,mtsig,"Tuple{MIME, Any}",false,false,0,false,true,true,true
+src/display.jl,display_dict,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/display.jl,undisplay,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/display.jl,show_bt,mtsig,"Tuple{IO, Symbol, Any, Any}",false,false,0,false,true,true,true
+src/display.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/display.jl,showerror_nobt,mtsig,"Tuple{Any, Any, Any}",false,false,0,false,true,true,true
+src/display.jl,error_content,mtsig,"Tuple{Any, Any, Symbol, AbstractString}",false,false,0,false,true,true,true
+src/display.jl,<NA-name>,mtsig,"Tuple{Any, Any, Any}",false,false,0,false,true,true,true
+src/eventloop.jl,eventloop,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/eventloop.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/eventloop.jl,waitloop,mtsig,Tuple{},false,false,0,false,true,true,true
+src/execute_request.jl,execute_request,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/execute_request.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/handlers.jl,parseok,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/handlers.jl,find_parsestart,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/handlers.jl,utf16_to_ind,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/handlers.jl,ind_to_utf16,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/handlers.jl,chr2ind,mtsig,"Tuple{Msg, String, Integer}",false,false,0,false,true,true,true
+src/handlers.jl,ind2chr,mtsig,"Tuple{Msg, String, Integer}",false,false,0,false,true,true,true
+src/handlers.jl,complete_type,mtsig,Tuple{Type{<:Function}},false,false,1,true,true,true,true
+src/handlers.jl,complete_type,mtsig,Tuple{Type{<:Type}},false,false,1,true,true,true,true
+src/handlers.jl,complete_type,mtsig,Tuple{Type{<:Tuple}},false,false,1,true,true,true,true
+src/handlers.jl,complete_type,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/handlers.jl,complete_type,mtsig,Tuple{DataType},false,false,0,false,true,true,true
+src/handlers.jl,complete_types,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/handlers.jl,complete_request,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/handlers.jl,kernel_info_request,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/handlers.jl,connect_request,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/handlers.jl,shutdown_request,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/handlers.jl,docdict,mtsig,Tuple{AbstractString},false,false,0,false,true,true,true
+src/handlers.jl,get_token,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/handlers.jl,inspect_request,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/handlers.jl,history_request,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/handlers.jl,is_complete_request,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/handlers.jl,interrupt_request,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/heartbeat.jl,heartbeat_thread,mtsig,Tuple{Ptr{Cvoid}},false,false,0,false,true,true,true
+src/heartbeat.jl,start_heartbeat,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/hmac.jl,hmac,mtsig,"Tuple{Any, Any, Any, Any}",false,false,0,false,true,true,true
+src/init.jl,uuid4,mtsig,Tuple{},false,false,0,false,true,true,true
+src/init.jl,__init__,mtsig,Tuple{},false,false,0,false,true,true,true
+src/init.jl,REPL.REPLDisplay,mtsig,Tuple{MiniREPL},false,false,0,false,true,true,true
+src/init.jl,init,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/init.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/inline.jl,israwtext,mtsig,"Tuple{MIME, AbstractString}",false,false,0,false,true,true,true
+src/inline.jl,israwtext,mtsig,"Tuple{MIME""text/plain"", AbstractString}",false,false,0,false,true,true,true
+src/inline.jl,israwtext,mtsig,"Tuple{MIME, Any}",false,false,0,false,true,true,true
+src/inline.jl,InlineIOContext,mtsig,"Tuple{Any, Vararg{Pair}}",false,false,0,false,true,true,true
+src/inline.jl,limitstringmime,mtsig,"Tuple{MIME, Any}",false,false,0,false,true,true,true
+src/inline.jl,display,mtsig,"Tuple{InlineDisplay, MIME{Symbol($mime)}, Any}",false,true,0,false,true,true,true
+src/inline.jl,displayable,mtsig,"Tuple{InlineDisplay, MIME{Symbol($mime)}}",false,true,0,false,true,true,true
+src/inline.jl,display,mtsig,"Tuple{InlineDisplay, MIME""application/x-latex"", Any}",false,false,0,false,true,true,true
+src/inline.jl,display,mtsig,"Tuple{InlineDisplay, MIME""text/javascript"", Any}",false,false,0,false,true,true,true
+src/inline.jl,displayable,mtsig,"Tuple{InlineDisplay, MIME}",false,false,0,false,true,true,true
+src/inline.jl,display,mtsig,"Tuple{InlineDisplay, MIME, Any}",false,false,0,false,true,true,true
+src/inline.jl,display,mtsig,"Tuple{InlineDisplay, Any}",false,false,0,false,true,true,true
+src/inline.jl,redisplay,mtsig,"Tuple{InlineDisplay, Any}",false,false,0,false,true,true,true
+src/inline.jl,display,mtsig,Tuple{},false,false,0,false,true,true,true
+src/jupyter.jl,isyes,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/jupyter.jl,find_jupyter_subcommand,mtsig,Tuple{AbstractString},false,false,0,false,true,true,true
+src/jupyter.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+src/jupyter.jl,launch,mtsig,"Tuple{Any, Any, Any}",false,false,0,false,true,true,true
+src/jupyter.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+src/jupyter.jl,notebook,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/jupyter.jl,jupyterlab,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/jupyter.jl,qtconsole,mtsig,Tuple{},false,false,0,false,true,true,true
+src/magics.jl,magics_help,mtsig,Tuple{AbstractString},false,false,0,false,true,true,true
+src/magics.jl,generic_magic_help,mtsig,"Tuple{AbstractString, AbstractString}",false,false,0,false,true,true,true
+src/magics.jl,lsmagic_help,mtsig,"Tuple{AbstractString, AbstractString}",false,false,0,false,true,true,true
+src/magics.jl,alias_magic_help,mtsig,"Tuple{AbstractString, AbstractString}",false,false,0,false,true,true,true
+src/magics.jl,cd_magic_help,mtsig,"Tuple{AbstractString, AbstractString}",false,false,0,false,true,true,true
+src/magics.jl,debug_magic_help,mtsig,"Tuple{AbstractString, AbstractString}",false,false,0,false,true,true,true
+src/magics.jl,edit_magic_help,mtsig,"Tuple{AbstractString, AbstractString}",false,false,0,false,true,true,true
+src/magics.jl,env_magic_help,mtsig,"Tuple{AbstractString, AbstractString}",false,false,0,false,true,true,true
+src/magics.jl,gui_magic_help,mtsig,"Tuple{AbstractString, AbstractString}",false,false,0,false,true,true,true
+src/magics.jl,history_magic_help,mtsig,"Tuple{AbstractString, AbstractString}",false,false,0,false,true,true,true
+src/magics.jl,load_magic_help,mtsig,"Tuple{AbstractString, AbstractString}",false,false,0,false,true,true,true
+src/magics.jl,paste_magic_help,mtsig,"Tuple{AbstractString, AbstractString}",false,false,0,false,true,true,true
+src/magics.jl,matplotlib_magic_help,mtsig,"Tuple{AbstractString, AbstractString}",false,false,0,false,true,true,true
+src/magics.jl,pdef_magic_help,mtsig,"Tuple{AbstractString, AbstractString}",false,false,0,false,true,true,true
+src/magics.jl,pdoc_magic_help,mtsig,"Tuple{AbstractString, AbstractString}",false,false,0,false,true,true,true
+src/magics.jl,pfile_magic_help,mtsig,"Tuple{AbstractString, AbstractString}",false,false,0,false,true,true,true
+src/magics.jl,file_magic_help,mtsig,"Tuple{AbstractString, AbstractString}",false,false,0,false,true,true,true
+src/magics.jl,precision_magic_help,mtsig,"Tuple{AbstractString, AbstractString}",false,false,0,false,true,true,true
+src/magics.jl,prun_magic_help,mtsig,"Tuple{AbstractString, AbstractString}",false,false,0,false,true,true,true
+src/magics.jl,psearch_magic_help,mtsig,"Tuple{AbstractString, AbstractString}",false,false,0,false,true,true,true
+src/magics.jl,pwd_magic_help,mtsig,"Tuple{AbstractString, AbstractString}",false,false,0,false,true,true,true
+src/magics.jl,qtconsole_magic_help,mtsig,"Tuple{AbstractString, AbstractString}",false,false,0,false,true,true,true
+src/magics.jl,recall_magic_help,mtsig,"Tuple{AbstractString, AbstractString}",false,false,0,false,true,true,true
+src/magics.jl,run_magic_help,mtsig,"Tuple{AbstractString, AbstractString}",false,false,0,false,true,true,true
+src/magics.jl,save_magic_help,mtsig,"Tuple{AbstractString, AbstractString}",false,false,0,false,true,true,true
+src/magics.jl,sc_magic_help,mtsig,"Tuple{AbstractString, AbstractString}",false,false,0,false,true,true,true
+src/magics.jl,set_env_magic_help,mtsig,"Tuple{AbstractString, AbstractString}",false,false,0,false,true,true,true
+src/magics.jl,sx_magic_help,mtsig,"Tuple{AbstractString, AbstractString}",false,false,0,false,true,true,true
+src/magics.jl,time_magic_help,mtsig,"Tuple{AbstractString, AbstractString}",false,false,0,false,true,true,true
+src/magics.jl,who_magic_help,mtsig,"Tuple{AbstractString, AbstractString}",false,false,0,false,true,true,true
+src/magics.jl,html_magic_help,mtsig,"Tuple{AbstractString, AbstractString}",false,false,0,false,true,true,true
+src/magics.jl,javascript_magic_help,mtsig,"Tuple{AbstractString, AbstractString}",false,false,0,false,true,true,true
+src/magics.jl,latex_magic_help,mtsig,"Tuple{AbstractString, AbstractString}",false,false,0,false,true,true,true
+src/magics.jl,pipe_magic_help,mtsig,"Tuple{AbstractString, AbstractString}",false,false,0,false,true,true,true
+src/magics.jl,svg_magic_help,mtsig,"Tuple{AbstractString, AbstractString}",false,false,0,false,true,true,true
+src/magics.jl,writefile_magic_help,mtsig,"Tuple{AbstractString, AbstractString}",false,false,0,false,true,true,true
+src/msg.jl,Msg,mtsig,"Tuple{Any, Dict, Dict, Any, Any}",false,false,0,false,true,true,true
+src/msg.jl,msg_header,mtsig,"Tuple{Msg, String}",false,false,0,false,true,true,true
+src/msg.jl,msg_pub,mtsig,"Tuple{Msg, Any, Any, Any}",false,false,0,false,true,true,true
+src/msg.jl,msg_reply,mtsig,"Tuple{Msg, Any, Any, Any}",false,false,0,false,true,true,true
+src/msg.jl,show,mtsig,"Tuple{IO, Msg}",false,false,0,false,true,true,true
+src/msg.jl,send_ipython,mtsig,"Tuple{Any, Msg}",false,false,0,false,true,true,true
+src/msg.jl,recv_ipython,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/msg.jl,send_status,mtsig,"Tuple{AbstractString, Msg}",false,false,0,false,true,true,true
+src/stdio.jl,IJuliaStdio,mtsig,"Tuple{IO, AbstractString}",false,false,0,false,true,true,true
+src/stdio.jl,Base.pipe_reader,mtsig,Tuple{IJuliaStdio},false,false,0,false,true,true,true
+src/stdio.jl,Base.pipe_writer,mtsig,Tuple{IJuliaStdio},false,false,0,false,true,true,true
+src/stdio.jl,Base.lock,mtsig,Tuple{IJuliaStdio},false,false,0,false,true,true,true
+src/stdio.jl,Base.unlock,mtsig,Tuple{IJuliaStdio},false,false,0,false,true,true,true
+src/stdio.jl,Base.in,mtsig,"Tuple{Pair, IJuliaStdio}",false,false,0,false,true,true,true
+src/stdio.jl,Base.haskey,mtsig,"Tuple{IJuliaStdio, Any}",false,false,0,false,true,true,true
+src/stdio.jl,Base.getindex,mtsig,"Tuple{IJuliaStdio, Any}",false,false,0,false,true,true,true
+src/stdio.jl,Base.get,mtsig,"Tuple{IJuliaStdio, Any, Any}",false,false,0,false,true,true,true
+src/stdio.jl,Base.displaysize,mtsig,Tuple{IJuliaStdio},false,false,0,false,true,true,true
+src/stdio.jl,Base.unwrapcontext,mtsig,Tuple{IJuliaStdio},false,false,0,false,true,true,true
+src/stdio.jl,Base.setup_stdio,mtsig,"Tuple{IJuliaStdio, Bool}",false,false,0,false,true,true,true
+src/stdio.jl,Base.:($f),mtsig,Tuple{IJuliaStdio},false,false,0,false,true,true,true
+src/stdio.jl,get_log_preface,mtsig,Tuple{},false,false,0,false,true,true,true
+src/stdio.jl,watch_stream,mtsig,"Tuple{IO, AbstractString}",false,false,0,false,true,true,true
+src/stdio.jl,send_stdio,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/stdio.jl,send_stdout,mtsig,Tuple{Timer},false,false,0,false,true,true,true
+src/stdio.jl,send_stderr,mtsig,Tuple{Timer},false,false,0,false,true,true,true
+src/stdio.jl,set_cur_msg,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/stdio.jl,send_stream,mtsig,Tuple{AbstractString},false,false,0,false,true,true,true
+src/stdio.jl,num_utf8_trailing,mtsig,Tuple{Vector{UInt8}},false,false,0,false,true,true,true
+src/stdio.jl,readprompt,mtsig,"Tuple{AbstractString, Bool}",false,false,0,false,true,true,true
+src/stdio.jl,check_prompt_streams,mtsig,"Tuple{IJuliaStdio, IJuliaStdio}",false,false,0,false,true,true,true
+src/stdio.jl,Base.prompt,mtsig,"Tuple{IJuliaStdio, IJuliaStdio, AbstractString, AbstractString}",false,false,0,false,true,true,true
+src/stdio.jl,Base.getpass,mtsig,"Tuple{IJuliaStdio, IJuliaStdio, AbstractString}",false,false,0,false,true,true,true
+src/stdio.jl,readline,mtsig,Tuple{IJuliaStdio},false,false,0,false,true,true,true
+src/stdio.jl,watch_stdio,mtsig,Tuple{},false,false,0,false,true,true,true
+src/stdio.jl,flush_all,mtsig,Tuple{},false,false,0,false,true,true,true
+src/stdio.jl,oslibuv_flush,mtsig,Tuple{},false,false,0,false,true,true,true
+src/stdio.jl,flush,mtsig,Tuple{IJuliaStdio},false,false,0,false,true,true,true
+test/comm.jl,cb,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+test/comm.jl,cb,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/execute_request.jl,Base.Multimedia.istextmime,mtsig,Tuple{FRIENDLY_MIME_TYPE},false,false,0,false,true,true,true
+test/execute_request.jl,Base.show,mtsig,"Tuple{Any, FRIENDLY_MIME_TYPE, FriendlyData}",false,false,0,false,true,true,true
+test/execute_request.jl,Base.Multimedia.istextmime,mtsig,Tuple{BINARY_MIME_TYPE},false,false,0,false,true,true,true
+test/execute_request.jl,Base.show,mtsig,"Tuple{Any, BINARY_MIME_TYPE, FriendlyData}",false,false,0,false,true,true,true
+test/execute_request.jl,Base.Multimedia.istextmime,mtsig,Tuple{JSON_MIME_TYPE},false,false,0,false,true,true,true
+test/execute_request.jl,Base.show,mtsig,"Tuple{Any, JSON_MIME_TYPE, FriendlyData}",false,false,0,false,true,true,true
+test/execute_request.jl,Base.Multimedia.istextmime,mtsig,Tuple{FRIENDLY_MIME_TYPE_UNION},false,false,0,false,true,true,true
+test/execute_request.jl,Base.show,mtsig,"Tuple{Any, FRIENDLY_MIME_TYPE_UNION, FriendlyData}",false,false,0,false,true,true,true
+test/execute_request.jl,Base.Multimedia.istextmime,mtsig,"Tuple{Union{ANGRY_MIME_TYPE_1, ANGRY_MIME_TYPE_2, ANGRY_MIME_TYPE_3}}",false,false,0,false,true,true,true
+test/execute_request.jl,Base.show,mtsig,"Tuple{Any, Union{ANGRY_MIME_TYPE_2, ANGRY_MIME_TYPE_3}, AngryData}",false,false,0,false,true,true,true
+test/inline.jl,Base.show,mtsig,"Tuple{IO, MIME""text/plain"", TestDataType}",false,false,0,false,true,true,true
+test/stdio.jl,<NA-name>,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+test/stdio.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+test/stdio.jl,<NA-name>,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+test/stdio.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+test/stdio.jl,<NA-name>,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+test/stdio.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true

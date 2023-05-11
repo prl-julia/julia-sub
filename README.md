@@ -116,17 +116,17 @@ and stand-alone type assertions.
 To extract type annotations:
 
 ```
-$ julia -p 32 types-extract.jl ../data/100 ../data/ta-info/100 > ../data/ta-info/log-extract-100.txt 2>&1
+$ julia -p 32 types-extract.jl data/100 data/ta-info/100 > data/ta-info/log-extract-100.txt 2>&1
 
-$ julia -p 32 types-extract.jl ../data/all ../data/ta-info/all > ../data/ta-info/log-extract-all.txt 2>&1
+$ julia -p 32 types-extract.jl data/all data/ta-info/all > data/ta-info/log-extract-all.txt 2>&1
 ```
 
 To analyze type annotations:
 
 ```
-$ julia -p 32 types-anaylze.jl ../data/ta-info/100 > ../data/ta-info/log-analysis-100.txt 2>&1
+$ julia -p 32 types-analyze.jl data/ta-info/100 > data/ta-info/log-analysis-100.txt 2>&1
 
-$ julia -p 32 types-anaylze.jl ../data/ta-info/100 > ../data/ta-info/log-analysis-100.txt 2>&1
+$ julia -p 32 types-analyze.jl data/ta-info/all > data/ta-info/log-analysis-all.txt 2>&1
 ```
 
 **Getting packages data:**

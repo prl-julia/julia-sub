@@ -1,0 +1,1241 @@
+File,Function,Kind,TypeAnnotation,Error,Warning,VarCnt,HasWhere,VarsUsedOnce,UseSiteVariance,RestrictedScope
+sample/Basic mathematics.jl,area,mtsig,Tuple{Any},false,false,0,false,true,true,true
+sample/Basic mathematics.jl,pieces,mtsig,Tuple{Any},false,false,0,false,true,true,true
+sample/Basic mathematics.jl,hint,mtsig,Tuple{Any},false,false,0,false,true,true,true
+sample/Basic mathematics.jl,almost,mtsig,Tuple{Any},false,false,0,false,true,true,true
+sample/Basic mathematics.jl,keep_working,mtsig,Tuple{Any},false,false,0,false,true,true,true
+sample/Basic mathematics.jl,correct,mtsig,Tuple{Any},false,false,0,false,true,true,true
+sample/Getting started.jl,confusing_function,mtsig,"Tuple{String, Array}",false,false,0,false,true,true,true
+sample/Interactivity.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+sample/Interactivity.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+sample/JavaScript.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+sample/JavaScript.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+sample/JavaScript.jl,ClickCounter,mtsig,Tuple{Any},false,false,0,false,true,true,true
+sample/JavaScript.jl,details,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+sample/Plots.jl.jl,myfunction,mtsig,Tuple{Any},false,false,0,false,true,true,true
+sample/Plots.jl.jl,plot_pears,mtsig,Tuple{},false,false,0,false,true,true,true
+sample/PlutoUI.jl.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+sample/PlutoUI.jl.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+sample/PlutoUI.jl.jl,wind_speed_input,mtsig,Tuple{Vector},false,false,0,false,true,true,true
+sample/PlutoUI.jl.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+sample/Tower of Hanoi.jl,islegal,mtsig,Tuple{Any},false,false,0,false,true,true,true
+sample/Tower of Hanoi.jl,iscomplete,mtsig,Tuple{Any},false,false,0,false,true,true,true
+sample/Tower of Hanoi.jl,move,mtsig,"Tuple{Any, Int, Int}",false,false,0,false,true,true,true
+sample/Tower of Hanoi.jl,wrong_solution,mtsig,Tuple{Any},false,false,0,false,true,true,true
+sample/Tower of Hanoi.jl,solve,mtsig,Tuple{Any},false,false,0,false,true,true,true
+sample/Tower of Hanoi.jl,run_solution,mtsig,"Tuple{Function, Any}",false,false,0,false,true,true,true
+sample/Tower of Hanoi.jl,check_solution,mtsig,"Tuple{Function, Any}",false,false,0,false,true,true,true
+sample/test_embed_display.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+sample/test_embed_display.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+sample/test_embed_display.jl,demo_img,mtsig,Tuple{},false,false,0,false,true,true,true
+sample/test_embed_display.jl,nested,mtsig,Tuple{Any},false,false,0,false,true,true,true
+sample/test_embed_display.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+sample/test_embed_display.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+sample/test_embed_display.jl,to_any,mtsig,Tuple{Any},false,false,0,false,true,true,true
+sample/test_embed_display.jl,pers_3_items,mtsig,Tuple{},false,false,0,false,true,true,true
+sample/test_embed_display.jl,showhtml,mtsig,Tuple{Any},false,false,0,false,true,true,true
+sample/test_embed_display.jl,force_html,mtsig,Tuple{Any},false,false,0,false,true,true,true
+sample/test_embed_display.jl,ed,mtsig,Tuple{Any},false,false,0,false,true,true,true
+sample/test_embed_display.jl,nested,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+sample/test_embed_display.jl,ingredients,mtsig,Tuple{String},false,false,0,false,true,true,true
+sample/test_embed_display.jl,eval,mtsig,Tuple{Any},false,false,0,false,true,true,true
+sample/test_embed_display.jl,include,mtsig,Tuple{Any},false,false,0,false,true,true,true
+sample/test_embed_display.jl,include,mtsig,"Tuple{Function, Any}",false,false,0,false,true,true,true
+sample/test_embed_display.jl,equal_container,mtsig,Tuple{Any},false,false,0,false,true,true,true
+sample/test_embed_display.jl,hbox_even,mtsig,Tuple{Vararg{Any}},false,false,0,false,true,true,true
+sample/test_embed_display.jl,pers_2,mtsig,Tuple{},false,false,0,false,true,true,true
+sample/test_embed_display.jl,pers_3,mtsig,Tuple{},false,false,0,false,true,true,true
+sample/test_go_to_definition.jl,_function3,mtsig,Tuple{},false,false,0,false,true,true,true
+sample/test_go_to_definition.jl,_function6,mtsig,Tuple{Any},false,false,0,false,true,true,true
+sample/test_go_to_definition.jl,_function1,mtsig,Tuple{},false,false,0,false,true,true,true
+sample/test_go_to_definition.jl,_function2,mtsig,Tuple{Vararg{Any}},false,false,0,false,true,true,true
+sample/test_go_to_definition.jl,_function4,mtsig,Tuple{Z},false,false,0,false,true,true,true
+sample/test_go_to_definition.jl,_function4,mtsig,Tuple{Z},false,false,0,false,true,true,true
+sample/test_go_to_definition.jl,_function5,mtsig,Tuple{Any},false,false,0,false,true,true,true
+sample/test_go_to_definition.jl,f,mtsig,Tuple{Any},false,false,0,false,true,true,true
+sample/test_go_to_definition.jl,f,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+sample/test_logging.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+sample/test_logging.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+sample/test_logging.jl,plot,mtsig,"Tuple{Vararg{Any}, Vararg{Any}}",false,false,0,false,true,true,true
+sample/test_logging.jl,f,mtsig,Tuple{Any},false,false,0,false,true,true,true
+sample/test_logging.jl,ingredients,mtsig,Tuple{String},false,false,0,false,true,true,true
+sample/test_logging.jl,eval,mtsig,Tuple{Any},false,false,0,false,true,true,true
+sample/test_logging.jl,include,mtsig,Tuple{Any},false,false,0,false,true,true,true
+sample/test_logging.jl,include,mtsig,"Tuple{Function, Any}",false,false,0,false,true,true,true
+sample/test_logging.jl,f,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+sample/test_logging.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+sample/test_logging.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/Configuration.jl,notebook_path_suggestion,mtsig,Tuple{},false,false,0,false,true,true,true
+src/Configuration.jl,__init__,mtsig,Tuple{},false,false,0,false,true,true,true
+src/Configuration.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/Configuration.jl,roughly_the_number_of_physical_cpu_cores,mtsig,Tuple{},false,false,0,false,true,true,true
+src/Configuration.jl,default_number_of_threads,mtsig,Tuple{},false,false,0,false,true,true,true
+src/Configuration.jl,from_flat_kwargs,mtsig,"Tuple{Union{Nothing, String}, String, Union{Nothing, Integer}, Bool, Bool, Bool, String, Bool, Bool, Real, Bool, Union{Nothing, String, Vector{<:String}}, Bool, Real, Real, String, Function, Bool, Bool, Bool, Bool, Bool, Bool, Union{Nothing, String}, Union{Nothing, String}, Union{Nothing, String}, Union{Nothing, Int}, Union{Nothing, String}, Union{Nothing, String}, Union{Nothing, String}, Union{Nothing, String, Int}}",false,false,1,true,true,true,true
+src/Configuration.jl,_merge_notebook_compiler_options,mtsig,"Tuple{Any, CompilerOptions}",false,false,0,false,true,true,true
+src/Configuration.jl,_convert_to_flags,mtsig,Tuple{CompilerOptions},false,false,0,false,true,true,true
+src/Pluto.jl,project_relative_path,mtsig,"Tuple{Any, Vararg{Any}}",false,false,0,false,true,true,true
+src/analysis/DependencyCache.jl,downstream_cells_map,mtsig,"Tuple{Cell, NotebookTopology}",false,false,0,false,true,true,true
+src/analysis/DependencyCache.jl,upstream_cells_map,mtsig,"Tuple{Cell, NotebookTopology}",false,false,0,false,true,true,true
+src/analysis/DependencyCache.jl,update_dependency_cache!,mtsig,"Tuple{Cell, NotebookTopology}",false,false,0,false,true,true,true
+src/analysis/DependencyCache.jl,update_dependency_cache!,mtsig,"Tuple{Notebook, NotebookTopology}",false,false,0,false,true,true,true
+src/analysis/Errors.jl,CyclicReferenceError,mtsig,"Tuple{NotebookTopology, AbstractVector{Cell}}",false,false,0,false,true,true,true
+src/analysis/Errors.jl,MultipleDefinitionsError,mtsig,"Tuple{NotebookTopology, Cell, Any}",false,false,0,false,true,true,true
+src/analysis/Errors.jl,defs,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/analysis/Errors.jl,showerror,mtsig,"Tuple{IO, CyclicReferenceError}",false,false,0,false,true,true,true
+src/analysis/Errors.jl,showerror,mtsig,"Tuple{IO, MultipleDefinitionsError}",false,false,0,false,true,true,true
+src/analysis/Errors.jl,relay_reactivity_error!,mtsig,"Tuple{Cell, Exception}",false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,Base.:(==),mtsig,"Tuple{FunctionNameSignaturePair, FunctionNameSignaturePair}",false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,Base.hash,mtsig,"Tuple{FunctionNameSignaturePair, UInt}",false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,ScopeState,mtsig,Tuple{},false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,union,mtsig,"Tuple{Dict{FunctionNameSignaturePair, SymbolsState}, Vararg{Dict{FunctionNameSignaturePair, SymbolsState}}}",false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,union!,mtsig,"Tuple{Dict{FunctionNameSignaturePair, SymbolsState}, Vararg{Dict{FunctionNameSignaturePair, SymbolsState}}}",false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,union,mtsig,"Tuple{SymbolsState, SymbolsState}",false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,union!,mtsig,"Tuple{SymbolsState, Vararg{SymbolsState}}",false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,union!,mtsig,"Tuple{Tuple{FunctionName, SymbolsState}, Vararg{Tuple{FunctionName, SymbolsState}}}",false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,union,mtsig,"Tuple{ScopeState, ScopeState}",false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,union!,mtsig,"Tuple{ScopeState, Vararg{ScopeState}}",false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,==,mtsig,"Tuple{SymbolsState, SymbolsState}",false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,Base.push!,mtsig,Tuple{Set},false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,explore_inner_scoped,mtsig,"Tuple{Expr, ScopeState}",false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,will_assign_global,mtsig,"Tuple{Symbol, ScopeState}",false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,will_assign_global,mtsig,"Tuple{Array{Symbol, 1}, ScopeState}",false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,get_global_assignees,mtsig,"Tuple{Any, ScopeState}",false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,get_assignees,mtsig,Tuple{Expr},false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,get_assignees,mtsig,Tuple{Symbol},false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,get_assignees,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,all_underscores,mtsig,Tuple{Symbol},false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,uncurly!,mtsig,"Tuple{Expr, ScopeState}",false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,uncurly!,mtsig,Tuple{Expr},false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,uncurly!,mtsig,"Tuple{Symbol, Any}",false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,split_funcname,mtsig,Tuple{Expr},false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,split_funcname,mtsig,Tuple{QuoteNode},false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,split_funcname,mtsig,Tuple{GlobalRef},false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,split_funcname,mtsig,Tuple{Symbol},false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,split_funcname,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,all_iters_eq,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,is_just_dots,mtsig,Tuple{Expr},false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,is_just_dots,mtsig,"Tuple{Union{QuoteNode, Symbol, GlobalRef}}",false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,is_just_dots,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,without_dotprefix,mtsig,Tuple{Symbol},false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,without_dotsuffix,mtsig,Tuple{Symbol},false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,generate_funcnames,mtsig,Tuple{FunctionName},false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,join_funcname_parts,mtsig,Tuple{FunctionName},false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,is_joined_funcname,mtsig,Tuple{Symbol},false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,macro_has_special_heuristic_inside,mtsig,"Tuple{SymbolsState, Expr}",false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,explore!,mtsig,"Tuple{MACROCALL, ScopeState}",false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,explore!,mtsig,"Tuple{Symbol, ScopeState}",false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,is_function_assignment,mtsig,Tuple{Expr},false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,anonymous_name,mtsig,Tuple{},false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,explore!,mtsig,"Tuple{Expr, ScopeState}",false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,explore_module_definition!,mtsig,"Tuple{Expr, Any, Number}",false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,explore_module_definition!,mtsig,"Tuple{Any, Any, Number}",false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,explore_interpolations!,mtsig,"Tuple{Expr, Any}",false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,explore_interpolations!,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,explore_funcdef!,mtsig,"Tuple{Expr, ScopeState}",false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,explore_funcdef!,mtsig,"Tuple{QuoteNode, ScopeState}",false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,explore_funcdef!,mtsig,"Tuple{Symbol, ScopeState}",false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,explore_funcdef!,mtsig,"Tuple{Any, ScopeState}",false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,maybe_macroexpand,mtsig,"Tuple{Expr, Bool, Bool}",false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,maybe_macroexpand,mtsig,"Tuple{Any, Vararg{Any}}",false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,canonalize,mtsig,Tuple{Expr},false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,canonalize,mtsig,Tuple{Symbol},false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,hide_argument_name,mtsig,Tuple{Expr},false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,hide_argument_name,mtsig,Tuple{Symbol},false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,hide_argument_name,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,compute_symbolreferences,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,try_compute_symbolreferences,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,is_implicit_using,mtsig,Tuple{Expr},false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,transform_dot_notation,mtsig,Tuple{Expr},false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,collect_implicit_usings,mtsig,Tuple{Expr},false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,collect_implicit_usings,mtsig,Tuple{Set{Expr}},false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,collect_implicit_usings,mtsig,Tuple{UsingsImports},false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,compute_usings_imports!,mtsig,"Tuple{UsingsImports, Any}",false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,external_package_names,mtsig,Tuple{Expr},false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,external_package_names,mtsig,Tuple{UsingsImports},false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,compute_usings_imports,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,is_toplevel_expr,mtsig,Tuple{Expr},false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,is_toplevel_expr,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,get_rootassignee,mtsig,"Tuple{Expr, Bool}",false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,get_rootassignee,mtsig,"Tuple{Any, Bool}",false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,can_be_function_wrapped,mtsig,Tuple{Expr},false,false,0,false,true,true,true
+src/analysis/ExpressionExplorer.jl,can_be_function_wrapped,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/analysis/FunctionDependencies.jl,maybe_add_dependent_funccall!,mtsig,"Tuple{Set{Symbol}, Nothing}",false,false,0,false,true,true,true
+src/analysis/FunctionDependencies.jl,maybe_add_dependent_funccall!,mtsig,"Tuple{Set{Symbol}, Any}",false,false,0,false,true,true,true
+src/analysis/FunctionDependencies.jl,maybe_add_dependent_funccalls!,mtsig,Tuple{Set{Symbol}},false,false,0,false,true,true,true
+src/analysis/MoreAnalysis.jl,find_bound_variables,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/analysis/MoreAnalysis.jl,_find_bound_variables!,mtsig,"Tuple{Set{Symbol}, Expr}",false,false,0,false,true,true,true
+src/analysis/MoreAnalysis.jl,_find_bound_variables!,mtsig,"Tuple{Set{Symbol}, Any}",false,false,0,false,true,true,true
+src/analysis/MoreAnalysis.jl,downstream_recursive,mtsig,"Tuple{Notebook, NotebookTopology, Union{Vector{Cell}, Set{Cell}}}",false,false,0,false,true,true,true
+src/analysis/MoreAnalysis.jl,_downstream_recursive!,mtsig,"Tuple{Set{Cell}, Notebook, NotebookTopology, Vector{Cell}}",false,false,0,false,true,true,true
+src/analysis/MoreAnalysis.jl,upstream_recursive,mtsig,"Tuple{Notebook, NotebookTopology, Union{Vector{Cell}, Set{Cell}}}",false,false,0,false,true,true,true
+src/analysis/MoreAnalysis.jl,_upstream_recursive!,mtsig,"Tuple{Set{Cell}, Notebook, NotebookTopology, Vector{Cell}}",false,false,0,false,true,true,true
+src/analysis/MoreAnalysis.jl,codependents,mtsig,"Tuple{Notebook, NotebookTopology, Symbol}",false,false,0,false,true,true,true
+src/analysis/MoreAnalysis.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/analysis/MoreAnalysis.jl,bound_variable_connections_graph,mtsig,Tuple{Notebook},false,false,0,false,true,true,true
+src/analysis/MoreAnalysis.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/analysis/Parse.jl,pluto_filename,mtsig,"Tuple{Notebook, Cell}",false,false,0,false,true,true,true
+src/analysis/Parse.jl,parse_custom,mtsig,"Tuple{Notebook, Cell}",false,false,0,false,true,true,true
+src/analysis/Parse.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/analysis/Parse.jl,fix_linenumbernodes!,mtsig,"Tuple{Expr, Any}",false,false,0,false,true,true,true
+src/analysis/Parse.jl,fix_linenumbernodes!,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/analysis/Parse.jl,expression_boundaries,mtsig,"Tuple{String, Any}",false,false,0,false,true,true,true
+src/analysis/Parse.jl,preprocess_expr,mtsig,Tuple{Expr},false,false,0,false,true,true,true
+src/analysis/Parse.jl,preprocess_expr,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/analysis/ReactiveNode.jl,Base.union!,mtsig,"Tuple{ReactiveNode, Vararg{ReactiveNode}}",false,false,0,false,true,true,true
+src/analysis/ReactiveNode.jl,ReactiveNode,mtsig,Tuple{SymbolsState},false,false,0,false,true,true,true
+src/analysis/ReactiveNode.jl,ReactiveNode,mtsig,Tuple{String},false,false,0,false,true,true,true
+src/analysis/ReactiveNode.jl,ReactiveNode,mtsig,Tuple{Expr},false,false,0,false,true,true,true
+src/analysis/ReactiveNode.jl,ReactiveNode_from_expr,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/analysis/Topology.jl,ExprAnalysisCache,mtsig,"Tuple{Any, Cell}",false,false,0,false,true,true,true
+src/analysis/Topology.jl,ExprAnalysisCache,mtsig,"Tuple{ExprAnalysisCache, Vararg{Any}}",false,false,0,false,true,true,true
+src/analysis/Topology.jl,all_cells,mtsig,Tuple{NotebookTopology},false,false,0,false,true,true,true
+src/analysis/Topology.jl,is_resolved,mtsig,Tuple{NotebookTopology},false,false,0,false,true,true,true
+src/analysis/Topology.jl,set_unresolved,mtsig,"Tuple{NotebookTopology, Vector{Cell}}",false,false,0,false,true,true,true
+src/analysis/TopologyUpdate.jl,updated_topology,mtsig,"Tuple{NotebookTopology, Notebook, Any}",false,false,0,false,true,true,true
+src/analysis/data structures.jl,ImmutableSet,mtsig,"Tuple{Set{T}, Bool} where T",false,false,1,true,true,true,true
+src/analysis/data structures.jl,ImmutableSet,mtsig,"Tuple{Set{T}, Bool} where T",false,false,1,true,true,true,true
+src/analysis/data structures.jl,ImmutableSet,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/analysis/data structures.jl,ImmutableSet,mtsig,Tuple{} where T,false,false,1,true,false,true,true
+src/analysis/data structures.jl,ImmutableSet,mtsig,Tuple{},false,false,0,false,true,true,true
+src/analysis/data structures.jl,Base.copy,mtsig,Tuple{ImmutableSet},false,false,0,false,true,true,true
+src/analysis/data structures.jl,Base.in,mtsig,"Tuple{Any, ImmutableSet}",false,false,0,false,true,true,true
+src/analysis/data structures.jl,Base.isempty,mtsig,Tuple{ImmutableSet},false,false,0,false,true,true,true
+src/analysis/data structures.jl,Base.length,mtsig,Tuple{ImmutableSet},false,false,0,false,true,true,true
+src/analysis/data structures.jl,Base.iterate,mtsig,"Tuple{ImmutableSet, Vararg{Any}}",false,false,0,false,true,true,true
+src/analysis/data structures.jl,Base.setdiff,mtsig,"Tuple{ImmutableSet, Vararg{Any}}",false,false,0,false,true,true,true
+src/analysis/data structures.jl,ImmutableVector,mtsig,"Tuple{Any, Bool} where T",false,false,1,true,false,true,true
+src/analysis/data structures.jl,ImmutableVector,mtsig,"Tuple{AbstractVector{T}, Vararg{Any}} where T",false,false,1,true,true,true,true
+src/analysis/data structures.jl,ImmutableVector,mtsig,Tuple{} where T,false,false,1,true,false,true,true
+src/analysis/data structures.jl,Base.copy,mtsig,Tuple{ImmutableVector},false,false,0,false,true,true,true
+src/analysis/data structures.jl,Base.in,mtsig,"Tuple{Any, ImmutableVector}",false,false,0,false,true,true,true
+src/analysis/data structures.jl,Base.isempty,mtsig,Tuple{ImmutableVector},false,false,0,false,true,true,true
+src/analysis/data structures.jl,Base.length,mtsig,Tuple{ImmutableVector},false,false,0,false,true,true,true
+src/analysis/data structures.jl,Base.size,mtsig,Tuple{ImmutableVector},false,false,0,false,true,true,true
+src/analysis/data structures.jl,Base.iterate,mtsig,"Tuple{ImmutableVector, Vararg{Any}}",false,false,0,false,true,true,true
+src/analysis/data structures.jl,Base.getindex,mtsig,"Tuple{ImmutableVector, Integer}",false,false,0,false,true,true,true
+src/analysis/data structures.jl,Base.getindex,mtsig,"Tuple{ImmutableVector, Vararg{Any}}",false,false,0,false,true,true,true
+src/analysis/data structures.jl,delete_unsafe!,mtsig,"Tuple{ImmutableSet, Vararg{Any}}",false,false,0,false,true,true,true
+src/analysis/data structures.jl,ImmutableDefaultDict,mtsig,"(Tuple{Union{Function, DataType}} where V) where K",false,false,2,true,false,true,true
+src/analysis/data structures.jl,Base.getindex,mtsig,"(Tuple{ImmutableDefaultDict{K, V}, K} where V) where K",false,false,2,true,false,false,true
+src/analysis/data structures.jl,Base.merge,mtsig,"(Tuple{ImmutableDefaultDict{K, V}, ImmutableDefaultDict{K, V}} where V) where K",false,false,2,true,false,false,true
+src/analysis/data structures.jl,Base.merge,mtsig,"(Tuple{ImmutableDefaultDict{K, V}, AbstractDict} where V) where K",false,false,2,true,true,true,true
+src/analysis/data structures.jl,delete_unsafe!,mtsig,"(Tuple{ImmutableDefaultDict{K, V}, Vararg{Any}} where V) where K",false,false,2,true,true,true,true
+src/analysis/data structures.jl,Base.copy,mtsig,"(Tuple{ImmutableDefaultDict{K, V}} where V) where K",false,false,2,true,true,true,true
+src/analysis/data structures.jl,Base.keys,mtsig,Tuple{ImmutableDefaultDict},false,false,0,false,true,true,true
+src/analysis/data structures.jl,Base.values,mtsig,Tuple{ImmutableDefaultDict},false,false,0,false,true,true,true
+src/analysis/data structures.jl,Base.length,mtsig,Tuple{ImmutableDefaultDict},false,false,0,false,true,true,true
+src/analysis/data structures.jl,Base.iterate,mtsig,"Tuple{ImmutableDefaultDict, Vararg{Any}}",false,false,0,false,true,true,true
+src/analysis/data structures.jl,setdiffkeys,mtsig,"(Tuple{Dict{K, V}, Vararg{Any}} where V) where K",false,false,2,true,true,true,true
+src/analysis/data structures.jl,setdiffkeys,mtsig,"(Tuple{ImmutableDefaultDict{K, V}, Vararg{Any}} where V) where K",false,false,2,true,true,true,true
+src/analysis/is_just_text.jl,is_just_text,mtsig,"Tuple{NotebookTopology, Cell}",false,false,0,false,true,true,true
+src/analysis/is_just_text.jl,no_loops,mtsig,Tuple{Expr},false,false,0,false,true,true,true
+src/analysis/is_just_text.jl,no_loops,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/analysis/topological_order.jl,topological_order,mtsig,"Tuple{NotebookTopology, AbstractVector{Cell}, Any}",false,false,0,false,true,true,true
+src/analysis/topological_order.jl,bfs,mtsig,Tuple{Cell},false,false,0,false,true,true,true
+src/analysis/topological_order.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/analysis/topological_order.jl,topological_order,mtsig,Tuple{Notebook},false,false,0,false,true,true,true
+src/analysis/topological_order.jl,Base.collect,mtsig,Tuple{TopologicalOrder},false,false,0,false,true,true,true
+src/analysis/topological_order.jl,disjoint,mtsig,"Tuple{Set, Set}",false,false,0,false,true,true,true
+src/analysis/topological_order.jl,where_referenced,mtsig,"Tuple{NotebookTopology, Cell}",false,false,0,false,true,true,true
+src/analysis/topological_order.jl,where_referenced,mtsig,"Tuple{NotebookTopology, Set{Symbol}}",false,false,0,false,true,true,true
+src/analysis/topological_order.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/analysis/topological_order.jl,where_referenced,mtsig,"Tuple{Notebook, Vararg{Any}}",false,false,0,false,true,true,true
+src/analysis/topological_order.jl,is_soft_edge,mtsig,"Tuple{NotebookTopology, Cell, Cell}",false,false,0,false,true,true,true
+src/analysis/topological_order.jl,where_assigned,mtsig,"Tuple{NotebookTopology, Cell}",false,false,0,false,true,true,true
+src/analysis/topological_order.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/analysis/topological_order.jl,where_assigned,mtsig,"Tuple{NotebookTopology, Set{Symbol}}",false,false,0,false,true,true,true
+src/analysis/topological_order.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/analysis/topological_order.jl,where_assigned,mtsig,"Tuple{Notebook, Vararg{Any}}",false,false,0,false,true,true,true
+src/analysis/topological_order.jl,is_referenced_anywhere,mtsig,"Tuple{Notebook, NotebookTopology, Symbol}",false,false,0,false,true,true,true
+src/analysis/topological_order.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/analysis/topological_order.jl,is_assigned_anywhere,mtsig,"Tuple{Notebook, NotebookTopology, Symbol}",false,false,0,false,true,true,true
+src/analysis/topological_order.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/analysis/topological_order.jl,cyclic_variables,mtsig,"Tuple{NotebookTopology, AbstractVector{Cell}}",false,false,0,false,true,true,true
+src/analysis/topological_order.jl,cycle_is_among_functions,mtsig,"Tuple{NotebookTopology, AbstractVector{Cell}}",false,false,0,false,true,true,true
+src/analysis/topological_order.jl,cell_precedence_heuristic,mtsig,"Tuple{NotebookTopology, Cell}",false,false,0,false,true,true,true
+src/evaluation/Run.jl,Base.push!,mtsig,Tuple{Set{Cell}},false,false,0,false,true,true,true
+src/evaluation/Run.jl,set_bond_value_pairs!,mtsig,"Tuple{ServerSession, Notebook, Any}",false,false,0,false,true,true,true
+src/evaluation/Run.jl,run_reactive!,mtsig,"Tuple{ServerSession, Notebook, NotebookTopology, NotebookTopology, Vector{Cell}, Function, Bool, Any}",false,false,0,false,true,true,true
+src/evaluation/Run.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+src/evaluation/Run.jl,run_reactive_core!,mtsig,"Tuple{ServerSession, Notebook, NotebookTopology, NotebookTopology, Vector{Cell}, Function, Bool, Vector{Cell}, Any}",false,false,0,false,true,true,true
+src/evaluation/Run.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/evaluation/Run.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+src/evaluation/Run.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/evaluation/Run.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/evaluation/Run.jl,<NA-name>,mtsig,Tuple{TUPLE_ARG},false,false,0,false,true,true,true
+src/evaluation/Run.jl,run_reactive_async!,mtsig,"Tuple{ServerSession, Notebook, Vector{Cell}, Vararg{Any}}",false,false,0,false,true,true,true
+src/evaluation/Run.jl,run_reactive_async!,mtsig,"Tuple{ServerSession, Notebook, NotebookTopology, NotebookTopology, Vector{Cell}, Bool, Vararg{Any}}",false,false,0,false,true,true,true
+src/evaluation/Run.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+src/evaluation/Run.jl,maybe_async,mtsig,"Tuple{Function, Bool}",false,false,0,false,true,true,true
+src/evaluation/Run.jl,defined_variables,mtsig,"Tuple{NotebookTopology, Any}",false,false,0,false,true,true,true
+src/evaluation/Run.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/evaluation/Run.jl,defined_functions,mtsig,"Tuple{NotebookTopology, Any}",false,false,0,false,true,true,true
+src/evaluation/Run.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/evaluation/Run.jl,run_single!,mtsig,"Tuple{Union{Tuple{ServerSession, Notebook}, WorkspaceManager.Workspace}, Cell, ReactiveNode, ExprAnalysisCache, Bool, Bool}",false,false,0,false,true,true,true
+src/evaluation/Run.jl,set_output!,mtsig,"Tuple{Cell, Any, ExprAnalysisCache, Bool}",false,false,0,false,true,true,true
+src/evaluation/Run.jl,will_run_code,mtsig,Tuple{Notebook},false,false,0,false,true,true,true
+src/evaluation/Run.jl,is_macro_identifier,mtsig,Tuple{Symbol},false,false,0,false,true,true,true
+src/evaluation/Run.jl,with_new_soft_definitions,mtsig,"Tuple{NotebookTopology, Cell, Any}",false,false,0,false,true,true,true
+src/evaluation/Run.jl,collect_implicit_usings,mtsig,"Tuple{NotebookTopology, Cell}",false,false,0,false,true,true,true
+src/evaluation/Run.jl,cells_with_deleted_macros,mtsig,"Tuple{NotebookTopology, NotebookTopology}",false,false,0,false,true,true,true
+src/evaluation/Run.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/evaluation/Run.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/evaluation/Run.jl,defined_macros,mtsig,"Tuple{NotebookTopology, Cell}",false,false,0,false,true,true,true
+src/evaluation/Run.jl,defined_macros,mtsig,Tuple{ReactiveNode},false,false,0,false,true,true,true
+src/evaluation/Run.jl,can_help_resolve_cells,mtsig,"Tuple{NotebookTopology, Cell}",false,false,0,false,true,true,true
+src/evaluation/Run.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/evaluation/Run.jl,resolve_topology,mtsig,"Tuple{ServerSession, Notebook, NotebookTopology, Symbol, Vector{Cell}}",false,false,0,false,true,true,true
+src/evaluation/Run.jl,macroexpand_cell,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/evaluation/Run.jl,try_macroexpand,mtsig,"Tuple{Union{Nothing, Symbol}}",false,false,0,false,true,true,true
+src/evaluation/Run.jl,analyze_macrocell,mtsig,Tuple{Cell},false,false,0,false,true,true,true
+src/evaluation/Run.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/evaluation/Run.jl,static_macroexpand,mtsig,"Tuple{NotebookTopology, Cell}",false,false,0,false,true,true,true
+src/evaluation/Run.jl,static_resolve_topology,mtsig,Tuple{NotebookTopology},false,false,0,false,true,true,true
+src/evaluation/Run.jl,update_save_run!,mtsig,"Tuple{ServerSession, Notebook, Vector{Cell}, Bool, Bool, Bool, Vararg{Any}}",false,false,0,false,true,true,true
+src/evaluation/Run.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/evaluation/Run.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/evaluation/Run.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+src/evaluation/Run.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+src/evaluation/Run.jl,update_save_run!,mtsig,"Tuple{ServerSession, Notebook, Cell, Vararg{Any}}",false,false,0,false,true,true,true
+src/evaluation/Run.jl,update_run!,mtsig,"Tuple{Vararg{Any}, Vararg{Any}}",false,false,0,false,true,true,true
+src/evaluation/Run.jl,notebook_differences,mtsig,"Tuple{Notebook, Notebook}",false,false,0,false,true,true,true
+src/evaluation/Run.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/evaluation/Run.jl,notebook_differences,mtsig,"Tuple{String, String}",false,false,0,false,true,true,true
+src/evaluation/Run.jl,update_from_file,mtsig,"Tuple{ServerSession, Notebook, Vararg{Any}}",false,false,0,false,true,true,true
+src/evaluation/RunBonds.jl,set_bond_values_reactive,mtsig,"Tuple{ServerSession, Notebook, AbstractVector{Symbol}, AbstractVector{Bool}, Any, Vararg{Any}}",false,false,0,false,true,true,true
+src/evaluation/RunBonds.jl,<NA-name>,mtsig,Tuple{TUPLE_ARG},false,false,0,false,true,true,true
+src/evaluation/RunBonds.jl,custom_deletion_hook,mtsig,"Tuple{Tuple{ServerSession, Notebook}, Any, Any, Set{Symbol}, Set{Tuple{UUID, FunctionName}}, Set{Expr}, Set{UUID}, AbstractVector{Cell}}",false,false,0,false,true,true,true
+src/evaluation/RunBonds.jl,possible_bond_values,mtsig,"Tuple{ServerSession, Notebook, Symbol}",false,false,0,false,true,true,true
+src/evaluation/RunBonds.jl,possible_bond_values_length,mtsig,"Tuple{ServerSession, Notebook, Symbol}",false,false,0,false,true,true,true
+src/evaluation/Throttled.jl,throttled,mtsig,"Tuple{Function, Real}",false,false,0,false,true,true,true
+src/evaluation/Throttled.jl,flush,mtsig,Tuple{},false,false,0,false,true,true,true
+src/evaluation/Throttled.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+src/evaluation/Throttled.jl,schedule,mtsig,Tuple{},false,false,0,false,true,true,true
+src/evaluation/Throttled.jl,throttled_f,mtsig,Tuple{},false,false,0,false,true,true,true
+src/evaluation/Tokens.jl,Token,mtsig,Tuple{},false,false,0,false,true,true,true
+src/evaluation/Tokens.jl,Base.take!,mtsig,Tuple{Token},false,false,0,false,true,true,true
+src/evaluation/Tokens.jl,Base.put!,mtsig,Tuple{Token},false,false,0,false,true,true,true
+src/evaluation/Tokens.jl,Base.isready,mtsig,Tuple{Token},false,false,0,false,true,true,true
+src/evaluation/Tokens.jl,Base.wait,mtsig,Tuple{Token},false,false,0,false,true,true,true
+src/evaluation/Tokens.jl,withtoken,mtsig,"Tuple{Function, Token}",false,false,0,false,true,true,true
+src/evaluation/Tokens.jl,RequestQueue,mtsig,Tuple{},false,false,0,false,true,true,true
+src/evaluation/Tokens.jl,process,mtsig,"Tuple{Function, RequestQueue}",false,false,0,false,true,true,true
+src/evaluation/Tokens.jl,request!,mtsig,Tuple{RequestQueue},false,false,0,false,true,true,true
+src/evaluation/WorkspaceManager.jl,process_preamble,mtsig,Tuple{},false,false,0,false,true,true,true
+src/evaluation/WorkspaceManager.jl,make_workspace,mtsig,"Tuple{SN, Bool}",false,false,0,false,true,true,true
+src/evaluation/WorkspaceManager.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+src/evaluation/WorkspaceManager.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+src/evaluation/WorkspaceManager.jl,use_nbpkg_environment,mtsig,"Tuple{SN, Any}",false,false,0,false,true,true,true
+src/evaluation/WorkspaceManager.jl,start_relaying_self_updates,mtsig,"Tuple{SN, Distributed.RemoteChannel}",false,false,0,false,true,true,true
+src/evaluation/WorkspaceManager.jl,start_relaying_logs,mtsig,"Tuple{SN, Distributed.RemoteChannel}",false,false,0,false,true,true,true
+src/evaluation/WorkspaceManager.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+src/evaluation/WorkspaceManager.jl,<NA-name>,mtsig,Tuple{TUPLE_ARG},false,false,0,false,true,true,true
+src/evaluation/WorkspaceManager.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/evaluation/WorkspaceManager.jl,cd_workspace,mtsig,"Tuple{Any, AbstractString}",false,false,0,false,true,true,true
+src/evaluation/WorkspaceManager.jl,bump_workspace_module,mtsig,Tuple{SN},false,false,0,false,true,true,true
+src/evaluation/WorkspaceManager.jl,possible_bond_values,mtsig,"Tuple{SN, Symbol, Bool}",false,false,0,false,true,true,true
+src/evaluation/WorkspaceManager.jl,create_emptyworkspacemodule,mtsig,Tuple{Integer},false,false,0,false,true,true,true
+src/evaluation/WorkspaceManager.jl,create_workspaceprocess,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/evaluation/WorkspaceManager.jl,get_workspace,mtsig,Tuple{SN},false,false,0,false,true,true,true
+src/evaluation/WorkspaceManager.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+src/evaluation/WorkspaceManager.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+src/evaluation/WorkspaceManager.jl,get_workspace,mtsig,Tuple{Workspace},false,false,0,false,true,true,true
+src/evaluation/WorkspaceManager.jl,unmake_workspace,mtsig,"Tuple{SN, Bool, Bool, Bool}",false,false,0,false,true,true,true
+src/evaluation/WorkspaceManager.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/evaluation/WorkspaceManager.jl,distributed_exception_result,mtsig,"Tuple{Base.IOError, Workspace}",false,false,0,false,true,true,true
+src/evaluation/WorkspaceManager.jl,distributed_exception_result,mtsig,"Tuple{CompositeException, Workspace}",false,false,0,false,true,true,true
+src/evaluation/WorkspaceManager.jl,eval_format_fetch_in_workspace,mtsig,"Tuple{Union{SN, Workspace}, Expr, UUID, Bool, Union{Nothing, Tuple}, Union{PlutoRunner.ObjectID, Nothing}, Vector{String}, Bool, Bool}",false,false,0,false,true,true,true
+src/evaluation/WorkspaceManager.jl,eval_in_workspace,mtsig,"Tuple{Union{SN, Workspace}, Any}",false,false,0,false,true,true,true
+src/evaluation/WorkspaceManager.jl,format_fetch_in_workspace,mtsig,"Tuple{Union{SN, Workspace}, Any, Any, Vector{String}, Union{PlutoRunner.ObjectDimPair, Nothing}}",false,false,0,false,true,true,true
+src/evaluation/WorkspaceManager.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+src/evaluation/WorkspaceManager.jl,collect_soft_definitions,mtsig,"Tuple{SN, Set{Expr}}",false,false,0,false,true,true,true
+src/evaluation/WorkspaceManager.jl,macroexpand_in_workspace,mtsig,"Tuple{Union{SN, Workspace}, Any, Any, Any}",false,false,0,false,true,true,true
+src/evaluation/WorkspaceManager.jl,eval_fetch_in_workspace,mtsig,"Tuple{Union{SN, Workspace}, Any}",false,false,0,false,true,true,true
+src/evaluation/WorkspaceManager.jl,do_reimports,mtsig,"Tuple{Union{SN, Workspace}, Set{Expr}}",false,false,0,false,true,true,true
+src/evaluation/WorkspaceManager.jl,move_vars,mtsig,"Tuple{Union{SN, Workspace}, Symbol, Union{Nothing, Symbol}, Set{Symbol}, Set{Tuple{UUID, FunctionName}}, Set{Expr}, Set{UUID}, Vararg{Any}}",false,false,0,false,true,true,true
+src/evaluation/WorkspaceManager.jl,move_vars,mtsig,"Tuple{Union{SN, Workspace}, Set{Symbol}, Set{Tuple{UUID, FunctionName}}, Set{Expr}, Set{UUID}, Vararg{Any}}",false,false,0,false,true,true,true
+src/evaluation/WorkspaceManager.jl,poll,mtsig,"Tuple{Function, Real, Real}",false,false,0,false,true,true,true
+src/evaluation/WorkspaceManager.jl,interrupt_workspace,mtsig,"Tuple{Union{SN, Workspace}, Any}",false,false,0,false,true,true,true
+src/evaluation/WorkspaceManager.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+src/evaluation/WorkspaceManager.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+src/notebook/Cell.jl,Cell,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/notebook/Cell.jl,Cell,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/notebook/Cell.jl,cell_id,mtsig,Tuple{Cell},false,false,0,false,true,true,true
+src/notebook/Cell.jl,Base.convert,mtsig,"Tuple{Type{Cell}, Dict}",false,false,0,false,true,true,true
+src/notebook/Cell.jl,Base.convert,mtsig,"Tuple{Type{UUID}, String}",false,false,0,false,true,true,true
+src/notebook/Cell.jl,is_disabled,mtsig,Tuple{Cell},false,false,0,false,true,true,true
+src/notebook/Cell.jl,can_show_logs,mtsig,Tuple{Cell},false,false,0,false,true,true,true
+src/notebook/Events.jl,try_event_call,mtsig,"Tuple{Any, PlutoEvent}",false,false,0,false,true,true,true
+src/notebook/Events.jl,FileSaveEvent,mtsig,Tuple{Notebook},false,false,0,false,true,true,true
+src/notebook/Events.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/notebook/Events.jl,FileEditEvent,mtsig,Tuple{Notebook},false,false,0,false,true,true,true
+src/notebook/Events.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/notebook/Export.jl,generate_html,mtsig,"Tuple{Union{Nothing, VersionNumber, AbstractString}, Union{Nothing, AbstractString}, AbstractString, AbstractString, AbstractString, AbstractString, Bool, AbstractString, AbstractString, AbstractString, AbstractString}",false,false,0,false,true,true,true
+src/notebook/Export.jl,replace_at_least_once,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/notebook/Export.jl,generate_html,mtsig,"Tuple{Any, Vararg{Any}}",false,false,0,false,true,true,true
+src/notebook/Export.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/notebook/Export.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/notebook/Export.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/notebook/Export.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/notebook/Export.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/notebook/Export.jl,frontmatter_html,mtsig,"Tuple{Dict{String, Any}, Dict{String, Any}}",false,false,0,false,true,true,true
+src/notebook/Notebook.jl,Base.convert,mtsig,"Tuple{Type{BondValue}, AbstractDict}",false,false,0,false,true,true,true
+src/notebook/Notebook.jl,_collect_cells,mtsig,"Tuple{Dict{UUID, Cell}, Vector{UUID}}",false,false,0,false,true,true,true
+src/notebook/Notebook.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/notebook/Notebook.jl,_initial_topology,mtsig,"Tuple{Dict{UUID, Cell}, Vector{UUID}}",false,false,0,false,true,true,true
+src/notebook/Notebook.jl,Notebook,mtsig,"Tuple{Vector{Cell}, MACROCALL, UUID}",false,false,0,false,true,true,true
+src/notebook/Notebook.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/notebook/Notebook.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/notebook/Notebook.jl,Notebook,mtsig,"Tuple{Vector{Cell}, AbstractString}",false,false,0,false,true,true,true
+src/notebook/Notebook.jl,Base.getproperty,mtsig,"Tuple{Notebook, Symbol}",false,false,0,false,true,true,true
+src/notebook/Notebook.jl,emptynotebook,mtsig,Tuple{Vararg{Any}},false,false,0,false,true,true,true
+src/notebook/Notebook.jl,sample_notebook,mtsig,Tuple{String},false,false,0,false,true,true,true
+src/notebook/Notebook.jl,create_cell_metadata,mtsig,"Tuple{Dict{String, <:Any}}",false,false,1,true,true,true,true
+src/notebook/Notebook.jl,create_notebook_metadata,mtsig,"Tuple{Dict{String, <:Any}}",false,false,1,true,true,true,true
+src/notebook/Notebook.jl,get_metadata,mtsig,Tuple{Cell},false,false,0,false,true,true,true
+src/notebook/Notebook.jl,get_metadata,mtsig,Tuple{Notebook},false,false,0,false,true,true,true
+src/notebook/Notebook.jl,get_metadata_no_default,mtsig,Tuple{Cell},false,false,0,false,true,true,true
+src/notebook/Notebook.jl,get_metadata_no_default,mtsig,Tuple{Notebook},false,false,0,false,true,true,true
+src/notebook/frontmatter.jl,frontmatter,mtsig,"Tuple{Notebook, Bool}",false,false,0,false,true,true,true
+src/notebook/frontmatter.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+src/notebook/frontmatter.jl,frontmatter,mtsig,"Tuple{String, Bool}",false,false,0,false,true,true,true
+src/notebook/path helpers.jl,detectwsl,mtsig,Tuple{},false,false,0,false,true,true,true
+src/notebook/path helpers.jl,maybe_convert_path_to_wsl,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/notebook/path helpers.jl,cutename,mtsig,Tuple{},false,false,0,false,true,true,true
+src/notebook/path helpers.jl,new_notebooks_directory,mtsig,Tuple{},false,false,0,false,true,true,true
+src/notebook/path helpers.jl,endswith_pluto_file_extension,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/notebook/path helpers.jl,embedded_notebookfile,mtsig,Tuple{AbstractString},false,false,0,false,true,true,true
+src/notebook/path helpers.jl,is_pluto_notebook,mtsig,Tuple{String},false,false,0,false,true,true,true
+src/notebook/path helpers.jl,without_pluto_file_extension,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/notebook/path helpers.jl,numbered_until_new,mtsig,"Tuple{AbstractString, AbstractString, AbstractString, Bool, Bool}",false,false,0,false,true,true,true
+src/notebook/path helpers.jl,backup_filename,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/notebook/path helpers.jl,readwrite,mtsig,"Tuple{AbstractString, AbstractString}",false,false,0,false,true,true,true
+src/notebook/path helpers.jl,tryexpanduser,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/notebook/path helpers.jl,wait_until_file_unchanged,mtsig,"Tuple{String, Real, String}",false,false,0,false,true,true,true
+src/notebook/saving and loading.jl,save_notebook,mtsig,"Tuple{IO, Notebook}",false,false,0,false,true,true,true
+src/notebook/saving and loading.jl,write_buffered,mtsig,"Tuple{Function, Any}",false,false,0,false,true,true,true
+src/notebook/saving and loading.jl,save_notebook,mtsig,"Tuple{Notebook, String}",false,false,0,false,true,true,true
+src/notebook/saving and loading.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/notebook/saving and loading.jl,save_notebook,mtsig,Tuple{Notebook},false,false,0,false,true,true,true
+src/notebook/saving and loading.jl,load_notebook_nobackup,mtsig,"Tuple{MACROCALL, MACROCALL}",false,false,0,false,true,true,true
+src/notebook/saving and loading.jl,<NA-name>,mtsig,Tuple{TUPLE_ARG},false,false,0,false,true,true,true
+src/notebook/saving and loading.jl,load_notebook_nobackup,mtsig,Tuple{String},false,false,0,false,true,true,true
+src/notebook/saving and loading.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/notebook/saving and loading.jl,load_notebook,mtsig,"Tuple{String, Bool}",false,false,0,false,true,true,true
+src/notebook/saving and loading.jl,_after_first_cell,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/notebook/saving and loading.jl,only_versions_or_lineorder_differ,mtsig,"Tuple{AbstractString, AbstractString}",false,false,0,false,true,true,true
+src/notebook/saving and loading.jl,only_versions_differ,mtsig,"Tuple{AbstractString, AbstractString}",false,false,0,false,true,true,true
+src/notebook/saving and loading.jl,move_notebook!,mtsig,"Tuple{Notebook, String, Bool}",false,false,0,false,true,true,true
+src/packages/Packages.jl,use_plutopkg,mtsig,Tuple{NotebookTopology},false,false,0,false,true,true,true
+src/packages/Packages.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/packages/Packages.jl,external_package_names,mtsig,Tuple{NotebookTopology},false,false,0,false,true,true,true
+src/packages/Packages.jl,PkgCompat.project_file,mtsig,Tuple{Notebook},false,false,0,false,true,true,true
+src/packages/Packages.jl,PkgCompat.manifest_file,mtsig,Tuple{Notebook},false,false,0,false,true,true,true
+src/packages/Packages.jl,sync_nbpkg_core,mtsig,"Tuple{Notebook, NotebookTopology, NotebookTopology, Function, Real}",false,false,0,false,true,true,true
+src/packages/Packages.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/packages/Packages.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+src/packages/Packages.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+src/packages/Packages.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+src/packages/Packages.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/packages/Packages.jl,mkeys,mtsig,Tuple{},false,false,0,false,true,true,true
+src/packages/Packages.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+src/packages/Packages.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+src/packages/Packages.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+src/packages/Packages.jl,sync_nbpkg,mtsig,"Tuple{Any, Any, NotebookTopology, NotebookTopology, Bool, Bool}",false,false,0,false,true,true,true
+src/packages/Packages.jl,<NA-name>,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/packages/Packages.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+src/packages/Packages.jl,iocallback,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/packages/Packages.jl,writebackup,mtsig,Tuple{Notebook},false,false,0,false,true,true,true
+src/packages/Packages.jl,reset_nbpkg,mtsig,"Tuple{Notebook, Union{NotebookTopology, Nothing}, Bool, Bool, Bool}",false,false,0,false,true,true,true
+src/packages/Packages.jl,update_nbpkg_core,mtsig,"Tuple{Notebook, Pkg.UpgradeLevel, Function}",false,false,0,false,true,true,true
+src/packages/Packages.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/packages/Packages.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+src/packages/Packages.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+src/packages/Packages.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+src/packages/Packages.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+src/packages/Packages.jl,update_nbpkg,mtsig,"Tuple{Any, Notebook, Pkg.UpgradeLevel, Bool, Bool}",false,false,0,false,true,true,true
+src/packages/Packages.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+src/packages/Packages.jl,iocallback,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/packages/Packages.jl,nbpkg_cache,mtsig,"Tuple{Union{Nothing, PkgContext}}",false,false,0,false,true,true,true
+src/packages/Packages.jl,update_nbpkg_cache!,mtsig,Tuple{Notebook},false,false,0,false,true,true,true
+src/packages/Packages.jl,is_nbpkg_equal,mtsig,"Tuple{Union{Nothing, PkgContext}, Union{Nothing, PkgContext}}",false,false,0,false,true,true,true
+src/packages/Packages.jl,withinteractive,mtsig,"Tuple{Function, Bool}",false,false,0,false,true,true,true
+src/packages/Packages.jl,trigger,mtsig,Tuple{IOListener},false,false,0,false,true,true,true
+src/packages/Packages.jl,startlistening,mtsig,Tuple{IOListener},false,false,0,false,true,true,true
+src/packages/Packages.jl,stoplistening,mtsig,Tuple{IOListener},false,false,0,false,true,true,true
+src/packages/PkgCompat.jl,flatmap,mtsig,Tuple{Vararg{Any}},false,false,0,false,true,true,true
+src/packages/PkgCompat.jl,select,mtsig,"Tuple{Function, Any}",false,false,0,false,true,true,true
+src/packages/PkgCompat.jl,load_ctx,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/packages/PkgCompat.jl,create_empty_ctx,mtsig,Tuple{},false,false,0,false,true,true,true
+src/packages/PkgCompat.jl,load_ctx,mtsig,Tuple{PkgContext},false,false,0,false,true,true,true
+src/packages/PkgCompat.jl,mark_original!,mtsig,Tuple{PkgContext},false,false,0,false,true,true,true
+src/packages/PkgCompat.jl,is_original,mtsig,Tuple{PkgContext},false,false,0,false,true,true,true
+src/packages/PkgCompat.jl,env_dir,mtsig,Tuple{PkgContext},false,false,0,false,true,true,true
+src/packages/PkgCompat.jl,project_file,mtsig,Tuple{AbstractString},false,false,0,false,true,true,true
+src/packages/PkgCompat.jl,manifest_file,mtsig,Tuple{AbstractString},false,false,0,false,true,true,true
+src/packages/PkgCompat.jl,project_file,mtsig,Tuple{PkgContext},false,false,0,false,true,true,true
+src/packages/PkgCompat.jl,manifest_file,mtsig,Tuple{PkgContext},false,false,0,false,true,true,true
+src/packages/PkgCompat.jl,read_project_file,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/packages/PkgCompat.jl,read_manifest_file,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/packages/PkgCompat.jl,withio,mtsig,"Tuple{Function, PkgContext, IO}",false,false,0,false,true,true,true
+src/packages/PkgCompat.jl,_get_registry_paths,mtsig,Tuple{},false,false,0,false,true,true,true
+src/packages/PkgCompat.jl,_get_registries,mtsig,Tuple{},false,false,0,false,true,true,true
+src/packages/PkgCompat.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/packages/PkgCompat.jl,refresh_registry_cache,mtsig,Tuple{},false,false,0,false,true,true,true
+src/packages/PkgCompat.jl,update_registries,mtsig,Tuple{Bool},false,false,0,false,true,true,true
+src/packages/PkgCompat.jl,check_registry_age,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/packages/PkgCompat.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/packages/PkgCompat.jl,instantiate,mtsig,"Tuple{Any, Bool}",false,false,0,false,true,true,true
+src/packages/PkgCompat.jl,_stdlibs,mtsig,Tuple{},false,false,0,false,true,true,true
+src/packages/PkgCompat.jl,is_stdlib,mtsig,Tuple{AbstractString},false,false,0,false,true,true,true
+src/packages/PkgCompat.jl,package_completions,mtsig,Tuple{AbstractString},false,false,0,false,true,true,true
+src/packages/PkgCompat.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/packages/PkgCompat.jl,_registered_package_completions,mtsig,Tuple{AbstractString},false,false,0,false,true,true,true
+src/packages/PkgCompat.jl,_registry_entries,mtsig,"Tuple{AbstractString, Vector}",false,false,0,false,true,true,true
+src/packages/PkgCompat.jl,<NA-name>,mtsig,Tuple{TUPLE_ARG},false,false,0,false,true,true,true
+src/packages/PkgCompat.jl,_package_versions_from_path,mtsig,Tuple{AbstractString},false,false,0,false,true,true,true
+src/packages/PkgCompat.jl,package_versions,mtsig,Tuple{AbstractString},false,false,0,false,true,true,true
+src/packages/PkgCompat.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/packages/PkgCompat.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/packages/PkgCompat.jl,package_exists,mtsig,Tuple{AbstractString},false,false,0,false,true,true,true
+src/packages/PkgCompat.jl,dependencies,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/packages/PkgCompat.jl,project,mtsig,Tuple{PkgContext},false,false,0,false,true,true,true
+src/packages/PkgCompat.jl,_get_manifest_entry,mtsig,"Tuple{PkgContext, AbstractString}",false,false,0,false,true,true,true
+src/packages/PkgCompat.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/packages/PkgCompat.jl,get_manifest_version,mtsig,"Tuple{PkgContext, AbstractString}",false,false,0,false,true,true,true
+src/packages/PkgCompat.jl,project_key_order,mtsig,Tuple{String},false,false,0,false,true,true,true
+src/packages/PkgCompat.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/packages/PkgCompat.jl,_modify_compat,mtsig,"Tuple{Function, PkgContext}",false,false,0,false,true,true,true
+src/packages/PkgCompat.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/packages/PkgCompat.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/packages/PkgCompat.jl,write_auto_compat_entries,mtsig,Tuple{PkgContext},false,false,0,false,true,true,true
+src/packages/PkgCompat.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/packages/PkgCompat.jl,clear_auto_compat_entries,mtsig,Tuple{PkgContext},false,false,0,false,true,true,true
+src/packages/PkgCompat.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/packages/PkgCompat.jl,clear_stdlib_compat_entries,mtsig,Tuple{PkgContext},false,false,0,false,true,true,true
+src/packages/PkgCompat.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/packages/PkgUtils.jl,ensure_has_nbpkg,mtsig,Tuple{Notebook},false,false,0,false,true,true,true
+src/packages/PkgUtils.jl,assert_has_manifest,mtsig,Tuple{String},false,false,0,false,true,true,true
+src/packages/PkgUtils.jl,nb_and_dir_environments_equal,mtsig,"Tuple{Notebook, String}",false,false,0,false,true,true,true
+src/packages/PkgUtils.jl,write_nb_to_dir,mtsig,"Tuple{Notebook, String}",false,false,0,false,true,true,true
+src/packages/PkgUtils.jl,write_dir_to_nb,mtsig,"Tuple{String, Notebook}",false,false,0,false,true,true,true
+src/packages/PkgUtils.jl,write_dir_to_nb,mtsig,"Tuple{String, String}",false,false,0,false,true,true,true
+src/packages/PkgUtils.jl,write_nb_to_dir,mtsig,"Tuple{String, String}",false,false,0,false,true,true,true
+src/packages/PkgUtils.jl,nb_and_dir_environments_equal,mtsig,"Tuple{String, String}",false,false,0,false,true,true,true
+src/packages/PkgUtils.jl,reset_notebook_environment,mtsig,"Tuple{String, Vararg{Any}}",false,false,0,false,true,true,true
+src/packages/PkgUtils.jl,update_notebook_environment,mtsig,"Tuple{String, Vararg{Any}}",false,false,0,false,true,true,true
+src/packages/PkgUtils.jl,activate_notebook_environment,mtsig,Tuple{String},false,false,0,false,true,true,true
+src/packages/PkgUtils.jl,maybe_update_nb,mtsig,Tuple{},false,false,0,false,true,true,true
+src/packages/PkgUtils.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+src/packages/PkgUtils.jl,maybe_update_dir,mtsig,Tuple{},false,false,0,false,true,true,true
+src/packages/PkgUtils.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+src/packages/PkgUtils.jl,testnb,mtsig,Tuple{},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,revise_if_possible,mtsig,Tuple{Module},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,increment_current_module,mtsig,Tuple{},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,wrap_dot,mtsig,Tuple{GlobalRef},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,wrap_dot,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,collect_and_eliminate_globalrefs!,mtsig,"Tuple{GlobalRef, Any}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,collect_and_eliminate_globalrefs!,mtsig,"Tuple{Expr, Any}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,collect_and_eliminate_globalrefs!,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,globalref_to_workspaceref,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,replace_pluto_properties_in_expr,mtsig,"Tuple{GiveMeCellID, Any, Vararg{Any}}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,replace_pluto_properties_in_expr,mtsig,"Tuple{GiveMeRerunCellFunction, Any, Vararg{Any}}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,replace_pluto_properties_in_expr,mtsig,"Tuple{GiveMeRegisterCleanupFunction, Any, Vararg{Any}}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,replace_pluto_properties_in_expr,mtsig,"Tuple{Expr, Vararg{Any}}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,replace_pluto_properties_in_expr,mtsig,"Tuple{Module, Vararg{Any}}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,replace_pluto_properties_in_expr,mtsig,"Tuple{Any, Vararg{Any}}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,has_hook_style_pluto_properties_in_expr,mtsig,Tuple{GiveMeRerunCellFunction},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,has_hook_style_pluto_properties_in_expr,mtsig,Tuple{GiveMeRegisterCleanupFunction},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,has_hook_style_pluto_properties_in_expr,mtsig,Tuple{Expr},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,has_hook_style_pluto_properties_in_expr,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,sanitize_expr,mtsig,Tuple{GlobalRef},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,sanitize_expr,mtsig,Tuple{Expr},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,sanitize_expr,mtsig,Tuple{LineNumberNode},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,sanitize_expr,mtsig,Tuple{QuoteNode},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,sanitize_expr,mtsig,Tuple{Bool},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,sanitize_expr,mtsig,Tuple{Symbol},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,sanitize_expr,mtsig,"Tuple{Union{Int, Int8, Float32, Float64}}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,sanitize_expr,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,Base.showerror,mtsig,"Tuple{IO, CantReturnInPlutoException}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,replace_returns_with_error,mtsig,Tuple{Expr},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,replace_returns_with_error,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,replace_returns_with_error_in_interpolation,mtsig,Tuple{Expr},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,replace_returns_with_error_in_interpolation,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,try_macroexpand,mtsig,"Tuple{Any, Any, Any}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,get_module_names,mtsig,"Tuple{Any, Expr}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,collect_soft_definitions,mtsig,"Tuple{Any, Set{Expr}}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,expr_hash,mtsig,Tuple{Expr},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,expr_hash,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,register_computer,mtsig,"Tuple{Expr, ObjectID, UUID, Vector{Symbol}, Vector{Symbol}}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,delete_computer!,mtsig,"Tuple{Dict{UUID, Computer}, UUID}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,parse_cell_id,mtsig,Tuple{Symbol},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,parse_cell_id,mtsig,Tuple{AbstractString},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,register_cleanup,mtsig,"Tuple{Function, UUID}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,trigger_cleanup,mtsig,Tuple{UUID},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,quote_if_needed,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,quote_if_needed,mtsig,"Tuple{Union{Expr, Symbol, QuoteNode, LineNumberNode}}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,compute,mtsig,"Tuple{Module, Computer}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,timed_expr,mtsig,Tuple{Expr},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,run_inside_trycatch,mtsig,"Tuple{Module, Union{Expr, Function}}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,add_runtimes,mtsig,"Tuple{Nothing, UInt64}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,add_runtimes,mtsig,"Tuple{UInt64, UInt64}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,contains_macrocall,mtsig,Tuple{Expr},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,contains_macrocall,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,run_expression,mtsig,"Tuple{Module, Any, UUID, UUID, MACROCALL, MACROCALL, Bool, Bool}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,rerun_cell_from_notebook,mtsig,Tuple{UUID},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,do_reimports,mtsig,"Tuple{Any, Set{Expr}}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,move_vars,mtsig,"Tuple{Symbol, Symbol, Set{Symbol}, Set{Tuple{UUID, Vector{Symbol}}}, Set{Expr}, Set{UUID}}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,isfromcell,mtsig,"Tuple{Method, UUID}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,delete_method_doc,mtsig,Tuple{Method},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,delete_toplevel_methods,mtsig,"Tuple{Function, UUID}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,try_delete_toplevel_methods,mtsig,"Tuple{Module, Tuple{UUID, Vector{Symbol}}}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,formatted_result_of,mtsig,"Tuple{UUID, UUID, Bool, Vector{String}, Union{ObjectDimPair, Nothing}, Module}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,try_showerror,mtsig,"Tuple{IO, Any, Vararg{Any}}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,htmlinline,mtsig,"Tuple{IO, LaTeX}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,html,mtsig,"Tuple{IO, LaTeX}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,Base.IOContext,mtsig,"Tuple{IOContext, Nothing}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,format_output_default,mtsig,"Tuple{MACROCALL, MACROCALL}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,format_output,mtsig,"Tuple{MACROCALL, Any}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,format_output,mtsig,"Tuple{Nothing, Any}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,format_output,mtsig,"Tuple{CapturedException, Any}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,format_output,mtsig,"Tuple{Base.Docs.Binding, Any}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,pretty_stackcall,mtsig,"Tuple{Base.StackFrame, Nothing}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,pretty_stackcall,mtsig,"Tuple{Base.StackFrame, Core.CodeInfo}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,pretty_stackcall,mtsig,"Tuple{Base.StackFrame, Core.MethodInstance}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,show_richest_withreturned,mtsig,"Tuple{MACROCALL, Any, Integer}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,use_tree_viewer_for_struct,mtsig,Tuple{MACROCALL} where T,false,false,1,true,false,true,true
+src/runner/PlutoRunner.jl,show_richest,mtsig,"Tuple{IO, MACROCALL}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,pluto_showable,mtsig,"Tuple{MIME, MACROCALL}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,pluto_showable,mtsig,"Tuple{MIME""application/vnd.pluto.tree+object"", AbstractArray{<:Any, 1}}",false,false,1,true,true,true,true
+src/runner/PlutoRunner.jl,pluto_showable,mtsig,"Tuple{MIME""application/vnd.pluto.tree+object"", AbstractSet{<:Any}}",false,false,1,true,true,true,true
+src/runner/PlutoRunner.jl,pluto_showable,mtsig,"Tuple{MIME""application/vnd.pluto.tree+object"", AbstractDict{<:Any, <:Any}}",false,false,2,true,true,true,true
+src/runner/PlutoRunner.jl,pluto_showable,mtsig,"Tuple{MIME""application/vnd.pluto.tree+object"", Tuple}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,pluto_showable,mtsig,"Tuple{MIME""application/vnd.pluto.tree+object"", NamedTuple}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,pluto_showable,mtsig,"Tuple{MIME""application/vnd.pluto.tree+object"", Pair}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,pluto_showable,mtsig,"Tuple{MIME""application/vnd.pluto.tree+object"", AbstractRange}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,pluto_showable,mtsig,"Tuple{MIME""application/vnd.pluto.tree+object"", Any}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,tree_data_array_elements,mtsig,"Tuple{MACROCALL, AbstractVector{I}, Context} where I <: Integer",false,false,1,true,true,true,true
+src/runner/PlutoRunner.jl,array_prefix,mtsig,Tuple{MACROCALL},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,array_prefix,mtsig,Tuple{MACROCALL},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,get_my_display_limit,mtsig,"Tuple{MACROCALL, Integer, Integer, Context, Integer, Integer}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,tree_data,mtsig,"Tuple{MACROCALL, Context}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,tree_data,mtsig,"Tuple{MACROCALL, Context}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,tree_data,mtsig,"Tuple{MACROCALL, Context}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,tree_data,mtsig,"Tuple{MACROCALL, Context}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,tree_data_nt_row,mtsig,"Tuple{MACROCALL, Context}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,tree_data,mtsig,"Tuple{MACROCALL, Context}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,tree_data,mtsig,"Tuple{MACROCALL, Context}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,tree_data,mtsig,"Tuple{MACROCALL, Context}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,trynameof,mtsig,"Tuple{Type{Union{T, Missing}}} where T",false,false,1,true,true,true,false
+src/runner/PlutoRunner.jl,trynameof,mtsig,Tuple{DataType},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,trynameof,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,pluto_showable,mtsig,"Tuple{MIME""application/vnd.pluto.tree+object"", Symbolics.Arr}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,pluto_showable,mtsig,"Tuple{MIME""application/vnd.pluto.tree+object"", Symbolics.Arr}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,maptruncated,mtsig,"Tuple{Function, Any, Any, Any, Any}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,table_data,mtsig,"Tuple{Any, Context}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,row_data_for,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,pluto_showable,mtsig,"Tuple{MIME""application/vnd.pluto.table+object"", Any}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,pluto_showable,mtsig,"Tuple{MIME""application/vnd.pluto.table+object"", Type}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,pluto_showable,mtsig,"Tuple{MIME""application/vnd.pluto.table+object"", AbstractVector{<:NamedTuple}}",false,false,1,true,true,true,true
+src/runner/PlutoRunner.jl,pluto_showable,mtsig,"Tuple{MIME""application/vnd.pluto.table+object"", AbstractVector{<:Dict{Symbol, <:Any}}}",false,false,2,true,true,true,true
+src/runner/PlutoRunner.jl,pluto_showable,mtsig,"Tuple{MIME""application/vnd.pluto.table+object"", AbstractArray{Union{}, 1}}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,approx_size,mtsig,Tuple{Plots.Plot},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,pluto_showable,mtsig,"Tuple{MIME""image/svg+xml"", Plots.Plot{Plots.GRBackend}}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,pluto_showable,mtsig,"Tuple{MIME""text/html"", Plots.Plot{Plots.GRBackend}}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,pluto_showable,mtsig,"Tuple{MIME""text/html"", AbstractMatrix{<:ImageShow.Colorant}}",false,false,1,true,true,true,true
+src/runner/PlutoRunner.jl,pluto_showable,mtsig,"Tuple{MIME""text/html"", AbstractMatrix{<:ImageShow.Colorant}}",false,false,1,true,true,true,true
+src/runner/PlutoRunner.jl,load_integration_if_needed,mtsig,Tuple{Integration},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,load_integrations_if_needed,mtsig,Tuple{},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,load_integration,mtsig,Tuple{Integration},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,basic_completion_priority,mtsig,Tuple{TUPLE_ARG},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,completed_object_description,mtsig,Tuple{Function},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,completed_object_description,mtsig,Tuple{Number},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,completed_object_description,mtsig,Tuple{AbstractString},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,completed_object_description,mtsig,Tuple{Module},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,completed_object_description,mtsig,Tuple{AbstractArray},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,completed_object_description,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,completion_description,mtsig,Tuple{ModuleCompletion},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,completion_description,mtsig,Tuple{Completion},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,is_pluto_workspace,mtsig,Tuple{Module},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,completions_exported,mtsig,Tuple{Vector{<:Completion}},false,false,1,true,true,true,true
+src/runner/PlutoRunner.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,completion_from_notebook,mtsig,Tuple{ModuleCompletion},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,completion_from_notebook,mtsig,Tuple{Completion},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,only_special_completion_types,mtsig,Tuple{PathCompletion},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,only_special_completion_types,mtsig,Tuple{DictCompletion},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,only_special_completion_types,mtsig,Tuple{Completion},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,completion_fetcher,mtsig,"Tuple{Any, Any, Module}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,isenough,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,is_dot_completion,mtsig,"Tuple{Union{ModuleCompletion, PropertyCompletion, FieldCompletion}}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,is_dot_completion,mtsig,Tuple{Completion},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,is_path_completion,mtsig,Tuple{Union{PathCompletion}},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,is_path_completion,mtsig,Tuple{Completion},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,is_dict_completion,mtsig,Tuple{Union{DictCompletion}},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,is_dict_completion,mtsig,Tuple{Completion},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,is_pure_expression,mtsig,Tuple{Expr},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,is_pure_expression,mtsig,Tuple{Symbol},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,is_pure_expression,mtsig,Tuple{QuoteNode},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,is_pure_expression,mtsig,Tuple{Number},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,is_pure_expression,mtsig,Tuple{String},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,is_pure_expression,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,binding_from,mtsig,"Tuple{Expr, Module}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,binding_from,mtsig,"Tuple{Symbol, Module}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,binding_from,mtsig,"Tuple{GlobalRef, Module}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,binding_from,mtsig,"Tuple{Any, Module}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,doc_fetcher,mtsig,"Tuple{Any, Module}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,transform_bond_value,mtsig,"Tuple{Symbol, Any}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,possible_bond_values,mtsig,"Tuple{Symbol, Bool}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,make_distributed_serializable,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,make_distributed_serializable,mtsig,"Tuple{Union{AbstractVector, AbstractSet, Base.Generator}}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,make_distributed_serializable,mtsig,"Tuple{Union{Vector, Set, OrdinalRange}}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,Bond,mtsig,"Tuple{Any, Symbol}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,create_bond,mtsig,"Tuple{Any, Symbol}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,Base.show,mtsig,"Tuple{IO, MIME""text/html"", Bond}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,<NA-name>,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,<NA-name>,mtsig,"Tuple{Vararg{Any}, Vararg{Any}}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,_publish,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,_publish,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,Base.show,mtsig,"Tuple{IO, MIME""text/javascript"", PublishedToJavascript}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,Base.show,mtsig,"Tuple{IO, MIME""text/plain"", PublishedToJavascript}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,Base.show,mtsig,"Tuple{IO, PublishedToJavascript}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,publish_to_js,mtsig,Tuple{Vararg{Any}},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,assertpackable,mtsig,Tuple{Packable},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,assertpackable,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,assertpackable,mtsig,Tuple{Vector{<:Packable}},false,false,1,true,true,true,true
+src/runner/PlutoRunner.jl,assertpackable,mtsig,"Tuple{Dict{<:Packable, <:Packable}}",false,false,2,true,true,true,true
+src/runner/PlutoRunner.jl,assertpackable,mtsig,Tuple{Vector},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,assertpackable,mtsig,Tuple{Dict},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,assertpackable,mtsig,Tuple{Tuple},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,assertpackable,mtsig,Tuple{NamedTuple},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,Base.show,mtsig,"Tuple{IO, MIME""text/html"", EmbeddableDisplay}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,embed_display,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,format_output_default,mtsig,"Tuple{MACROCALL, MACROCALL}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,tree_data,mtsig,"Tuple{MACROCALL, Context}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,pluto_showable,mtsig,"Tuple{MIME""application/vnd.pluto.divelement+object"", DivElement}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,Base.show,mtsig,"Tuple{IO, MIME""text/html"", DivElement}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,Logging.shouldlog,mtsig,"Tuple{PlutoLogger, Any, Any, Vararg{Any}}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,Logging.min_enabled_level,mtsig,Tuple{PlutoLogger},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,Logging.catch_exceptions,mtsig,Tuple{PlutoLogger},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,Logging.handle_message,mtsig,"Tuple{PlutoLogger, Any, Any, Any, Any, Any, Any, Any, Vararg{Any}}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,format_log_value,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,format_log_value,mtsig,"Tuple{Tuple{<:Exception, Vector{<:Any}}}",false,false,2,true,true,true,true
+src/runner/PlutoRunner.jl,with_io_to_logs,mtsig,"Tuple{Function, Bool, Logging.LogLevel}",false,false,0,false,true,true,true
+src/runner/PlutoRunner.jl,setup_plutologger,mtsig,"Tuple{UUID, Channel{Any}, Bool}",false,false,0,false,true,true,true
+src/webserver/Dynamic.jl,require_notebook,mtsig,Tuple{ClientRequest},false,false,0,false,true,true,true
+src/webserver/Dynamic.jl,notebook_to_js,mtsig,Tuple{Notebook},false,false,0,false,true,true,true
+src/webserver/Dynamic.jl,send_notebook_changes!,mtsig,"Tuple{ClientRequest, Any}",false,false,0,false,true,true,true
+src/webserver/Dynamic.jl,deep_enough_copy,mtsig,"(Tuple{Dict{A, B}} where B) where A",false,false,2,true,true,true,true
+src/webserver/Dynamic.jl,deep_enough_copy,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/webserver/Dynamic.jl,Base.push!,mtsig,Tuple{Set{Changed}},false,false,0,false,true,true,true
+src/webserver/Dynamic.jl,<NA-name>,mtsig,"Tuple{ClientRequest, Firebasey.ReplacePatch}",false,false,0,false,true,true,true
+src/webserver/Dynamic.jl,<NA-name>,mtsig,"Tuple{ClientRequest, Firebasey.ReplacePatch}",false,false,0,false,true,true,true
+src/webserver/Dynamic.jl,<NA-name>,mtsig,Tuple{Vararg{Any}},false,false,0,false,true,true,true
+src/webserver/Dynamic.jl,<NA-name>,mtsig,"Tuple{Any, Vararg{Any}, ClientRequest, Firebasey.JSONPatch}",false,false,0,false,true,true,true
+src/webserver/Dynamic.jl,<NA-name>,mtsig,"Tuple{ClientRequest, Firebasey.ReplacePatch}",false,false,0,false,true,true,true
+src/webserver/Dynamic.jl,<NA-name>,mtsig,"Tuple{Any, ClientRequest, Firebasey.JSONPatch}",false,false,0,false,true,true,true
+src/webserver/Dynamic.jl,<NA-name>,mtsig,"Tuple{Any, ClientRequest, Firebasey.JSONPatch}",false,false,0,false,true,true,true
+src/webserver/Dynamic.jl,response_update_notebook,mtsig,Tuple{ClientRequest},false,false,0,false,true,true,true
+src/webserver/Dynamic.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/webserver/Dynamic.jl,trigger_resolver,mtsig,"Tuple{Any, Any, Any}",false,false,0,false,true,true,true
+src/webserver/Dynamic.jl,trigger_resolver,mtsig,"Tuple{Dict, Any, Any}",false,false,0,false,true,true,true
+src/webserver/Dynamic.jl,response_connect,mtsig,Tuple{ClientRequest},false,false,0,false,true,true,true
+src/webserver/Dynamic.jl,response_ping,mtsig,Tuple{ClientRequest},false,false,0,false,true,true,true
+src/webserver/Dynamic.jl,response_reset_shared_state,mtsig,Tuple{ClientRequest},false,false,0,false,true,true,true
+src/webserver/Dynamic.jl,response_run_multiple_cells,mtsig,Tuple{ClientRequest},false,false,0,false,true,true,true
+src/webserver/Dynamic.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/webserver/Dynamic.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/webserver/Dynamic.jl,response_get_all_notebooks,mtsig,Tuple{ClientRequest},false,false,0,false,true,true,true
+src/webserver/Dynamic.jl,response_interrupt_all,mtsig,Tuple{ClientRequest},false,false,0,false,true,true,true
+src/webserver/Dynamic.jl,response_shutdown_notebook,mtsig,Tuple{ClientRequest},false,false,0,false,true,true,true
+src/webserver/Dynamic.jl,without_initiator,mtsig,Tuple{ClientRequest},false,false,0,false,true,true,true
+src/webserver/Dynamic.jl,response_restart_process,mtsig,"Tuple{ClientRequest, Bool}",false,false,0,false,true,true,true
+src/webserver/Dynamic.jl,response_reshow_cell,mtsig,Tuple{ClientRequest},false,false,0,false,true,true,true
+src/webserver/Dynamic.jl,response_nbpkg_available_versions,mtsig,Tuple{ClientRequest},false,false,0,false,true,true,true
+src/webserver/Dynamic.jl,response_package_completions,mtsig,Tuple{ClientRequest},false,false,0,false,true,true,true
+src/webserver/Dynamic.jl,response_pkg_update,mtsig,Tuple{ClientRequest},false,false,0,false,true,true,true
+src/webserver/Firebasey.jl,Base.hash,mtsig,Tuple{AddPatch},false,false,0,false,true,true,true
+src/webserver/Firebasey.jl,Base.hash,mtsig,Tuple{RemovePatch},false,false,0,false,true,true,true
+src/webserver/Firebasey.jl,Base.hash,mtsig,Tuple{ReplacePatch},false,false,0,false,true,true,true
+src/webserver/Firebasey.jl,Base.hash,mtsig,Tuple{CopyPatch},false,false,0,false,true,true,true
+src/webserver/Firebasey.jl,Base.hash,mtsig,Tuple{MovePatch},false,false,0,false,true,true,true
+src/webserver/Firebasey.jl,Base.:(==),mtsig,"Tuple{AddPatch, AddPatch}",false,false,0,false,true,true,true
+src/webserver/Firebasey.jl,Base.:(==),mtsig,"Tuple{RemovePatch, RemovePatch}",false,false,0,false,true,true,true
+src/webserver/Firebasey.jl,Base.:(==),mtsig,"Tuple{ReplacePatch, ReplacePatch}",false,false,0,false,true,true,true
+src/webserver/Firebasey.jl,Base.:(==),mtsig,"Tuple{CopyPatch, CopyPatch}",false,false,0,false,true,true,true
+src/webserver/Firebasey.jl,Base.:(==),mtsig,"Tuple{MovePatch, MovePatch}",false,false,0,false,true,true,true
+src/webserver/Firebasey.jl,Base.convert,mtsig,"Tuple{Type{Dict}, AddPatch}",false,false,0,false,true,true,true
+src/webserver/Firebasey.jl,Base.convert,mtsig,"Tuple{Type{Dict}, RemovePatch}",false,false,0,false,true,true,true
+src/webserver/Firebasey.jl,Base.convert,mtsig,"Tuple{Type{<:Dict}, ReplacePatch}",false,false,1,true,true,true,true
+src/webserver/Firebasey.jl,Base.convert,mtsig,"Tuple{Type{JSONPatch}, Dict}",false,false,0,false,true,true,true
+src/webserver/Firebasey.jl,wrappath,mtsig,"Tuple{PatchPath, Vector{JSONPatch}}",false,false,0,false,true,true,true
+src/webserver/Firebasey.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/webserver/Firebasey.jl,wrappath,mtsig,"Tuple{Any, AddPatch}",false,false,0,false,true,true,true
+src/webserver/Firebasey.jl,wrappath,mtsig,"Tuple{Any, RemovePatch}",false,false,0,false,true,true,true
+src/webserver/Firebasey.jl,wrappath,mtsig,"Tuple{Any, ReplacePatch}",false,false,0,false,true,true,true
+src/webserver/Firebasey.jl,wrappath,mtsig,"Tuple{Any, CopyPatch}",false,false,0,false,true,true,true
+src/webserver/Firebasey.jl,wrappath,mtsig,"Tuple{Any, MovePatch}",false,false,0,false,true,true,true
+src/webserver/Firebasey.jl,diff,mtsig,"Tuple{T, T} where T <: AbstractArray",false,false,1,true,false,true,true
+src/webserver/Firebasey.jl,diff,mtsig,"Tuple{T, T} where T",false,false,1,true,false,true,true
+src/webserver/Firebasey.jl,diff,mtsig,"Tuple{Missing, Missing}",false,false,0,false,true,true,true
+src/webserver/Firebasey.jl,diff,mtsig,"Tuple{Deep{T}, Deep{T}} where T",false,false,1,true,false,false,true
+src/webserver/Firebasey.jl,diff,mtsig,"Tuple{AbstractDict, AbstractDict}",false,false,0,false,true,true,true
+src/webserver/Firebasey.jl,diff,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/webserver/Firebasey.jl,diff,mtsig,"Tuple{Nothing, Any}",false,false,0,false,true,true,true
+src/webserver/Firebasey.jl,diff,mtsig,"Tuple{Any, Nothing}",false,false,0,false,true,true,true
+src/webserver/Firebasey.jl,diff,mtsig,"Tuple{Nothing, Nothing}",false,false,0,false,true,true,true
+src/webserver/Firebasey.jl,deep_diff,mtsig,"Tuple{Cell, Cell}",false,false,0,false,true,true,true
+src/webserver/Firebasey.jl,direct_diff,mtsig,"Tuple{Cell, Cell}",false,false,0,false,true,true,true
+src/webserver/Firebasey.jl,force_convert_key,mtsig,"Tuple{Dict{T, <:Any}, T} where T",false,false,2,true,false,false,true
+src/webserver/Firebasey.jl,force_convert_key,mtsig,"Tuple{Dict{T, <:Any}, Any} where T",false,false,2,true,true,true,true
+src/webserver/Firebasey.jl,getpath,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/webserver/Firebasey.jl,applypatch!,mtsig,"Tuple{Any, Array{JSONPatch}}",false,false,0,false,true,true,true
+src/webserver/Firebasey.jl,applypatch!,mtsig,"Tuple{Any, AddPatch}",false,false,0,false,true,true,true
+src/webserver/Firebasey.jl,applypatch!,mtsig,"Tuple{Any, ReplacePatch}",false,false,0,false,true,true,true
+src/webserver/Firebasey.jl,applypatch!,mtsig,"Tuple{Any, RemovePatch}",false,false,0,false,true,true,true
+src/webserver/Firebasey.jl,is_inside_pluto,mtsig,Tuple{Module},false,false,0,false,true,true,true
+src/webserver/Firebasey.jl,fairly_equal,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/webserver/Firebasey.jl,prettytime,mtsig,Tuple{Number},false,false,0,false,true,true,true
+src/webserver/Firebasey.jl,Base.show,mtsig,"Tuple{IO, MIME""text/html"", Tracked}",false,false,0,false,true,true,true
+src/webserver/FirebaseyUtils.jl,Base.getindex,mtsig,"Tuple{ImmutableMarker, String}",false,false,0,false,true,true,true
+src/webserver/FirebaseyUtils.jl,Base.keys,mtsig,Tuple{ImmutableMarker{T}} where T,false,false,1,true,true,true,true
+src/webserver/FirebaseyUtils.jl,Base.length,mtsig,Tuple{ImmutableMarker},false,false,0,false,true,true,true
+src/webserver/FirebaseyUtils.jl,Base.iterate,mtsig,Tuple{ImmutableMarker},false,false,0,false,true,true,true
+src/webserver/FirebaseyUtils.jl,Base.iterate,mtsig,"Tuple{ImmutableMarker{T}, Any} where T",false,false,1,true,true,true,true
+src/webserver/FirebaseyUtils.jl,AppendonlyMarker,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/webserver/FirebaseyUtils.jl,Base.size,mtsig,Tuple{AppendonlyMarker},false,false,0,false,true,true,true
+src/webserver/FirebaseyUtils.jl,Base.getindex,mtsig,"Tuple{AppendonlyMarker, Int}",false,false,0,false,true,true,true
+src/webserver/FirebaseyUtils.jl,Base.iterate,mtsig,"Tuple{AppendonlyMarker, Vararg{Any}}",false,false,0,false,true,true,true
+src/webserver/FirebaseyUtils.jl,is_inside_pluto,mtsig,Tuple{Module},false,false,0,false,true,true,true
+src/webserver/FirebaseyUtils.jl,Firebasey.diff,mtsig,"Tuple{AppendonlyMarker, AppendonlyMarker}",false,false,0,false,true,true,true
+src/webserver/FirebaseyUtils.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/webserver/FirebaseyUtils.jl,Firebasey.diff,mtsig,"Tuple{ImmutableMarker, ImmutableMarker}",false,false,0,false,true,true,true
+src/webserver/MsgPack.jl,MsgPack.msgpack_type,mtsig,Tuple{Type{<:MIME}},false,false,1,true,true,true,true
+src/webserver/MsgPack.jl,MsgPack.msgpack_type,mtsig,Tuple{Type{UUID}},false,false,0,false,true,true,true
+src/webserver/MsgPack.jl,MsgPack.msgpack_type,mtsig,Tuple{Type{VersionNumber}},false,false,0,false,true,true,true
+src/webserver/MsgPack.jl,MsgPack.msgpack_type,mtsig,Tuple{Type{Pkg.Types.VersionRange}},false,false,0,false,true,true,true
+src/webserver/MsgPack.jl,MsgPack.to_msgpack,mtsig,"Tuple{MsgPack.StringType, MIME}",false,false,0,false,true,true,true
+src/webserver/MsgPack.jl,MsgPack.to_msgpack,mtsig,"Tuple{MsgPack.StringType, UUID}",false,false,0,false,true,true,true
+src/webserver/MsgPack.jl,MsgPack.to_msgpack,mtsig,"Tuple{MsgPack.StringType, VersionNumber}",false,false,0,false,true,true,true
+src/webserver/MsgPack.jl,MsgPack.to_msgpack,mtsig,"Tuple{MsgPack.StringType, Pkg.Types.VersionRange}",false,false,0,false,true,true,true
+src/webserver/MsgPack.jl,MsgPack.msgpack_type,mtsig,Tuple{Type{Dates.DateTime}},false,false,0,false,true,true,true
+src/webserver/MsgPack.jl,MsgPack.to_msgpack,mtsig,"Tuple{MsgPack.ExtensionType, Dates.DateTime}",false,false,0,false,true,true,true
+src/webserver/MsgPack.jl,MsgPack.msgpack_type,mtsig,Tuple{Type{Configuration.Options}},false,false,0,false,true,true,true
+src/webserver/MsgPack.jl,MsgPack.msgpack_type,mtsig,Tuple{Type{Configuration.EvaluationOptions}},false,false,0,false,true,true,true
+src/webserver/MsgPack.jl,MsgPack.msgpack_type,mtsig,Tuple{Type{Configuration.CompilerOptions}},false,false,0,false,true,true,true
+src/webserver/MsgPack.jl,MsgPack.msgpack_type,mtsig,Tuple{Type{Configuration.ServerOptions}},false,false,0,false,true,true,true
+src/webserver/MsgPack.jl,MsgPack.msgpack_type,mtsig,Tuple{Type{Configuration.SecurityOptions}},false,false,0,false,true,true,true
+src/webserver/MsgPack.jl,MsgPack.msgpack_type,mtsig,Tuple{Type{Function}},false,false,0,false,true,true,true
+src/webserver/MsgPack.jl,MsgPack.to_msgpack,mtsig,"Tuple{MsgPack.NilType, Function}",false,false,0,false,true,true,true
+src/webserver/MsgPack.jl,MsgPack.msgpack_type,mtsig,Tuple{Type{Vector{T}}} where T <: JSTypedInt,false,false,1,true,true,true,true
+src/webserver/MsgPack.jl,MsgPack.to_msgpack,mtsig,"Tuple{MsgPack.ExtensionType, Vector{T}} where T <: JSTypedInt",false,false,1,true,true,true,true
+src/webserver/MsgPack.jl,MsgPack.msgpack_type,mtsig,Tuple{Type{Vector{Union{}}}},false,false,0,false,true,true,true
+src/webserver/MsgPack.jl,decode_extension_and_addbits,mtsig,Tuple{MsgPack.Extension},false,false,0,false,true,true,true
+src/webserver/MsgPack.jl,decode_extension_and_addbits,mtsig,Tuple{Dict},false,false,0,false,true,true,true
+src/webserver/MsgPack.jl,decode_extension_and_addbits,mtsig,Tuple{Array},false,false,0,false,true,true,true
+src/webserver/MsgPack.jl,decode_extension_and_addbits,mtsig,"Tuple{T} where T <: Union{Signed, Unsigned}",false,false,1,true,true,true,true
+src/webserver/MsgPack.jl,decode_extension_and_addbits,mtsig,Tuple{T} where T <: AbstractFloat,false,false,1,true,true,true,true
+src/webserver/MsgPack.jl,decode_extension_and_addbits,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/webserver/MsgPack.jl,pack,mtsig,Tuple{Vararg{Any}},false,false,0,false,true,true,true
+src/webserver/MsgPack.jl,unpack,mtsig,Tuple{Vararg{Any}},false,false,0,false,true,true,true
+src/webserver/PutUpdates.jl,serialize_message_to_stream,mtsig,"Tuple{IO, UpdateMessage}",false,false,0,false,true,true,true
+src/webserver/PutUpdates.jl,serialize_message,mtsig,Tuple{UpdateMessage},false,false,0,false,true,true,true
+src/webserver/PutUpdates.jl,putnotebookupdates!,mtsig,"Tuple{ServerSession, Notebook, Vararg{UpdateMessage}, Bool}",false,false,0,false,true,true,true
+src/webserver/PutUpdates.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/webserver/PutUpdates.jl,putplutoupdates!,mtsig,"Tuple{ServerSession, Vararg{UpdateMessage}, Bool}",false,false,0,false,true,true,true
+src/webserver/PutUpdates.jl,putclientupdates!,mtsig,"Tuple{ClientSession, Vararg{UpdateMessage}}",false,false,0,false,true,true,true
+src/webserver/PutUpdates.jl,putclientupdates!,mtsig,"Tuple{ServerSession, Initiator, Vararg{UpdateMessage}}",false,false,0,false,true,true,true
+src/webserver/PutUpdates.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/webserver/PutUpdates.jl,flushclient,mtsig,Tuple{ClientSession},false,false,0,false,true,true,true
+src/webserver/PutUpdates.jl,flushallclients,mtsig,"Tuple{ServerSession, Union{Set{ClientSession}, AbstractVector{ClientSession}}}",false,false,0,false,true,true,true
+src/webserver/PutUpdates.jl,flushallclients,mtsig,Tuple{ServerSession},false,false,0,false,true,true,true
+src/webserver/REPLTools.jl,format_path_completion,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/webserver/REPLTools.jl,response_completepath,mtsig,Tuple{ClientRequest},false,false,0,false,true,true,true
+src/webserver/REPLTools.jl,isenough,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/webserver/REPLTools.jl,ishidden,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/webserver/REPLTools.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/webserver/REPLTools.jl,package_name_to_complete,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/webserver/REPLTools.jl,response_complete,mtsig,Tuple{ClientRequest},false,false,0,false,true,true,true
+src/webserver/REPLTools.jl,response_docs,mtsig,Tuple{ClientRequest},false,false,0,false,true,true,true
+src/webserver/Session.jl,ClientSession,mtsig,"Tuple{Symbol, Any}",false,false,0,false,true,true,true
+src/webserver/Session.jl,Base.getproperty,mtsig,"Tuple{Initiator, Symbol}",false,false,0,false,true,true,true
+src/webserver/Session.jl,save_notebook,mtsig,"Tuple{ServerSession, Notebook}",false,false,0,false,true,true,true
+src/webserver/Session.jl,UpdateMessage,mtsig,"Tuple{Symbol, Any}",false,false,0,false,true,true,true
+src/webserver/Session.jl,UpdateMessage,mtsig,"Tuple{Symbol, Any, Notebook}",false,false,0,false,true,true,true
+src/webserver/Session.jl,clientupdate_notebook_list,mtsig,"Tuple{Any, Union{Initiator, Nothing}}",false,false,0,false,true,true,true
+src/webserver/SessionActions.jl,Base.showerror,mtsig,"Tuple{IO, UserError}",false,false,0,false,true,true,true
+src/webserver/SessionActions.jl,open_url,mtsig,"Tuple{ServerSession, AbstractString, Vararg{Any}}",false,false,0,false,true,true,true
+src/webserver/SessionActions.jl,open,mtsig,"Tuple{ServerSession, AbstractString, Any, Any, Any, UUID}",false,false,0,false,true,true,true
+src/webserver/SessionActions.jl,add,mtsig,"Tuple{ServerSession, Notebook, Bool}",false,false,0,false,true,true,true
+src/webserver/SessionActions.jl,update_from_file_throttled,mtsig,Tuple{},false,false,0,false,true,true,true
+src/webserver/SessionActions.jl,in_session,mtsig,Tuple{},false,false,0,false,true,true,true
+src/webserver/SessionActions.jl,save_upload,mtsig,"Tuple{Union{String, Vector{UInt8}}, Union{Nothing, AbstractString}}",false,false,0,false,true,true,true
+src/webserver/SessionActions.jl,new,mtsig,"Tuple{ServerSession, Any, UUID}",false,false,0,false,true,true,true
+src/webserver/SessionActions.jl,shutdown,mtsig,"Tuple{ServerSession, Notebook, Bool, Bool, Bool}",false,false,0,false,true,true,true
+src/webserver/Static.jl,is_pluto_dev,mtsig,Tuple{},false,false,0,false,true,true,true
+src/webserver/Static.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/webserver/Static.jl,frontend_directory,mtsig,Tuple{Bool},false,false,0,false,true,true,true
+src/webserver/Static.jl,should_cache,mtsig,Tuple{String},false,false,0,false,true,true,true
+src/webserver/Static.jl,asset_response,mtsig,"Tuple{Any, Bool}",false,false,0,false,true,true,true
+src/webserver/Static.jl,error_response,mtsig,"Tuple{Integer, Any, Any, Any}",false,false,0,false,true,true,true
+src/webserver/Static.jl,notebook_response,mtsig,"Tuple{Any, Any, Any}",false,false,0,false,true,true,true
+src/webserver/Static.jl,is_authenticated,mtsig,"Tuple{ServerSession, HTTP.Request}",false,false,0,false,true,true,true
+src/webserver/Static.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/webserver/Static.jl,http_router_for,mtsig,Tuple{ServerSession},false,false,0,false,true,true,true
+src/webserver/Static.jl,add_set_secret_cookie!,mtsig,Tuple{HTTP.Response},false,false,0,false,true,true,true
+src/webserver/Static.jl,with_authentication,mtsig,"Tuple{Function, Bool}",false,false,0,false,true,true,true
+src/webserver/Static.jl,<NA-name>,mtsig,Tuple{HTTP.Request},false,false,0,false,true,true,true
+src/webserver/Static.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/webserver/Static.jl,create_serve_onefile,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/webserver/Static.jl,<NA-name>,mtsig,Tuple{HTTP.Request},false,false,0,false,true,true,true
+src/webserver/Static.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/webserver/Static.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/webserver/Static.jl,try_launch_notebook_response,mtsig,"Tuple{Function, AbstractString, Any, Any, Any, Any, Vararg{Any}}",false,false,0,false,true,true,true
+src/webserver/Static.jl,<NA-name>,mtsig,Tuple{HTTP.Request},false,false,0,false,true,true,true
+src/webserver/Static.jl,<NA-name>,mtsig,Tuple{HTTP.Request},false,false,0,false,true,true,true
+src/webserver/Static.jl,<NA-name>,mtsig,Tuple{HTTP.Request},false,false,0,false,true,true,true
+src/webserver/Static.jl,notebook_from_uri,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/webserver/Static.jl,<NA-name>,mtsig,Tuple{HTTP.Request},false,false,0,false,true,true,true
+src/webserver/Static.jl,<NA-name>,mtsig,Tuple{HTTP.Request},false,false,0,false,true,true,true
+src/webserver/Static.jl,<NA-name>,mtsig,Tuple{HTTP.Request},false,false,0,false,true,true,true
+src/webserver/Static.jl,<NA-name>,mtsig,Tuple{HTTP.Request},false,false,0,false,true,true,true
+src/webserver/Static.jl,serve_asset,mtsig,Tuple{HTTP.Request},false,false,0,false,true,true,true
+src/webserver/WebServer.jl,open_in_default_browser,mtsig,Tuple{AbstractString},false,false,0,false,true,true,true
+src/webserver/WebServer.jl,isurl,mtsig,Tuple{String},false,false,0,false,true,true,true
+src/webserver/WebServer.jl,swallow_exception,mtsig,"Tuple{Any, Type{T}} where T",false,false,1,true,true,true,true
+src/webserver/WebServer.jl,run,mtsig,Tuple{Vararg{Any}},false,false,0,false,true,true,true
+src/webserver/WebServer.jl,run,mtsig,Tuple{Configuration.Options},false,false,0,false,true,true,true
+src/webserver/WebServer.jl,run,mtsig,"Tuple{String, Union{Nothing, Integer}, Vararg{Any}}",false,false,0,false,true,true,true
+src/webserver/WebServer.jl,run,mtsig,"Tuple{Integer, Vararg{Any}}",false,false,0,false,true,true,true
+src/webserver/WebServer.jl,open_notebook!,mtsig,"Tuple{ServerSession, Nothing}",false,false,0,false,true,true,true
+src/webserver/WebServer.jl,open_notebook!,mtsig,"Tuple{ServerSession, AbstractString}",false,false,0,false,true,true,true
+src/webserver/WebServer.jl,open_notebook!,mtsig,"Tuple{ServerSession, AbstractVector{<:AbstractString}}",false,false,1,true,true,true,true
+src/webserver/WebServer.jl,run,mtsig,Tuple{ServerSession},false,false,0,false,true,true,true
+src/webserver/WebServer.jl,port_serversocket,mtsig,"Tuple{Sockets.IPAddr, Any}",false,false,0,false,true,true,true
+src/webserver/WebServer.jl,run,mtsig,"Tuple{ServerSession, Any}",false,false,0,false,true,true,true
+src/webserver/WebServer.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+src/webserver/WebServer.jl,<NA-name>,mtsig,Tuple{HTTP.Stream},false,false,0,false,true,true,true
+src/webserver/WebServer.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/webserver/WebServer.jl,server_running,mtsig,Tuple{},false,false,0,false,true,true,true
+src/webserver/WebServer.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+src/webserver/WebServer.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+src/webserver/WebServer.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+src/webserver/WebServer.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+src/webserver/WebServer.jl,get_favorite_notebook,mtsig,Tuple{Nothing},false,false,0,false,true,true,true
+src/webserver/WebServer.jl,get_favorite_notebook,mtsig,Tuple{String},false,false,0,false,true,true,true
+src/webserver/WebServer.jl,get_favorite_notebook,mtsig,Tuple{AbstractVector},false,false,0,false,true,true,true
+src/webserver/WebServer.jl,pretty_address,mtsig,"Tuple{ServerSession, Any, Any}",false,false,0,false,true,true,true
+src/webserver/WebServer.jl,process_ws_message,mtsig,"Tuple{ServerSession, Dict, IO}",false,false,0,false,true,true,true
+src/webserver/WebSocketFix.jl,readframe,mtsig,Tuple{WebSockets.WebSocket},false,false,0,false,true,true,true
+src/webserver/WebSocketFix.jl,readmessage,mtsig,Tuple{WebSockets.WebSocket},false,false,0,false,true,true,true
+src/webserver/data_url.jl,is_inside_pluto,mtsig,Tuple{Module},false,false,0,false,true,true,true
+src/webserver/data_url.jl,download_cool,mtsig,"Tuple{AbstractString, AbstractString}",false,false,0,false,true,true,true
+src/webserver/data_url.jl,download_cool_string,mtsig,Tuple{Vararg{Any}},false,false,0,false,true,true,true
+src/webserver/data_url.jl,download_cool_data,mtsig,Tuple{Vararg{Any}},false,false,0,false,true,true,true
+test/Bonds.jl,set_bond_value,mtsig,"Tuple{Any, Any, Any}",false,false,0,false,true,true,true
+test/Bonds.jl,set_bond_values!,mtsig,"Tuple{Notebook, Dict, Any}",false,false,0,false,true,true,true
+test/Configuration.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+test/Configuration.jl,local_url,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/Configuration.jl,withsecret,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/Configuration.jl,requeststatus,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+test/Configuration.jl,tempcopy,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/Configuration.jl,local_url,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/Configuration.jl,server_running,mtsig,Tuple{},false,false,0,false,true,true,true
+test/Configuration.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+test/Configuration.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+test/Configuration.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+test/DependencyCache.jl,id,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/DependencyCache.jl,order_of,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/Dynamic.jl,get_unique_short_id,mtsig,Tuple{},false,false,0,false,true,true,true
+test/Dynamic.jl,stringify_keys,mtsig,Tuple{Dict},false,false,0,false,true,true,true
+test/Dynamic.jl,stringify_keys,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/Dynamic.jl,await_with_timeout,mtsig,"Tuple{Function, Real, Real}",false,false,0,false,true,true,true
+test/Dynamic.jl,send,mtsig,"Tuple{Any, Any, Any}",false,false,0,false,true,true,true
+test/Dynamic.jl,send_new_state,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/Dynamic.jl,wait_for_updates,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/Dynamic.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+test/Dynamic.jl,<NA-name>,mtsig,Tuple{Pluto.ClientRequest},false,false,0,false,true,true,true
+test/Dynamic.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+test/Dynamic.jl,Docs.getdoc,mtsig,Tuple{MyType},false,false,0,false,true,true,true
+test/Events.jl,test_listener,mtsig,Tuple{PlutoEvent},false,false,0,false,true,true,true
+test/ExpressionExplorer.jl,g,mtsig,Tuple{},false,false,0,false,true,true,true
+test/ExpressionExplorer.jl,f,mtsig,Tuple{},false,false,0,false,true,true,true
+test/ExpressionExplorer.jl,Base.sqrt,mtsig,Tuple{String},false,false,0,false,true,true,true
+test/ExpressionExplorer.jl,Base.sqrt,mtsig,Tuple{String},false,false,0,false,true,true,true
+test/ExpressionExplorer.jl,f,mtsig,Tuple{},false,false,0,false,true,true,true
+test/ExpressionExplorer.jl,g,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/ExpressionExplorer.jl,f,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/ExpressionExplorer.jl,a,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/ExpressionExplorer.jl,f,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/ExpressionExplorer.jl,k,mtsig,Tuple{},false,false,0,false,true,true,true
+test/ExpressionExplorer.jl,g,mtsig,Tuple{},false,false,0,false,true,true,true
+test/ExpressionExplorer.jl,f,mtsig,Tuple{},false,false,0,false,true,true,true
+test/ExpressionExplorer.jl,g,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/ExpressionExplorer.jl,g,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/ExpressionExplorer.jl,f,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/ExpressionExplorer.jl,g,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/ExpressionExplorer.jl,f,mtsig,"Tuple{Any, Any, Any, Any}",false,false,0,false,true,true,true
+test/ExpressionExplorer.jl,f,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/ExpressionExplorer.jl,f,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/ExpressionExplorer.jl,f,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/ExpressionExplorer.jl,f,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+test/ExpressionExplorer.jl,f,mtsig,"Tuple{Any, Vararg{Any}, Vararg{Any}}",false,false,0,false,true,true,true
+test/ExpressionExplorer.jl,f,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+test/ExpressionExplorer.jl,A::MyType,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+test/ExpressionExplorer.jl,f,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+test/ExpressionExplorer.jl,f,mtsig,Tuple{},false,false,0,false,true,true,true
+test/ExpressionExplorer.jl,f,mtsig,Tuple{},false,false,0,false,true,true,true
+test/ExpressionExplorer.jl,f,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/ExpressionExplorer.jl,f,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+test/ExpressionExplorer.jl,Base.show,mtsig,Tuple{},false,false,0,false,true,true,true
+test/ExpressionExplorer.jl,<NA-name>,mtsig,Tuple{TUPLE_ARG},false,false,0,false,true,true,true
+test/ExpressionExplorer.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/ExpressionExplorer.jl,<NA-name>,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+test/ExpressionExplorer.jl,<NA-name>,mtsig,"Tuple{TUPLE_ARG, TUPLE_ARG}",false,false,0,false,true,true,true
+test/ExpressionExplorer.jl,<NA-name>,mtsig,"Tuple{Any, Vararg{Any}, Vararg{Any}}",false,false,0,false,true,true,true
+test/ExpressionExplorer.jl,<NA-name>,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+test/ExpressionExplorer.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+test/ExpressionExplorer.jl,g,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/ExpressionExplorer.jl,g,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/ExpressionExplorer.jl,f,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/ExpressionExplorer.jl,f,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+test/ExpressionExplorer.jl,f,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/ExpressionExplorer.jl,f,mtsig,Tuple{},false,false,0,false,true,true,true
+test/ExpressionExplorer.jl,hello,mtsig,Tuple{},false,false,0,false,true,true,true
+test/ExpressionExplorer.jl,a,mtsig,Tuple{},false,false,0,false,true,true,true
+test/ExpressionExplorer.jl,b,mtsig,Tuple{},false,false,0,false,true,true,true
+test/ExpressionExplorer.jl,f,mtsig,Tuple{},false,false,0,false,true,true,true
+test/ExpressionExplorer.jl,g,mtsig,Tuple{},false,false,0,false,true,true,true
+test/ExpressionExplorer.jl,f,mtsig,Tuple{Int64},false,false,0,false,true,true,true
+test/ExpressionExplorer.jl,f,mtsig,Tuple{A},false,false,0,false,true,true,true
+test/ExpressionExplorer.jl,f,mtsig,Tuple{A},false,false,0,false,true,true,true
+test/ExpressionExplorer.jl,f,mtsig,"Tuple{T, Any} where T",false,false,1,true,true,true,true
+test/ExpressionExplorer.jl,f,mtsig,"(Tuple{T, Any} where S <: R) where T",false,false,2,true,false,true,true
+test/ExpressionExplorer.jl,f,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/ExpressionExplorer.jl,f,mtsig,"Tuple{MIME""text/html""}",false,false,0,false,true,true,true
+test/ExpressionExplorer.jl,a,mtsig,Tuple{AbstractArray{T}} where T,false,false,1,true,true,true,true
+test/ExpressionExplorer.jl,a,mtsig,"(Tuple{AbstractArray{T, R}} where S) where T",false,false,2,true,false,true,true
+test/ExpressionExplorer.jl,f,mtsig,Tuple{A},false,false,0,false,true,true,true
+test/ExpressionExplorer.jl,f,mtsig,"Tuple{A, B}",false,false,0,false,true,true,true
+test/ExpressionExplorer.jl,f,mtsig,"Tuple{A, B, Vararg{C}}",false,false,0,false,true,true,true
+test/ExpressionExplorer.jl,obj::MyType,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+test/ExpressionExplorer.jl,obj::MyType,mtsig,Tuple{},false,false,0,false,true,true,true
+test/ExpressionExplorer.jl,obj::MyType,mtsig,"Tuple{Any, Vararg{Any}, Vararg{Any}}",false,false,0,false,true,true,true
+test/ExpressionExplorer.jl,obj::MyType,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+test/ExpressionExplorer.jl,obj::MyType,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/ExpressionExplorer.jl,obj::MyType,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/ExpressionExplorer.jl,::MyType,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+test/ExpressionExplorer.jl,obj::typeof(Int64[]),mtsig,"Tuple{Any, Float64}",false,false,0,false,true,true,true
+test/ExpressionExplorer.jl,::Get(MyType),mtsig,"Tuple{Any, OtherType}",false,false,0,false,true,true,true
+test/ExpressionExplorer.jl,f,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/ExpressionExplorer.jl,f,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/ExpressionExplorer.jl,f,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/Logging.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+test/Logging.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/Logging.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+test/Logging.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/Logging.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/Logging.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+test/Logging.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/Logging.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/Logging.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/MacroAnalysis.jl,cell,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/MacroAnalysis.jl,cell,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/MacroAnalysis.jl,cell,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/MacroAnalysis.jl,cell,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/MacroAnalysis.jl,cell,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/MacroAnalysis.jl,references,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/MacroAnalysis.jl,cell,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/MacroAnalysis.jl,cell,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/MacroAnalysis.jl,f,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/MacroAnalysis.jl,get_expr_types,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/MacroAnalysis.jl,get_expr_types,mtsig,Tuple{Expr},false,false,0,false,true,true,true
+test/MacroAnalysis.jl,flatten,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+test/MacroAnalysis.jl,flatten,mtsig,"Tuple{AbstractVector, Any}",false,false,0,false,true,true,true
+test/MacroAnalysis.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/MacroAnalysis.jl,cell,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/MacroAnalysis.jl,cell,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/MacroAnalysis.jl,cell,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/MacroAnalysis.jl,cell,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/MacroAnalysis.jl,cell,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/MacroAnalysis.jl,cell,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/MacroAnalysis.jl,cell,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/MacroAnalysis.jl,cell,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/MacroAnalysis.jl,cell,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/MacroAnalysis.jl,cell,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/MacroAnalysis.jl,cell,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/MacroAnalysis.jl,cell,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/MacroAnalysis.jl,cell,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/MacroAnalysis.jl,cell,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/MacroAnalysis.jl,cell,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/MacroAnalysis.jl,cell,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/MacroAnalysis.jl,cell,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/MacroAnalysis.jl,cell,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/MethodSignatures.jl,disjoint,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+test/MethodSignatures.jl,mutually_disjoint,mtsig,"Tuple{Any, Vararg{Any}}",false,false,0,false,true,true,true
+test/MethodSignatures.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/MethodSignatures.jl,mutually_disjoint,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/MethodSignatures.jl,methods_can_coexist,mtsig,Tuple{Vararg{Expr}},false,false,0,false,true,true,true
+test/MethodSignatures.jl,f,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+test/MethodSignatures.jl,f,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/MethodSignatures.jl,f,mtsig,Tuple{A},false,false,0,false,true,true,true
+test/MethodSignatures.jl,f,mtsig,Tuple{B},false,false,0,false,true,true,true
+test/MethodSignatures.jl,f,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+test/MethodSignatures.jl,f,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+test/MethodSignatures.jl,f,mtsig,Tuple{e(f{g})},false,false,0,false,true,true,true
+test/MethodSignatures.jl,f,mtsig,Tuple{h where i},false,false,1,true,false,true,true
+test/MethodSignatures.jl,f,mtsig,"Tuple{Tuple{X, T} where T}",false,false,1,true,true,true,true
+test/MethodSignatures.jl,f,mtsig,"Tuple{Tuple{X, T}}",false,false,0,false,true,true,true
+test/MethodSignatures.jl,f,mtsig,Tuple{A} where A,false,false,1,true,true,true,true
+test/MethodSignatures.jl,f,mtsig,Tuple{A},false,false,0,false,true,true,true
+test/MethodSignatures.jl,f,mtsig,"Tuple{String, Any}",false,false,0,false,true,true,true
+test/MethodSignatures.jl,f,mtsig,"Tuple{Any, String}",false,false,0,false,true,true,true
+test/MethodSignatures.jl,f,mtsig,Tuple{A},false,false,0,false,true,true,true
+test/MethodSignatures.jl,f,mtsig,Tuple{B},false,false,0,false,true,true,true
+test/MethodSignatures.jl,f,mtsig,"Tuple{Any, Vararg{Any}}",false,false,0,false,true,true,true
+test/MethodSignatures.jl,f,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/MethodSignatures.jl,f,mtsig,"Tuple{Any, Vararg{Z}}",false,false,0,false,true,true,true
+test/MethodSignatures.jl,f,mtsig,"Tuple{Any, Vararg{X}}",false,false,0,false,true,true,true
+test/MethodSignatures.jl,f,mtsig,Tuple{T} where T,false,false,1,true,true,true,true
+test/MethodSignatures.jl,f,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/MethodSignatures.jl,f,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/MethodSignatures.jl,f,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/MethodSignatures.jl,f,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/MethodSignatures.jl,f,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+test/MethodSignatures.jl,f,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/MethodSignatures.jl,f,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/MethodSignatures.jl,f,mtsig,Tuple{Int},false,false,0,false,true,true,true
+test/MethodSignatures.jl,f,mtsig,Tuple{Int},false,false,0,false,true,true,true
+test/MethodSignatures.jl,f,mtsig,Tuple{String},false,false,0,false,true,true,true
+test/MethodSignatures.jl,f,mtsig,Tuple{String},false,false,0,false,true,true,true
+test/MethodSignatures.jl,f,mtsig,Tuple{Vector},false,false,0,false,true,true,true
+test/MethodSignatures.jl,f,mtsig,Tuple{},false,false,0,false,true,true,true
+test/MethodSignatures.jl,f,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/MoreAnalysis.jl,ind,mtsig,Tuple{Cell},false,false,0,false,true,true,true
+test/MoreAnalysis.jl,cell_indices,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/MoreAnalysis.jl,transform,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/Notebook.jl,basic_notebook,mtsig,Tuple{},false,false,0,false,true,true,true
+test/Notebook.jl,cell_metadata_notebook,mtsig,Tuple{},false,false,0,false,true,true,true
+test/Notebook.jl,notebook_metadata_notebook,mtsig,Tuple{},false,false,0,false,true,true,true
+test/Notebook.jl,shuffled_notebook,mtsig,Tuple{},false,false,0,false,true,true,true
+test/Notebook.jl,shuffled_with_imports_notebook,mtsig,Tuple{},false,false,0,false,true,true,true
+test/Notebook.jl,init_packages!,mtsig,Tuple{Notebook},false,false,0,false,true,true,true
+test/Notebook.jl,bad_code_notebook,mtsig,Tuple{},false,false,0,false,true,true,true
+test/Notebook.jl,bonds_notebook,mtsig,Tuple{},false,false,0,false,true,true,true
+test/Notebook.jl,project_notebook,mtsig,Tuple{},false,false,0,false,true,true,true
+test/React.jl,comesbefore,mtsig,"Tuple{Any, Any, Any}",false,false,0,false,true,true,true
+test/React.jl,cell,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/React.jl,cell,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/React.jl,cell,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/React.jl,benchmark,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/React.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/React.jl,same,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+test/ReloadFromFile.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+test/ReloadFromFile.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+test/ReloadFromFile.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+test/ReloadFromFile.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/ReloadFromFile.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+test/ReloadFromFile.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+test/ReloadFromFile.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+test/ReloadFromFile.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/ReloadFromFile.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+test/RichOutput.jl,roughsize,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/Throttled.jl,f,mtsig,Tuple{},false,false,0,false,true,true,true
+test/cell_disabling.jl,id,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/cell_disabling.jl,get_disabled_cells,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/compiletimes.jl,wait_for_ready,mtsig,Tuple{Pluto.Notebook},false,false,0,false,true,true,true
+test/data structures.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/data structures.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+test/helpers.jl,print_timeroutput,mtsig,Tuple{},false,false,0,false,true,true,true
+test/helpers.jl,Base.show,mtsig,"Tuple{IO, SymbolsState}",false,false,0,false,true,true,true
+test/helpers.jl,testee,mtsig,"Tuple{Any, Any, Any, Any, Any, Any, Bool}",false,false,0,false,true,true,true
+test/helpers.jl,new_name,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/helpers.jl,test_expression_explorer,mtsig,"Tuple{Any, Any, Any, Any, Any, Any}",false,false,0,false,true,true,true
+test/helpers.jl,easy_symstate,mtsig,"Tuple{Any, Any, Any, Any, Any}",false,false,0,false,true,true,true
+test/helpers.jl,array_to_set,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/helpers.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/helpers.jl,<NA-name>,mtsig,Tuple{TUPLE_ARG},false,false,0,false,true,true,true
+test/helpers.jl,setcode!,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+test/helpers.jl,noerror,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+test/helpers.jl,occursinerror,mtsig,"Tuple{Any, Pluto.Cell}",false,false,0,false,true,true,true
+test/helpers.jl,jl_is_runnable,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+test/helpers.jl,nb_is_runnable,mtsig,"Tuple{Pluto.ServerSession, Pluto.Notebook}",false,false,0,false,true,true,true
+test/helpers.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/helpers.jl,sread,mtsig,"Tuple{Function, String, Vararg{Any}}",false,false,0,false,true,true,true
+test/helpers.jl,num_backups_in,mtsig,Tuple{AbstractString},false,false,0,false,true,true,true
+test/helpers.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/helpers.jl,has_embedded_pkgfiles,mtsig,Tuple{AbstractString},false,false,0,false,true,true,true
+test/helpers.jl,has_embedded_pkgfiles,mtsig,Tuple{Pluto.Notebook},false,false,0,false,true,true,true
+test/helpers.jl,verify_no_running_processes,mtsig,Tuple{},false,false,0,false,true,true,true
+test/parallelpaths4.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/parallelpaths4.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/parallelpaths4.jl,Base.show,mtsig,"Tuple{IO, MIME""image/jpg"", Dog}",false,false,0,false,true,true,true
+test/parallelpaths4.jl,f,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/run_notebook.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/webserver.jl,local_url,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/webserver.jl,server_running,mtsig,Tuple{},false,false,0,false,true,true,true
+test/webserver.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+test/webserver.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+test/webserver.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+test/frontend/fixtures/autocomplete_notebook.jl,my_sum1,mtsig,"Tuple{Int, Int}",false,false,0,false,true,true,true
+test/frontend/fixtures/autocomplete_notebook.jl,my_sum2,mtsig,"Tuple{Int, Int}",false,false,0,false,true,true,true
+test/frontend/fixtures/autocomplete_notebook.jl,my_subtract,mtsig,"Tuple{Int, Int}",false,false,0,false,true,true,true
+test/frontend/fixtures/function_sum_notebook.jl,sum,mtsig,"Tuple{Int, Int}",false,false,0,false,true,true,true
+test/packages/Basic.jl,ptoml_contents,mtsig,Tuple{},false,false,0,false,true,true,true
+test/packages/Basic.jl,mtoml_contents,mtsig,Tuple{},false,false,0,false,true,true,true
+test/packages/Basic.jl,nb_contents,mtsig,Tuple{},false,false,0,false,true,true,true
+test/packages/Basic.jl,nb_contents,mtsig,Tuple{},false,false,0,false,true,true,true
+test/packages/Basic.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/packages/Basic.jl,nb_contents,mtsig,Tuple{},false,false,0,false,true,true,true
+test/packages/Basic.jl,nb_contents,mtsig,Tuple{},false,false,0,false,true,true,true
+test/packages/Basic.jl,remember,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/packages/PkgCompat.jl,ptoml_contents,mtsig,Tuple{},false,false,0,false,true,true,true
+test/packages/PkgCompat.jl,mtoml_contents,mtsig,Tuple{},false,false,0,false,true,true,true

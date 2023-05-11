@@ -1,0 +1,1512 @@
+File,Function,Kind,TypeAnnotation,Error,Warning,VarCnt,HasWhere,VarsUsedOnce,UseSiteVariance,RestrictedScope
+src/Gen.jl,load_generated_functions,mtsig,Tuple{Module},false,false,0,false,true,true,true
+src/address.jl,Base.keys,mtsig,Tuple{StaticAddressSchema},false,false,0,false,true,true,true
+src/address.jl,Base.in,mtsig,"Tuple{Any, Selection}",false,false,0,false,true,true,true
+src/address.jl,Base.getindex,mtsig,"Tuple{Selection, Any}",false,false,0,false,true,true,true
+src/address.jl,get_address_schema,mtsig,Tuple{Type{EmptySelection}},false,false,0,false,true,true,true
+src/address.jl,Base.isempty,mtsig,Tuple{EmptySelection},false,false,0,false,true,true,true
+src/address.jl,get_address_schema,mtsig,Tuple{Type{AllSelection}},false,false,0,false,true,true,true
+src/address.jl,Base.isempty,mtsig,Tuple{AllSelection},false,false,0,false,true,true,true
+src/address.jl,Base.in,mtsig,"Tuple{Any, AllSelection}",false,false,0,false,true,true,true
+src/address.jl,Base.getindex,mtsig,"Tuple{AllSelection, Any}",false,false,0,false,true,true,true
+src/address.jl,get_address_schema,mtsig,Tuple{Type{ComplementSelection}},false,false,0,false,true,true,true
+src/address.jl,Base.isempty,mtsig,Tuple{ComplementSelection},false,false,0,false,true,true,true
+src/address.jl,Base.in,mtsig,"Tuple{Any, ComplementSelection}",false,false,0,false,true,true,true
+src/address.jl,Base.getindex,mtsig,"Tuple{ComplementSelection, Any}",false,false,0,false,true,true,true
+src/address.jl,complement,mtsig,Tuple{Selection},false,false,0,false,true,true,true
+src/address.jl,Base.isempty,mtsig,"(Tuple{StaticSelection{T, U}} where U) where T",false,false,2,true,true,true,true
+src/address.jl,get_address_schema,mtsig,"(Tuple{Type{StaticSelection{T, U}}} where U) where T",false,false,2,true,true,true,true
+src/address.jl,get_subselections,mtsig,Tuple{StaticSelection},false,false,0,false,true,true,true
+src/address.jl,static_getindex,mtsig,"Tuple{StaticSelection, Val{A}} where A",false,false,1,true,true,true,true
+src/address.jl,Base.getindex,mtsig,"Tuple{StaticSelection, Symbol}",false,false,0,false,true,true,true
+src/address.jl,Base.getindex,mtsig,"Tuple{StaticSelection, Pair}",false,false,0,false,true,true,true
+src/address.jl,Base.in,mtsig,"(Tuple{Symbol, StaticSelection{T, U}} where U) where T",false,false,2,true,true,true,true
+src/address.jl,Base.in,mtsig,"Tuple{Pair, StaticSelection}",false,false,0,false,true,true,true
+src/address.jl,StaticSelection,mtsig,Tuple{HierarchicalSelection},false,false,0,false,true,true,true
+src/address.jl,Base.isempty,mtsig,Tuple{DynamicSelection},false,false,0,false,true,true,true
+src/address.jl,DynamicSelection,mtsig,Tuple{},false,false,0,false,true,true,true
+src/address.jl,get_address_schema,mtsig,Tuple{Type{DynamicSelection}},false,false,0,false,true,true,true
+src/address.jl,Base.in,mtsig,"Tuple{Any, DynamicSelection}",false,false,0,false,true,true,true
+src/address.jl,Base.in,mtsig,"Tuple{Pair, DynamicSelection}",false,false,0,false,true,true,true
+src/address.jl,Base.getindex,mtsig,"Tuple{DynamicSelection, Any}",false,false,0,false,true,true,true
+src/address.jl,Base.getindex,mtsig,"Tuple{DynamicSelection, Pair}",false,false,0,false,true,true,true
+src/address.jl,Base.push!,mtsig,"Tuple{DynamicSelection, Any}",false,false,0,false,true,true,true
+src/address.jl,Base.push!,mtsig,"Tuple{DynamicSelection, Pair}",false,false,0,false,true,true,true
+src/address.jl,set_subselection!,mtsig,"Tuple{DynamicSelection, Any, Selection}",false,false,0,false,true,true,true
+src/address.jl,set_subselection!,mtsig,"Tuple{DynamicSelection, Pair, Selection}",false,false,0,false,true,true,true
+src/address.jl,get_subselections,mtsig,Tuple{DynamicSelection},false,false,0,false,true,true,true
+src/address.jl,select,mtsig,Tuple{Vararg{Any}},false,false,0,false,true,true,true
+src/address.jl,selectall,mtsig,Tuple{},false,false,0,false,true,true,true
+src/backprop.jl,new_tape,mtsig,Tuple{},false,false,0,false,true,true,true
+src/backprop.jl,track,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/backprop.jl,value,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/backprop.jl,deriv!,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/backprop.jl,reverse_pass!,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/backprop.jl,deriv,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/backprop.jl,istracked,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/backprop.jl,record!,mtsig,"Tuple{Any, Any, Vararg{Any}}",false,false,0,false,true,true,true
+src/backprop.jl,increment_deriv!,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/backprop.jl,seed!,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/backprop.jl,unseed!,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/builtin_optimization.jl,set_param!,mtsig,"Tuple{Union{DynamicDSLFunction, StaticIRGenerativeFunction}, Symbol, Any}",false,false,0,false,true,true,true
+src/builtin_optimization.jl,get_param,mtsig,"Tuple{Union{DynamicDSLFunction, StaticIRGenerativeFunction}, Symbol}",false,false,0,false,true,true,true
+src/builtin_optimization.jl,get_param_grad,mtsig,"Tuple{Union{DynamicDSLFunction, StaticIRGenerativeFunction}, Symbol}",false,false,0,false,true,true,true
+src/builtin_optimization.jl,zero_param_grad!,mtsig,"Tuple{Union{DynamicDSLFunction, StaticIRGenerativeFunction}, Symbol}",false,false,0,false,true,true,true
+src/builtin_optimization.jl,set_param_grad!,mtsig,"Tuple{Union{DynamicDSLFunction, StaticIRGenerativeFunction}, Symbol, Any}",false,false,0,false,true,true,true
+src/builtin_optimization.jl,init_param!,mtsig,"Tuple{Union{DynamicDSLFunction, StaticIRGenerativeFunction}, Symbol, Any}",false,false,0,false,true,true,true
+src/builtin_optimization.jl,get_params,mtsig,"Tuple{Union{DynamicDSLFunction, StaticIRGenerativeFunction}}",false,false,0,false,true,true,true
+src/builtin_optimization.jl,init_update_state,mtsig,"Tuple{FixedStepGradientDescent, Union{DynamicDSLFunction, StaticIRGenerativeFunction}, Vector}",false,false,0,false,true,true,true
+src/builtin_optimization.jl,apply_update!,mtsig,Tuple{FixedStepGradientDescentBuiltinDSLState},false,false,0,false,true,true,true
+src/builtin_optimization.jl,init_update_state,mtsig,"Tuple{GradientDescent, Union{DynamicDSLFunction, StaticIRGenerativeFunction}, Vector}",false,false,0,false,true,true,true
+src/builtin_optimization.jl,apply_update!,mtsig,Tuple{GradientDescentBuiltinDSLState},false,false,0,false,true,true,true
+src/choice_map.jl,Base.isempty,mtsig,Tuple{ChoiceMap},false,false,0,false,true,true,true
+src/choice_map.jl,has_submap,mtsig,"Tuple{ChoiceMap, Any}",false,false,0,false,true,true,true
+src/choice_map.jl,get_submap,mtsig,"Tuple{ChoiceMap, Any}",false,false,0,false,true,true,true
+src/choice_map.jl,has_value,mtsig,"Tuple{ChoiceMap, Any}",false,false,0,false,true,true,true
+src/choice_map.jl,get_value,mtsig,"Tuple{ChoiceMap, Any}",false,false,0,false,true,true,true
+src/choice_map.jl,Base.getindex,mtsig,"Tuple{ChoiceMap, Any}",false,false,0,false,true,true,true
+src/choice_map.jl,_has_value,mtsig,"Tuple{T, Pair} where T <: ChoiceMap",false,false,1,true,true,true,true
+src/choice_map.jl,_get_value,mtsig,"Tuple{T, Pair} where T <: ChoiceMap",false,false,1,true,true,true,true
+src/choice_map.jl,_get_submap,mtsig,"Tuple{T, Pair} where T <: ChoiceMap",false,false,1,true,true,true,true
+src/choice_map.jl,_show_pretty,mtsig,"Tuple{IO, ChoiceMap, Any, Tuple}",false,false,0,false,true,true,true
+src/choice_map.jl,Base.show,mtsig,"Tuple{IO, MIME""text/plain"", ChoiceMap}",false,false,0,false,true,true,true
+src/choice_map.jl,to_array,mtsig,"Tuple{ChoiceMap, Type{T}} where T",false,false,1,true,true,true,true
+src/choice_map.jl,_fill_array!,mtsig,"Tuple{T, Vector{T}, Int} where T",false,false,1,true,false,false,true
+src/choice_map.jl,_fill_array!,mtsig,"Tuple{Vector{T}, Vector{T}, Int} where T",false,false,1,true,false,false,true
+src/choice_map.jl,from_array,mtsig,"Tuple{ChoiceMap, Vector}",false,false,0,false,true,true,true
+src/choice_map.jl,_from_array,mtsig,"Tuple{T, Vector{T}, Int} where T",false,false,1,true,false,false,true
+src/choice_map.jl,_from_array,mtsig,"Tuple{Vector{T}, Vector{T}, Int} where T",false,false,1,true,false,false,true
+src/choice_map.jl,Base.merge,mtsig,"Tuple{ChoiceMap, ChoiceMap}",false,false,0,false,true,true,true
+src/choice_map.jl,Base.merge,mtsig,"Tuple{ChoiceMap, Vararg{ChoiceMap}}",false,false,0,false,true,true,true
+src/choice_map.jl,Base.:(==),mtsig,"Tuple{ChoiceMap, ChoiceMap}",false,false,0,false,true,true,true
+src/choice_map.jl,Base.isapprox,mtsig,"Tuple{ChoiceMap, ChoiceMap}",false,false,0,false,true,true,true
+src/choice_map.jl,StaticChoiceMap,mtsig,"(((Tuple{NamedTuple{R, S}, NamedTuple{T, U}} where U) where T) where S) where R",false,false,4,true,true,true,true
+src/choice_map.jl,StaticChoiceMap,mtsig,"(((Tuple{NamedTuple{R, S}, NamedTuple{T, U}} where U) where T) where S) where R",false,false,4,true,true,true,true
+src/choice_map.jl,get_address_schema,mtsig,"(((Tuple{Type{StaticChoiceMap{R, S, T, U}}} where U) where T) where S) where R",false,false,4,true,true,true,true
+src/choice_map.jl,Base.isempty,mtsig,Tuple{StaticChoiceMap},false,false,0,false,true,true,true
+src/choice_map.jl,get_values_shallow,mtsig,Tuple{StaticChoiceMap},false,false,0,false,true,true,true
+src/choice_map.jl,get_submaps_shallow,mtsig,Tuple{StaticChoiceMap},false,false,0,false,true,true,true
+src/choice_map.jl,has_value,mtsig,"Tuple{StaticChoiceMap, Pair}",false,false,0,false,true,true,true
+src/choice_map.jl,get_value,mtsig,"Tuple{StaticChoiceMap, Pair}",false,false,0,false,true,true,true
+src/choice_map.jl,get_submap,mtsig,"Tuple{StaticChoiceMap, Pair}",false,false,0,false,true,true,true
+src/choice_map.jl,has_value,mtsig,"Tuple{StaticChoiceMap, Symbol}",false,false,0,false,true,true,true
+src/choice_map.jl,get_submap,mtsig,"Tuple{StaticChoiceMap, Symbol}",false,false,0,false,true,true,true
+src/choice_map.jl,static_get_submap,mtsig,"Tuple{StaticChoiceMap, Val{A}} where A",false,false,1,true,true,true,true
+src/choice_map.jl,get_value,mtsig,"Tuple{StaticChoiceMap, Symbol}",false,false,0,false,true,true,true
+src/choice_map.jl,static_get_value,mtsig,"Tuple{StaticChoiceMap, Val{A}} where A",false,false,1,true,true,true,true
+src/choice_map.jl,StaticChoiceMap,mtsig,Tuple{ChoiceMap},false,false,0,false,true,true,true
+src/choice_map.jl,pair,mtsig,"Tuple{ChoiceMap, ChoiceMap, Symbol, Symbol}",false,false,0,false,true,true,true
+src/choice_map.jl,unpair,mtsig,"Tuple{ChoiceMap, Symbol, Symbol}",false,false,0,false,true,true,true
+src/choice_map.jl,_fill_array!,mtsig,"Tuple{StaticChoiceMap, Vector{T}, Int} where T",false,false,1,true,true,true,true
+src/choice_map.jl,_from_array,mtsig,"((((Tuple{StaticChoiceMap{R, S, T, U}, Vector{V}, Int} where V) where U) where T) where S) where R",false,false,5,true,true,true,true
+src/choice_map.jl,Base.merge,mtsig,"(((((((Tuple{StaticChoiceMap{R, S, T, U}, StaticChoiceMap{W, X, Y, Z}} where Z) where Y) where X) where W) where U) where T) where S) where R",false,false,8,true,true,true,true
+src/choice_map.jl,DynamicChoiceMap,mtsig,"Tuple{Dict{Any, Any}, Dict{Any, Any}}",false,false,0,false,true,true,true
+src/choice_map.jl,DynamicChoiceMap,mtsig,Tuple{},false,false,0,false,true,true,true
+src/choice_map.jl,DynamicChoiceMap,mtsig,Tuple{Vararg{Any}},false,false,0,false,true,true,true
+src/choice_map.jl,DynamicChoiceMap,mtsig,Tuple{ChoiceMap},false,false,0,false,true,true,true
+src/choice_map.jl,choicemap,mtsig,Tuple{},false,false,0,false,true,true,true
+src/choice_map.jl,choicemap,mtsig,Tuple{Vararg{Any}},false,false,0,false,true,true,true
+src/choice_map.jl,get_address_schema,mtsig,Tuple{Type{DynamicChoiceMap}},false,false,0,false,true,true,true
+src/choice_map.jl,get_values_shallow,mtsig,Tuple{DynamicChoiceMap},false,false,0,false,true,true,true
+src/choice_map.jl,get_submaps_shallow,mtsig,Tuple{DynamicChoiceMap},false,false,0,false,true,true,true
+src/choice_map.jl,has_value,mtsig,"Tuple{DynamicChoiceMap, Pair}",false,false,0,false,true,true,true
+src/choice_map.jl,get_value,mtsig,"Tuple{DynamicChoiceMap, Pair}",false,false,0,false,true,true,true
+src/choice_map.jl,get_submap,mtsig,"Tuple{DynamicChoiceMap, Pair}",false,false,0,false,true,true,true
+src/choice_map.jl,get_submap,mtsig,"Tuple{DynamicChoiceMap, Any}",false,false,0,false,true,true,true
+src/choice_map.jl,has_value,mtsig,"Tuple{DynamicChoiceMap, Any}",false,false,0,false,true,true,true
+src/choice_map.jl,get_value,mtsig,"Tuple{DynamicChoiceMap, Any}",false,false,0,false,true,true,true
+src/choice_map.jl,Base.isempty,mtsig,Tuple{DynamicChoiceMap},false,false,0,false,true,true,true
+src/choice_map.jl,set_value!,mtsig,"Tuple{DynamicChoiceMap, Any, Any}",false,false,0,false,true,true,true
+src/choice_map.jl,set_value!,mtsig,"Tuple{DynamicChoiceMap, Pair, Any}",false,false,0,false,true,true,true
+src/choice_map.jl,set_submap!,mtsig,"Tuple{DynamicChoiceMap, Any, Any}",false,false,0,false,true,true,true
+src/choice_map.jl,set_submap!,mtsig,"Tuple{DynamicChoiceMap, Pair, Any}",false,false,0,false,true,true,true
+src/choice_map.jl,Base.setindex!,mtsig,"Tuple{DynamicChoiceMap, Any, Any}",false,false,0,false,true,true,true
+src/choice_map.jl,_fill_array!,mtsig,"Tuple{DynamicChoiceMap, Vector{T}, Int} where T",false,false,1,true,true,true,true
+src/choice_map.jl,_from_array,mtsig,"Tuple{DynamicChoiceMap, Vector{T}, Int} where T",false,false,1,true,true,true,true
+src/choice_map.jl,vectorize_internal,mtsig,Tuple{Vector{T}} where T,false,false,1,true,true,true,true
+src/choice_map.jl,get_address_schema,mtsig,Tuple{Type{InternalVectorChoiceMap}},false,false,0,false,true,true,true
+src/choice_map.jl,Base.isempty,mtsig,Tuple{InternalVectorChoiceMap},false,false,0,false,true,true,true
+src/choice_map.jl,has_value,mtsig,"Tuple{InternalVectorChoiceMap, Pair}",false,false,0,false,true,true,true
+src/choice_map.jl,get_value,mtsig,"Tuple{InternalVectorChoiceMap, Pair}",false,false,0,false,true,true,true
+src/choice_map.jl,get_submap,mtsig,"Tuple{InternalVectorChoiceMap, Pair}",false,false,0,false,true,true,true
+src/choice_map.jl,get_submap,mtsig,"Tuple{InternalVectorChoiceMap, Int}",false,false,0,false,true,true,true
+src/choice_map.jl,get_submaps_shallow,mtsig,Tuple{InternalVectorChoiceMap},false,false,0,false,true,true,true
+src/choice_map.jl,get_values_shallow,mtsig,Tuple{InternalVectorChoiceMap},false,false,0,false,true,true,true
+src/choice_map.jl,_fill_array!,mtsig,"Tuple{InternalVectorChoiceMap, Vector{T}, Int} where T",false,false,1,true,true,true,true
+src/choice_map.jl,_from_array,mtsig,"(Tuple{InternalVectorChoiceMap{U}, Vector{T}, Int} where U) where T",false,false,2,true,true,true,true
+src/choice_map.jl,Base.isempty,mtsig,Tuple{EmptyChoiceMap},false,false,0,false,true,true,true
+src/choice_map.jl,get_address_schema,mtsig,Tuple{Type{EmptyChoiceMap}},false,false,0,false,true,true,true
+src/choice_map.jl,get_submaps_shallow,mtsig,Tuple{EmptyChoiceMap},false,false,0,false,true,true,true
+src/choice_map.jl,get_values_shallow,mtsig,Tuple{EmptyChoiceMap},false,false,0,false,true,true,true
+src/choice_map.jl,_fill_array!,mtsig,"Tuple{EmptyChoiceMap, Vector, Int}",false,false,0,false,true,true,true
+src/choice_map.jl,_from_array,mtsig,"Tuple{EmptyChoiceMap, Vector, Int}",false,false,0,false,true,true,true
+src/choice_map.jl,Base.getindex,mtsig,"Tuple{ChoiceMapNestedView, Any}",false,false,0,false,true,true,true
+src/choice_map.jl,Base.iterate,mtsig,Tuple{ChoiceMapNestedView},false,false,0,false,true,true,true
+src/choice_map.jl,Base.iterate,mtsig,"Tuple{ChoiceMapNestedView, Any}",false,false,0,false,true,true,true
+src/choice_map.jl,Base.keys,mtsig,Tuple{Gen.ChoiceMapNestedView},false,false,0,false,true,true,true
+src/choice_map.jl,Base.:(==),mtsig,"Tuple{ChoiceMapNestedView, ChoiceMapNestedView}",false,false,0,false,true,true,true
+src/choice_map.jl,Base.length,mtsig,Tuple{ChoiceMapNestedView},false,false,0,false,true,true,true
+src/choice_map.jl,Base.show,mtsig,"Tuple{IO, MIME""text/plain"", ChoiceMapNestedView}",false,false,0,false,true,true,true
+src/choice_map.jl,nested_view,mtsig,Tuple{ChoiceMap},false,false,0,false,true,true,true
+src/choice_map.jl,get_selected,mtsig,"Tuple{ChoiceMap, Selection}",false,false,0,false,true,true,true
+src/diff.jl,get_diff,mtsig,Tuple{Diffed},false,false,0,false,true,true,true
+src/diff.jl,get_diff,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/diff.jl,strip_diff,mtsig,Tuple{Diffed},false,false,0,false,true,true,true
+src/diff.jl,strip_diff,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/diff.jl,Base.in,mtsig,"(((Tuple{Diffed{V, DV}, Diffed{T, DT}} where DT) where DV) where T <: AbstractSet{V}) where V",false,false,4,true,false,false,true
+src/diff.jl,Base.in,mtsig,"(Tuple{Diffed{V, NoChange}, Diffed{T, NoChange}} where T <: AbstractSet{V}) where V",false,false,2,true,false,false,true
+src/diff.jl,Base.in,mtsig,"(Tuple{Diffed{V, NoChange}, Diffed{T, SetDiff{V}}} where T <: AbstractSet{V}) where V",false,false,2,true,false,false,true
+src/diff.jl,Base.length,mtsig,"(Tuple{Diffed{T, UnknownChange}} where T <: AbstractSet{V}) where V",false,false,2,true,true,true,true
+src/diff.jl,Base.length,mtsig,"(Tuple{Diffed{T, NoChange}} where T <: AbstractSet{V}) where V",false,false,2,true,true,true,true
+src/diff.jl,Base.length,mtsig,"(Tuple{Diffed{T, SetDiff{V}}} where T <: AbstractSet{V}) where V",false,false,2,true,false,false,true
+src/diff.jl,Base.haskey,mtsig,"((((Tuple{Diffed{T, DT}, Diffed{K, DK}} where DK) where DT) where T <: AbstractDict{K, V}) where V) where K",false,false,5,true,false,false,true
+src/diff.jl,Base.haskey,mtsig,"((Tuple{Diffed{T, NoChange}, Union{Diffed{K, NoChange}, K}} where T <: AbstractDict{K, V}) where V) where K",false,false,3,true,false,false,true
+src/diff.jl,Base.haskey,mtsig,"((Tuple{Diffed{T, DictDiff{K, V}}, Union{Diffed{K, NoChange}, K}} where T <: AbstractDict{K, V}) where V) where K",false,false,3,true,false,false,true
+src/diff.jl,Base.getindex,mtsig,"((((Tuple{Diffed{T, DT}, Diffed{K, DK}} where DK) where DT) where T <: AbstractDict{K, V}) where V) where K",false,false,5,true,false,false,true
+src/diff.jl,Base.getindex,mtsig,"((Tuple{Diffed{T, NoChange}, Union{Diffed{K, NoChange}, K}} where T <: AbstractDict{K, V}) where V) where K",false,false,3,true,false,false,true
+src/diff.jl,Base.getindex,mtsig,"((Tuple{Diffed{T, DictDiff{K, V}}, Union{Diffed{K, NoChange}, K}} where T <: AbstractDict{K, V}) where V) where K",false,false,3,true,false,false,true
+src/diff.jl,Base.length,mtsig,"Tuple{Union{Diffed{T, UnknownChange}, Diffed{T, UnknownChange}}} where T <: Union{AbstractVector, Tuple}",false,false,1,true,false,false,true
+src/diff.jl,Base.length,mtsig,"Tuple{Diffed{T, NoChange}} where T <: Union{AbstractVector, Tuple}",false,false,1,true,true,true,true
+src/diff.jl,Base.length,mtsig,"Tuple{Diffed{T, VectorDiff}} where T <: Union{AbstractVector, Tuple}",false,false,1,true,true,true,true
+src/diff.jl,Base.getindex,mtsig,"(Tuple{Union{AbstractVector, Tuple}, Diffed{U, DU}} where DU) where U <: Integer",false,false,2,true,true,true,true
+src/diff.jl,Base.getindex,mtsig,"Tuple{Union{AbstractVector, Tuple}, Diffed{U, NoChange}} where U <: Integer",false,false,1,true,true,true,true
+src/diff.jl,Base.getindex,mtsig,"(((Tuple{Diffed{T, DT}, Union{Diffed{U, DU}, Integer}} where DU) where DT) where U <: Integer) where T <: Union{AbstractVector, Tuple}",false,false,4,true,true,true,true
+src/diff.jl,Base.getindex,mtsig,"(Tuple{Diffed{T, NoChange}, Union{Diffed{U, NoChange}, Integer}} where U <: Integer) where T <: Union{AbstractVector, Tuple}",false,false,2,true,true,true,true
+src/diff.jl,Base.getindex,mtsig,"(Tuple{Diffed{T, VectorDiff}, Union{Diffed{U, NoChange}, Integer}} where U <: Integer) where T <: Union{AbstractVector, Tuple}",false,false,2,true,true,true,true
+src/diff.jl,$fn,mtsig,"Tuple{Diffed{T, NoChange}} where T",false,false,1,true,true,true,true
+src/diff.jl,$fn,mtsig,"Tuple{Diffed{T, UnknownChange}} where T",false,false,1,true,true,true,true
+src/diff.jl,$fn,mtsig,"(Tuple{Diffed{T, NoChange}, Diffed{U, NoChange}} where U) where T",false,false,2,true,true,true,true
+src/diff.jl,$fn,mtsig,"Tuple{Any, Diffed{U, NoChange}} where U",false,false,1,true,true,true,true
+src/diff.jl,$fn,mtsig,"Tuple{Diffed{T, NoChange}, Any} where T",false,false,1,true,true,true,true
+src/diff.jl,$fn,mtsig,"(Tuple{Any, Diffed{U, DU}} where DU) where U",false,false,2,true,true,true,true
+src/diff.jl,$fn,mtsig,"(Tuple{Diffed{T, DT}, Any} where DT) where T",false,false,2,true,true,true,true
+src/diff.jl,$fn,mtsig,"(((Tuple{Diffed{T, DT}, Diffed{U, DU}} where DU) where DT) where U) where T",false,false,4,true,true,true,true
+src/diff.jl,$fn,mtsig,"((Tuple{Diffed{T, NoChange}, Diffed{U, DU}} where DU) where U) where T",false,false,3,true,true,true,true
+src/diff.jl,$fn,mtsig,"((Tuple{Diffed{T, DT}, Diffed{U, NoChange}} where DT) where U) where T",false,false,3,true,true,true,true
+src/diff.jl,Base.fill,mtsig,"Tuple{Diffed{V, NoChange}, Integer} where V",false,false,1,true,true,true,true
+src/diff.jl,Base.fill,mtsig,"(Tuple{V, Diffed{U, NoChange}} where U <: Integer) where V",false,false,2,true,true,true,true
+src/diff.jl,Base.fill,mtsig,"(Tuple{Diffed{V, NoChange}, Diffed{U, NoChange}} where U <: Integer) where V",false,false,2,true,true,true,true
+src/diff.jl,Base.fill,mtsig,"((Tuple{Diffed{V, DV}, Diffed{U, NoChange}} where DV) where U <: Integer) where V",false,false,3,true,true,true,true
+src/diff.jl,Base.fill,mtsig,"(((Tuple{Diffed{V, DV}, Diffed{U, DU}} where DV) where DU) where U <: Integer) where V",false,false,4,true,true,true,true
+src/diff.jl,Base.broadcast,mtsig,"(Tuple{Any, Diffed{T, NoChange}, Diffed{U, NoChange}} where U) where T",false,false,2,true,true,true,true
+src/diff.jl,Base.broadcast,mtsig,"Tuple{Any, Diffed{T, NoChange}, Any} where T",false,false,1,true,true,true,true
+src/diff.jl,Base.broadcast,mtsig,"Tuple{Any, Any, Diffed{U, NoChange}} where U",false,false,1,true,true,true,true
+src/diff.jl,Base.broadcast,mtsig,"((Tuple{Any, Diffed{T, DT}, Diffed{U, NoChange}} where DT) where U) where T",false,false,3,true,true,true,true
+src/diff.jl,Base.broadcast,mtsig,"((Tuple{Any, Diffed{T, NoChange}, Diffed{U, DU}} where DU) where U) where T",false,false,3,true,true,true,true
+src/diff.jl,Base.broadcast,mtsig,"(((Tuple{Any, Diffed{T, DT}, Diffed{U, DU}} where DU) where DT) where U) where T",false,false,4,true,true,true,true
+src/diff.jl,ifelse,mtsig,"(Tuple{Union{Bool, Diffed{Bool, NoChange}}, Diffed{T, NoChange}, Diffed{U, NoChange}} where U) where T",false,false,2,true,true,true,true
+src/diff.jl,ifelse,mtsig,"Tuple{Diffed{Bool, DC}, Any, Any} where DC",false,false,1,true,true,true,true
+src/diff.jl,ifelse,mtsig,"Tuple{Bool, Any, Any}",false,false,0,false,true,true,true
+src/gen_fn_interface.jl,Base.getindex,mtsig,"Tuple{Trace, Any}",false,false,0,false,true,true,true
+src/gen_fn_interface.jl,Base.getindex,mtsig,Tuple{Trace},false,false,0,false,true,true,true
+src/gen_fn_interface.jl,get_return_type,mtsig,"(Tuple{GenerativeFunction{T, U}} where U) where T",false,false,2,true,true,true,true
+src/gen_fn_interface.jl,get_trace_type,mtsig,"(Tuple{GenerativeFunction{T, U}} where U) where T",false,false,2,true,true,true,true
+src/gen_fn_interface.jl,get_params,mtsig,Tuple{GenerativeFunction},false,false,0,false,true,true,true
+src/gen_fn_interface.jl,simulate,mtsig,"Tuple{GenerativeFunction, Tuple}",false,false,0,false,true,true,true
+src/gen_fn_interface.jl,generate,mtsig,"Tuple{GenerativeFunction, Tuple, ChoiceMap}",false,false,0,false,true,true,true
+src/gen_fn_interface.jl,generate,mtsig,"Tuple{GenerativeFunction, Tuple}",false,false,0,false,true,true,true
+src/gen_fn_interface.jl,project,mtsig,"Tuple{Any, Selection}",false,false,0,false,true,true,true
+src/gen_fn_interface.jl,propose,mtsig,"Tuple{GenerativeFunction, Tuple}",false,false,0,false,true,true,true
+src/gen_fn_interface.jl,assess,mtsig,"Tuple{GenerativeFunction, Tuple, ChoiceMap}",false,false,0,false,true,true,true
+src/gen_fn_interface.jl,update,mtsig,"Tuple{Any, Tuple, Tuple, ChoiceMap}",false,false,0,false,true,true,true
+src/gen_fn_interface.jl,update,mtsig,"Tuple{Any, ChoiceMap}",false,false,0,false,true,true,true
+src/gen_fn_interface.jl,regenerate,mtsig,"Tuple{Any, Tuple, Tuple, Selection}",false,false,0,false,true,true,true
+src/gen_fn_interface.jl,regenerate,mtsig,"Tuple{Any, Selection}",false,false,0,false,true,true,true
+src/gen_fn_interface.jl,accumulate_param_gradients!,mtsig,"Tuple{Any, Any, Any}",false,false,0,false,true,true,true
+src/gen_fn_interface.jl,accumulate_param_gradients!,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/gen_fn_interface.jl,accumulate_param_gradients!,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/gen_fn_interface.jl,choice_gradients,mtsig,"Tuple{Any, Selection, Any}",false,false,0,false,true,true,true
+src/gen_fn_interface.jl,choice_gradients,mtsig,"Tuple{Any, Selection}",false,false,0,false,true,true,true
+src/gen_fn_interface.jl,choice_gradients,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/optimization.jl,ParamUpdate,mtsig,"Tuple{Any, Vararg{Any}}",false,false,0,false,true,true,true
+src/optimization.jl,ParamUpdate,mtsig,"Tuple{Any, GenerativeFunction}",false,false,0,false,true,true,true
+src/optimization.jl,apply!,mtsig,Tuple{ParamUpdate},false,false,0,false,true,true,true
+src/trie.jl,Trie,mtsig,(Tuple{} where V) where K,false,false,2,true,false,true,true
+src/trie.jl,Trie,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/trie.jl,Base.println,mtsig,Tuple{Trie},false,false,0,false,true,true,true
+src/trie.jl,Base.isempty,mtsig,Tuple{Trie},false,false,0,false,true,true,true
+src/trie.jl,get_leaf_nodes,mtsig,Tuple{Trie},false,false,0,false,true,true,true
+src/trie.jl,get_internal_nodes,mtsig,Tuple{Trie},false,false,0,false,true,true,true
+src/trie.jl,Base.values,mtsig,Tuple{Trie},false,false,0,false,true,true,true
+src/trie.jl,has_internal_node,mtsig,"Tuple{Trie, Any}",false,false,0,false,true,true,true
+src/trie.jl,has_internal_node,mtsig,"Tuple{Trie, Pair}",false,false,0,false,true,true,true
+src/trie.jl,get_internal_node,mtsig,"Tuple{Trie, Any}",false,false,0,false,true,true,true
+src/trie.jl,get_internal_node,mtsig,"Tuple{Trie, Pair}",false,false,0,false,true,true,true
+src/trie.jl,set_internal_node!,mtsig,"(Tuple{Trie{K, V}, Any, Trie{K, V}} where V) where K",false,false,2,true,false,false,true
+src/trie.jl,set_internal_node!,mtsig,"(Tuple{Trie{K, V}, Pair, Trie{K, V}} where V) where K",false,false,2,true,false,false,true
+src/trie.jl,delete_internal_node!,mtsig,"Tuple{Trie, Any}",false,false,0,false,true,true,true
+src/trie.jl,delete_internal_node!,mtsig,"Tuple{Trie, Pair}",false,false,0,false,true,true,true
+src/trie.jl,has_leaf_node,mtsig,"Tuple{Trie, Any}",false,false,0,false,true,true,true
+src/trie.jl,has_leaf_node,mtsig,"Tuple{Trie, Pair}",false,false,0,false,true,true,true
+src/trie.jl,get_leaf_node,mtsig,"Tuple{Trie, Any}",false,false,0,false,true,true,true
+src/trie.jl,get_leaf_node,mtsig,"Tuple{Trie, Pair}",false,false,0,false,true,true,true
+src/trie.jl,set_leaf_node!,mtsig,"Tuple{Trie, Any, Any}",false,false,0,false,true,true,true
+src/trie.jl,set_leaf_node!,mtsig,"(Tuple{Trie{K, V}, Pair, Any} where V) where K",false,false,2,true,true,true,true
+src/trie.jl,delete_leaf_node!,mtsig,"Tuple{Trie, Any}",false,false,0,false,true,true,true
+src/trie.jl,delete_leaf_node!,mtsig,"Tuple{Trie, Pair}",false,false,0,false,true,true,true
+src/trie.jl,Base.setindex!,mtsig,"Tuple{Trie, Any, Any}",false,false,0,false,true,true,true
+src/trie.jl,Base.merge!,mtsig,"(Tuple{Trie{K, V}, Trie{K, V}} where V) where K",false,false,2,true,false,false,true
+src/trie.jl,get_address_schema,mtsig,Tuple{Trie},false,false,0,false,true,true,true
+src/trie.jl,Base.haskey,mtsig,"Tuple{Trie, Any}",false,false,0,false,true,true,true
+src/trie.jl,Base.getindex,mtsig,"Tuple{Trie, Any}",false,false,0,false,true,true,true
+src/dsl/dsl.jl,Argument,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/dsl/dsl.jl,Argument,mtsig,"Tuple{Any, Any, Any}",false,false,0,false,true,true,true
+src/dsl/dsl.jl,parse_annotations,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/dsl/dsl.jl,parse_arg,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/dsl/dsl.jl,resolve_grad_arg,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/dsl/dsl.jl,desugar_tildes,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/dsl/dsl.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/dsl/dsl.jl,extract_quoted_exprs,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/dsl/dsl.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/dsl/dsl.jl,insert_quoted_exprs,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/dsl/dsl.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/dsl/dsl.jl,preprocess_body,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/dsl/dsl.jl,parse_gen_function,mtsig,"Tuple{Any, Any, Any}",false,false,0,false,true,true,true
+src/dsl/dsl.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/dsl/dynamic.jl,arg_to_ast,mtsig,Tuple{Argument},false,false,0,false,true,true,true
+src/dsl/dynamic.jl,escape_default,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/dsl/dynamic.jl,rewrite_dynamic_gen_exprs,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/dsl/dynamic.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/dsl/dynamic.jl,make_dynamic_gen_function,mtsig,"Tuple{Any, Any, Any, Any, Any}",false,false,0,false,true,true,true
+src/dsl/dynamic.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/dsl/dynamic.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/dsl/static.jl,static_dsl_syntax_error,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/dsl/static.jl,resolve_symbols,mtsig,"Tuple{Dict{Symbol, Symbol}, Expr}",false,false,0,false,true,true,true
+src/dsl/static.jl,resolve_symbols,mtsig,"Tuple{Dict{Symbol, Symbol}, Symbol}",false,false,0,false,true,true,true
+src/dsl/static.jl,resolve_symbols,mtsig,"Tuple{Dict{Symbol, Symbol}, Any}",false,false,0,false,true,true,true
+src/dsl/static.jl,parse_typed_var,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/dsl/static.jl,split_addr!,mtsig,"Tuple{Any, Expr}",false,false,0,false,true,true,true
+src/dsl/static.jl,split_addr!,mtsig,"Tuple{Any, QuoteNode}",false,false,0,false,true,true,true
+src/dsl/static.jl,split_addr!,mtsig,"Tuple{Any, Symbol}",false,false,0,false,true,true,true
+src/dsl/static.jl,choice_or_call_at,mtsig,"Tuple{GenerativeFunction, Any}",false,false,0,false,true,true,true
+src/dsl/static.jl,choice_or_call_at,mtsig,"Tuple{Distribution, Any}",false,false,0,false,true,true,true
+src/dsl/static.jl,gen_node_name,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/dsl/static.jl,gen_node_name,mtsig,Tuple{Expr},false,false,0,false,true,true,true
+src/dsl/static.jl,gen_node_name,mtsig,Tuple{Symbol},false,false,0,false,true,true,true
+src/dsl/static.jl,gen_node_name,mtsig,Tuple{QuoteNode},false,false,0,false,true,true,true
+src/dsl/static.jl,parse_trace_expr!,mtsig,"Tuple{Any, Any, Any, Any, Any, Any}",false,false,0,false,true,true,true
+src/dsl/static.jl,set_module_for_global_constants,mtsig,"Tuple{Any, Any, Any}",false,false,0,false,true,true,true
+src/dsl/static.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/dsl/static.jl,parse_julia_expr!,mtsig,"Tuple{Any, Any, Symbol, Expr, Union{Symbol, Expr, QuoteNode}, Any}",false,false,0,false,true,true,true
+src/dsl/static.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/dsl/static.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/dsl/static.jl,parse_julia_expr!,mtsig,"Tuple{Any, Any, Symbol, Symbol, Union{Symbol, Expr, QuoteNode}, Any}",false,false,0,false,true,true,true
+src/dsl/static.jl,parse_julia_expr!,mtsig,"Tuple{Any, Any, Symbol, QuoteNode, Union{Symbol, Expr, QuoteNode}, Any}",false,false,0,false,true,true,true
+src/dsl/static.jl,parse_julia_expr!,mtsig,"Tuple{Any, Any, Symbol, Any, Union{Symbol, Expr, QuoteNode}, Any}",false,false,0,false,true,true,true
+src/dsl/static.jl,parse_param_line!,mtsig,"Tuple{Vector{Expr}, Any, Symbol, Any}",false,false,0,false,true,true,true
+src/dsl/static.jl,parse_assignment_line!,mtsig,"Tuple{Any, Any, Any, Any, Any}",false,false,0,false,true,true,true
+src/dsl/static.jl,parse_return_line!,mtsig,"Tuple{Any, Any, Any, Any}",false,false,0,false,true,true,true
+src/dsl/static.jl,parse_and_rewrite_trace!,mtsig,"Tuple{Any, Any, Any, Any}",false,false,0,false,true,true,true
+src/dsl/static.jl,parse_static_dsl_line!,mtsig,"Tuple{Any, Any, Any, Any}",false,false,0,false,true,true,true
+src/dsl/static.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/dsl/static.jl,parse_static_dsl_function_body!,mtsig,"Tuple{Vector{Expr}, Dict{Symbol, Symbol}, Any, Any}",false,false,0,false,true,true,true
+src/dsl/static.jl,make_static_gen_function,mtsig,"Tuple{Any, Any, Any, Any, Any, Any}",false,false,0,false,true,true,true
+src/dynamic/assess.jl,GFAssessState,mtsig,"Tuple{Any, Dict{Symbol, Any}}",false,false,0,false,true,true,true
+src/dynamic/assess.jl,traceat,mtsig,"Tuple{GFAssessState, Distribution{T}, Any, Any} where T",false,false,1,true,true,true,true
+src/dynamic/assess.jl,traceat,mtsig,"(Tuple{GFAssessState, GenerativeFunction{T, U}, Any, Any} where U) where T",false,false,2,true,true,true,true
+src/dynamic/assess.jl,splice,mtsig,"Tuple{GFAssessState, DynamicDSLFunction, Tuple}",false,false,0,false,true,true,true
+src/dynamic/assess.jl,assess,mtsig,"Tuple{DynamicDSLFunction, Tuple, ChoiceMap}",false,false,0,false,true,true,true
+src/dynamic/backprop.jl,maybe_track,mtsig,"Tuple{Any, Bool, Any}",false,false,0,false,true,true,true
+src/dynamic/backprop.jl,ReverseDiff.special_reverse_exec!,mtsig,Tuple{ReverseDiff.SpecialInstruction{D}} where D <: Distribution,false,false,1,true,true,true,true
+src/dynamic/backprop.jl,track_params,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/dynamic/backprop.jl,GFBackpropParamsState,mtsig,"Tuple{DynamicDSLTrace, Any, Any, Any}",false,false,0,false,true,true,true
+src/dynamic/backprop.jl,read_param,mtsig,"Tuple{GFBackpropParamsState, Symbol}",false,false,0,false,true,true,true
+src/dynamic/backprop.jl,traceat,mtsig,"Tuple{GFBackpropParamsState, Distribution{T}, Any, Any} where T",false,false,1,true,true,true,true
+src/dynamic/backprop.jl,traceat,mtsig,"Tuple{GFBackpropParamsState, GenerativeFunction{T}, Any, Any} where T",false,false,1,true,true,true,true
+src/dynamic/backprop.jl,splice,mtsig,"Tuple{GFBackpropParamsState, DynamicDSLFunction, Tuple}",false,false,0,false,true,true,true
+src/dynamic/backprop.jl,ReverseDiff.special_reverse_exec!,mtsig,Tuple{ReverseDiff.SpecialInstruction{BackpropParamsRecord}},false,false,0,false,true,true,true
+src/dynamic/backprop.jl,set_retval_grad!,mtsig,"Tuple{DynamicDSLFunction, Any, Any}",false,false,0,false,true,true,true
+src/dynamic/backprop.jl,set_retval_grad!,mtsig,"Tuple{DynamicDSLFunction, Any, Nothing}",false,false,0,false,true,true,true
+src/dynamic/backprop.jl,accumulate_param_gradients!,mtsig,"Tuple{DynamicDSLTrace, Any, Any}",false,false,0,false,true,true,true
+src/dynamic/backprop.jl,<NA-name>,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/dynamic/backprop.jl,GFBackpropTraceState,mtsig,"Tuple{Any, Any, Any, Any}",false,false,0,false,true,true,true
+src/dynamic/backprop.jl,fill_submaps!,mtsig,"Tuple{DynamicChoiceMap, Trie{Any, Union{TrackedReal, TrackedArray}}, Any}",false,false,0,false,true,true,true
+src/dynamic/backprop.jl,fill_map!,mtsig,"Tuple{DynamicChoiceMap, Trie{Any, Union{TrackedReal, TrackedArray}}, Val{:gradient_map}}",false,true,0,false,true,true,true
+src/dynamic/backprop.jl,fill_map!,mtsig,"Tuple{DynamicChoiceMap, Trie{Any, Union{TrackedReal, TrackedArray}}, Val{:value_map}}",false,true,0,false,true,true,true
+src/dynamic/backprop.jl,traceat,mtsig,"Tuple{GFBackpropTraceState, Distribution{T}, Any, Any} where T",false,false,1,true,true,true,true
+src/dynamic/backprop.jl,traceat,mtsig,"(Tuple{GFBackpropTraceState, GenerativeFunction{T, U}, Any, Any} where U) where T",false,false,2,true,true,true,true
+src/dynamic/backprop.jl,splice,mtsig,"Tuple{GFBackpropTraceState, DynamicDSLFunction, Tuple}",false,false,0,false,true,true,true
+src/dynamic/backprop.jl,ReverseDiff.special_reverse_exec!,mtsig,Tuple{ReverseDiff.SpecialInstruction{BackpropTraceRecord}},false,false,0,false,true,true,true
+src/dynamic/backprop.jl,choice_gradients,mtsig,"Tuple{DynamicDSLTrace, Selection, Any}",false,false,0,false,true,true,true
+src/dynamic/backprop.jl,<NA-name>,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/dynamic/dynamic.jl,DynamicDSLFunction,mtsig,"Tuple{Vector{Type}, Vector{Union{Some{Any}, Nothing}}, Function, Any, Type{T}, Bool} where T",false,false,1,true,true,true,true
+src/dynamic/dynamic.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/dynamic/dynamic.jl,DynamicDSLTrace,mtsig,"Tuple{T, Any} where T <: DynamicDSLFunction",false,false,1,true,true,true,true
+src/dynamic/dynamic.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/dynamic/dynamic.jl,accepts_output_grad,mtsig,Tuple{DynamicDSLFunction},false,false,0,false,true,true,true
+src/dynamic/dynamic.jl,gen_fn::DynamicDSLFunction,mtsig,Tuple{Vararg{Any}},false,false,0,false,true,true,true
+src/dynamic/dynamic.jl,exec,mtsig,"Tuple{DynamicDSLFunction, Any, Tuple}",false,false,0,false,true,true,true
+src/dynamic/dynamic.jl,has_argument_grads,mtsig,Tuple{DynamicDSLFunction},false,false,0,false,true,true,true
+src/dynamic/dynamic.jl,dynamic_trace_impl,mtsig,Tuple{Expr},false,false,0,false,true,true,true
+src/dynamic/dynamic.jl,traceat,mtsig,"Tuple{GFUntracedState, GenerativeFunction, Any, Any}",false,false,0,false,true,true,true
+src/dynamic/dynamic.jl,traceat,mtsig,"Tuple{GFUntracedState, Distribution, Any, Any}",false,false,0,false,true,true,true
+src/dynamic/dynamic.jl,splice,mtsig,"Tuple{GFUntracedState, DynamicDSLFunction, Tuple}",false,false,0,false,true,true,true
+src/dynamic/dynamic.jl,dynamic_param_impl,mtsig,Tuple{Expr},false,false,0,false,true,true,true
+src/dynamic/dynamic.jl,read_param,mtsig,"Tuple{Any, Symbol}",false,false,0,false,true,true,true
+src/dynamic/dynamic.jl,AddressVisitor,mtsig,Tuple{},false,false,0,false,true,true,true
+src/dynamic/dynamic.jl,visit!,mtsig,"Tuple{AddressVisitor, Any}",false,false,0,false,true,true,true
+src/dynamic/dynamic.jl,all_visited,mtsig,"Tuple{Selection, ChoiceMap}",false,false,0,false,true,true,true
+src/dynamic/dynamic.jl,get_unvisited,mtsig,"Tuple{Selection, ChoiceMap}",false,false,0,false,true,true,true
+src/dynamic/dynamic.jl,get_visited,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/dynamic/dynamic.jl,check_no_submap,mtsig,"Tuple{ChoiceMap, Any}",false,false,0,false,true,true,true
+src/dynamic/dynamic.jl,check_no_value,mtsig,"Tuple{ChoiceMap, Any}",false,false,0,false,true,true,true
+src/dynamic/dynamic.jl,gen_fn_changed_error,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/dynamic/generate.jl,GFGenerateState,mtsig,"Tuple{Any, Any, Any, Any}",false,false,0,false,true,true,true
+src/dynamic/generate.jl,traceat,mtsig,"Tuple{GFGenerateState, Distribution{T}, Any, Any} where T",false,false,1,true,true,true,true
+src/dynamic/generate.jl,traceat,mtsig,"(Tuple{GFGenerateState, GenerativeFunction{T, U}, Any, Any} where U) where T",false,false,2,true,true,true,true
+src/dynamic/generate.jl,splice,mtsig,"Tuple{GFGenerateState, DynamicDSLFunction, Tuple}",false,false,0,false,true,true,true
+src/dynamic/generate.jl,generate,mtsig,"Tuple{DynamicDSLFunction, Tuple, ChoiceMap}",false,false,0,false,true,true,true
+src/dynamic/project.jl,project_recurse,mtsig,"Tuple{Trie{Any, ChoiceOrCallRecord}, Selection}",false,false,0,false,true,true,true
+src/dynamic/project.jl,project,mtsig,"Tuple{DynamicDSLTrace, Selection}",false,false,0,false,true,true,true
+src/dynamic/project.jl,project,mtsig,"Tuple{DynamicDSLTrace, EmptySelection}",false,false,0,false,true,true,true
+src/dynamic/propose.jl,GFProposeState,mtsig,"Tuple{Dict{Symbol, Any}}",false,false,0,false,true,true,true
+src/dynamic/propose.jl,traceat,mtsig,"Tuple{GFProposeState, Distribution{T}, Any, Any} where T",false,false,1,true,true,true,true
+src/dynamic/propose.jl,traceat,mtsig,"(Tuple{GFProposeState, GenerativeFunction{T, U}, Any, Any} where U) where T",false,false,2,true,true,true,true
+src/dynamic/propose.jl,splice,mtsig,"Tuple{GFProposeState, DynamicDSLFunction, Tuple}",false,false,0,false,true,true,true
+src/dynamic/propose.jl,propose,mtsig,"Tuple{DynamicDSLFunction, Tuple}",false,false,0,false,true,true,true
+src/dynamic/regenerate.jl,GFRegenerateState,mtsig,"Tuple{Any, Any, Any, Any, Any}",false,false,0,false,true,true,true
+src/dynamic/regenerate.jl,traceat,mtsig,"Tuple{GFRegenerateState, Distribution{T}, Any, Any} where T",false,false,1,true,true,true,true
+src/dynamic/regenerate.jl,traceat,mtsig,"(Tuple{GFRegenerateState, GenerativeFunction{T, U}, Any, Any} where U) where T",false,false,2,true,true,true,true
+src/dynamic/regenerate.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/dynamic/regenerate.jl,splice,mtsig,"Tuple{GFRegenerateState, DynamicDSLFunction, Tuple}",false,false,0,false,true,true,true
+src/dynamic/regenerate.jl,regenerate_delete_recurse,mtsig,"Tuple{Trie{Any, ChoiceOrCallRecord}, EmptySelection}",false,false,0,false,true,true,true
+src/dynamic/regenerate.jl,regenerate_delete_recurse,mtsig,"Tuple{Trie{Any, ChoiceOrCallRecord}, DynamicSelection}",false,false,0,false,true,true,true
+src/dynamic/regenerate.jl,regenerate,mtsig,"Tuple{DynamicDSLTrace, Tuple, Tuple, Selection}",false,false,0,false,true,true,true
+src/dynamic/simulate.jl,GFSimulateState,mtsig,"Tuple{GenerativeFunction, Tuple, Any}",false,false,0,false,true,true,true
+src/dynamic/simulate.jl,traceat,mtsig,"Tuple{GFSimulateState, Distribution{T}, Any, Any} where T",false,false,1,true,true,true,true
+src/dynamic/simulate.jl,traceat,mtsig,"(Tuple{GFSimulateState, GenerativeFunction{T, U}, Any, Any} where U) where T",false,false,2,true,true,true,true
+src/dynamic/simulate.jl,splice,mtsig,"Tuple{GFSimulateState, DynamicDSLFunction, Tuple}",false,false,0,false,true,true,true
+src/dynamic/simulate.jl,simulate,mtsig,"Tuple{DynamicDSLFunction, Tuple}",false,false,0,false,true,true,true
+src/dynamic/trace.jl,ChoiceRecord,mtsig,Tuple{ChoiceOrCallRecord},false,false,0,false,true,true,true
+src/dynamic/trace.jl,CallRecord,mtsig,Tuple{ChoiceOrCallRecord},false,false,0,false,true,true,true
+src/dynamic/trace.jl,DynamicDSLTrace,mtsig,"Tuple{T, Any} where T",false,false,1,true,true,true,true
+src/dynamic/trace.jl,set_retval!,mtsig,"Tuple{DynamicDSLTrace, Any}",false,false,0,false,true,true,true
+src/dynamic/trace.jl,has_choice,mtsig,"Tuple{DynamicDSLTrace, Any}",false,false,0,false,true,true,true
+src/dynamic/trace.jl,has_call,mtsig,"Tuple{DynamicDSLTrace, Any}",false,false,0,false,true,true,true
+src/dynamic/trace.jl,get_choice,mtsig,"Tuple{DynamicDSLTrace, Any}",false,false,0,false,true,true,true
+src/dynamic/trace.jl,get_call,mtsig,"Tuple{DynamicDSLTrace, Any}",false,false,0,false,true,true,true
+src/dynamic/trace.jl,add_choice!,mtsig,"Tuple{DynamicDSLTrace, Any, Any, Any}",false,false,0,false,true,true,true
+src/dynamic/trace.jl,add_call!,mtsig,"Tuple{DynamicDSLTrace, Any, Any}",false,false,0,false,true,true,true
+src/dynamic/trace.jl,get_args,mtsig,Tuple{DynamicDSLTrace},false,false,0,false,true,true,true
+src/dynamic/trace.jl,get_retval,mtsig,Tuple{DynamicDSLTrace},false,false,0,false,true,true,true
+src/dynamic/trace.jl,get_score,mtsig,Tuple{DynamicDSLTrace},false,false,0,false,true,true,true
+src/dynamic/trace.jl,get_gen_fn,mtsig,Tuple{DynamicDSLTrace},false,false,0,false,true,true,true
+src/dynamic/trace.jl,get_choices,mtsig,Tuple{DynamicDSLTrace},false,false,0,false,true,true,true
+src/dynamic/trace.jl,get_address_schema,mtsig,Tuple{Type{DynamicDSLChoiceMap}},false,false,0,false,true,true,true
+src/dynamic/trace.jl,Base.isempty,mtsig,Tuple{DynamicDSLChoiceMap},false,false,0,false,true,true,true
+src/dynamic/trace.jl,has_value,mtsig,"Tuple{DynamicDSLChoiceMap, Pair}",false,false,0,false,true,true,true
+src/dynamic/trace.jl,get_value,mtsig,"Tuple{DynamicDSLChoiceMap, Pair}",false,false,0,false,true,true,true
+src/dynamic/trace.jl,get_submap,mtsig,"Tuple{DynamicDSLChoiceMap, Pair}",false,false,0,false,true,true,true
+src/dynamic/trace.jl,get_submap,mtsig,"Tuple{DynamicDSLChoiceMap, Any}",false,false,0,false,true,true,true
+src/dynamic/trace.jl,has_value,mtsig,"Tuple{DynamicDSLChoiceMap, Any}",false,false,0,false,true,true,true
+src/dynamic/trace.jl,get_value,mtsig,"Tuple{DynamicDSLChoiceMap, Any}",false,false,0,false,true,true,true
+src/dynamic/trace.jl,get_values_shallow,mtsig,Tuple{DynamicDSLChoiceMap},false,false,0,false,true,true,true
+src/dynamic/trace.jl,get_submaps_shallow,mtsig,Tuple{DynamicDSLChoiceMap},false,false,0,false,true,true,true
+src/dynamic/trace.jl,_getindex,mtsig,"Tuple{DynamicDSLTrace, Trie, Pair}",false,false,0,false,true,true,true
+src/dynamic/trace.jl,_getindex,mtsig,"Tuple{DynamicDSLTrace, Trie, Any}",false,false,0,false,true,true,true
+src/dynamic/trace.jl,Base.getindex,mtsig,"Tuple{DynamicDSLTrace, Any}",false,false,0,false,true,true,true
+src/dynamic/update.jl,GFUpdateState,mtsig,"Tuple{Any, Any, Any, Any, Any}",false,false,0,false,true,true,true
+src/dynamic/update.jl,traceat,mtsig,"Tuple{GFUpdateState, Distribution{T}, Tuple, Any} where T",false,false,1,true,true,true,true
+src/dynamic/update.jl,traceat,mtsig,"(Tuple{GFUpdateState, GenerativeFunction{T, U}, Tuple, Any} where U) where T",false,false,2,true,true,true,true
+src/dynamic/update.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/dynamic/update.jl,splice,mtsig,"Tuple{GFUpdateState, DynamicDSLFunction, Tuple}",false,false,0,false,true,true,true
+src/dynamic/update.jl,update_delete_recurse,mtsig,"Tuple{Trie{Any, ChoiceOrCallRecord}, EmptySelection}",false,false,0,false,true,true,true
+src/dynamic/update.jl,update_delete_recurse,mtsig,"Tuple{Trie{Any, ChoiceOrCallRecord}, DynamicSelection}",false,false,0,false,true,true,true
+src/dynamic/update.jl,update_delete_recurse,mtsig,"Tuple{Trie{Any, ChoiceOrCallRecord}, AllSelection}",false,false,0,false,true,true,true
+src/dynamic/update.jl,add_unvisited_to_discard!,mtsig,"Tuple{DynamicChoiceMap, DynamicSelection, ChoiceMap}",false,false,0,false,true,true,true
+src/dynamic/update.jl,update,mtsig,"Tuple{DynamicDSLTrace, Tuple, Tuple, ChoiceMap}",false,false,0,false,true,true,true
+src/inference/elliptical_slice.jl,elliptical_slice,mtsig,"Tuple{Any, Any, Any, Any, Any, Any}",false,false,0,false,true,true,true
+src/inference/elliptical_slice.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/inference/elliptical_slice.jl,check_is_kernel,mtsig,Tuple{typeof(elliptical_slice)},false,false,0,false,true,true,true
+src/inference/elliptical_slice.jl,is_custom_primitive_kernel,mtsig,Tuple{typeof(elliptical_slice)},false,false,0,false,true,true,true
+src/inference/elliptical_slice.jl,reversal,mtsig,Tuple{typeof(elliptical_slice)},false,false,0,false,true,true,true
+src/inference/hmc.jl,sample_momenta,mtsig,Tuple{Int},false,false,0,false,true,true,true
+src/inference/hmc.jl,assess_momenta,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/inference/hmc.jl,hmc,mtsig,"Tuple{Trace, Selection, Any, Any, Any, Any}",false,false,0,false,true,true,true
+src/inference/hmc.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/inference/hmc.jl,check_is_kernel,mtsig,Tuple{typeof(hmc)},false,false,0,false,true,true,true
+src/inference/hmc.jl,is_custom_primitive_kernel,mtsig,Tuple{typeof(hmc)},false,false,0,false,true,true,true
+src/inference/hmc.jl,reversal,mtsig,Tuple{typeof(hmc)},false,false,0,false,true,true,true
+src/inference/importance.jl,importance_sampling,mtsig,"(Tuple{GenerativeFunction{T, U}, Tuple, ChoiceMap, Int, Any} where U) where T",false,false,2,true,true,true,true
+src/inference/importance.jl,importance_sampling,mtsig,"(Tuple{GenerativeFunction{T, U}, Tuple, ChoiceMap, GenerativeFunction, Tuple, Int, Any} where U) where T",false,false,2,true,true,true,true
+src/inference/importance.jl,importance_resampling,mtsig,"(((Tuple{GenerativeFunction{T, U}, Tuple, ChoiceMap, Int, Any} where W) where V) where U) where T",false,false,4,true,false,true,true
+src/inference/importance.jl,importance_resampling,mtsig,"(((Tuple{GenerativeFunction{T, U}, Tuple, ChoiceMap, GenerativeFunction{V, W}, Tuple, Int, Any} where W) where V) where U) where T",false,false,4,true,true,true,true
+src/inference/inference.jl,logsumexp,mtsig,Tuple{AbstractArray{T}} where T <: Real,false,false,1,true,true,true,true
+src/inference/inference.jl,logsumexp,mtsig,"Tuple{Real, Real}",false,false,0,false,true,true,true
+src/inference/kernel_dsl.jl,check_observations,mtsig,"Tuple{ChoiceMap, ChoiceMap}",false,false,0,false,true,true,true
+src/inference/kernel_dsl.jl,is_custom_primitive_kernel,mtsig,Tuple{Function},false,false,0,false,true,true,true
+src/inference/kernel_dsl.jl,check_is_kernel,mtsig,Tuple{Function},false,false,0,false,true,true,true
+src/inference/kernel_dsl.jl,f_,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/inference/kernel_dsl.jl,Gen.is_custom_primitive_kernel,mtsig,Tuple{typeof($(esc(f)))},false,true,0,false,true,true,true
+src/inference/kernel_dsl.jl,Gen.check_is_kernel,mtsig,Tuple{typeof($(esc(f)))},false,true,0,false,true,true,true
+src/inference/kernel_dsl.jl,expand_kern_ex,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/inference/kernel_dsl.jl,f_,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/inference/kernel_dsl.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/inference/kernel_dsl.jl,Gen.check_is_kernel,mtsig,Tuple{typeof($(esc(f)))},false,true,0,false,true,true,true
+src/inference/kernel_dsl.jl,reversal,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/inference/kernel_dsl.jl,Gen.reversal,mtsig,Tuple{typeof($(esc(k)))},false,true,0,false,true,true,true
+src/inference/kernel_dsl.jl,Gen.reversal,mtsig,Tuple{typeof($(esc(l)))},false,true,0,false,true,true,true
+src/inference/kernel_dsl.jl,reversal_ex,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/inference/kernel_dsl.jl,f_,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/inference/kernel_dsl.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/inference/kernel_dsl.jl,Gen.reversal,mtsig,Tuple{typeof($(esc(kern)))},false,true,0,false,true,true,true
+src/inference/kernel_dsl.jl,Gen.reversal,mtsig,Tuple{typeof($(esc(rev_kern)))},false,true,0,false,true,true,true
+src/inference/mala.jl,mala,mtsig,"Tuple{Any, Selection, Real, Any, Any}",false,false,0,false,true,true,true
+src/inference/mala.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/inference/mala.jl,check_is_kernel,mtsig,Tuple{typeof(mala)},false,false,0,false,true,true,true
+src/inference/mala.jl,is_custom_primitive_kernel,mtsig,Tuple{typeof(mala)},false,false,0,false,true,true,true
+src/inference/mala.jl,reversal,mtsig,Tuple{typeof(mala)},false,false,0,false,true,true,true
+src/inference/map_optimize.jl,map_optimize,mtsig,"Tuple{Any, Selection, Any, Any, Any, Any}",false,false,0,false,true,true,true
+src/inference/map_optimize.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/inference/mh.jl,check_is_kernel,mtsig,Tuple{typeof(metropolis_hastings)},false,false,0,false,true,true,true
+src/inference/mh.jl,is_custom_primitive_kernel,mtsig,Tuple{typeof(metropolis_hastings)},false,false,0,false,true,true,true
+src/inference/mh.jl,reversal,mtsig,Tuple{typeof(metropolis_hastings)},false,false,0,false,true,true,true
+src/inference/mh.jl,metropolis_hastings,mtsig,"Tuple{Any, Selection, Any, Any}",false,false,0,false,true,true,true
+src/inference/mh.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/inference/mh.jl,metropolis_hastings,mtsig,"Tuple{Any, GenerativeFunction, Tuple, Any, Any}",false,false,0,false,true,true,true
+src/inference/mh.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/inference/mh.jl,metropolis_hastings,mtsig,"Tuple{Any, GenerativeFunction, Tuple, Union{TraceTransformDSLProgram, Function}, Any, Any}",false,false,0,false,true,true,true
+src/inference/mh.jl,involutive_mcmc,mtsig,"Tuple{Any, Any, Any, Any, Any, Any}",false,false,0,false,true,true,true
+src/inference/particle_filter.jl,effective_sample_size,mtsig,Tuple{Vector{Float64}},false,false,0,false,true,true,true
+src/inference/particle_filter.jl,normalize_weights,mtsig,Tuple{Vector{Float64}},false,false,0,false,true,true,true
+src/inference/particle_filter.jl,get_traces,mtsig,Tuple{ParticleFilterState},false,false,0,false,true,true,true
+src/inference/particle_filter.jl,get_log_weights,mtsig,Tuple{ParticleFilterState},false,false,0,false,true,true,true
+src/inference/particle_filter.jl,log_ml_estimate,mtsig,Tuple{ParticleFilterState},false,false,0,false,true,true,true
+src/inference/particle_filter.jl,sample_unweighted_traces,mtsig,"Tuple{ParticleFilterState{U}, Int} where U",false,false,1,true,true,true,true
+src/inference/particle_filter.jl,initialize_particle_filter,mtsig,"(Tuple{GenerativeFunction{T, U}, Tuple, ChoiceMap, GenerativeFunction, Tuple, Int} where U) where T",false,false,2,true,true,true,true
+src/inference/particle_filter.jl,initialize_particle_filter,mtsig,"(Tuple{GenerativeFunction{T, U}, Tuple, ChoiceMap, Int} where U) where T",false,false,2,true,true,true,true
+src/inference/particle_filter.jl,particle_filter_step!,mtsig,"Tuple{ParticleFilterState{U}, Tuple, Tuple, ChoiceMap, GenerativeFunction, Tuple} where U",false,false,1,true,true,true,true
+src/inference/particle_filter.jl,particle_filter_step!,mtsig,"Tuple{ParticleFilterState{U}, Tuple, Tuple, ChoiceMap} where U",false,false,1,true,true,true,true
+src/inference/particle_filter.jl,maybe_resample!,mtsig,"Tuple{ParticleFilterState{U}, Real, Any} where U",false,false,1,true,true,true,true
+src/inference/trace_translators.jl,pair_bijections!,mtsig,"Tuple{TraceTransformDSLProgram, TraceTransformDSLProgram}",false,false,0,false,true,true,true
+src/inference/trace_translators.jl,is_involution!,mtsig,Tuple{TraceTransformDSLProgram},false,false,0,false,true,true,true
+src/inference/trace_translators.jl,inverse,mtsig,Tuple{TraceTransformDSLProgram},false,false,0,false,true,true,true
+src/inference/trace_translators.jl,Base.getindex,mtsig,"Tuple{ModelInputTraceToken, Any}",false,false,0,false,true,true,true
+src/inference/trace_translators.jl,Base.getindex,mtsig,"Tuple{ModelOutputTraceToken, Any}",false,false,0,false,true,true,true
+src/inference/trace_translators.jl,Base.getindex,mtsig,"Tuple{AuxInputTraceToken, Any}",false,false,0,false,true,true,true
+src/inference/trace_translators.jl,Base.getindex,mtsig,"Tuple{AuxOutputTraceToken, Any}",false,false,0,false,true,true,true
+src/inference/trace_translators.jl,Base.getindex,mtsig,Tuple{ModelInputTraceToken},false,false,0,false,true,true,true
+src/inference/trace_translators.jl,Base.getindex,mtsig,Tuple{AuxInputTraceToken},false,false,0,false,true,true,true
+src/inference/trace_translators.jl,get_args,mtsig,Tuple{ModelInputTraceToken},false,false,0,false,true,true,true
+src/inference/trace_translators.jl,get_args,mtsig,Tuple{AuxInputTraceToken},false,false,0,false,true,true,true
+src/inference/trace_translators.jl,typed,mtsig,Tuple{Symbol},false,false,0,false,true,true,true
+src/inference/trace_translators.jl,FirstPassResults,mtsig,Tuple{},false,false,0,false,true,true,true
+src/inference/trace_translators.jl,FirstPassState,mtsig,"Tuple{Trace, Trace}",false,false,0,false,true,true,true
+src/inference/trace_translators.jl,FirstPassState,mtsig,"Tuple{Trace, Nothing}",false,false,0,false,true,true,true
+src/inference/trace_translators.jl,get_model_args,mtsig,Tuple{FirstPassState},false,false,0,false,true,true,true
+src/inference/trace_translators.jl,get_aux_args,mtsig,Tuple{FirstPassState},false,false,0,false,true,true,true
+src/inference/trace_translators.jl,run_first_pass,mtsig,"Tuple{TraceTransformDSLProgram, Any, Any}",false,false,0,false,true,true,true
+src/inference/trace_translators.jl,read,mtsig,"Tuple{FirstPassState, ModelInputTraceRetValToken, DiscreteAnn}",false,false,0,false,true,true,true
+src/inference/trace_translators.jl,read,mtsig,"Tuple{FirstPassState, AuxInputTraceRetValToken, DiscreteAnn}",false,false,0,false,true,true,true
+src/inference/trace_translators.jl,read,mtsig,"Tuple{FirstPassState, ModelInputAddress, DiscreteAnn}",false,false,0,false,true,true,true
+src/inference/trace_translators.jl,read,mtsig,"Tuple{FirstPassState, ModelInputAddress, ContinuousAnn}",false,false,0,false,true,true,true
+src/inference/trace_translators.jl,read,mtsig,"Tuple{FirstPassState, AuxInputAddress, DiscreteAnn}",false,false,0,false,true,true,true
+src/inference/trace_translators.jl,read,mtsig,"Tuple{FirstPassState, AuxInputAddress, ContinuousAnn}",false,false,0,false,true,true,true
+src/inference/trace_translators.jl,write,mtsig,"Tuple{FirstPassState, ModelOutputAddress, Any, DiscreteAnn}",false,false,0,false,true,true,true
+src/inference/trace_translators.jl,write,mtsig,"Tuple{FirstPassState, ModelOutputAddress, Any, ContinuousAnn}",false,false,0,false,true,true,true
+src/inference/trace_translators.jl,write,mtsig,"Tuple{FirstPassState, AuxOutputAddress, Any, DiscreteAnn}",false,false,0,false,true,true,true
+src/inference/trace_translators.jl,write,mtsig,"Tuple{FirstPassState, AuxOutputAddress, Any, ContinuousAnn}",false,false,0,false,true,true,true
+src/inference/trace_translators.jl,copy,mtsig,"Tuple{FirstPassState, ModelInputAddress, ModelOutputAddress}",false,false,0,false,true,true,true
+src/inference/trace_translators.jl,copy,mtsig,"Tuple{FirstPassState, ModelInputAddress, AuxOutputAddress}",false,false,0,false,true,true,true
+src/inference/trace_translators.jl,copy,mtsig,"Tuple{FirstPassState, AuxInputAddress, AuxOutputAddress}",false,false,0,false,true,true,true
+src/inference/trace_translators.jl,copy,mtsig,"Tuple{FirstPassState, AuxInputAddress, ModelOutputAddress}",false,false,0,false,true,true,true
+src/inference/trace_translators.jl,get_model_args,mtsig,Tuple{JacobianPassState},false,false,0,false,true,true,true
+src/inference/trace_translators.jl,get_aux_args,mtsig,Tuple{JacobianPassState},false,false,0,false,true,true,true
+src/inference/trace_translators.jl,read,mtsig,"Tuple{JacobianPassState, ModelInputTraceRetValToken, DiscreteAnn}",false,false,0,false,true,true,true
+src/inference/trace_translators.jl,read,mtsig,"Tuple{JacobianPassState, AuxInputTraceRetValToken, DiscreteAnn}",false,false,0,false,true,true,true
+src/inference/trace_translators.jl,read,mtsig,"Tuple{JacobianPassState, ModelInputAddress, DiscreteAnn}",false,false,0,false,true,true,true
+src/inference/trace_translators.jl,read,mtsig,"Tuple{JacobianPassState, AuxInputAddress, DiscreteAnn}",false,false,0,false,true,true,true
+src/inference/trace_translators.jl,_read_continuous,mtsig,"Tuple{Any, Int}",false,false,0,false,true,true,true
+src/inference/trace_translators.jl,_read_continuous,mtsig,"Tuple{Any, Tuple{Int, Int}}",false,false,0,false,true,true,true
+src/inference/trace_translators.jl,read,mtsig,"Tuple{JacobianPassState, ModelInputAddress, ContinuousAnn}",false,false,0,false,true,true,true
+src/inference/trace_translators.jl,read,mtsig,"Tuple{JacobianPassState, AuxInputAddress, ContinuousAnn}",false,false,0,false,true,true,true
+src/inference/trace_translators.jl,write,mtsig,"Tuple{JacobianPassState, ModelOutputAddress, Any, DiscreteAnn}",false,false,0,false,true,true,true
+src/inference/trace_translators.jl,write,mtsig,"Tuple{JacobianPassState, AuxOutputAddress, Any, DiscreteAnn}",false,false,0,false,true,true,true
+src/inference/trace_translators.jl,_write_continuous,mtsig,"Tuple{Any, Int, Any}",false,false,0,false,true,true,true
+src/inference/trace_translators.jl,_write_continuous,mtsig,"Tuple{Any, Tuple{Int, Int}, Any}",false,false,0,false,true,true,true
+src/inference/trace_translators.jl,write,mtsig,"Tuple{JacobianPassState, AuxOutputAddress, Any, ContinuousAnn}",false,false,0,false,true,true,true
+src/inference/trace_translators.jl,write,mtsig,"Tuple{JacobianPassState, ModelOutputAddress, Any, ContinuousAnn}",false,false,0,false,true,true,true
+src/inference/trace_translators.jl,copy,mtsig,"Tuple{JacobianPassState, Any, Any}",false,false,0,false,true,true,true
+src/inference/trace_translators.jl,discard_skip_read_addr,mtsig,"Tuple{Any, ChoiceMap}",false,false,0,false,true,true,true
+src/inference/trace_translators.jl,discard_skip_read_addr,mtsig,"Tuple{Any, Nothing}",false,false,0,false,true,true,true
+src/inference/trace_translators.jl,store_addr_info!,mtsig,"Tuple{Dict, Any, Real, Int}",false,false,0,false,true,true,true
+src/inference/trace_translators.jl,store_addr_info!,mtsig,"Tuple{Dict, Any, AbstractArray{<:Real}, Int}",false,false,1,true,true,true,true
+src/inference/trace_translators.jl,assemble_input_array_and_maps,mtsig,"Tuple{Any, Any, Any, Any, Union{ChoiceMap, Nothing}}",false,false,0,false,true,true,true
+src/inference/trace_translators.jl,assemble_output_maps,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/inference/trace_translators.jl,jacobian_correction,mtsig,"Tuple{TraceTransformDSLProgram, Any, Any, Any, Any}",false,false,0,false,true,true,true
+src/inference/trace_translators.jl,f_array,mtsig,Tuple{AbstractArray{T}} where T <: Real,false,false,1,true,true,true,true
+src/inference/trace_translators.jl,check_round_trip,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/inference/trace_translators.jl,check_round_trip,mtsig,"Tuple{Any, Any, Any, Any}",false,false,0,false,true,true,true
+src/inference/trace_translators.jl,translator::TraceTranslator,mtsig,"Tuple{Trace, Vararg{Any}}",false,false,0,false,true,true,true
+src/inference/trace_translators.jl,inverse,mtsig,"Tuple{DeterministicTraceTranslator, Trace, ChoiceMap}",false,false,0,false,true,true,true
+src/inference/trace_translators.jl,run_transform,mtsig,"Tuple{DeterministicTraceTranslator, Trace}",false,false,0,false,true,true,true
+src/inference/trace_translators.jl,translator::DeterministicTraceTranslator,mtsig,"Tuple{Trace, Any, Any}",false,false,0,false,true,true,true
+src/inference/trace_translators.jl,inverse,mtsig,"Tuple{GeneralTraceTranslator, Trace, ChoiceMap}",false,false,0,false,true,true,true
+src/inference/trace_translators.jl,run_transform,mtsig,"Tuple{GeneralTraceTranslator, Trace, Trace}",false,false,0,false,true,true,true
+src/inference/trace_translators.jl,translator::GeneralTraceTranslator,mtsig,"Tuple{Trace, Any, Any}",false,false,0,false,true,true,true
+src/inference/trace_translators.jl,translator::SimpleExtendingTraceTranslator,mtsig,Tuple{Trace},false,false,0,false,true,true,true
+src/inference/trace_translators.jl,inverse,mtsig,"Tuple{SymmetricTraceTranslator, Any}",false,false,0,false,true,true,true
+src/inference/trace_translators.jl,run_transform,mtsig,"Tuple{SymmetricTraceTranslator, Trace, Trace}",false,false,0,false,true,true,true
+src/inference/trace_translators.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/inference/trace_translators.jl,translator::SymmetricTraceTranslator{TraceTransformDSLProgram},mtsig,"Tuple{Trace, Any, Any}",false,false,0,false,true,true,true
+src/inference/trace_translators.jl,translator::SymmetricTraceTranslator{<:Function},mtsig,"Tuple{Trace, Any, Any}",false,false,0,false,true,true,true
+src/inference/train.jl,train!,mtsig,"Tuple{GenerativeFunction, Function, ParamUpdate, Any, Any, Any, Any, Any, Any, Any}",false,false,0,false,true,true,true
+src/inference/train.jl,<NA-name>,mtsig,"Tuple{Any, Any, Any}",false,false,0,false,true,true,true
+src/inference/train.jl,lecture!,mtsig,"Tuple{GenerativeFunction, Tuple, GenerativeFunction, Function}",false,false,0,false,true,true,true
+src/inference/train.jl,lecture_batched!,mtsig,"Tuple{GenerativeFunction, Tuple, GenerativeFunction, Function, Int}",false,false,0,false,true,true,true
+src/inference/variational.jl,single_sample_gradient_estimate!,mtsig,"Tuple{GenerativeFunction, Tuple, GenerativeFunction, Tuple, ChoiceMap, Any}",false,false,0,false,true,true,true
+src/inference/variational.jl,vimco_geometric_baselines,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/inference/variational.jl,logdiffexp,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/inference/variational.jl,vimco_arithmetic_baselines,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/inference/variational.jl,multi_sample_gradient_estimate!,mtsig,"Tuple{GenerativeFunction, Tuple, GenerativeFunction, Tuple, ChoiceMap, Int, Any, Any}",false,false,0,false,true,true,true
+src/inference/variational.jl,_maybe_accumulate_param_grad!,mtsig,"Tuple{Any, ParamUpdate, Real}",false,false,0,false,true,true,true
+src/inference/variational.jl,_maybe_accumulate_param_grad!,mtsig,"Tuple{Any, Nothing, Real}",false,false,0,false,true,true,true
+src/inference/variational.jl,black_box_vi!,mtsig,"Tuple{GenerativeFunction, Tuple, Union{ParamUpdate, Nothing}, ChoiceMap, GenerativeFunction, Tuple, ParamUpdate, Any, Any, Any, Any}",false,false,0,false,true,true,true
+src/inference/variational.jl,<NA-name>,mtsig,"Tuple{Any, Any, Any}",false,false,0,false,true,true,true
+src/inference/variational.jl,black_box_vi!,mtsig,"Tuple{GenerativeFunction, Tuple, ChoiceMap, GenerativeFunction, Tuple, ParamUpdate, Vararg{Any}}",false,false,0,false,true,true,true
+src/inference/variational.jl,black_box_vimco!,mtsig,"Tuple{GenerativeFunction, Tuple, Union{ParamUpdate, Nothing}, ChoiceMap, GenerativeFunction, Tuple, ParamUpdate, Int, Any, Any, Any, Any, Any}",false,false,0,false,true,true,true
+src/inference/variational.jl,<NA-name>,mtsig,"Tuple{Any, Any, Any}",false,false,0,false,true,true,true
+src/inference/variational.jl,black_box_vimco!,mtsig,"Tuple{GenerativeFunction, Tuple, ChoiceMap, GenerativeFunction, Tuple, ParamUpdate, Int, Vararg{Any}}",false,false,0,false,true,true,true
+src/modeling_library/custom_determ.jl,get_args,mtsig,Tuple{CustomDetermGFTrace},false,false,0,false,true,true,true
+src/modeling_library/custom_determ.jl,get_retval,mtsig,Tuple{CustomDetermGFTrace},false,false,0,false,true,true,true
+src/modeling_library/custom_determ.jl,get_choices,mtsig,Tuple{CustomDetermGFTrace},false,false,0,false,true,true,true
+src/modeling_library/custom_determ.jl,get_score,mtsig,Tuple{CustomDetermGFTrace},false,false,0,false,true,true,true
+src/modeling_library/custom_determ.jl,project,mtsig,"Tuple{CustomDetermGFTrace, Selection}",false,false,0,false,true,true,true
+src/modeling_library/custom_determ.jl,get_gen_fn,mtsig,Tuple{CustomDetermGFTrace},false,false,0,false,true,true,true
+src/modeling_library/custom_determ.jl,accepts_output_grad,mtsig,Tuple{CustomDetermGF},false,false,0,false,true,true,true
+src/modeling_library/custom_determ.jl,update_with_state,mtsig,"(Tuple{CustomDetermGF{T, S}, Any, Any, Any} where S) where T",false,false,2,true,true,true,true
+src/modeling_library/custom_determ.jl,gradient_with_state,mtsig,"Tuple{CustomDetermGF, Any, Any, Any}",false,false,0,false,true,true,true
+src/modeling_library/custom_determ.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/modeling_library/custom_determ.jl,accumulate_param_gradients_determ!,mtsig,"Tuple{CustomDetermGF, Any, Any, Any, Any}",false,false,0,false,true,true,true
+src/modeling_library/custom_determ.jl,simulate,mtsig,"(Tuple{CustomDetermGF{T, S}, Tuple} where S) where T",false,false,2,true,true,true,true
+src/modeling_library/custom_determ.jl,generate,mtsig,"(Tuple{CustomDetermGF{T, S}, Tuple, ChoiceMap} where S) where T",false,false,2,true,true,true,true
+src/modeling_library/custom_determ.jl,update,mtsig,"(Tuple{CustomDetermGFTrace{T, S}, Tuple, Tuple, ChoiceMap} where S) where T",false,false,2,true,true,true,true
+src/modeling_library/custom_determ.jl,regenerate,mtsig,"Tuple{CustomDetermGFTrace, Tuple, Tuple, Selection}",false,false,0,false,true,true,true
+src/modeling_library/custom_determ.jl,choice_gradients,mtsig,"Tuple{CustomDetermGFTrace, Selection, Any}",false,false,0,false,true,true,true
+src/modeling_library/custom_determ.jl,accumulate_param_gradients!,mtsig,"Tuple{CustomDetermGFTrace, Any, Any}",false,false,0,false,true,true,true
+src/modeling_library/custom_determ.jl,accepts_output_grad,mtsig,Tuple{CustomGradientGF},false,false,0,false,true,true,true
+src/modeling_library/custom_determ.jl,has_argument_grads,mtsig,Tuple{CustomGradientGF},false,false,0,false,true,true,true
+src/modeling_library/custom_determ.jl,apply,mtsig,"Tuple{CustomGradientGF, Any}",false,false,0,false,true,true,true
+src/modeling_library/custom_determ.jl,apply_with_state,mtsig,"Tuple{CustomGradientGF, Any}",false,false,0,false,true,true,true
+src/modeling_library/custom_determ.jl,gradient,mtsig,"Tuple{CustomGradientGF, Any, Any, Any}",false,false,0,false,true,true,true
+src/modeling_library/custom_determ.jl,gradient_with_state,mtsig,"Tuple{CustomGradientGF, Any, Any, Any}",false,false,0,false,true,true,true
+src/modeling_library/custom_determ.jl,accepts_output_grad,mtsig,Tuple{CustomUpdateGF},false,false,0,false,true,true,true
+src/modeling_library/custom_determ.jl,num_args,mtsig,Tuple{CustomUpdateGF},false,false,0,false,true,true,true
+src/modeling_library/custom_determ.jl,has_argument_grads,mtsig,Tuple{CustomUpdateGF},false,false,0,false,true,true,true
+src/modeling_library/custom_determ.jl,apply_with_state,mtsig,"Tuple{CustomUpdateGF, Any}",false,false,0,false,true,true,true
+src/modeling_library/mixture.jl,dist::HomogeneousMixture,mtsig,Tuple{Vararg{Any}},false,false,0,false,true,true,true
+src/modeling_library/mixture.jl,Gen.has_output_grad,mtsig,Tuple{HomogeneousMixture},false,false,0,false,true,true,true
+src/modeling_library/mixture.jl,Gen.has_argument_grads,mtsig,Tuple{HomogeneousMixture},false,false,0,false,true,true,true
+src/modeling_library/mixture.jl,Gen.is_discrete,mtsig,Tuple{HomogeneousMixture},false,false,0,false,true,true,true
+src/modeling_library/mixture.jl,args_for_component,mtsig,"Tuple{HomogeneousMixture, Int, Any}",false,false,0,false,true,true,true
+src/modeling_library/mixture.jl,Gen.random,mtsig,"Tuple{HomogeneousMixture, Any, Vararg{Any}}",false,false,0,false,true,true,true
+src/modeling_library/mixture.jl,Gen.logpdf,mtsig,"Tuple{HomogeneousMixture, Any, Any, Vararg{Any}}",false,false,0,false,true,true,true
+src/modeling_library/mixture.jl,Gen.logpdf_grad,mtsig,"Tuple{HomogeneousMixture, Any, Any, Vararg{Any}}",false,false,0,false,true,true,true
+src/modeling_library/mixture.jl,dist::HeterogeneousMixture,mtsig,Tuple{Vararg{Any}},false,false,0,false,true,true,true
+src/modeling_library/mixture.jl,Gen.has_output_grad,mtsig,Tuple{HeterogeneousMixture},false,false,0,false,true,true,true
+src/modeling_library/mixture.jl,Gen.has_argument_grads,mtsig,Tuple{HeterogeneousMixture},false,false,0,false,true,true,true
+src/modeling_library/mixture.jl,Gen.is_discrete,mtsig,Tuple{HeterogeneousMixture},false,false,0,false,true,true,true
+src/modeling_library/mixture.jl,HeterogeneousMixture,mtsig,Tuple{Vector{Distribution{T}}} where T,false,false,1,true,true,true,true
+src/modeling_library/mixture.jl,extract_args_for_component,mtsig,"Tuple{HeterogeneousMixture, Any, Int}",false,false,0,false,true,true,true
+src/modeling_library/mixture.jl,Gen.random,mtsig,"Tuple{HeterogeneousMixture{T}, Any, Vararg{Any}} where T",false,false,1,true,true,true,true
+src/modeling_library/mixture.jl,Gen.logpdf,mtsig,"Tuple{HeterogeneousMixture, Any, Any, Vararg{Any}}",false,false,0,false,true,true,true
+src/modeling_library/mixture.jl,Gen.logpdf_grad,mtsig,"Tuple{HeterogeneousMixture, Any, Any, Vararg{Any}}",false,false,0,false,true,true,true
+src/modeling_library/modeling_library.jl,is_discrete,mtsig,Tuple{Distribution},false,false,0,false,true,true,true
+src/modeling_library/modeling_library.jl,get_return_type,mtsig,Tuple{Distribution{T}} where T,false,false,1,true,true,true,true
+src/modeling_library/vector.jl,VectorTrace,mtsig,"((Tuple{GenerativeFunction, PersistentVector{U}, PersistentVector{T}, Tuple, Float64, Float64, Int, Int} where U) where T) where GenFnType",false,false,3,true,false,true,true
+src/modeling_library/vector.jl,VectorTrace,mtsig,"((Tuple{GenerativeFunction, Tuple} where U) where T) where GenFnType",false,false,3,true,false,true,true
+src/modeling_library/vector.jl,get_choices,mtsig,Tuple{VectorTrace},false,false,0,false,true,true,true
+src/modeling_library/vector.jl,get_retval,mtsig,Tuple{VectorTrace},false,false,0,false,true,true,true
+src/modeling_library/vector.jl,get_args,mtsig,Tuple{VectorTrace},false,false,0,false,true,true,true
+src/modeling_library/vector.jl,get_score,mtsig,Tuple{VectorTrace},false,false,0,false,true,true,true
+src/modeling_library/vector.jl,get_gen_fn,mtsig,Tuple{VectorTrace},false,false,0,false,true,true,true
+src/modeling_library/vector.jl,Base.getindex,mtsig,"((Tuple{VectorTrace{GenFnType, T, U}, Pair} where U) where T) where GenFnType",false,false,3,true,true,true,true
+src/modeling_library/vector.jl,Base.getindex,mtsig,"Tuple{VectorTrace, Any}",false,false,0,false,true,true,true
+src/modeling_library/vector.jl,project,mtsig,"Tuple{VectorTrace, Selection}",false,false,0,false,true,true,true
+src/modeling_library/vector.jl,project,mtsig,"Tuple{VectorTrace, EmptySelection}",false,false,0,false,true,true,true
+src/modeling_library/vector.jl,Base.isempty,mtsig,Tuple{VectorTraceChoiceMap},false,false,0,false,true,true,true
+src/modeling_library/vector.jl,get_address_schema,mtsig,Tuple{Type{VectorTraceChoiceMap}},false,false,0,false,true,true,true
+src/modeling_library/vector.jl,get_submap,mtsig,"Tuple{VectorTraceChoiceMap, Int}",false,false,0,false,true,true,true
+src/modeling_library/vector.jl,get_submaps_shallow,mtsig,Tuple{VectorTraceChoiceMap},false,false,0,false,true,true,true
+src/modeling_library/vector.jl,get_submap,mtsig,"Tuple{VectorTraceChoiceMap, Pair}",false,false,0,false,true,true,true
+src/modeling_library/vector.jl,get_value,mtsig,"Tuple{VectorTraceChoiceMap, Pair}",false,false,0,false,true,true,true
+src/modeling_library/vector.jl,has_value,mtsig,"Tuple{VectorTraceChoiceMap, Pair}",false,false,0,false,true,true,true
+src/modeling_library/vector.jl,get_values_shallow,mtsig,Tuple{VectorTraceChoiceMap},false,false,0,false,true,true,true
+src/modeling_library/vector.jl,get_retained_and_constrained,mtsig,"Tuple{ChoiceMap, Int, Int}",false,false,0,false,true,true,true
+src/modeling_library/vector.jl,get_retained_and_selected,mtsig,"Tuple{EmptySelection, Int, Int}",false,false,0,false,true,true,true
+src/modeling_library/vector.jl,get_retained_and_selected,mtsig,"Tuple{HierarchicalSelection, Int, Int}",false,false,0,false,true,true,true
+src/modeling_library/vector.jl,get_retained_and_selected,mtsig,"Tuple{AllSelection, Int, Int}",false,false,0,false,true,true,true
+src/modeling_library/vector.jl,vector_compute_retdiff,mtsig,"Tuple{Dict{Int, Diff}, Int, Int}",false,false,0,false,true,true,true
+src/modeling_library/vector.jl,vector_update_delete,mtsig,"Tuple{Int, Int, VectorTrace}",false,false,0,false,true,true,true
+src/modeling_library/vector.jl,vector_regenerate_delete,mtsig,"Tuple{Int, Int, VectorTrace}",false,false,0,false,true,true,true
+src/modeling_library/vector.jl,vector_remove_deleted_applications,mtsig,"Tuple{Any, Any, Any, Any}",false,false,0,false,true,true,true
+src/modeling_library/call_at/call_at.jl,Base.isempty,mtsig,Tuple{CallAtChoiceMap},false,false,0,false,true,true,true
+src/modeling_library/call_at/call_at.jl,get_address_schema,mtsig,Tuple{Type{T}} where T <: CallAtChoiceMap,false,false,1,true,true,true,true
+src/modeling_library/call_at/call_at.jl,get_submap,mtsig,"(Tuple{CallAtChoiceMap{K, T}, K} where T) where K",false,false,2,true,false,false,true
+src/modeling_library/call_at/call_at.jl,get_submap,mtsig,"Tuple{CallAtChoiceMap, Pair}",false,false,0,false,true,true,true
+src/modeling_library/call_at/call_at.jl,get_value,mtsig,"Tuple{CallAtChoiceMap, Pair}",false,false,0,false,true,true,true
+src/modeling_library/call_at/call_at.jl,has_value,mtsig,"Tuple{CallAtChoiceMap, Pair}",false,false,0,false,true,true,true
+src/modeling_library/call_at/call_at.jl,get_submaps_shallow,mtsig,Tuple{CallAtChoiceMap},false,false,0,false,true,true,true
+src/modeling_library/call_at/call_at.jl,get_values_shallow,mtsig,Tuple{CallAtChoiceMap},false,false,0,false,true,true,true
+src/modeling_library/call_at/call_at.jl,Base.getindex,mtsig,"Tuple{CallAtTrace, Pair}",false,false,0,false,true,true,true
+src/modeling_library/call_at/call_at.jl,Base.getindex,mtsig,"Tuple{CallAtTrace, Any}",false,false,0,false,true,true,true
+src/modeling_library/call_at/call_at.jl,get_args,mtsig,Tuple{CallAtTrace},false,false,0,false,true,true,true
+src/modeling_library/call_at/call_at.jl,get_retval,mtsig,Tuple{CallAtTrace},false,false,0,false,true,true,true
+src/modeling_library/call_at/call_at.jl,get_score,mtsig,Tuple{CallAtTrace},false,false,0,false,true,true,true
+src/modeling_library/call_at/call_at.jl,get_gen_fn,mtsig,Tuple{CallAtTrace},false,false,0,false,true,true,true
+src/modeling_library/call_at/call_at.jl,get_choices,mtsig,Tuple{CallAtTrace},false,false,0,false,true,true,true
+src/modeling_library/call_at/call_at.jl,call_at,mtsig,"((Tuple{GenerativeFunction{T, U}, Type{K}} where K) where U) where T",false,false,3,true,true,true,true
+src/modeling_library/call_at/call_at.jl,accepts_output_grad,mtsig,Tuple{CallAtCombinator},false,false,0,false,true,true,true
+src/modeling_library/call_at/call_at.jl,unpack_call_at_args,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/modeling_library/call_at/call_at.jl,assess,mtsig,"Tuple{CallAtCombinator, Tuple, ChoiceMap}",false,false,0,false,true,true,true
+src/modeling_library/call_at/call_at.jl,propose,mtsig,"Tuple{CallAtCombinator, Tuple}",false,false,0,false,true,true,true
+src/modeling_library/call_at/call_at.jl,simulate,mtsig,"Tuple{CallAtCombinator, Tuple}",false,false,0,false,true,true,true
+src/modeling_library/call_at/call_at.jl,generate,mtsig,"((Tuple{CallAtCombinator{T, U, K}, Tuple, ChoiceMap} where K) where U) where T",false,false,3,true,true,true,true
+src/modeling_library/call_at/call_at.jl,project,mtsig,"Tuple{CallAtTrace, Selection}",false,false,0,false,true,true,true
+src/modeling_library/call_at/call_at.jl,update,mtsig,"Tuple{CallAtTrace, Tuple, Tuple, ChoiceMap}",false,false,0,false,true,true,true
+src/modeling_library/call_at/call_at.jl,regenerate,mtsig,"Tuple{CallAtTrace, Tuple, Tuple, Selection}",false,false,0,false,true,true,true
+src/modeling_library/call_at/call_at.jl,choice_gradients,mtsig,"Tuple{CallAtTrace, Selection, Any}",false,false,0,false,true,true,true
+src/modeling_library/call_at/call_at.jl,accumulate_param_gradients!,mtsig,"Tuple{CallAtTrace, Any}",false,false,0,false,true,true,true
+src/modeling_library/choice_at/choice_at.jl,get_args,mtsig,Tuple{ChoiceAtTrace},false,false,0,false,true,true,true
+src/modeling_library/choice_at/choice_at.jl,get_retval,mtsig,Tuple{ChoiceAtTrace},false,false,0,false,true,true,true
+src/modeling_library/choice_at/choice_at.jl,get_score,mtsig,Tuple{ChoiceAtTrace},false,false,0,false,true,true,true
+src/modeling_library/choice_at/choice_at.jl,get_gen_fn,mtsig,Tuple{ChoiceAtTrace},false,false,0,false,true,true,true
+src/modeling_library/choice_at/choice_at.jl,get_choices,mtsig,Tuple{ChoiceAtTrace},false,false,0,false,true,true,true
+src/modeling_library/choice_at/choice_at.jl,Base.isempty,mtsig,Tuple{ChoiceAtChoiceMap},false,false,0,false,true,true,true
+src/modeling_library/choice_at/choice_at.jl,get_address_schema,mtsig,Tuple{Type{T}} where T <: ChoiceAtChoiceMap,false,false,1,true,true,true,true
+src/modeling_library/choice_at/choice_at.jl,get_value,mtsig,"Tuple{ChoiceAtChoiceMap, Pair}",false,false,0,false,true,true,true
+src/modeling_library/choice_at/choice_at.jl,has_value,mtsig,"Tuple{ChoiceAtChoiceMap, Pair}",false,false,0,false,true,true,true
+src/modeling_library/choice_at/choice_at.jl,get_value,mtsig,"(Tuple{ChoiceAtChoiceMap{T, K}, K} where K) where T",false,false,2,true,false,false,true
+src/modeling_library/choice_at/choice_at.jl,get_submaps_shallow,mtsig,Tuple{ChoiceAtChoiceMap},false,false,0,false,true,true,true
+src/modeling_library/choice_at/choice_at.jl,get_values_shallow,mtsig,Tuple{ChoiceAtChoiceMap},false,false,0,false,true,true,true
+src/modeling_library/choice_at/choice_at.jl,accepts_output_grad,mtsig,Tuple{ChoiceAtCombinator},false,false,0,false,true,true,true
+src/modeling_library/choice_at/choice_at.jl,choice_at,mtsig,"(Tuple{Distribution{T}, Type{K}} where K) where T",false,false,2,true,true,true,true
+src/modeling_library/choice_at/choice_at.jl,unpack_choice_at_args,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/modeling_library/choice_at/choice_at.jl,assess,mtsig,"(Tuple{ChoiceAtCombinator{T, K}, Tuple, ChoiceMap} where K) where T",false,false,2,true,true,true,true
+src/modeling_library/choice_at/choice_at.jl,propose,mtsig,"(Tuple{ChoiceAtCombinator{T, K}, Tuple} where K) where T",false,false,2,true,true,true,true
+src/modeling_library/choice_at/choice_at.jl,simulate,mtsig,"Tuple{ChoiceAtCombinator, Tuple}",false,false,0,false,true,true,true
+src/modeling_library/choice_at/choice_at.jl,generate,mtsig,"(Tuple{ChoiceAtCombinator{T, K}, Tuple, ChoiceMap} where K) where T",false,false,2,true,true,true,true
+src/modeling_library/choice_at/choice_at.jl,project,mtsig,"Tuple{ChoiceAtTrace, Selection}",false,false,0,false,true,true,true
+src/modeling_library/choice_at/choice_at.jl,update,mtsig,"Tuple{ChoiceAtTrace, Tuple, Tuple, ChoiceMap}",false,false,0,false,true,true,true
+src/modeling_library/choice_at/choice_at.jl,regenerate,mtsig,"Tuple{ChoiceAtTrace, Tuple, Tuple, Selection}",false,false,0,false,true,true,true
+src/modeling_library/choice_at/choice_at.jl,choice_gradients,mtsig,"Tuple{ChoiceAtTrace, Selection, Any}",false,false,0,false,true,true,true
+src/modeling_library/choice_at/choice_at.jl,accumulate_param_gradients!,mtsig,"Tuple{ChoiceAtTrace, Any}",false,false,0,false,true,true,true
+src/modeling_library/dist_dsl/dist_dsl.jl,all_indices,mtsig,Tuple{SimpleArg},false,false,0,false,true,true,true
+src/modeling_library/dist_dsl/dist_dsl.jl,all_indices,mtsig,Tuple{TransformedArg},false,false,0,false,true,true,true
+src/modeling_library/dist_dsl/dist_dsl.jl,eval_arg,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/modeling_library/dist_dsl/dist_dsl.jl,eval_arg,mtsig,"Tuple{SimpleArg, Any}",false,false,0,false,true,true,true
+src/modeling_library/dist_dsl/dist_dsl.jl,eval_arg,mtsig,"Tuple{TransformedArg, Any}",false,false,0,false,true,true,true
+src/modeling_library/dist_dsl/dist_dsl.jl,typecheck_arg,mtsig,"Tuple{SimpleArg{T}, T} where T",false,false,1,true,false,false,true
+src/modeling_library/dist_dsl/dist_dsl.jl,compile_dist_with_args,mtsig,"Tuple{DistWithArgs{T}, Int8} where T",false,false,1,true,true,true,true
+src/modeling_library/dist_dsl/dist_dsl.jl,logpdf,mtsig,"Tuple{CompiledDistWithArgs{T}, T, Vararg{Any}} where T",false,false,1,true,false,false,true
+src/modeling_library/dist_dsl/dist_dsl.jl,logpdf_grad,mtsig,"Tuple{CompiledDistWithArgs{T}, T, Vararg{Any}} where T",false,false,1,true,false,false,true
+src/modeling_library/dist_dsl/dist_dsl.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/modeling_library/dist_dsl/dist_dsl.jl,random,mtsig,"Tuple{CompiledDistWithArgs{T}, Vararg{Any}} where T",false,false,1,true,true,true,true
+src/modeling_library/dist_dsl/dist_dsl.jl,is_discrete,mtsig,Tuple{CompiledDistWithArgs{T}} where T,false,false,1,true,true,true,true
+src/modeling_library/dist_dsl/dist_dsl.jl,d::CompiledDistWithArgs{T},mtsig,Tuple{Vararg{Any}} where T,false,false,1,true,false,true,true
+src/modeling_library/dist_dsl/dist_dsl.jl,has_output_grad,mtsig,Tuple{CompiledDistWithArgs{T}} where T,false,false,1,true,true,true,true
+src/modeling_library/dist_dsl/dist_dsl.jl,has_argument_grads,mtsig,Tuple{CompiledDistWithArgs{T}} where T,false,false,1,true,true,true,true
+src/modeling_library/dist_dsl/dist_dsl.jl,dist_call,mtsig,"Tuple{Distribution{T}, Any, Any} where T",false,false,1,true,true,true,true
+src/modeling_library/dist_dsl/dist_dsl.jl,dist_call,mtsig,"Tuple{Any, Any, Any}",false,false,0,false,true,true,true
+src/modeling_library/dist_dsl/dist_dsl.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/modeling_library/dist_dsl/dist_dsl.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/modeling_library/dist_dsl/dist_dsl.jl,process_node,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/modeling_library/dist_dsl/dist_dsl.jl,Base.:+,mtsig,"Tuple{DistWithArgs{T}, Real} where T <: Real",false,false,1,true,true,true,true
+src/modeling_library/dist_dsl/dist_dsl.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/modeling_library/dist_dsl/dist_dsl.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/modeling_library/dist_dsl/dist_dsl.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/modeling_library/dist_dsl/dist_dsl.jl,Base.:+,mtsig,"Tuple{DistWithArgs{T}, Arg} where T <: Real",false,false,1,true,true,true,true
+src/modeling_library/dist_dsl/dist_dsl.jl,<NA-name>,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/modeling_library/dist_dsl/dist_dsl.jl,Base.:+,mtsig,"Tuple{Real, DistWithArgs{T}} where T <: Real",false,false,1,true,true,true,true
+src/modeling_library/dist_dsl/dist_dsl.jl,Base.:+,mtsig,"Tuple{Arg, DistWithArgs{T}} where T <: Real",false,false,1,true,true,true,true
+src/modeling_library/dist_dsl/dist_dsl.jl,Base.:-,mtsig,"Tuple{DistWithArgs{T}, Real} where T <: Real",false,false,1,true,true,true,true
+src/modeling_library/dist_dsl/dist_dsl.jl,Base.:-,mtsig,"Tuple{DistWithArgs{T}, Arg} where T <: Real",false,false,1,true,true,true,true
+src/modeling_library/dist_dsl/dist_dsl.jl,<NA-name>,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/modeling_library/dist_dsl/dist_dsl.jl,Base.:-,mtsig,"Tuple{Real, DistWithArgs{T}} where T <: Real",false,false,1,true,true,true,true
+src/modeling_library/dist_dsl/dist_dsl.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/modeling_library/dist_dsl/dist_dsl.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/modeling_library/dist_dsl/dist_dsl.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/modeling_library/dist_dsl/dist_dsl.jl,Base.:-,mtsig,"Tuple{Arg, DistWithArgs{T}} where T <: Real",false,false,1,true,true,true,true
+src/modeling_library/dist_dsl/dist_dsl.jl,<NA-name>,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/modeling_library/dist_dsl/dist_dsl.jl,<NA-name>,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/modeling_library/dist_dsl/dist_dsl.jl,<NA-name>,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/modeling_library/dist_dsl/dist_dsl.jl,Base.:*,mtsig,"Tuple{DistWithArgs{T}, Real} where T <: Real",false,false,1,true,true,true,true
+src/modeling_library/dist_dsl/dist_dsl.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/modeling_library/dist_dsl/dist_dsl.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/modeling_library/dist_dsl/dist_dsl.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/modeling_library/dist_dsl/dist_dsl.jl,Base.:*,mtsig,"Tuple{DistWithArgs{T}, Arg} where T <: Real",false,false,1,true,true,true,true
+src/modeling_library/dist_dsl/dist_dsl.jl,<NA-name>,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/modeling_library/dist_dsl/dist_dsl.jl,Base.:*,mtsig,"Tuple{Real, DistWithArgs{T}} where T <: Real",false,false,1,true,true,true,true
+src/modeling_library/dist_dsl/dist_dsl.jl,Base.:*,mtsig,"Tuple{Arg, DistWithArgs{T}} where T <: Real",false,false,1,true,true,true,true
+src/modeling_library/dist_dsl/dist_dsl.jl,Base.:/,mtsig,"Tuple{DistWithArgs{T}, Real} where T <: Real",false,false,1,true,true,true,true
+src/modeling_library/dist_dsl/dist_dsl.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/modeling_library/dist_dsl/dist_dsl.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/modeling_library/dist_dsl/dist_dsl.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/modeling_library/dist_dsl/dist_dsl.jl,Base.:/,mtsig,"Tuple{DistWithArgs{T}, Arg} where T <: Real",false,false,1,true,true,true,true
+src/modeling_library/dist_dsl/dist_dsl.jl,<NA-name>,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/modeling_library/dist_dsl/dist_dsl.jl,Base.:/,mtsig,"Tuple{Real, DistWithArgs{T}} where T <: Real",false,false,1,true,true,true,true
+src/modeling_library/dist_dsl/dist_dsl.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/modeling_library/dist_dsl/dist_dsl.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/modeling_library/dist_dsl/dist_dsl.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/modeling_library/dist_dsl/dist_dsl.jl,Base.:/,mtsig,"Tuple{Arg, DistWithArgs{T}} where T <: Real",false,false,1,true,true,true,true
+src/modeling_library/dist_dsl/dist_dsl.jl,<NA-name>,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/modeling_library/dist_dsl/dist_dsl.jl,<NA-name>,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/modeling_library/dist_dsl/dist_dsl.jl,<NA-name>,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/modeling_library/dist_dsl/dist_dsl.jl,Base.exp,mtsig,Tuple{DistWithArgs{T}} where T <: Real,false,false,1,true,true,true,true
+src/modeling_library/dist_dsl/dist_dsl.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/modeling_library/dist_dsl/dist_dsl.jl,Base.log,mtsig,Tuple{DistWithArgs{T}} where T <: Real,false,false,1,true,true,true,true
+src/modeling_library/dist_dsl/dist_dsl.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/modeling_library/dist_dsl/dist_dsl.jl,Base.getindex,mtsig,"Tuple{Arg, DistWithArgs{T}} where T",false,false,1,true,true,true,true
+src/modeling_library/dist_dsl/dist_dsl.jl,Base.getindex,mtsig,"(Tuple{Arg{<:AbstractArray{T}}, DistWithArgs{U}} where U) where T",false,false,3,true,true,true,false
+src/modeling_library/dist_dsl/dist_dsl.jl,Base.getindex,mtsig,"(Tuple{Arg{<:AbstractDict{U, T}}, DistWithArgs{U}} where U) where T",false,false,3,true,false,false,false
+src/modeling_library/dist_dsl/dist_dsl.jl,Base.getindex,mtsig,"(Tuple{AbstractArray{T}, DistWithArgs{U}} where U) where T",false,false,2,true,true,true,true
+src/modeling_library/dist_dsl/dist_dsl.jl,Base.getindex,mtsig,"(Tuple{AbstractDict{U, T}, DistWithArgs{U}} where U) where T",false,false,2,true,false,false,true
+src/modeling_library/dist_dsl/dist_dsl.jl,Base.getindex,mtsig,"(Tuple{Dict{U, T}, DistWithArgs{U}} where U) where T",false,false,2,true,false,false,true
+src/modeling_library/dist_dsl/dist_dsl.jl,::Type{T},mtsig,(Tuple{DistWithArgs{U}} where U) where T <: Enum,false,false,2,true,false,true,true
+src/modeling_library/dist_dsl/relabeled_distribution.jl,logpdf,mtsig,"(Tuple{WithLabelArg{T, U}, T, Any, Vararg{Any}} where U) where T",false,false,2,true,false,false,true
+src/modeling_library/dist_dsl/relabeled_distribution.jl,logpdf_grad,mtsig,"(Tuple{WithLabelArg{T, U}, T, Any, Vararg{Any}} where U) where T",false,false,2,true,false,false,true
+src/modeling_library/dist_dsl/relabeled_distribution.jl,random,mtsig,"(Tuple{WithLabelArg{T, U}, Any, Vararg{Any}} where U) where T",false,false,2,true,true,true,true
+src/modeling_library/dist_dsl/relabeled_distribution.jl,is_discrete,mtsig,"(Tuple{WithLabelArg{T, U}} where U) where T",false,false,2,true,true,true,true
+src/modeling_library/dist_dsl/relabeled_distribution.jl,"d::WithLabelArg{T, U}",mtsig,"(Tuple{Any, Vararg{Any}} where U) where T",false,false,2,true,false,true,true
+src/modeling_library/dist_dsl/relabeled_distribution.jl,has_output_grad,mtsig,"(Tuple{WithLabelArg{T, U}} where U) where T",false,false,2,true,true,true,true
+src/modeling_library/dist_dsl/relabeled_distribution.jl,has_argument_grads,mtsig,"(Tuple{WithLabelArg{T, U}} where U) where T",false,false,2,true,true,true,true
+src/modeling_library/dist_dsl/relabeled_distribution.jl,logpdf,mtsig,"(Tuple{RelabeledDistribution{T, U}, T, Vararg{Any}} where U) where T",false,false,2,true,false,false,true
+src/modeling_library/dist_dsl/relabeled_distribution.jl,logpdf_grad,mtsig,"(Tuple{RelabeledDistribution{T, U}, T, Vararg{Any}} where U) where T",false,false,2,true,false,false,true
+src/modeling_library/dist_dsl/relabeled_distribution.jl,random,mtsig,"(Tuple{RelabeledDistribution{T, U}, Vararg{Any}} where U) where T",false,false,2,true,true,true,true
+src/modeling_library/dist_dsl/relabeled_distribution.jl,is_discrete,mtsig,"(Tuple{RelabeledDistribution{T, U}} where U) where T",false,false,2,true,true,true,true
+src/modeling_library/dist_dsl/relabeled_distribution.jl,"d::RelabeledDistribution{T, U}",mtsig,(Tuple{Vararg{Any}} where U) where T,false,false,2,true,false,true,true
+src/modeling_library/dist_dsl/relabeled_distribution.jl,has_output_grad,mtsig,"(Tuple{RelabeledDistribution{T, U}} where U) where T",false,false,2,true,true,true,true
+src/modeling_library/dist_dsl/relabeled_distribution.jl,has_argument_grads,mtsig,"(Tuple{RelabeledDistribution{T, U}} where U) where T",false,false,2,true,true,true,true
+src/modeling_library/dist_dsl/transformed_distribution.jl,random,mtsig,"(Tuple{TransformedDistribution{T, U}, Vararg{Any}} where U) where T",false,false,2,true,true,true,true
+src/modeling_library/dist_dsl/transformed_distribution.jl,logpdf_correction,mtsig,"(Tuple{TransformedDistribution{T, U}, Any, Any} where U) where T",false,false,2,true,true,true,true
+src/modeling_library/dist_dsl/transformed_distribution.jl,logpdf,mtsig,"(Tuple{TransformedDistribution{T, U}, T, Vararg{Any}} where U) where T",false,false,2,true,false,false,true
+src/modeling_library/dist_dsl/transformed_distribution.jl,logpdf_grad,mtsig,"(Tuple{TransformedDistribution{T, U}, T, Vararg{Any}} where U) where T",false,false,2,true,false,false,true
+src/modeling_library/dist_dsl/transformed_distribution.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/modeling_library/dist_dsl/transformed_distribution.jl,is_discrete,mtsig,"(Tuple{TransformedDistribution{T, U}} where U) where T",false,false,2,true,true,true,true
+src/modeling_library/dist_dsl/transformed_distribution.jl,"d::TransformedDistribution{T, U}",mtsig,(Tuple{Vararg{Any}} where U) where T,false,false,2,true,false,true,true
+src/modeling_library/dist_dsl/transformed_distribution.jl,has_output_grad,mtsig,"(Tuple{TransformedDistribution{T, U}} where U) where T",false,false,2,true,true,true,true
+src/modeling_library/dist_dsl/transformed_distribution.jl,has_argument_grads,mtsig,"(Tuple{TransformedDistribution{T, U}} where U) where T",false,false,2,true,true,true,true
+src/modeling_library/distributions/bernoulli.jl,logpdf,mtsig,"Tuple{Bernoulli, Bool, Real}",false,false,0,false,true,true,true
+src/modeling_library/distributions/bernoulli.jl,logpdf_grad,mtsig,"Tuple{Bernoulli, Bool, Real}",false,false,0,false,true,true,true
+src/modeling_library/distributions/bernoulli.jl,random,mtsig,"Tuple{Bernoulli, Real}",false,false,0,false,true,true,true
+src/modeling_library/distributions/bernoulli.jl,is_discrete,mtsig,Tuple{Bernoulli},false,false,0,false,true,true,true
+src/modeling_library/distributions/bernoulli.jl,::Bernoulli,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/modeling_library/distributions/bernoulli.jl,has_output_grad,mtsig,Tuple{Bernoulli},false,false,0,false,true,true,true
+src/modeling_library/distributions/bernoulli.jl,has_argument_grads,mtsig,Tuple{Bernoulli},false,false,0,false,true,true,true
+src/modeling_library/distributions/beta.jl,logpdf,mtsig,"Tuple{Beta, Real, Real, Real}",false,false,0,false,true,true,true
+src/modeling_library/distributions/beta.jl,logpdf_grad,mtsig,"Tuple{Beta, Real, Real, Real}",false,false,0,false,true,true,true
+src/modeling_library/distributions/beta.jl,random,mtsig,"Tuple{Beta, Real, Real}",false,false,0,false,true,true,true
+src/modeling_library/distributions/beta.jl,is_discrete,mtsig,Tuple{Beta},false,false,0,false,true,true,true
+src/modeling_library/distributions/beta.jl,::Beta,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/modeling_library/distributions/beta.jl,has_output_grad,mtsig,Tuple{Beta},false,false,0,false,true,true,true
+src/modeling_library/distributions/beta.jl,has_argument_grads,mtsig,Tuple{Beta},false,false,0,false,true,true,true
+src/modeling_library/distributions/beta_uniform.jl,logpdf,mtsig,"Tuple{BetaUniformMixture, Real, Real, Real, Real}",false,false,0,false,true,true,true
+src/modeling_library/distributions/beta_uniform.jl,logpdf_grad,mtsig,"Tuple{BetaUniformMixture, Real, Real, Real, Real}",false,false,0,false,true,true,true
+src/modeling_library/distributions/beta_uniform.jl,random,mtsig,"Tuple{BetaUniformMixture, Real, Real, Real}",false,false,0,false,true,true,true
+src/modeling_library/distributions/beta_uniform.jl,::BetaUniformMixture,mtsig,"Tuple{Any, Any, Any}",false,false,0,false,true,true,true
+src/modeling_library/distributions/beta_uniform.jl,is_discrete,mtsig,Tuple{BetaUniformMixture},false,false,0,false,true,true,true
+src/modeling_library/distributions/beta_uniform.jl,has_output_grad,mtsig,Tuple{BetaUniformMixture},false,false,0,false,true,true,true
+src/modeling_library/distributions/beta_uniform.jl,has_argument_grads,mtsig,Tuple{BetaUniformMixture},false,false,0,false,true,true,true
+src/modeling_library/distributions/binom.jl,logpdf,mtsig,"Tuple{Binomial, Integer, Integer, Real}",false,false,0,false,true,true,true
+src/modeling_library/distributions/binom.jl,logpdf_grad,mtsig,"Tuple{Binomial, Integer, Integer, Real}",false,false,0,false,true,true,true
+src/modeling_library/distributions/binom.jl,random,mtsig,"Tuple{Binomial, Integer, Real}",false,false,0,false,true,true,true
+src/modeling_library/distributions/binom.jl,::Binomial,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/modeling_library/distributions/binom.jl,has_output_grad,mtsig,Tuple{Binomial},false,false,0,false,true,true,true
+src/modeling_library/distributions/binom.jl,has_argument_grads,mtsig,Tuple{Binomial},false,false,0,false,true,true,true
+src/modeling_library/distributions/binom.jl,is_discrete,mtsig,Tuple{Binomial},false,false,0,false,true,true,true
+src/modeling_library/distributions/categorical.jl,logpdf,mtsig,"Tuple{Categorical, Int, AbstractArray{U, 1}} where U <: Real",false,false,1,true,true,true,true
+src/modeling_library/distributions/categorical.jl,logpdf_grad,mtsig,"Tuple{Categorical, Int, AbstractArray{U, 1}} where U <: Real",false,false,1,true,true,true,true
+src/modeling_library/distributions/categorical.jl,random,mtsig,"Tuple{Categorical, AbstractArray{U, 1}} where U <: Real",false,false,1,true,true,true,true
+src/modeling_library/distributions/categorical.jl,is_discrete,mtsig,Tuple{Categorical},false,false,0,false,true,true,true
+src/modeling_library/distributions/categorical.jl,::Categorical,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/modeling_library/distributions/categorical.jl,has_output_grad,mtsig,Tuple{Categorical},false,false,0,false,true,true,true
+src/modeling_library/distributions/categorical.jl,has_argument_grads,mtsig,Tuple{Categorical},false,false,0,false,true,true,true
+src/modeling_library/distributions/cauchy.jl,logpdf,mtsig,"Tuple{Cauchy, Real, Real, Real}",false,false,0,false,true,true,true
+src/modeling_library/distributions/cauchy.jl,logpdf_grad,mtsig,"Tuple{Cauchy, Real, Real, Real}",false,false,0,false,true,true,true
+src/modeling_library/distributions/cauchy.jl,is_discrete,mtsig,Tuple{Cauchy},false,false,0,false,true,true,true
+src/modeling_library/distributions/cauchy.jl,random,mtsig,"Tuple{Cauchy, Real, Real}",false,false,0,false,true,true,true
+src/modeling_library/distributions/cauchy.jl,::Cauchy,mtsig,"Tuple{Real, Real}",false,false,0,false,true,true,true
+src/modeling_library/distributions/cauchy.jl,has_output_grad,mtsig,Tuple{Cauchy},false,false,0,false,true,true,true
+src/modeling_library/distributions/cauchy.jl,has_argument_grads,mtsig,Tuple{Cauchy},false,false,0,false,true,true,true
+src/modeling_library/distributions/exponential.jl,Gen.logpdf,mtsig,"Tuple{Exponential, Real, Real}",false,false,0,false,true,true,true
+src/modeling_library/distributions/exponential.jl,Gen.logpdf_grad,mtsig,"Tuple{Exponential, Real, Real}",false,false,0,false,true,true,true
+src/modeling_library/distributions/exponential.jl,Gen.random,mtsig,"Tuple{Exponential, Real}",false,false,0,false,true,true,true
+src/modeling_library/distributions/exponential.jl,is_discrete,mtsig,Tuple{Exponential},false,false,0,false,true,true,true
+src/modeling_library/distributions/exponential.jl,::Exponential,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/modeling_library/distributions/exponential.jl,Gen.has_output_grad,mtsig,Tuple{Exponential},false,false,0,false,true,true,true
+src/modeling_library/distributions/exponential.jl,Gen.has_argument_grads,mtsig,Tuple{Exponential},false,false,0,false,true,true,true
+src/modeling_library/distributions/gamma.jl,logpdf,mtsig,"Tuple{Gamma, Real, Real, Real}",false,false,0,false,true,true,true
+src/modeling_library/distributions/gamma.jl,logpdf_grad,mtsig,"Tuple{Gamma, Real, Real, Real}",false,false,0,false,true,true,true
+src/modeling_library/distributions/gamma.jl,random,mtsig,"Tuple{Gamma, Real, Real}",false,false,0,false,true,true,true
+src/modeling_library/distributions/gamma.jl,is_discrete,mtsig,Tuple{Gamma},false,false,0,false,true,true,true
+src/modeling_library/distributions/gamma.jl,::Gamma,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/modeling_library/distributions/gamma.jl,has_output_grad,mtsig,Tuple{Gamma},false,false,0,false,true,true,true
+src/modeling_library/distributions/gamma.jl,has_argument_grads,mtsig,Tuple{Gamma},false,false,0,false,true,true,true
+src/modeling_library/distributions/geometric.jl,Gen.logpdf,mtsig,"Tuple{Geometric, Int, Real}",false,false,0,false,true,true,true
+src/modeling_library/distributions/geometric.jl,Gen.logpdf_grad,mtsig,"Tuple{Geometric, Int, Real}",false,false,0,false,true,true,true
+src/modeling_library/distributions/geometric.jl,Gen.random,mtsig,"Tuple{Geometric, Real}",false,false,0,false,true,true,true
+src/modeling_library/distributions/geometric.jl,is_discrete,mtsig,Tuple{Geometric},false,false,0,false,true,true,true
+src/modeling_library/distributions/geometric.jl,::Geometric,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/modeling_library/distributions/geometric.jl,Gen.has_output_grad,mtsig,Tuple{Geometric},false,false,0,false,true,true,true
+src/modeling_library/distributions/geometric.jl,Gen.has_argument_grads,mtsig,Tuple{Geometric},false,false,0,false,true,true,true
+src/modeling_library/distributions/inv_gamma.jl,logpdf,mtsig,"Tuple{InverseGamma, Real, Real, Real}",false,false,0,false,true,true,true
+src/modeling_library/distributions/inv_gamma.jl,logpdf_grad,mtsig,"Tuple{InverseGamma, Real, Real, Real}",false,false,0,false,true,true,true
+src/modeling_library/distributions/inv_gamma.jl,random,mtsig,"Tuple{InverseGamma, Real, Real}",false,false,0,false,true,true,true
+src/modeling_library/distributions/inv_gamma.jl,is_discrete,mtsig,Tuple{InverseGamma},false,false,0,false,true,true,true
+src/modeling_library/distributions/inv_gamma.jl,::InverseGamma,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/modeling_library/distributions/inv_gamma.jl,has_output_grad,mtsig,Tuple{InverseGamma},false,false,0,false,true,true,true
+src/modeling_library/distributions/inv_gamma.jl,has_argument_grads,mtsig,Tuple{InverseGamma},false,false,0,false,true,true,true
+src/modeling_library/distributions/laplace.jl,logpdf,mtsig,"Tuple{Laplace, Real, Real, Real}",false,false,0,false,true,true,true
+src/modeling_library/distributions/laplace.jl,logpdf_grad,mtsig,"Tuple{Laplace, Real, Real, Real}",false,false,0,false,true,true,true
+src/modeling_library/distributions/laplace.jl,random,mtsig,"Tuple{Laplace, Real, Real}",false,false,0,false,true,true,true
+src/modeling_library/distributions/laplace.jl,is_discrete,mtsig,Tuple{Laplace},false,false,0,false,true,true,true
+src/modeling_library/distributions/laplace.jl,::Laplace,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/modeling_library/distributions/laplace.jl,has_output_grad,mtsig,Tuple{Laplace},false,false,0,false,true,true,true
+src/modeling_library/distributions/laplace.jl,has_argument_grads,mtsig,Tuple{Laplace},false,false,0,false,true,true,true
+src/modeling_library/distributions/mvnormal.jl,logpdf,mtsig,"((Tuple{MultivariateNormal, AbstractVector{T}, AbstractVector{U}, AbstractMatrix{V}} where V <: Real) where U <: Real) where T <: Real",false,false,3,true,true,true,true
+src/modeling_library/distributions/mvnormal.jl,logpdf_grad,mtsig,"((Tuple{MultivariateNormal, AbstractVector{T}, AbstractVector{U}, AbstractMatrix{V}} where V <: Real) where U <: Real) where T <: Real",false,false,3,true,true,true,true
+src/modeling_library/distributions/mvnormal.jl,random,mtsig,"(Tuple{MultivariateNormal, AbstractVector{U}, AbstractMatrix{V}} where V <: Real) where U <: Real",false,false,2,true,true,true,true
+src/modeling_library/distributions/mvnormal.jl,::MultivariateNormal,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/modeling_library/distributions/mvnormal.jl,has_output_grad,mtsig,Tuple{MultivariateNormal},false,false,0,false,true,true,true
+src/modeling_library/distributions/mvnormal.jl,has_argument_grads,mtsig,Tuple{MultivariateNormal},false,false,0,false,true,true,true
+src/modeling_library/distributions/neg_binom.jl,logpdf,mtsig,"Tuple{NegativeBinomial, Int, Real, Real}",false,false,0,false,true,true,true
+src/modeling_library/distributions/neg_binom.jl,logpdf_grad,mtsig,"Tuple{NegativeBinomial, Int, Real, Real}",false,false,0,false,true,true,true
+src/modeling_library/distributions/neg_binom.jl,random,mtsig,"Tuple{NegativeBinomial, Real, Real}",false,false,0,false,true,true,true
+src/modeling_library/distributions/neg_binom.jl,is_discrete,mtsig,Tuple{NegativeBinomial},false,false,0,false,true,true,true
+src/modeling_library/distributions/neg_binom.jl,::NegativeBinomial,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/modeling_library/distributions/neg_binom.jl,has_output_grad,mtsig,Tuple{NegativeBinomial},false,false,0,false,true,true,true
+src/modeling_library/distributions/neg_binom.jl,has_argument_grads,mtsig,Tuple{NegativeBinomial},false,false,0,false,true,true,true
+src/modeling_library/distributions/normal.jl,broadcast_shapes_or_crash,mtsig,Tuple{Vararg{Any}},false,false,0,false,true,true,true
+src/modeling_library/distributions/normal.jl,assert_has_shape,mtsig,"Tuple{Any, Any, Any}",false,false,0,false,true,true,true
+src/modeling_library/distributions/normal.jl,logpdf,mtsig,"Tuple{Normal, Real, Real, Real}",false,false,0,false,true,true,true
+src/modeling_library/distributions/normal.jl,logpdf,mtsig,"Tuple{BroadcastedNormal, Union{AbstractArray{<:Real}, Real}, Union{AbstractArray{<:Real}, Real}, Union{AbstractArray{<:Real}, Real}}",false,false,3,true,true,true,true
+src/modeling_library/distributions/normal.jl,logpdf_grad,mtsig,"Tuple{Normal, Real, Real, Real}",false,false,0,false,true,true,true
+src/modeling_library/distributions/normal.jl,logpdf_grad,mtsig,"Tuple{BroadcastedNormal, Union{AbstractArray{<:Real}, Real}, Union{AbstractArray{<:Real}, Real}, Union{AbstractArray{<:Real}, Real}}",false,false,3,true,true,true,true
+src/modeling_library/distributions/normal.jl,_unbroadcast_like,mtsig,"Tuple{Real, Any}",false,false,0,false,true,true,true
+src/modeling_library/distributions/normal.jl,_unbroadcast_like,mtsig,"Tuple{AbstractArray{<:Real, 0}, Real}",false,false,1,true,true,true,true
+src/modeling_library/distributions/normal.jl,_unbroadcast_like,mtsig,"(Tuple{AbstractArray{<:Real, N}, AbstractArray{T}} where T) where N",false,false,3,true,true,true,true
+src/modeling_library/distributions/normal.jl,_unbroadcast_to_shape,mtsig,"((Tuple{NTuple{target_ndims, Int}, AbstractArray{T, full_ndims}} where full_ndims) where target_ndims) where T",false,false,3,true,true,true,true
+src/modeling_library/distributions/normal.jl,should_sum_dim,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/modeling_library/distributions/normal.jl,random,mtsig,"Tuple{Normal, Real, Real}",false,false,0,false,true,true,true
+src/modeling_library/distributions/normal.jl,is_discrete,mtsig,Tuple{Normal},false,false,0,false,true,true,true
+src/modeling_library/distributions/normal.jl,random,mtsig,"Tuple{BroadcastedNormal, Union{AbstractArray{<:Real}, Real}, Union{AbstractArray{<:Real}, Real}}",false,false,2,true,true,true,true
+src/modeling_library/distributions/normal.jl,::Normal,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/modeling_library/distributions/normal.jl,::BroadcastedNormal,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/modeling_library/distributions/normal.jl,has_output_grad,mtsig,Tuple{Normal},false,false,0,false,true,true,true
+src/modeling_library/distributions/normal.jl,has_argument_grads,mtsig,Tuple{Normal},false,false,0,false,true,true,true
+src/modeling_library/distributions/normal.jl,has_output_grad,mtsig,Tuple{BroadcastedNormal},false,false,0,false,true,true,true
+src/modeling_library/distributions/normal.jl,has_argument_grads,mtsig,Tuple{BroadcastedNormal},false,false,0,false,true,true,true
+src/modeling_library/distributions/piecewise_uniform.jl,check_dims,mtsig,"Tuple{PiecewiseUniform, Any, Any}",false,false,0,false,true,true,true
+src/modeling_library/distributions/piecewise_uniform.jl,get_bin,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/modeling_library/distributions/piecewise_uniform.jl,logpdf,mtsig,"(Tuple{PiecewiseUniform, Real, AbstractVector{T}, AbstractVector{U}} where U <: Real) where T <: Real",false,false,2,true,true,true,true
+src/modeling_library/distributions/piecewise_uniform.jl,random,mtsig,"(Tuple{PiecewiseUniform, Vector{T}, Vector{U}} where U <: Real) where T <: Real",false,false,2,true,true,true,true
+src/modeling_library/distributions/piecewise_uniform.jl,::PiecewiseUniform,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/modeling_library/distributions/piecewise_uniform.jl,logpdf_grad,mtsig,"Tuple{PiecewiseUniform, Real, Any, Any}",false,false,0,false,true,true,true
+src/modeling_library/distributions/piecewise_uniform.jl,is_discrete,mtsig,Tuple{PiecewiseUniform},false,false,0,false,true,true,true
+src/modeling_library/distributions/piecewise_uniform.jl,has_output_grad,mtsig,Tuple{PiecewiseUniform},false,false,0,false,true,true,true
+src/modeling_library/distributions/piecewise_uniform.jl,has_argument_grads,mtsig,Tuple{PiecewiseUniform},false,false,0,false,true,true,true
+src/modeling_library/distributions/poisson.jl,logpdf,mtsig,"Tuple{Poisson, Int, Real}",false,false,0,false,true,true,true
+src/modeling_library/distributions/poisson.jl,logpdf_grad,mtsig,"Tuple{Poisson, Int, Real}",false,false,0,false,true,true,true
+src/modeling_library/distributions/poisson.jl,random,mtsig,"Tuple{Poisson, Real}",false,false,0,false,true,true,true
+src/modeling_library/distributions/poisson.jl,::Poisson,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/modeling_library/distributions/poisson.jl,is_discrete,mtsig,Tuple{Poisson},false,false,0,false,true,true,true
+src/modeling_library/distributions/poisson.jl,has_output_grad,mtsig,Tuple{Poisson},false,false,0,false,true,true,true
+src/modeling_library/distributions/poisson.jl,has_argument_grads,mtsig,Tuple{Poisson},false,false,0,false,true,true,true
+src/modeling_library/distributions/uniform_continuous.jl,logpdf,mtsig,"Tuple{UniformContinuous, Real, Real, Real}",false,false,0,false,true,true,true
+src/modeling_library/distributions/uniform_continuous.jl,logpdf_grad,mtsig,"Tuple{UniformContinuous, Real, Real, Real}",false,false,0,false,true,true,true
+src/modeling_library/distributions/uniform_continuous.jl,random,mtsig,"Tuple{UniformContinuous, Real, Real}",false,false,0,false,true,true,true
+src/modeling_library/distributions/uniform_continuous.jl,::UniformContinuous,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/modeling_library/distributions/uniform_continuous.jl,is_discrete,mtsig,Tuple{UniformContinuous},false,false,0,false,true,true,true
+src/modeling_library/distributions/uniform_continuous.jl,has_output_grad,mtsig,Tuple{UniformContinuous},false,false,0,false,true,true,true
+src/modeling_library/distributions/uniform_continuous.jl,has_argument_grads,mtsig,Tuple{UniformContinuous},false,false,0,false,true,true,true
+src/modeling_library/distributions/uniform_discrete.jl,logpdf,mtsig,"Tuple{UniformDiscrete, Int, Integer, Integer}",false,false,0,false,true,true,true
+src/modeling_library/distributions/uniform_discrete.jl,logpdf_grad,mtsig,"Tuple{UniformDiscrete, Int, Integer, Integer}",false,false,0,false,true,true,true
+src/modeling_library/distributions/uniform_discrete.jl,random,mtsig,"Tuple{UniformDiscrete, Integer, Integer}",false,false,0,false,true,true,true
+src/modeling_library/distributions/uniform_discrete.jl,is_discrete,mtsig,Tuple{UniformDiscrete},false,false,0,false,true,true,true
+src/modeling_library/distributions/uniform_discrete.jl,::UniformDiscrete,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/modeling_library/distributions/uniform_discrete.jl,has_output_grad,mtsig,Tuple{UniformDiscrete},false,false,0,false,true,true,true
+src/modeling_library/distributions/uniform_discrete.jl,has_argument_grads,mtsig,Tuple{UniformDiscrete},false,false,0,false,true,true,true
+src/modeling_library/map/assess.jl,process_new!,mtsig,"(Tuple{Map{T, U}, Tuple, ChoiceMap, Int, MapAssessState{T}} where U) where T",false,false,2,true,false,false,true
+src/modeling_library/map/assess.jl,assess,mtsig,"(Tuple{Map{T, U}, Tuple, ChoiceMap} where U) where T",false,false,2,true,true,true,true
+src/modeling_library/map/backprop.jl,choice_gradients,mtsig,"(Tuple{VectorTrace{MapType, T, U}, Selection, Any} where U) where T",false,false,2,true,true,true,true
+src/modeling_library/map/backprop.jl,accumulate_param_gradients!,mtsig,"(Tuple{VectorTrace{MapType, T, U}, Any} where U) where T",false,false,2,true,true,true,true
+src/modeling_library/map/generate.jl,process!,mtsig,"(Tuple{Map{T, U}, Tuple, ChoiceMap, Int, MapGenerateState{T, U}} where U) where T",false,false,2,true,false,false,true
+src/modeling_library/map/generate.jl,generate,mtsig,"(Tuple{Map{T, U}, Tuple, ChoiceMap} where U) where T",false,false,2,true,true,true,true
+src/modeling_library/map/generic_update.jl,get_kernel_argdiffs,mtsig,Tuple{Tuple},false,false,0,false,true,true,true
+src/modeling_library/map/generic_update.jl,process_all_retained!,mtsig,"(Tuple{Map{T, U}, Tuple, Tuple, Any, Int, Int, Set{Int}, Any} where U) where T",false,false,2,true,true,true,true
+src/modeling_library/map/generic_update.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/modeling_library/map/generic_update.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/modeling_library/map/generic_update.jl,process_all_new!,mtsig,"(Tuple{Map{T, U}, Tuple, Any, Int, Int, Any} where U) where T",false,false,2,true,true,true,true
+src/modeling_library/map/map.jl,has_argument_grads,mtsig,Tuple{Map},false,false,0,false,true,true,true
+src/modeling_library/map/map.jl,accepts_output_grad,mtsig,Tuple{Map},false,false,0,false,true,true,true
+src/modeling_library/map/map.jl,gen_fn::Map,mtsig,Tuple{Vararg{Any}},false,false,0,false,true,true,true
+src/modeling_library/map/map.jl,get_args_for_key,mtsig,"Tuple{Tuple, Int}",false,false,0,false,true,true,true
+src/modeling_library/map/map.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/modeling_library/map/map.jl,get_prev_and_new_lengths,mtsig,"Tuple{Tuple, Any}",false,false,0,false,true,true,true
+src/modeling_library/map/propose.jl,process_new!,mtsig,"(Tuple{Map{T, U}, Tuple, Int, MapProposeState{T}} where U) where T",false,false,2,true,false,false,true
+src/modeling_library/map/propose.jl,propose,mtsig,"(Tuple{Map{T, U}, Tuple} where U) where T",false,false,2,true,true,true,true
+src/modeling_library/map/regenerate.jl,process_retained!,mtsig,"(Tuple{Map{T, U}, Tuple, Selection, Int, Tuple, MapRegenerateState{T, U}} where U) where T",false,false,2,true,false,false,true
+src/modeling_library/map/regenerate.jl,process_new!,mtsig,"(Tuple{Map{T, U}, Tuple, Selection, Int, MapRegenerateState{T, U}} where U) where T",false,false,2,true,false,false,true
+src/modeling_library/map/regenerate.jl,regenerate,mtsig,"(Tuple{VectorTrace{MapType, T, U}, Tuple, Tuple, Selection} where U) where T",false,false,2,true,true,true,true
+src/modeling_library/map/simulate.jl,process!,mtsig,"(Tuple{Map{T, U}, Tuple, Int, MapSimulateState{T, U}} where U) where T",false,false,2,true,false,false,true
+src/modeling_library/map/simulate.jl,simulate,mtsig,"(Tuple{Map{T, U}, Tuple} where U) where T",false,false,2,true,true,true,true
+src/modeling_library/map/update.jl,process_retained!,mtsig,"(Tuple{Map{T, U}, Tuple, ChoiceMap, Int, Tuple, MapUpdateState{T, U}} where U) where T",false,false,2,true,false,false,true
+src/modeling_library/map/update.jl,process_new!,mtsig,"(Tuple{Map{T, U}, Tuple, Any, Int, MapUpdateState{T, U}} where U) where T",false,false,2,true,false,false,true
+src/modeling_library/map/update.jl,update,mtsig,"(Tuple{VectorTrace{MapType, T, U}, Tuple, Tuple, ChoiceMap} where U) where T",false,false,2,true,true,true,true
+src/modeling_library/recurse/recurse.jl,get_gen_fn,mtsig,Tuple{RecurseTrace},false,false,0,false,true,true,true
+src/modeling_library/recurse/recurse.jl,get_args,mtsig,Tuple{RecurseTrace},false,false,0,false,true,true,true
+src/modeling_library/recurse/recurse.jl,get_retval,mtsig,Tuple{RecurseTrace},false,false,0,false,true,true,true
+src/modeling_library/recurse/recurse.jl,get_score,mtsig,Tuple{RecurseTrace},false,false,0,false,true,true,true
+src/modeling_library/recurse/recurse.jl,project,mtsig,"Tuple{RecurseTrace, EmptySelection}",false,false,0,false,true,true,true
+src/modeling_library/recurse/recurse.jl,get_choices,mtsig,Tuple{RecurseTrace},false,false,0,false,true,true,true
+src/modeling_library/recurse/recurse.jl,Base.getindex,mtsig,"Tuple{RecurseTrace, Any}",false,false,0,false,true,true,true
+src/modeling_library/recurse/recurse.jl,Base.isempty,mtsig,Tuple{RecurseTraceChoiceMap},false,false,0,false,true,true,true
+src/modeling_library/recurse/recurse.jl,get_address_schema,mtsig,Tuple{Type{RecurseTraceChoiceMap}},false,false,0,false,true,true,true
+src/modeling_library/recurse/recurse.jl,get_submap,mtsig,"Tuple{RecurseTraceChoiceMap, Tuple{Int, Val{:production}}}",false,true,0,false,true,true,true
+src/modeling_library/recurse/recurse.jl,get_submap,mtsig,"Tuple{RecurseTraceChoiceMap, Tuple{Int, Val{:aggregation}}}",false,true,0,false,true,true,true
+src/modeling_library/recurse/recurse.jl,get_submap,mtsig,"Tuple{RecurseTraceChoiceMap, Pair}",false,false,0,false,true,true,true
+src/modeling_library/recurse/recurse.jl,has_value,mtsig,"Tuple{RecurseTraceChoiceMap, Pair}",false,false,0,false,true,true,true
+src/modeling_library/recurse/recurse.jl,get_value,mtsig,"Tuple{RecurseTraceChoiceMap, Pair}",false,false,0,false,true,true,true
+src/modeling_library/recurse/recurse.jl,get_values_shallow,mtsig,Tuple{RecurseTraceChoiceMap},false,false,0,false,true,true,true
+src/modeling_library/recurse/recurse.jl,get_submaps_shallow,mtsig,Tuple{RecurseTraceChoiceMap},false,false,0,false,true,true,true
+src/modeling_library/recurse/recurse.jl,Recurse,mtsig,"((((((Tuple{GenerativeFunction{X, S}, GenerativeFunction{Y, T}, Int, Type{U}, Type{V}, Type{W}} where Y) where X) where W) where V) where U) where T) where S",false,false,7,true,true,true,true
+src/modeling_library/recurse/recurse.jl,accepts_output_grad,mtsig,Tuple{Recurse},false,false,0,false,true,true,true
+src/modeling_library/recurse/recurse.jl,gen_fn::Recurse,mtsig,Tuple{Vararg{Any}},false,false,0,false,true,true,true
+src/modeling_library/recurse/recurse.jl,get_child,mtsig,"Tuple{Int, Int, Int}",false,false,0,false,true,true,true
+src/modeling_library/recurse/recurse.jl,get_child_num,mtsig,"Tuple{Int, Int}",false,false,0,false,true,true,true
+src/modeling_library/recurse/recurse.jl,get_parent,mtsig,"Tuple{Int, Int}",false,false,0,false,true,true,true
+src/modeling_library/recurse/recurse.jl,get_num_children,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/modeling_library/recurse/recurse.jl,get_production_input,mtsig,"((((Tuple{Recurse{S, T, U, V, W}, Int, AbstractDict{Int, S}, Int, U} where W) where V) where U) where T) where S",false,false,5,true,false,false,true
+src/modeling_library/recurse/recurse.jl,get_aggregation_input,mtsig,"((((Tuple{Recurse{S, T, U, V, W}, Int, AbstractDict{Int, S}, AbstractDict{Int, T}} where W) where V) where U) where T) where S",false,false,5,true,false,false,true
+src/modeling_library/recurse/recurse.jl,get_production_constraints,mtsig,"Tuple{ChoiceMap, Int}",false,false,0,false,true,true,true
+src/modeling_library/recurse/recurse.jl,get_aggregation_constraints,mtsig,"Tuple{ChoiceMap, Int}",false,false,0,false,true,true,true
+src/modeling_library/recurse/recurse.jl,simulate,mtsig,"((((((Tuple{Recurse{S, T, U, V, W, X, Y}, Tuple{U, Int}} where Y) where X) where W) where V) where U) where T) where S",false,false,7,true,false,false,true
+src/modeling_library/recurse/recurse.jl,generate,mtsig,"((((((Tuple{Recurse{S, T, U, V, W, X, Y}, Tuple{U, Int}, ChoiceMap} where Y) where X) where W) where V) where U) where T) where S",false,false,7,true,false,false,true
+src/modeling_library/recurse/recurse.jl,NodeQueue,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/modeling_library/recurse/recurse.jl,Base.push!,mtsig,"Tuple{NodeQueue, Int}",false,false,0,false,true,true,true
+src/modeling_library/recurse/recurse.jl,Base.pop!,mtsig,Tuple{NodeQueue},false,false,0,false,true,true,true
+src/modeling_library/recurse/recurse.jl,Base.in,mtsig,"Tuple{Int, NodeQueue}",false,false,0,false,true,true,true
+src/modeling_library/recurse/recurse.jl,Base.isempty,mtsig,Tuple{NodeQueue},false,false,0,false,true,true,true
+src/modeling_library/recurse/recurse.jl,recurse_unpack_constraints,mtsig,Tuple{ChoiceMap},false,false,0,false,true,true,true
+src/modeling_library/recurse/recurse.jl,dissoc_subtree!,mtsig,"(Tuple{DynamicChoiceMap, PersistentHashMap{Int, S}, PersistentHashMap{Int, T}, Int, Int} where T) where S",false,false,2,true,true,true,true
+src/modeling_library/recurse/recurse.jl,get_production_argdiff,mtsig,"Tuple{Dict{Int, Diff}, Int, Any, Int, Int}",false,false,0,false,true,true,true
+src/modeling_library/recurse/recurse.jl,get_aggregation_argdiffs,mtsig,"Tuple{Dict{Int, Diff}, Dict{Int, Diff}, Dict{Int, Int}, Any, Int}",false,false,0,false,true,true,true
+src/modeling_library/recurse/recurse.jl,update,mtsig,"((((((Tuple{RecurseTrace{S, T, U, V, W, X, Y}, Tuple{U, Int}, Tuple, ChoiceMap} where Y) where X) where W) where V) where U) where T) where S",false,false,7,true,false,false,true
+src/modeling_library/switch/assess.jl,SwitchAssessState,mtsig,Tuple{Float64} where T,false,false,1,true,false,true,true
+src/modeling_library/switch/assess.jl,process!,mtsig,"(((Tuple{Switch{C, N, K, T}, Int, Tuple, ChoiceMap, SwitchAssessState{T}} where T) where K) where N) where C",false,false,4,true,false,false,true
+src/modeling_library/switch/assess.jl,process!,mtsig,"(((Tuple{Switch{C, N, K, T}, C, Tuple, ChoiceMap, SwitchAssessState{T}} where T) where K) where N) where C",false,false,4,true,false,false,true
+src/modeling_library/switch/assess.jl,assess,mtsig,"(((Tuple{Switch{C, N, K, T}, Tuple, ChoiceMap} where T) where K) where N) where C",false,false,4,true,true,true,true
+src/modeling_library/switch/backprop.jl,choice_gradients,mtsig,"Tuple{SwitchTrace{T}, Selection, Any} where T",false,false,1,true,true,true,true
+src/modeling_library/switch/backprop.jl,accumulate_param_gradients!,mtsig,"Tuple{SwitchTrace{T}, Any, Any} where T",false,false,1,true,true,true,true
+src/modeling_library/switch/generate.jl,SwitchGenerateState,mtsig,"Tuple{Float64, Float64, Float64} where T",false,false,1,true,false,true,true
+src/modeling_library/switch/generate.jl,process!,mtsig,"(((Tuple{Switch{C, N, K, T}, Int, Tuple, ChoiceMap, SwitchGenerateState{T}} where T) where K) where N) where C",false,false,4,true,false,false,true
+src/modeling_library/switch/generate.jl,process!,mtsig,"(((Tuple{Switch{C, N, K, T}, C, Tuple, ChoiceMap, SwitchGenerateState{T}} where T) where K) where N) where C",false,false,4,true,false,false,true
+src/modeling_library/switch/generate.jl,generate,mtsig,"(((Tuple{Switch{C, N, K, T}, Tuple, ChoiceMap} where T) where K) where N) where C",false,false,4,true,true,true,true
+src/modeling_library/switch/propose.jl,SwitchProposeState,mtsig,"Tuple{Any, Any} where T",false,false,1,true,false,true,true
+src/modeling_library/switch/propose.jl,process!,mtsig,"(((Tuple{Switch{C, N, K, T}, Int, Tuple, SwitchProposeState{T}} where T) where K) where N) where C",false,false,4,true,false,false,true
+src/modeling_library/switch/propose.jl,process!,mtsig,"(((Tuple{Switch{C, N, K, T}, C, Tuple, SwitchProposeState{T}} where T) where K) where N) where C",false,false,4,true,false,false,true
+src/modeling_library/switch/propose.jl,propose,mtsig,"(((Tuple{Switch{C, N, K, T}, Tuple} where T) where K) where N) where C",false,false,4,true,true,true,true
+src/modeling_library/switch/regenerate.jl,SwitchRegenerateState,mtsig,"Tuple{Float64, Float64, Float64, Trace} where T",false,false,1,true,false,true,true
+src/modeling_library/switch/regenerate.jl,process!,mtsig,"(((Tuple{Switch{C, N, K, T}, Int, Diff, Tuple, Tuple, Selection, SwitchRegenerateState{T}} where T) where K) where N) where C",false,false,4,true,false,false,true
+src/modeling_library/switch/regenerate.jl,process!,mtsig,"(((Tuple{Switch{C, N, K, T}, Int, NoChange, Tuple, Tuple, Selection, SwitchRegenerateState{T}} where T) where K) where N) where C",false,false,4,true,false,false,true
+src/modeling_library/switch/regenerate.jl,process!,mtsig,"(((Tuple{Switch{C, N, K, T}, C, Diff, Tuple, Tuple, Selection, SwitchRegenerateState{T}} where T) where K) where N) where C",false,false,4,true,false,false,true
+src/modeling_library/switch/regenerate.jl,regenerate,mtsig,"((Tuple{SwitchTrace{A, T, U}, Tuple, Tuple, Selection} where U) where T) where A",false,false,3,true,true,true,true
+src/modeling_library/switch/simulate.jl,SwitchSimulateState,mtsig,"Tuple{Float64, Float64} where T",false,false,1,true,false,true,true
+src/modeling_library/switch/simulate.jl,process!,mtsig,"(((Tuple{Switch{C, N, K, T}, Int, Tuple, SwitchSimulateState{T}} where T) where K) where N) where C",false,false,4,true,false,false,true
+src/modeling_library/switch/simulate.jl,process!,mtsig,"(((Tuple{Switch{C, N, K, T}, C, Tuple, SwitchSimulateState{T}} where T) where K) where N) where C",false,false,4,true,false,false,true
+src/modeling_library/switch/simulate.jl,simulate,mtsig,"(((Tuple{Switch{C, N, K, T}, Tuple} where T) where K) where N) where C",false,false,4,true,true,true,true
+src/modeling_library/switch/switch.jl,Switch,mtsig,Tuple{Vararg{GenerativeFunction}},false,false,0,false,true,true,true
+src/modeling_library/switch/switch.jl,Switch,mtsig,"Tuple{Dict{C, Int}, Vararg{GenerativeFunction}} where C",false,false,1,true,true,true,true
+src/modeling_library/switch/switch.jl,has_argument_grads,mtsig,Tuple{Switch},false,false,0,false,true,true,true
+src/modeling_library/switch/switch.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/modeling_library/switch/switch.jl,accepts_output_grad,mtsig,Tuple{Switch},false,false,0,false,true,true,true
+src/modeling_library/switch/switch.jl,gen_fn::Switch,mtsig,"Tuple{Int, Vararg{Any}}",false,false,0,false,true,true,true
+src/modeling_library/switch/switch.jl,gen_fn::Switch{C},mtsig,"Tuple{C, Vararg{Any}} where C",false,false,1,true,true,true,true
+src/modeling_library/switch/trace.jl,SwitchTrace,mtsig,"((Tuple{GenerativeFunction{T, U}, U, T, A, Float64, Float64} where U) where A) where T",false,false,3,true,false,false,true
+src/modeling_library/switch/trace.jl,get_choices,mtsig,Tuple{SwitchTrace},false,false,0,false,true,true,true
+src/modeling_library/switch/trace.jl,get_retval,mtsig,Tuple{SwitchTrace},false,false,0,false,true,true,true
+src/modeling_library/switch/trace.jl,get_args,mtsig,Tuple{SwitchTrace},false,false,0,false,true,true,true
+src/modeling_library/switch/trace.jl,get_score,mtsig,Tuple{SwitchTrace},false,false,0,false,true,true,true
+src/modeling_library/switch/trace.jl,get_gen_fn,mtsig,Tuple{SwitchTrace},false,false,0,false,true,true,true
+src/modeling_library/switch/trace.jl,Base.getindex,mtsig,"Tuple{SwitchTrace, Any}",false,false,0,false,true,true,true
+src/modeling_library/switch/trace.jl,project,mtsig,"Tuple{SwitchTrace, Selection}",false,false,0,false,true,true,true
+src/modeling_library/switch/trace.jl,project,mtsig,"Tuple{SwitchTrace, EmptySelection}",false,false,0,false,true,true,true
+src/modeling_library/switch/update.jl,SwitchUpdateState,mtsig,"Tuple{Float64, Float64, Float64, Trace} where T",false,false,1,true,false,true,true
+src/modeling_library/switch/update.jl,update_recurse_merge,mtsig,"Tuple{ChoiceMap, ChoiceMap}",false,false,0,false,true,true,true
+src/modeling_library/switch/update.jl,update_discard,mtsig,"Tuple{ChoiceMap, ChoiceMap, ChoiceMap}",false,false,0,false,true,true,true
+src/modeling_library/switch/update.jl,update_discard,mtsig,"Tuple{Trace, ChoiceMap, Trace}",false,false,0,false,true,true,true
+src/modeling_library/switch/update.jl,process!,mtsig,"((((Tuple{Switch{C, N, K, T}, Int, UnknownChange, Tuple, Tuple, ChoiceMap, SwitchUpdateState{T}} where DV) where T) where K) where N) where C",false,false,5,true,false,false,true
+src/modeling_library/switch/update.jl,process!,mtsig,"(((Tuple{Switch{C, N, K, T}, Int, NoChange, Tuple, Tuple, ChoiceMap, SwitchUpdateState{T}} where T) where K) where N) where C",false,false,4,true,false,false,true
+src/modeling_library/switch/update.jl,process!,mtsig,"(((Tuple{Switch{C, N, K, T}, C, Diff, Tuple, Tuple, ChoiceMap, SwitchUpdateState{T}} where T) where K) where N) where C",false,false,4,true,false,false,true
+src/modeling_library/switch/update.jl,update,mtsig,"((Tuple{SwitchTrace{A, T, U}, Tuple, Tuple, ChoiceMap} where U) where T) where A",false,false,3,true,true,true,true
+src/modeling_library/unfold/assess.jl,process_new!,mtsig,"(Tuple{Unfold{T, U}, Tuple, ChoiceMap, Int, UnfoldAssessState{T}} where U) where T",false,false,2,true,false,false,true
+src/modeling_library/unfold/assess.jl,assess,mtsig,"(Tuple{Unfold{T, U}, Tuple, ChoiceMap} where U) where T",false,false,2,true,true,true,true
+src/modeling_library/unfold/backprop.jl,fold_sum,mtsig,"Tuple{Nothing, Nothing}",false,false,0,false,true,true,true
+src/modeling_library/unfold/backprop.jl,fold_sum,mtsig,"Tuple{A, Nothing} where A",false,false,1,true,true,true,true
+src/modeling_library/unfold/backprop.jl,fold_sum,mtsig,"Tuple{Nothing, A} where A",false,false,1,true,true,true,true
+src/modeling_library/unfold/backprop.jl,fold_sum,mtsig,"Tuple{A, A} where A",false,false,1,true,false,true,true
+src/modeling_library/unfold/backprop.jl,choice_gradients,mtsig,"(Tuple{VectorTrace{UnfoldType, T, U}, Selection, Any} where U) where T",false,false,2,true,true,true,true
+src/modeling_library/unfold/backprop.jl,accumulate_param_gradients!,mtsig,"(Tuple{VectorTrace{UnfoldType, T, U}, Any} where U) where T",false,false,2,true,true,true,true
+src/modeling_library/unfold/generate.jl,process!,mtsig,"(Tuple{Unfold{T, U}, Tuple, ChoiceMap, Int, UnfoldGenerateState{T, U}} where U) where T",false,false,2,true,false,false,true
+src/modeling_library/unfold/generate.jl,generate,mtsig,"(Tuple{Unfold{T, U}, Tuple, ChoiceMap} where U) where T",false,false,2,true,true,true,true
+src/modeling_library/unfold/generic_update.jl,process_all_retained!,mtsig,"(Tuple{Unfold{T, U}, Tuple, Tuple, Any, Int, Int, Set{Int}, Any} where U) where T",false,false,2,true,true,true,true
+src/modeling_library/unfold/generic_update.jl,process_all_new!,mtsig,"(Tuple{Unfold{T, U}, Tuple, Any, Int, Int, Any} where U) where T",false,false,2,true,true,true,true
+src/modeling_library/unfold/propose.jl,process_new!,mtsig,"(Tuple{Unfold{T, U}, Tuple, Int, UnfoldProposeState{T}} where U) where T",false,false,2,true,false,false,true
+src/modeling_library/unfold/propose.jl,propose,mtsig,"(Tuple{Unfold{T, U}, Tuple} where U) where T",false,false,2,true,true,true,true
+src/modeling_library/unfold/regenerate.jl,process_retained!,mtsig,"(Tuple{Unfold{T, U}, Tuple, Selection, Int, Tuple, UnfoldRegenerateState{T, U}} where U) where T",false,false,2,true,false,false,true
+src/modeling_library/unfold/regenerate.jl,process_new!,mtsig,"(Tuple{Unfold{T, U}, Tuple, Selection, Int, UnfoldRegenerateState{T, U}} where U) where T",false,false,2,true,false,false,true
+src/modeling_library/unfold/regenerate.jl,regenerate,mtsig,"(Tuple{VectorTrace{UnfoldType, T, U}, Tuple, Tuple, Selection} where U) where T",false,false,2,true,true,true,true
+src/modeling_library/unfold/simulate.jl,process!,mtsig,"(Tuple{Unfold{T, U}, Tuple, Int, UnfoldSimulateState{T, U}} where U) where T",false,false,2,true,false,false,true
+src/modeling_library/unfold/simulate.jl,simulate,mtsig,"(Tuple{Unfold{T, U}, Tuple} where U) where T",false,false,2,true,true,true,true
+src/modeling_library/unfold/unfold.jl,has_argument_grads,mtsig,Tuple{Unfold},false,false,0,false,true,true,true
+src/modeling_library/unfold/unfold.jl,accepts_output_grad,mtsig,Tuple{Unfold},false,false,0,false,true,true,true
+src/modeling_library/unfold/unfold.jl,gen_fn::Unfold,mtsig,Tuple{Vararg{Any}},false,false,0,false,true,true,true
+src/modeling_library/unfold/unfold.jl,unpack_args,mtsig,Tuple{Tuple},false,false,0,false,true,true,true
+src/modeling_library/unfold/unfold.jl,check_length,mtsig,Tuple{Int},false,false,0,false,true,true,true
+src/modeling_library/unfold/update.jl,process_retained!,mtsig,"(Tuple{Unfold{T, U}, Tuple, ChoiceMap, Int, Tuple, UnfoldUpdateState{T, U}} where U) where T",false,false,2,true,false,false,true
+src/modeling_library/unfold/update.jl,process_new!,mtsig,"(Tuple{Unfold{T, U}, Tuple, Any, Int, UnfoldUpdateState{T, U}} where U) where T",false,false,2,true,false,false,true
+src/modeling_library/unfold/update.jl,update,mtsig,"(Tuple{VectorTrace{UnfoldType, T, U}, Tuple, Tuple, ChoiceMap} where U) where T",false,false,2,true,true,true,true
+src/static_ir/backprop.jl,gradient_var,mtsig,Tuple{StaticIRNode},false,false,0,false,true,true,true
+src/static_ir/backprop.jl,value_trie_var,mtsig,Tuple{GenerativeFunctionCallNode},false,false,0,false,true,true,true
+src/static_ir/backprop.jl,gradient_trie_var,mtsig,Tuple{GenerativeFunctionCallNode},false,false,0,false,true,true,true
+src/static_ir/backprop.jl,tape_var,mtsig,Tuple{JuliaNode},false,false,0,false,true,true,true
+src/static_ir/backprop.jl,maybe_tracked_value_var,mtsig,Tuple{JuliaNode},false,false,0,false,true,true,true
+src/static_ir/backprop.jl,maybe_tracked_arg_var,mtsig,"Tuple{JuliaNode, Int}",false,false,0,false,true,true,true
+src/static_ir/backprop.jl,fwd_pass!,mtsig,"Tuple{Any, Any, Any, TrainableParameterNode}",false,false,0,false,true,true,true
+src/static_ir/backprop.jl,fwd_pass!,mtsig,"Tuple{Any, Any, Any, ArgumentNode}",false,false,0,false,true,true,true
+src/static_ir/backprop.jl,fwd_pass!,mtsig,"Tuple{Any, Any, Any, JuliaNode}",false,false,0,false,true,true,true
+src/static_ir/backprop.jl,fwd_pass!,mtsig,"Tuple{Any, Any, Any, RandomChoiceNode}",false,false,0,false,true,true,true
+src/static_ir/backprop.jl,fwd_pass!,mtsig,"Tuple{Any, Any, Any, GenerativeFunctionCallNode}",false,false,0,false,true,true,true
+src/static_ir/backprop.jl,back_pass!,mtsig,"Tuple{Any, TrainableParameterNode}",false,false,0,false,true,true,true
+src/static_ir/backprop.jl,back_pass!,mtsig,"Tuple{Any, ArgumentNode}",false,false,0,false,true,true,true
+src/static_ir/backprop.jl,back_pass!,mtsig,"Tuple{Any, JuliaNode}",false,false,0,false,true,true,true
+src/static_ir/backprop.jl,back_pass!,mtsig,"Tuple{Any, RandomChoiceNode}",false,false,0,false,true,true,true
+src/static_ir/backprop.jl,back_pass!,mtsig,"Tuple{Any, GenerativeFunctionCallNode}",false,false,0,false,true,true,true
+src/static_ir/backprop.jl,fwd_codegen!,mtsig,"Tuple{Any, Any, Any, TrainableParameterNode}",false,false,0,false,true,true,true
+src/static_ir/backprop.jl,fwd_codegen!,mtsig,"Tuple{Any, Any, Any, ArgumentNode}",false,false,0,false,true,true,true
+src/static_ir/backprop.jl,fwd_codegen!,mtsig,"Tuple{Any, Any, Any, JuliaNode}",false,false,0,false,true,true,true
+src/static_ir/backprop.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/static_ir/backprop.jl,fwd_codegen!,mtsig,"Tuple{Any, Any, Any, RandomChoiceNode}",false,false,0,false,true,true,true
+src/static_ir/backprop.jl,fwd_codegen!,mtsig,"Tuple{Any, Any, Any, GenerativeFunctionCallNode}",false,false,0,false,true,true,true
+src/static_ir/backprop.jl,back_codegen!,mtsig,"Tuple{Any, Any, Any, Any, Any, TrainableParameterNode, Any}",false,false,0,false,true,true,true
+src/static_ir/backprop.jl,back_codegen!,mtsig,"Tuple{Any, Any, Any, Any, Any, ArgumentNode, Any}",false,false,0,false,true,true,true
+src/static_ir/backprop.jl,back_codegen!,mtsig,"Tuple{Any, Any, Any, Any, Any, JuliaNode, Any}",false,false,0,false,true,true,true
+src/static_ir/backprop.jl,back_codegen_random_choice_to_inputs!,mtsig,"Tuple{Any, Any, Any, Any, RandomChoiceNode, Symbol}",false,false,0,false,true,true,true
+src/static_ir/backprop.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/static_ir/backprop.jl,back_codegen!,mtsig,"Tuple{Any, Any, Any, Any, Any, RandomChoiceNode, BackpropTraceMode}",false,false,0,false,true,true,true
+src/static_ir/backprop.jl,back_codegen!,mtsig,"Tuple{Any, Any, Any, Any, Any, RandomChoiceNode, BackpropParamsMode}",false,false,0,false,true,true,true
+src/static_ir/backprop.jl,back_codegen!,mtsig,"Tuple{Any, Any, Any, Any, Any, GenerativeFunctionCallNode, BackpropTraceMode}",false,false,0,false,true,true,true
+src/static_ir/backprop.jl,back_codegen!,mtsig,"Tuple{Any, Any, Any, Any, Any, GenerativeFunctionCallNode, BackpropParamsMode}",false,false,0,false,true,true,true
+src/static_ir/backprop.jl,generate_value_gradient_trie,mtsig,"Tuple{Set{RandomChoiceNode}, Set{GenerativeFunctionCallNode}, Symbol, Symbol}",false,false,0,false,true,true,true
+src/static_ir/backprop.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/static_ir/backprop.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/static_ir/backprop.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/static_ir/backprop.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/static_ir/backprop.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/static_ir/backprop.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/static_ir/backprop.jl,get_selected_choices,mtsig,"Tuple{EmptyAddressSchema, StaticIR}",false,false,0,false,true,true,true
+src/static_ir/backprop.jl,get_selected_choices,mtsig,"Tuple{AllAddressSchema, StaticIR}",false,false,0,false,true,true,true
+src/static_ir/backprop.jl,get_selected_choices,mtsig,"Tuple{StaticAddressSchema, StaticIR}",false,false,0,false,true,true,true
+src/static_ir/backprop.jl,get_selected_calls,mtsig,"Tuple{EmptyAddressSchema, StaticIR}",false,false,0,false,true,true,true
+src/static_ir/backprop.jl,get_selected_calls,mtsig,"Tuple{AllAddressSchema, StaticIR}",false,false,0,false,true,true,true
+src/static_ir/backprop.jl,get_selected_calls,mtsig,"Tuple{StaticAddressSchema, StaticIR}",false,false,0,false,true,true,true
+src/static_ir/backprop.jl,codegen_choice_gradients,mtsig,"Tuple{Type{T}, Type, Type} where T <: StaticIRTrace",false,false,1,true,true,true,true
+src/static_ir/backprop.jl,<NA-name>,mtsig,Tuple{ArgumentNode},false,false,0,false,true,true,true
+src/static_ir/backprop.jl,codegen_accumulate_param_gradients!,mtsig,"Tuple{Type{T}, Type} where T <: StaticIRTrace",false,false,1,true,true,true,true
+src/static_ir/backprop.jl,<NA-name>,mtsig,Tuple{ArgumentNode},false,false,0,false,true,true,true
+src/static_ir/backprop.jl,"$(GlobalRef(Gen, :choice_gradients))",mtsig,"Tuple{T, $(QuoteNode(Selection)), Any} where T <: $(QuoteNode(StaticIRTrace))",false,true,1,true,true,true,true
+src/static_ir/backprop.jl,"$(GlobalRef(Gen, :accumulate_param_gradients!))",mtsig,"Tuple{T, Any} where T <: $(QuoteNode(StaticIRTrace))",false,true,1,true,true,true,true
+src/static_ir/dag.jl,StaticIRBuilder,mtsig,Tuple{},false,false,0,false,true,true,true
+src/static_ir/dag.jl,build_ir,mtsig,Tuple{StaticIRBuilder},false,false,0,false,true,true,true
+src/static_ir/dag.jl,check_unique_var,mtsig,"Tuple{StaticIRBuilder, Symbol}",false,false,0,false,true,true,true
+src/static_ir/dag.jl,check_inputs_exist,mtsig,"Tuple{StaticIRBuilder, Any}",false,false,0,false,true,true,true
+src/static_ir/dag.jl,check_addr_unique,mtsig,"Tuple{StaticIRBuilder, Symbol}",false,false,0,false,true,true,true
+src/static_ir/dag.jl,_add_node!,mtsig,"Tuple{StaticIRBuilder, StaticIRNode}",false,false,0,false,true,true,true
+src/static_ir/dag.jl,add_trainable_param_node!,mtsig,"Tuple{StaticIRBuilder, Symbol, Union{Symbol, Expr, QuoteNode}}",false,false,0,false,true,true,true
+src/static_ir/dag.jl,add_argument_node!,mtsig,"Tuple{StaticIRBuilder, Symbol, Union{Symbol, Expr, QuoteNode}, Any}",false,false,0,false,true,true,true
+src/static_ir/dag.jl,add_julia_node!,mtsig,"Tuple{StaticIRBuilder, Function, Vector, Symbol, Union{Symbol, Expr, QuoteNode}}",false,false,0,false,true,true,true
+src/static_ir/dag.jl,add_constant_node!,mtsig,"Tuple{StaticIRBuilder, Any, Symbol, Union{Symbol, Expr, QuoteNode}}",false,false,0,false,true,true,true
+src/static_ir/dag.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+src/static_ir/dag.jl,add_addr_node!,mtsig,"Tuple{StaticIRBuilder, Distribution, Vector, Symbol, Symbol}",false,false,0,false,true,true,true
+src/static_ir/dag.jl,add_addr_node!,mtsig,"Tuple{StaticIRBuilder, GenerativeFunction, Vector, Symbol, Symbol}",false,false,0,false,true,true,true
+src/static_ir/dag.jl,set_return_node!,mtsig,"Tuple{StaticIRBuilder, StaticIRNode}",false,false,0,false,true,true,true
+src/static_ir/dag.jl,set_accepts_output_grad!,mtsig,"Tuple{StaticIRBuilder, Bool}",false,false,0,false,true,true,true
+src/static_ir/generate.jl,process!,mtsig,"Tuple{StaticIRGenerateState, Any, Any}",false,false,0,false,true,true,true
+src/static_ir/generate.jl,process!,mtsig,"Tuple{StaticIRGenerateState, TrainableParameterNode, Any}",false,false,0,false,true,true,true
+src/static_ir/generate.jl,process!,mtsig,"Tuple{StaticIRGenerateState, ArgumentNode, Any}",false,false,0,false,true,true,true
+src/static_ir/generate.jl,process!,mtsig,"Tuple{StaticIRGenerateState, JuliaNode, Any}",false,false,0,false,true,true,true
+src/static_ir/generate.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/static_ir/generate.jl,process!,mtsig,"Tuple{StaticIRGenerateState, RandomChoiceNode, Any}",false,false,0,false,true,true,true
+src/static_ir/generate.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/static_ir/generate.jl,process!,mtsig,"Tuple{StaticIRGenerateState, GenerativeFunctionCallNode, Any}",false,false,0,false,true,true,true
+src/static_ir/generate.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/static_ir/generate.jl,codegen_generate,mtsig,"Tuple{Type{T}, Any, Any} where T <: StaticIRGenerativeFunction",false,false,1,true,true,true,true
+src/static_ir/generate.jl,"$(GlobalRef(Gen, :generate))",mtsig,"Tuple{$(QuoteNode(StaticIRGenerativeFunction)), $(QuoteNode(Tuple)), $(QuoteNode(ChoiceMap))}",false,true,0,false,true,true,true
+src/static_ir/print_ir.jl,Base.show,mtsig,"Tuple{IO, MIME""text/plain"", StaticIR}",false,false,0,false,true,true,true
+src/static_ir/print_ir.jl,print_ir,mtsig,"Tuple{IO, StaticIR}",false,false,0,false,true,true,true
+src/static_ir/print_ir.jl,print_ir,mtsig,"Tuple{IO, TrainableParameterNode}",false,false,0,false,true,true,true
+src/static_ir/print_ir.jl,print_ir,mtsig,"Tuple{IO, JuliaNode}",false,false,0,false,true,true,true
+src/static_ir/print_ir.jl,print_ir,mtsig,"Tuple{IO, GenerativeFunctionCallNode}",false,false,0,false,true,true,true
+src/static_ir/print_ir.jl,print_ir,mtsig,"Tuple{IO, RandomChoiceNode}",false,false,0,false,true,true,true
+src/static_ir/print_ir.jl,ir_name,mtsig,Tuple{GenerativeFunction},false,false,0,false,true,true,true
+src/static_ir/print_ir.jl,ir_name,mtsig,Tuple{DynamicDSLFunction},false,false,0,false,true,true,true
+src/static_ir/project.jl,process!,mtsig,"Tuple{StaticIRProjectState, Any}",false,false,0,false,true,true,true
+src/static_ir/project.jl,process!,mtsig,"Tuple{StaticIRProjectState, RandomChoiceNode}",false,false,0,false,true,true,true
+src/static_ir/project.jl,process!,mtsig,"Tuple{StaticIRProjectState, GenerativeFunctionCallNode}",false,false,0,false,true,true,true
+src/static_ir/project.jl,codegen_project,mtsig,"Tuple{Type, Type}",false,false,0,false,true,true,true
+src/static_ir/project.jl,"$(GlobalRef(Gen, :project))",mtsig,"Tuple{T, $(QuoteNode(Selection))} where T <: $(QuoteNode(StaticIRTrace))",false,true,1,true,true,true,true
+src/static_ir/project.jl,"$(GlobalRef(Gen, :project))",mtsig,"Tuple{T, $(QuoteNode(EmptySelection))} where T <: $(QuoteNode(StaticIRTrace))",false,true,1,true,true,true,true
+src/static_ir/render_ir.jl,label,mtsig,Tuple{ArgumentNode},false,false,0,false,true,true,true
+src/static_ir/render_ir.jl,label,mtsig,Tuple{JuliaNode},false,false,0,false,true,true,true
+src/static_ir/render_ir.jl,label,mtsig,Tuple{RandomChoiceNode},false,false,0,false,true,true,true
+src/static_ir/render_ir.jl,label,mtsig,Tuple{GenerativeFunctionCallNode},false,false,0,false,true,true,true
+src/static_ir/render_ir.jl,draw_graph,mtsig,"Tuple{StaticIR, Any, Any}",false,false,0,false,true,true,true
+src/static_ir/render_ir.jl,draw_graph,mtsig,"Tuple{StaticIRGenerativeFunction, Any, Any}",false,false,0,false,true,true,true
+src/static_ir/simulate.jl,process!,mtsig,"Tuple{StaticIRSimulateState, Any, Any}",false,false,0,false,true,true,true
+src/static_ir/simulate.jl,process!,mtsig,"Tuple{StaticIRSimulateState, TrainableParameterNode, Any}",false,false,0,false,true,true,true
+src/static_ir/simulate.jl,process!,mtsig,"Tuple{StaticIRSimulateState, ArgumentNode, Any}",false,false,0,false,true,true,true
+src/static_ir/simulate.jl,process!,mtsig,"Tuple{StaticIRSimulateState, JuliaNode, Any}",false,false,0,false,true,true,true
+src/static_ir/simulate.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/static_ir/simulate.jl,process!,mtsig,"Tuple{StaticIRSimulateState, RandomChoiceNode, Any}",false,false,0,false,true,true,true
+src/static_ir/simulate.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/static_ir/simulate.jl,process!,mtsig,"Tuple{StaticIRSimulateState, GenerativeFunctionCallNode, Any}",false,false,0,false,true,true,true
+src/static_ir/simulate.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/static_ir/simulate.jl,codegen_simulate,mtsig,"Tuple{Type{T}, Any} where T <: StaticIRGenerativeFunction",false,false,1,true,true,true,true
+src/static_ir/simulate.jl,"$(GlobalRef(Gen, :simulate))",mtsig,"Tuple{$(QuoteNode(StaticIRGenerativeFunction)), Tuple}",false,true,0,false,true,true,true
+src/static_ir/static_ir.jl,generate_generative_function,mtsig,"Tuple{StaticIR, Symbol, Any, Any}",false,false,0,false,true,true,true
+src/static_ir/static_ir.jl,generate_generative_function,mtsig,"Tuple{StaticIR, Symbol, StaticIRGenerativeFunctionOptions}",false,false,0,false,true,true,true
+src/static_ir/static_ir.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/static_ir/static_ir.jl,gen_fn::$gen_fn_type_name,mtsig,Tuple{Vararg{Any}},false,false,0,false,true,true,true
+src/static_ir/static_ir.jl,"$(GlobalRef(Gen, :get_ir))",mtsig,Tuple{$gen_fn_type_name},false,true,0,false,true,true,true
+src/static_ir/static_ir.jl,"$(GlobalRef(Gen, :get_ir))",mtsig,Tuple{Type{$gen_fn_type_name}},false,true,0,false,true,true,true
+src/static_ir/static_ir.jl,"$(GlobalRef(Gen, :get_trace_type))",mtsig,Tuple{Type{$gen_fn_type_name}},false,true,0,false,true,true,true
+src/static_ir/static_ir.jl,"$(GlobalRef(Gen, :has_argument_grads))",mtsig,Tuple{$gen_fn_type_name},false,true,0,false,true,true,true
+src/static_ir/static_ir.jl,"$(GlobalRef(Gen, :accepts_output_grad))",mtsig,Tuple{$gen_fn_type_name},false,true,0,false,true,true,true
+src/static_ir/static_ir.jl,"$(GlobalRef(Gen, :get_gen_fn))",mtsig,Tuple{$trace_struct_name},false,true,0,false,true,true,true
+src/static_ir/static_ir.jl,"$(GlobalRef(Gen, :get_gen_fn_type))",mtsig,Tuple{Type{$trace_struct_name}},false,true,0,false,true,true,true
+src/static_ir/static_ir.jl,"$(GlobalRef(Gen, :get_options))",mtsig,Tuple{Type{$gen_fn_type_name}},false,true,0,false,true,true,true
+src/static_ir/trace.jl,get_address_schema,mtsig,Tuple{Type{StaticIRTraceAssmt{T}}} where T,false,false,1,true,true,true,true
+src/static_ir/trace.jl,Base.isempty,mtsig,Tuple{StaticIRTraceAssmt},false,false,0,false,true,true,true
+src/static_ir/trace.jl,static_has_value,mtsig,"Tuple{StaticIRTraceAssmt, Any}",false,false,0,false,true,true,true
+src/static_ir/trace.jl,get_value,mtsig,"Tuple{StaticIRTraceAssmt, Symbol}",false,false,0,false,true,true,true
+src/static_ir/trace.jl,has_value,mtsig,"Tuple{StaticIRTraceAssmt, Symbol}",false,false,0,false,true,true,true
+src/static_ir/trace.jl,get_submap,mtsig,"Tuple{StaticIRTraceAssmt, Symbol}",false,false,0,false,true,true,true
+src/static_ir/trace.jl,static_get_submap,mtsig,"Tuple{StaticIRTraceAssmt, Val}",false,false,0,false,true,true,true
+src/static_ir/trace.jl,get_value,mtsig,"Tuple{StaticIRTraceAssmt, Pair}",false,false,0,false,true,true,true
+src/static_ir/trace.jl,has_value,mtsig,"Tuple{StaticIRTraceAssmt, Pair}",false,false,0,false,true,true,true
+src/static_ir/trace.jl,get_submap,mtsig,"Tuple{StaticIRTraceAssmt, Pair}",false,false,0,false,true,true,true
+src/static_ir/trace.jl,static_get_subtrace,mtsig,"Tuple{StaticIRTrace, Any}",false,false,0,false,true,true,true
+src/static_ir/trace.jl,static_haskey,mtsig,"Tuple{StaticIRTrace, Val}",false,false,0,false,true,true,true
+src/static_ir/trace.jl,Base.haskey,mtsig,"Tuple{StaticIRTrace, Any}",false,false,0,false,true,true,true
+src/static_ir/trace.jl,Base.getindex,mtsig,"Tuple{StaticIRTrace, Any}",false,false,0,false,true,true,true
+src/static_ir/trace.jl,Base.getindex,mtsig,"Tuple{StaticIRTrace, Pair}",false,false,0,false,true,true,true
+src/static_ir/trace.jl,get_value_fieldname,mtsig,Tuple{ArgumentNode},false,false,0,false,true,true,true
+src/static_ir/trace.jl,get_value_fieldname,mtsig,Tuple{RandomChoiceNode},false,false,0,false,true,true,true
+src/static_ir/trace.jl,get_value_fieldname,mtsig,Tuple{JuliaNode},false,false,0,false,true,true,true
+src/static_ir/trace.jl,get_score_fieldname,mtsig,Tuple{RandomChoiceNode},false,false,0,false,true,true,true
+src/static_ir/trace.jl,get_subtrace_fieldname,mtsig,Tuple{GenerativeFunctionCallNode},false,false,0,false,true,true,true
+src/static_ir/trace.jl,get_trace_fields,mtsig,"Tuple{StaticIR, StaticIRGenerativeFunctionOptions}",false,false,0,false,true,true,true
+src/static_ir/trace.jl,generate_trace_struct,mtsig,"Tuple{StaticIR, Symbol, StaticIRGenerativeFunctionOptions}",false,false,0,false,true,true,true
+src/static_ir/trace.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/static_ir/trace.jl,generate_isempty,mtsig,Tuple{Symbol},false,false,0,false,true,true,true
+src/static_ir/trace.jl,generate_get_score,mtsig,Tuple{Symbol},false,false,0,false,true,true,true
+src/static_ir/trace.jl,generate_get_args,mtsig,"Tuple{StaticIR, Symbol}",false,false,0,false,true,true,true
+src/static_ir/trace.jl,generate_get_retval,mtsig,"Tuple{StaticIR, Symbol}",false,false,0,false,true,true,true
+src/static_ir/trace.jl,generate_get_choices,mtsig,Tuple{Symbol},false,false,0,false,true,true,true
+src/static_ir/trace.jl,generate_get_values_shallow,mtsig,"Tuple{StaticIR, Symbol}",false,false,0,false,true,true,true
+src/static_ir/trace.jl,generate_get_submaps_shallow,mtsig,"Tuple{StaticIR, Symbol}",false,false,0,false,true,true,true
+src/static_ir/trace.jl,generate_getindex,mtsig,"Tuple{StaticIR, Symbol}",false,false,0,false,true,true,true
+src/static_ir/trace.jl,"$(GlobalRef(Gen, :static_get_subtrace))",mtsig,"Tuple{$trace_struct_name, Val{$(QuoteNode(node.addr))}}",false,true,0,false,true,true,true
+src/static_ir/trace.jl,"$(GlobalRef(Gen, :static_get_subtrace))",mtsig,"Tuple{$trace_struct_name, Val{$(QuoteNode(node.addr))}}",false,true,0,false,true,true,true
+src/static_ir/trace.jl,"$(GlobalRef(Gen, :static_getindex))",mtsig,"Tuple{$trace_struct_name, Val{$(QuoteNode(node.addr))}}",false,true,0,false,true,true,true
+src/static_ir/trace.jl,"$(GlobalRef(Gen, :static_getindex))",mtsig,"Tuple{$trace_struct_name, Val{$(QuoteNode(node.addr))}}",false,true,0,false,true,true,true
+src/static_ir/trace.jl,"$(GlobalRef(Gen, :static_getindex))",mtsig,"Tuple{$trace_struct_name, Val{$(QuoteNode(node.addr))}}",false,true,0,false,true,true,true
+src/static_ir/trace.jl,"$(GlobalRef(Gen, :static_getindex))",mtsig,"Tuple{$trace_struct_name, Val{$(QuoteNode(node.addr))}}",false,true,0,false,true,true,true
+src/static_ir/trace.jl,generate_static_get_value,mtsig,"Tuple{StaticIR, Symbol}",false,false,0,false,true,true,true
+src/static_ir/trace.jl,generate_static_has_value,mtsig,"Tuple{StaticIR, Symbol}",false,false,0,false,true,true,true
+src/static_ir/trace.jl,generate_static_get_submap,mtsig,"Tuple{StaticIR, Symbol}",false,false,0,false,true,true,true
+src/static_ir/trace.jl,generate_get_schema,mtsig,"Tuple{StaticIR, Symbol}",false,false,0,false,true,true,true
+src/static_ir/trace.jl,generate_trace_type_and_methods,mtsig,"Tuple{StaticIR, Symbol, StaticIRGenerativeFunctionOptions}",false,false,0,false,true,true,true
+src/static_ir/update.jl,calldiff_var,mtsig,Tuple{GenerativeFunctionCallNode},false,false,0,false,true,true,true
+src/static_ir/update.jl,choice_discard_var,mtsig,Tuple{RandomChoiceNode},false,false,0,false,true,true,true
+src/static_ir/update.jl,call_discard_var,mtsig,Tuple{GenerativeFunctionCallNode},false,false,0,false,true,true,true
+src/static_ir/update.jl,ForwardPassState,mtsig,Tuple{},false,false,0,false,true,true,true
+src/static_ir/update.jl,forward_pass_argdiff!,mtsig,"Tuple{ForwardPassState, Vector{ArgumentNode}, Type}",false,false,0,false,true,true,true
+src/static_ir/update.jl,process_forward!,mtsig,"Tuple{AddressSchema, ForwardPassState, TrainableParameterNode}",false,false,0,false,true,true,true
+src/static_ir/update.jl,process_forward!,mtsig,"Tuple{AddressSchema, ForwardPassState, ArgumentNode}",false,false,0,false,true,true,true
+src/static_ir/update.jl,process_forward!,mtsig,"Tuple{AddressSchema, ForwardPassState, JuliaNode}",false,false,0,false,true,true,true
+src/static_ir/update.jl,process_forward!,mtsig,"Tuple{AddressSchema, ForwardPassState, RandomChoiceNode}",false,false,0,false,true,true,true
+src/static_ir/update.jl,process_forward!,mtsig,"Tuple{AddressSchema, ForwardPassState, GenerativeFunctionCallNode}",false,false,0,false,true,true,true
+src/static_ir/update.jl,BackwardPassState,mtsig,Tuple{},false,false,0,false,true,true,true
+src/static_ir/update.jl,process_backward!,mtsig,"Tuple{ForwardPassState, BackwardPassState, TrainableParameterNode, Any}",false,false,0,false,true,true,true
+src/static_ir/update.jl,process_backward!,mtsig,"Tuple{ForwardPassState, BackwardPassState, ArgumentNode, Any}",false,false,0,false,true,true,true
+src/static_ir/update.jl,process_backward!,mtsig,"Tuple{ForwardPassState, BackwardPassState, JuliaNode, Any}",false,false,0,false,true,true,true
+src/static_ir/update.jl,process_backward!,mtsig,"Tuple{ForwardPassState, BackwardPassState, RandomChoiceNode, Any}",false,false,0,false,true,true,true
+src/static_ir/update.jl,process_backward!,mtsig,"Tuple{ForwardPassState, BackwardPassState, GenerativeFunctionCallNode, Any}",false,false,0,false,true,true,true
+src/static_ir/update.jl,arg_values_and_diffs_from_tracked_diffs,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/static_ir/update.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/static_ir/update.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/static_ir/update.jl,process_codegen!,mtsig,"Tuple{Any, ForwardPassState, BackwardPassState, TrainableParameterNode, AbstractUpdateMode, Any}",false,false,0,false,true,true,true
+src/static_ir/update.jl,process_codegen!,mtsig,"Tuple{Any, ForwardPassState, BackwardPassState, ArgumentNode, AbstractUpdateMode, Any}",false,false,0,false,true,true,true
+src/static_ir/update.jl,process_codegen!,mtsig,"Tuple{Any, ForwardPassState, BackwardPassState, JuliaNode, AbstractUpdateMode, Any}",false,false,0,false,true,true,true
+src/static_ir/update.jl,<NA-name>,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+src/static_ir/update.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/static_ir/update.jl,process_codegen!,mtsig,"Tuple{Any, ForwardPassState, BackwardPassState, RandomChoiceNode, UpdateMode, Any}",false,false,0,false,true,true,true
+src/static_ir/update.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/static_ir/update.jl,process_codegen!,mtsig,"Tuple{Any, ForwardPassState, BackwardPassState, RandomChoiceNode, RegenerateMode, Any}",false,false,0,false,true,true,true
+src/static_ir/update.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/static_ir/update.jl,process_codegen!,mtsig,"Tuple{Any, ForwardPassState, BackwardPassState, GenerativeFunctionCallNode, UpdateMode, Any}",false,false,0,false,true,true,true
+src/static_ir/update.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/static_ir/update.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/static_ir/update.jl,process_codegen!,mtsig,"Tuple{Any, ForwardPassState, BackwardPassState, GenerativeFunctionCallNode, RegenerateMode, Any}",false,false,0,false,true,true,true
+src/static_ir/update.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/static_ir/update.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/static_ir/update.jl,initialize_score_weight_num_nonempty!,mtsig,Tuple{Vector{Expr}},false,false,0,false,true,true,true
+src/static_ir/update.jl,unpack_arguments!,mtsig,"Tuple{Vector{Expr}, Vector{ArgumentNode}, Any}",false,false,0,false,true,true,true
+src/static_ir/update.jl,generate_return_value!,mtsig,"Tuple{Vector{Expr}, ForwardPassState, StaticIRNode, Any}",false,false,0,false,true,true,true
+src/static_ir/update.jl,generate_new_trace!,mtsig,"Tuple{Vector{Expr}, Type, Any}",false,false,0,false,true,true,true
+src/static_ir/update.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/static_ir/update.jl,generate_discard!,mtsig,"Tuple{Vector{Expr}, Set{RandomChoiceNode}, Set{GenerativeFunctionCallNode}}",false,false,0,false,true,true,true
+src/static_ir/update.jl,<NA-name>,mtsig,Tuple{Symbol},false,false,0,false,true,true,true
+src/static_ir/update.jl,<NA-name>,mtsig,Tuple{Symbol},false,false,0,false,true,true,true
+src/static_ir/update.jl,codegen_update,mtsig,"Tuple{Type{T}, Type, Type, Type} where T <: StaticIRTrace",false,false,1,true,true,true,true
+src/static_ir/update.jl,codegen_regenerate,mtsig,"Tuple{Type{T}, Type, Type, Type} where T <: StaticIRTrace",false,false,1,true,true,true,true
+src/static_ir/update.jl,"$(GlobalRef(Gen, :update))",mtsig,"Tuple{$T, Tuple, Tuple, $(QuoteNode(ChoiceMap))} where $T <: $(QuoteNode(StaticIRTrace))",true,true,,,,,
+src/static_ir/update.jl,"$(GlobalRef(Gen, :regenerate))",mtsig,"Tuple{$T, Tuple, Tuple, $(QuoteNode(Selection))} where $T <: $(QuoteNode(StaticIRTrace))",true,true,,,,,
+test/gen_fn_interface.jl,f_dynamic,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+test/gen_fn_interface.jl,f_static,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+test/optional_args.jl,foo,mtsig,"Tuple{Any, Any, CALL}",false,false,0,false,true,true,true
+test/optional_args.jl,foo_lpdf,mtsig,"Tuple{Any, Any, Any, Any, Any}",false,false,0,false,true,true,true
+test/optional_args.jl,bar,mtsig,Tuple{},false,false,0,false,true,true,true
+test/optional_args.jl,outer,mtsig,Tuple{GenerativeFunction},false,false,0,false,true,true,true
+test/optional_args.jl,foo2,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/optional_args.jl,foo,mtsig,"Tuple{Int, Bool, Float64, Float64}",false,false,0,false,true,true,true
+test/optional_args.jl,production,mtsig,"Tuple{Int, Int}",false,false,0,false,true,true,true
+test/optional_args.jl,aggregation,mtsig,"Tuple{Int, Vector, Any}",false,false,0,false,true,true,true
+test/optional_args.jl,new_prod,mtsig,Tuple{Int},false,false,0,false,true,true,true
+test/optional_args.jl,new_aggr,mtsig,"Tuple{Int, Vector}",false,false,0,false,true,true,true
+test/optional_args.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/runtests.jl,finite_diff,mtsig,"Tuple{Function, Tuple, Int, Float64, Any}",false,false,0,false,true,true,true
+test/runtests.jl,finite_diff_vec,mtsig,"Tuple{Function, Tuple, Int, Int, Float64}",false,false,0,false,true,true,true
+test/runtests.jl,finite_diff_mat_sym,mtsig,"Tuple{Function, Tuple, Int, Int, Int, Float64}",false,false,0,false,true,true,true
+test/runtests.jl,finite_diff_arr,mtsig,"Tuple{Function, Tuple, Int, Any, Float64}",false,false,0,false,true,true,true
+test/runtests.jl,finite_diff_arr_fullarg,mtsig,"Tuple{Function, Tuple, Int, Float64}",false,false,0,false,true,true,true
+test/tilde_sugar.jl,normalize,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/tilde_sugar.jl,foo,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+test/tilde_sugar.jl,bar,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/tilde_sugar.jl,foo,mtsig,Tuple{},false,false,0,false,true,true,true
+test/tilde_sugar.jl,tilde_expr,mtsig,Tuple{},false,false,0,false,true,true,true
+test/tilde_sugar.jl,tilde_expr,mtsig,Tuple{},false,false,0,false,true,true,true
+test/dsl/dynamic_dsl.jl,foo,mtsig,Tuple{},false,false,0,false,true,true,true
+test/dsl/dynamic_dsl.jl,bar,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/dsl/dynamic_dsl.jl,baz,mtsig,Tuple{Int},false,false,0,false,true,true,true
+test/dsl/dynamic_dsl.jl,oneliner,mtsig,"Tuple{Float64, CALL}",false,false,0,false,true,true,true
+test/dsl/dynamic_dsl.jl,outer,mtsig,Tuple{},false,false,0,false,true,true,true
+test/dsl/dynamic_dsl.jl,inner,mtsig,Tuple{},false,false,0,false,true,true,true
+test/dsl/dynamic_dsl.jl,foo,mtsig,Tuple{},false,false,0,false,true,true,true
+test/dsl/dynamic_dsl.jl,foo,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/dsl/dynamic_dsl.jl,bar,mtsig,Tuple{},false,false,0,false,true,true,true
+test/dsl/dynamic_dsl.jl,baz,mtsig,Tuple{},false,false,0,false,true,true,true
+test/dsl/dynamic_dsl.jl,foo,mtsig,Tuple{},false,false,0,false,true,true,true
+test/dsl/dynamic_dsl.jl,loopy,mtsig,Tuple{},false,false,0,false,true,true,true
+test/dsl/dynamic_dsl.jl,bar,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/dsl/dynamic_dsl.jl,baz,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/dsl/dynamic_dsl.jl,foo,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/dsl/dynamic_dsl.jl,bar,mtsig,Tuple{CALL},false,false,0,false,true,true,true
+test/dsl/dynamic_dsl.jl,foo,mtsig,Tuple{CALL},false,false,0,false,true,true,true
+test/dsl/dynamic_dsl.jl,f,mtsig,"Tuple{Any, Any, Any, Any, Any}",false,false,0,false,true,true,true
+test/dsl/dynamic_dsl.jl,baz,mtsig,Tuple{},false,false,0,false,true,true,true
+test/dsl/dynamic_dsl.jl,foo,mtsig,Tuple{},false,false,0,false,true,true,true
+test/dsl/dynamic_dsl.jl,foo,mtsig,Tuple{},false,false,0,false,true,true,true
+test/dsl/dynamic_dsl.jl,foo,mtsig,Tuple{},false,false,0,false,true,true,true
+test/dsl/dynamic_dsl.jl,bar,mtsig,Tuple{},false,false,0,false,true,true,true
+test/dsl/dynamic_dsl.jl,foo,mtsig,Tuple{},false,false,0,false,true,true,true
+test/dsl/dynamic_dsl.jl,bar,mtsig,Tuple{},false,false,0,false,true,true,true
+test/dsl/dynamic_dsl.jl,foo,mtsig,Tuple{},false,false,0,false,true,true,true
+test/dsl/dynamic_dsl.jl,bar,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/dsl/dynamic_dsl.jl,foo,mtsig,Tuple{},false,false,0,false,true,true,true
+test/dsl/dynamic_dsl.jl,test_addr_dne,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/dsl/dynamic_dsl.jl,foo,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/dsl/macros.jl,foo1,mtsig,Tuple{},false,false,0,false,true,true,true
+test/dsl/macros.jl,foo2,mtsig,Tuple{},false,false,0,false,true,true,true
+test/dsl/macros.jl,foo3,mtsig,Tuple{},false,false,0,false,true,true,true
+test/dsl/macros.jl,foo4,mtsig,Tuple{},false,false,0,false,true,true,true
+test/dsl/macros.jl,foo5,mtsig,Tuple{},false,false,0,false,true,true,true
+test/dsl/macros.jl,foo6,mtsig,Tuple{},false,false,0,false,true,true,true
+test/dsl/macros.jl,foo7,mtsig,Tuple{},false,false,0,false,true,true,true
+test/dsl/macros.jl,foo1,mtsig,Tuple{},false,false,0,false,true,true,true
+test/dsl/macros.jl,foo2,mtsig,Tuple{},false,false,0,false,true,true,true
+test/dsl/macros.jl,foo3,mtsig,Tuple{},false,false,0,false,true,true,true
+test/dsl/macros.jl,foo4,mtsig,Tuple{},false,false,0,false,true,true,true
+test/dsl/macros.jl,foo5,mtsig,Tuple{},false,false,0,false,true,true,true
+test/dsl/macros.jl,foo6,mtsig,Tuple{},false,false,0,false,true,true,true
+test/dsl/macros.jl,foo7,mtsig,Tuple{},false,false,0,false,true,true,true
+test/dsl/static_dsl.jl,datum,mtsig,"Tuple{Float64, CALL}",false,false,0,false,true,true,true
+test/dsl/static_dsl.jl,model,mtsig,Tuple{Vector{Float64}},false,false,0,false,true,true,true
+test/dsl/static_dsl.jl,at_choice_example_1,mtsig,Tuple{Int},false,false,0,false,true,true,true
+test/dsl/static_dsl.jl,at_choice_example_2,mtsig,Tuple{Int},false,false,0,false,true,true,true
+test/dsl/static_dsl.jl,foo,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/dsl/static_dsl.jl,at_call_example_1,mtsig,Tuple{Int},false,false,0,false,true,true,true
+test/dsl/static_dsl.jl,at_call_example_2,mtsig,Tuple{Int},false,false,0,false,true,true,true
+test/dsl/static_dsl.jl,foo,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/dsl/static_dsl.jl,foo,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/dsl/static_dsl.jl,foo_in_macro,mtsig,Tuple{},false,false,0,false,true,true,true
+test/dsl/static_dsl.jl,uses_external,mtsig,Tuple{},false,false,0,false,true,true,true
+test/dsl/static_dsl.jl,get_node_by_name,mtsig,"Tuple{Any, Symbol}",false,false,0,false,true,true,true
+test/dsl/static_dsl.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/dsl/static_dsl.jl,get_node_by_addr,mtsig,"Tuple{Any, Symbol}",false,false,0,false,true,true,true
+test/dsl/static_dsl.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/dsl/static_dsl.jl,bar,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/dsl/static_dsl.jl,bar,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/dsl/static_dsl.jl,bar,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/dsl/static_dsl.jl,bar,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/dsl/static_dsl.jl,foo,mtsig,Tuple{},false,false,0,false,true,true,true
+test/dsl/static_dsl.jl,f1,mtsig,Tuple{},false,false,0,false,true,true,true
+test/dsl/static_dsl.jl,f2,mtsig,Tuple{},false,false,0,false,true,true,true
+test/dsl/static_dsl.jl,circle,mtsig,"Tuple{Any, Any, Any}",false,false,0,false,true,true,true
+test/dsl/static_dsl.jl,beta_bernoulli,mtsig,Tuple{},false,false,0,false,true,true,true
+test/dsl/static_dsl.jl,foo,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/dsl/static_dsl.jl,bar,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/dsl/static_dsl.jl,foo,mtsig,Tuple{Tuple},false,false,0,false,true,true,true
+test/dsl/static_dsl.jl,foo,mtsig,Tuple{},false,false,0,false,true,true,true
+test/dsl/static_dsl.jl,foo,mtsig,Tuple{},false,false,0,false,true,true,true
+test/dsl/static_dsl.jl,bar,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/dsl/static_dsl.jl,foo,mtsig,Tuple{},false,false,0,false,true,true,true
+test/dsl/static_dsl.jl,foo,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/dsl/static_dsl.jl,bar2,mtsig,Tuple{},false,false,0,false,true,true,true
+test/dsl/static_dsl.jl,bar1,mtsig,Tuple{},false,false,0,false,true,true,true
+test/inference/elliptical_slice.jl,foo,mtsig,Tuple{},false,false,0,false,true,true,true
+test/inference/hmc.jl,foo,mtsig,Tuple{},false,false,0,false,true,true,true
+test/inference/hmc.jl,foo,mtsig,Tuple{},false,false,0,false,true,true,true
+test/inference/importance_sampling.jl,model,mtsig,Tuple{},false,false,0,false,true,true,true
+test/inference/importance_sampling.jl,proposal,mtsig,Tuple{},false,false,0,false,true,true,true
+test/inference/mala.jl,foo,mtsig,Tuple{},false,false,0,false,true,true,true
+test/inference/mala.jl,foo,mtsig,Tuple{},false,false,0,false,true,true,true
+test/inference/map_optimize.jl,foo,mtsig,Tuple{},false,false,0,false,true,true,true
+test/inference/map_optimize.jl,foo,mtsig,Tuple{},false,false,0,false,true,true,true
+test/inference/mh.jl,involutive_mcmc_test_model,mtsig,Tuple{},false,false,0,false,true,true,true
+test/inference/mh.jl,involutive_mcmc_test_proposal,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/inference/mh.jl,julia_involution,mtsig,"Tuple{Any, Any, Any, Any}",false,false,0,false,true,true,true
+test/inference/mh.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/inference/particle_filter.jl,hmm_forward_alg,mtsig,"Tuple{Vector{Float64}, AbstractArray{Float64, 2}, AbstractArray{Float64, 2}, Vector{Int}}",false,false,0,false,true,true,true
+test/inference/particle_filter.jl,kernel,mtsig,"Tuple{Int, Int, Nothing}",false,false,0,false,true,true,true
+test/inference/particle_filter.jl,model,mtsig,Tuple{Int},false,false,0,false,true,true,true
+test/inference/particle_filter.jl,init_proposal,mtsig,Tuple{Int},false,false,0,false,true,true,true
+test/inference/particle_filter.jl,step_proposal,mtsig,"Tuple{Any, Int, Int}",false,false,0,false,true,true,true
+test/inference/trace_translators.jl,p1,mtsig,Tuple{},false,false,0,false,true,true,true
+test/inference/trace_translators.jl,p2,mtsig,Tuple{},false,false,0,false,true,true,true
+test/inference/trace_translators.jl,model,mtsig,Tuple{Int},false,false,0,false,true,true,true
+test/inference/trace_translators.jl,proposal,mtsig,"Tuple{Trace, Any}",false,false,0,false,true,true,true
+test/inference/trace_translators.jl,model,mtsig,Tuple{},false,false,0,false,true,true,true
+test/inference/trace_translators.jl,proposal,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/inference/trace_translators.jl,p1,mtsig,Tuple{},false,false,0,false,true,true,true
+test/inference/trace_translators.jl,p2,mtsig,Tuple{},false,false,0,false,true,true,true
+test/inference/trace_translators.jl,q1,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/inference/trace_translators.jl,q2,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/inference/train.jl,teacher,mtsig,Tuple{},false,false,0,false,true,true,true
+test/inference/train.jl,sigmoid,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/inference/train.jl,student,mtsig,Tuple{Bool},false,false,0,false,true,true,true
+test/inference/train.jl,data_generator,mtsig,Tuple{},false,false,0,false,true,true,true
+test/inference/train.jl,p,mtsig,Tuple{},false,false,0,false,true,true,true
+test/inference/train.jl,q,mtsig,Tuple{Float64},false,false,0,false,true,true,true
+test/inference/train.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/inference/train.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/inference/train.jl,q_batched,mtsig,Tuple{Vector{Float64}},false,false,0,false,true,true,true
+test/inference/train.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/inference/train.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/inference/train.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/inference/variational.jl,model,mtsig,Tuple{},false,false,0,false,true,true,true
+test/inference/variational.jl,approx,mtsig,Tuple{},false,false,0,false,true,true,true
+test/inference/variational.jl,model,mtsig,Tuple{},false,false,0,false,true,true,true
+test/inference/variational.jl,approx,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/inference/variational.jl,optimum_approx,mtsig,Tuple{},false,false,0,false,true,true,true
+test/modeling_library/call_at.jl,foo,mtsig,Tuple{CALL},false,false,0,false,true,true,true
+test/modeling_library/call_at.jl,get_trace,mtsig,Tuple{},false,false,0,false,true,true,true
+test/modeling_library/choice_at.jl,get_trace,mtsig,Tuple{},false,false,0,false,true,true,true
+test/modeling_library/custom_determ.jl,MyDeterministicGF,mtsig,Tuple{},false,false,0,false,true,true,true
+test/modeling_library/custom_determ.jl,Gen.apply_with_state,mtsig,"Tuple{MyDeterministicGF, Tuple}",false,false,0,false,true,true,true
+test/modeling_library/custom_determ.jl,Gen.update_with_state,mtsig,"Tuple{MyDeterministicGF, Any, Any, Any}",false,false,0,false,true,true,true
+test/modeling_library/custom_determ.jl,Gen.update_with_state,mtsig,"Tuple{MyDeterministicGF, Any, Any, Tuple{NoChange}}",false,false,0,false,true,true,true
+test/modeling_library/custom_determ.jl,Gen.update_with_state,mtsig,"Tuple{MyDeterministicGF, Any, Any, Tuple{VectorDiff}}",false,false,0,false,true,true,true
+test/modeling_library/custom_determ.jl,Gen.has_argument_grads,mtsig,Tuple{MyDeterministicGF},false,false,0,false,true,true,true
+test/modeling_library/custom_determ.jl,Gen.accepts_output_grad,mtsig,Tuple{MyDeterministicGF},false,false,0,false,true,true,true
+test/modeling_library/custom_determ.jl,Gen.gradient_with_state,mtsig,"Tuple{MyDeterministicGF, Any, Any, Any}",false,false,0,false,true,true,true
+test/modeling_library/custom_determ.jl,Gen.accumulate_param_gradients_determ!,mtsig,"Tuple{MyDeterministicGF, Any, Any, Any, Any}",false,false,0,false,true,true,true
+test/modeling_library/custom_determ.jl,Gen.has_argument_grads,mtsig,Tuple{CustomPlus},false,false,0,false,true,true,true
+test/modeling_library/custom_determ.jl,Gen.apply,mtsig,"Tuple{CustomPlus, Tuple{Float64, Float64}}",false,false,0,false,true,true,true
+test/modeling_library/custom_determ.jl,Gen.gradient,mtsig,"Tuple{CustomPlus, Any, Any, Any}",false,false,0,false,true,true,true
+test/modeling_library/custom_determ.jl,Gen.apply_with_state,mtsig,"Tuple{MySum, Any}",false,false,0,false,true,true,true
+test/modeling_library/custom_determ.jl,Gen.update_with_state,mtsig,"Tuple{MySum, Any, Any, Tuple{VectorDiff}}",false,false,0,false,true,true,true
+test/modeling_library/custom_determ.jl,Gen.num_args,mtsig,Tuple{MySum},false,false,0,false,true,true,true
+test/modeling_library/dist_dsl.jl,f,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/modeling_library/dist_dsl.jl,labeled_cat,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+test/modeling_library/dist_dsl.jl,dict_cat,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/modeling_library/dist_dsl.jl,enum_cat,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/modeling_library/dist_dsl.jl,real_minus_uniform,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+test/modeling_library/dist_dsl.jl,symbol_cat,mtsig,"Tuple{Vector{Symbol}, Any}",false,false,0,false,true,true,true
+test/modeling_library/dist_dsl.jl,int_bounded_uniform,mtsig,"Tuple{Int, Int}",false,false,0,false,true,true,true
+test/modeling_library/dist_dsl.jl,mylabel_cat,mtsig,"Tuple{Vector{MyLabel}, Any}",false,false,0,false,true,true,true
+test/modeling_library/distributions.jl,<NA-name>,mtsig,"Tuple{Bool, Float64}",false,false,0,false,true,true,true
+test/modeling_library/distributions.jl,<NA-name>,mtsig,"Tuple{Any, Any, Any}",false,false,0,false,true,true,true
+test/modeling_library/distributions.jl,<NA-name>,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+test/modeling_library/distributions.jl,<NA-name>,mtsig,"Tuple{Any, Any, Any}",false,false,0,false,true,true,true
+test/modeling_library/distributions.jl,<NA-name>,mtsig,"Tuple{Any, Any, Any}",false,false,0,false,true,true,true
+test/modeling_library/distributions.jl,<NA-name>,mtsig,"Tuple{Any, Any, Any}",false,false,0,false,true,true,true
+test/modeling_library/distributions.jl,f,mtsig,"Tuple{Any, Any, Any}",false,false,0,false,true,true,true
+test/modeling_library/distributions.jl,f,mtsig,"Tuple{Any, Any, Any}",false,false,0,false,true,true,true
+test/modeling_library/distributions.jl,<NA-name>,mtsig,"Tuple{Any, Any, Any}",false,false,0,false,true,true,true
+test/modeling_library/distributions.jl,<NA-name>,mtsig,"Tuple{Any, Any, Any}",false,false,0,false,true,true,true
+test/modeling_library/distributions.jl,<NA-name>,mtsig,"Tuple{Any, Any, Any}",false,false,0,false,true,true,true
+test/modeling_library/distributions.jl,<NA-name>,mtsig,"Tuple{Any, Any, Any, Any}",false,false,0,false,true,true,true
+test/modeling_library/distributions.jl,<NA-name>,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+test/modeling_library/distributions.jl,<NA-name>,mtsig,"Tuple{Any, Any, Any}",false,false,0,false,true,true,true
+test/modeling_library/distributions.jl,<NA-name>,mtsig,"Tuple{Any, Any, Any}",false,false,0,false,true,true,true
+test/modeling_library/distributions.jl,<NA-name>,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+test/modeling_library/distributions.jl,<NA-name>,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+test/modeling_library/distributions.jl,<NA-name>,mtsig,"Tuple{Any, Any, Any}",false,false,0,false,true,true,true
+test/modeling_library/distributions.jl,<NA-name>,mtsig,"Tuple{Any, Any, Any}",false,false,0,false,true,true,true
+test/modeling_library/map.jl,foo,mtsig,"Tuple{CALL, CALL}",false,false,0,false,true,true,true
+test/modeling_library/map.jl,get_initial_trace,mtsig,Tuple{},false,false,0,false,true,true,true
+test/modeling_library/map.jl,get_initial_trace,mtsig,Tuple{},false,false,0,false,true,true,true
+test/modeling_library/map.jl,get_initial_trace,mtsig,Tuple{},false,false,0,false,true,true,true
+test/modeling_library/map.jl,get_initial_trace,mtsig,Tuple{},false,false,0,false,true,true,true
+test/modeling_library/mixture.jl,<NA-name>,mtsig,"Tuple{Any, Any, Any, Any, Any, Any}",false,false,0,false,true,true,true
+test/modeling_library/mixture.jl,<NA-name>,mtsig,"Tuple{Any, Any, Any, Any}",false,false,0,false,true,true,true
+test/modeling_library/mixture.jl,<NA-name>,mtsig,"Tuple{Any, Any, Any, Any}",false,false,0,false,true,true,true
+test/modeling_library/mixture.jl,<NA-name>,mtsig,"Tuple{Any, Any, Any, Any}",false,false,0,false,true,true,true
+test/modeling_library/mixture.jl,rotmat,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/modeling_library/mixture.jl,f_cov_model,mtsig,Tuple{CALL},false,false,0,false,true,true,true
+test/modeling_library/recurse.jl,pcfg_production,mtsig,Tuple{Nothing},false,false,0,false,true,true,true
+test/modeling_library/recurse.jl,pcfg_aggregation,mtsig,"Tuple{Int, Vector{String}}",false,false,0,false,true,true,true
+test/modeling_library/recurse.jl,test_strings,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/modeling_library/switch.jl,swtrg,mtsig,Tuple{},false,false,0,false,true,true,true
+test/modeling_library/switch.jl,bang0,mtsig,"Tuple{CALL, CALL}",false,false,0,false,true,true,true
+test/modeling_library/switch.jl,fuzz0,mtsig,"Tuple{CALL, CALL}",false,false,0,false,true,true,true
+test/modeling_library/switch.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/modeling_library/switch.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/modeling_library/switch.jl,bang1,mtsig,"Tuple{CALL, CALL}",false,false,0,false,true,true,true
+test/modeling_library/switch.jl,fuzz1,mtsig,"Tuple{CALL, CALL}",false,false,0,false,true,true,true
+test/modeling_library/switch.jl,bam,mtsig,Tuple{Int},false,false,0,false,true,true,true
+test/modeling_library/switch.jl,bang2,mtsig,"Tuple{CALL, CALL}",false,false,0,false,true,true,true
+test/modeling_library/switch.jl,fuzz2,mtsig,"Tuple{CALL, CALL}",false,false,0,false,true,true,true
+test/modeling_library/switch.jl,bam2,mtsig,Tuple{Int},false,false,0,false,true,true,true
+test/modeling_library/switch.jl,bang3,mtsig,"Tuple{CALL, CALL}",false,false,0,false,true,true,true
+test/modeling_library/switch.jl,fuzz3,mtsig,"Tuple{CALL, CALL}",false,false,0,false,true,true,true
+test/modeling_library/switch.jl,bam3,mtsig,Tuple{Int},false,false,0,false,true,true,true
+test/modeling_library/unfold.jl,kernel,mtsig,"Tuple{Int, Float64, CALL, CALL}",false,false,0,false,true,true,true
+test/modeling_library/unfold.jl,get_initial_trace,mtsig,Tuple{},false,false,0,false,true,true,true
+test/modeling_library/unfold.jl,get_initial_trace,mtsig,Tuple{},false,false,0,false,true,true,true
+test/modeling_library/unfold.jl,kernel,mtsig,"Tuple{Int, Float64, CALL, CALL}",false,false,0,false,true,true,true
+test/modeling_library/unfold.jl,ker,mtsig,"Tuple{Any, CALL}",false,false,0,false,true,true,true
+test/modeling_library/unfold.jl,kernel,mtsig,"Tuple{Int, CALL, CALL, CALL}",false,false,0,false,true,true,true
+test/static_ir/static_ir.jl,<NA-name>,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+test/static_ir/static_ir.jl,<NA-name>,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+test/static_ir/static_ir.jl,<NA-name>,mtsig,"Tuple{Any, Any, Any}",false,false,0,false,true,true,true
+test/static_ir/static_ir.jl,expected_score,mtsig,"Tuple{Any, Any, Any, Any, Any}",false,false,0,false,true,true,true
+test/static_ir/static_ir.jl,<NA-name>,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+test/static_ir/static_ir.jl,<NA-name>,mtsig,"Tuple{Any, Any, Any, Any}",false,false,0,false,true,true,true
+test/static_ir/static_ir.jl,f,mtsig,"Tuple{Any, Any, Any, Any, Any, Any}",false,false,0,false,true,true,true
+test/static_ir/static_ir.jl,<NA-name>,mtsig,Tuple{},false,false,0,false,true,true,true
+test/static_ir/static_ir.jl,<NA-name>,mtsig,Tuple{Any},false,false,0,false,true,true,true
+test/static_ir/static_ir.jl,<NA-name>,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+test/static_ir/static_ir.jl,model,mtsig,Tuple{Any},false,false,0,false,true,true,true

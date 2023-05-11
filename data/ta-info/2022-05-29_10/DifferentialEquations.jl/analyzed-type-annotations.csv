@@ -1,0 +1,39 @@
+File,Function,Kind,TypeAnnotation,Error,Warning,VarCnt,HasWhere,VarsUsedOnce,UseSiteVariance,RestrictedScope
+src/bvp_default_alg.jl,default_algorithm,mtsig,"Tuple{DiffEqBase.AbstractBVProblem, Vararg{Any}}",false,false,0,false,true,true,true
+src/bvp_default_alg.jl,default_algorithm,mtsig,"Tuple{DiffEqBase.AbstractBVProblem, Vararg{Any}}",false,false,0,false,true,true,true
+src/dae_default_alg.jl,default_algorithm,mtsig,"(((Tuple{DiffEqBase.AbstractDAEProblem{uType, duType, tType, isinplace}, Vararg{Any}} where isinplace) where tType) where duType) where uType",false,false,4,true,true,true,true
+src/dae_default_alg.jl,default_algorithm,mtsig,"(((Tuple{DiffEqBase.AbstractDAEProblem{uType, duType, tType, isinplace}, Vararg{Any}} where isinplace) where tType) where duType) where uType",false,false,4,true,true,true,true
+src/dde_default_alg.jl,default_algorithm,mtsig,"(((Tuple{DiffEqBase.AbstractDDEProblem{uType, tType, lType, isinplace}, Vararg{Any}} where isinplace) where lType) where tType) where uType",false,false,4,true,true,true,true
+src/dde_default_alg.jl,default_algorithm,mtsig,"(((Tuple{DiffEqBase.AbstractDDEProblem{uType, tType, lType, isinplace}, Vararg{Any}} where isinplace) where lType) where tType) where uType",false,false,4,true,true,true,true
+src/default_arg_parsing.jl,get_alg_hints,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/default_arg_parsing.jl,get_tolerance_level,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/default_arg_parsing.jl,callbacks_exists,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/default_arg_parsing.jl,mass_matrix_exists,mtsig,Tuple{Any},false,false,0,false,true,true,true
+src/default_solve.jl,DiffEqBase.__solve,mtsig,"Tuple{DiffEqBase.DEProblem, Union{Nothing, DiffEqBase.DEAlgorithm}, Vararg{Any}, Any, Vararg{Any}}",false,false,0,false,true,true,true
+src/discrete_default_alg.jl,default_algorithm,mtsig,"Tuple{DiffEqBase.AbstractDiscreteProblem, Vararg{Any}}",false,false,0,false,true,true,true
+src/discrete_default_alg.jl,default_algorithm,mtsig,"Tuple{DiffEqBase.AbstractDiscreteProblem, Vararg{Any}}",false,false,0,false,true,true,true
+src/ode_default_alg.jl,default_algorithm,mtsig,"((Tuple{DiffEqBase.AbstractODEProblem{uType, tType, inplace}, Vararg{Any}} where inplace) where tType) where uType",false,false,3,true,true,true,true
+src/ode_default_alg.jl,default_algorithm,mtsig,"((Tuple{DiffEqBase.AbstractODEProblem{uType, tType, inplace}, Vararg{Any}} where inplace) where tType) where uType",false,false,3,true,true,true,true
+src/rode_default_alg.jl,default_algorithm,mtsig,"Tuple{DiffEqBase.AbstractRODEProblem, Vararg{Any}}",false,false,0,false,true,true,true
+src/rode_default_alg.jl,default_algorithm,mtsig,"Tuple{DiffEqBase.AbstractRODEProblem, Vararg{Any}}",false,false,0,false,true,true,true
+src/sde_default_alg.jl,default_algorithm,mtsig,"(((Tuple{DiffEqBase.AbstractSDEProblem{uType, tType, isinplace, ND}, Vararg{Any}} where ND) where isinplace) where tType) where uType",false,false,4,true,true,true,true
+src/sde_default_alg.jl,default_algorithm,mtsig,"(((Tuple{DiffEqBase.AbstractSDEProblem{uType, tType, isinplace, ND}, Vararg{Any}} where ND) where isinplace) where tType) where uType",false,false,4,true,true,true,true
+src/steady_state_default_alg.jl,default_algorithm,mtsig,"Tuple{DiffEqBase.AbstractSteadyStateProblem, Vararg{Any}}",false,false,0,false,true,true,true
+src/steady_state_default_alg.jl,default_algorithm,mtsig,"Tuple{DiffEqBase.AbstractSteadyStateProblem, Vararg{Any}}",false,false,0,false,true,true,true
+test/default_bvp_alg_test.jl,f,mtsig,"Tuple{Any, Any, Any, Any}",false,false,0,false,true,true,true
+test/default_bvp_alg_test.jl,bc!,mtsig,"Tuple{Any, Any, Any, Any}",false,false,0,false,true,true,true
+test/default_dae_alg_test.jl,<NA-name>,mtsig,"Tuple{Any, Any, Any, Any, Any}",false,false,0,false,true,true,true
+test/default_dde_alg_test.jl,<NA-name>,mtsig,"Tuple{Any, Any, Any, Any}",false,false,0,false,true,true,true
+test/default_dde_alg_test.jl,<NA-name>,mtsig,"Tuple{Any, Any}",false,false,0,false,true,true,true
+test/default_ode_alg_test.jl,<NA-name>,mtsig,"Tuple{Any, Any, Any, Any}",false,false,0,false,true,true,true
+test/default_ode_alg_test.jl,<NA-name>,mtsig,"Tuple{Any, Any, Any}",false,false,0,false,true,true,true
+test/default_ode_alg_test.jl,<NA-name>,mtsig,"Tuple{Any, Any, Any, Any}",false,false,0,false,true,true,true
+test/default_ode_alg_test.jl,::typeof(f),mtsig,"Tuple{Type{Val{:analytic}}, Any, Any, Any}",false,true,0,false,true,true,true
+test/default_ode_alg_test.jl,mass_system!,mtsig,"Tuple{Any, Any, Any, Any}",false,false,0,false,true,true,true
+test/default_rode_alg_test.jl,<NA-name>,mtsig,"Tuple{Any, Any, Any, Any}",false,false,0,false,true,true,true
+test/default_sde_alg_test.jl,f_additive,mtsig,"Tuple{Any, Any, Any}",false,false,0,false,true,true,true
+test/default_sde_alg_test.jl,σ_additive,mtsig,"Tuple{Any, Any, Any}",false,false,0,false,true,true,true
+test/default_sde_alg_test.jl,additive_analytic,mtsig,"Tuple{Any, Any, Any, Any}",false,false,0,false,true,true,true
+test/default_sde_alg_test.jl,<NA-name>,mtsig,"Tuple{Any, Any, Any, Any}",false,false,0,false,true,true,true
+test/default_sde_alg_test.jl,<NA-name>,mtsig,"Tuple{Any, Any, Any, Any}",false,false,0,false,true,true,true
+test/default_steady_state_alg_test.jl,<NA-name>,mtsig,"Tuple{Any, Any, Any, Any}",false,false,0,false,true,true,true

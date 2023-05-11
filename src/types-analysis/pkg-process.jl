@@ -16,6 +16,7 @@ const TYPE_ANNS_SUMMARY_FNAME = "summary.csv"
 
 const INTR_TYPE_ANNS_FNAME = "interesting-type-annotations.csv"
 const USESITE_TYPE_ANNS_FNAME = "non-use-site-type-annotations.csv"
+const IMPUSESITE_TYPE_ANNS_FNAME = "non-imp-use-site-type-annotations.csv"
 
 collectAndSaveTypeAnns2CSV(
     pkgsDirPath :: AbstractString, destDirPath :: AbstractString
@@ -149,7 +150,7 @@ analyzePkgTypeAnnsAndSave2CSV(
             d[key] = d1[key] + d2[key]
         end
         d[:statnames] = d1[:statnames]
-        for key in [:pkgwarn, :pkgusesite, :pkgintr, :tasintr, :tasusvar]
+        for key in [:pkgwarn, :pkgusesite, :pkgintr, :tasintr, :tasusvar, :tasiusvar]
             d[key] = vcat(d1[key], d2[key])
         end
         d
@@ -159,6 +160,7 @@ analyzePkgTypeAnnsAndSave2CSV(
     try 
         CSV.write(joinpath(pkgsDirPath, INTR_TYPE_ANNS_FNAME), rslt[:tasintr])
         CSV.write(joinpath(pkgsDirPath, USESITE_TYPE_ANNS_FNAME), rslt[:tasusvar])
+        CSV.write(joinpath(pkgsDirPath, IMPUSESITE_TYPE_ANNS_FNAME), rslt[:tasiusvar])
     catch err
         @error "Problem when saving interesting type annotations" err
     end
@@ -167,16 +169,17 @@ end
 
 analyzePkgTypeAnns(pkgPath :: AbstractString) = begin
     failedResult = Dict(
-        :goodPkg    => 0, 
-        :badPkg     => 1,
-        :totalta    => 0,
-        :statnames  => ANALYSIS_COLS,
-        :statsums   => fill(0, length(ANALYSIS_COLS)),
-        :pkgwarn    => [],
-        :pkgusesite => [],
-        :pkgintr    => [],
-        :tasintr    => DataFrame(),
-        :tasusvar   => DataFrame(),
+        :goodPkg        => 0, 
+        :badPkg         => 1,
+        :totalta        => 0,
+        :statnames      => ANALYSIS_COLS,
+        :statsums       => fill(0, length(ANALYSIS_COLS)),
+        :pkgwarn        => [],
+        :pkgusesite     => [],
+        :pkgintr        => [],
+        :tasintr        => DataFrame(),
+        :tasusvar       => DataFrame(),
+        :tasiusvar      => DataFrame(),
     )
     if !isdir(pkgPath)
         @error "Packages directory doesn't exist: $pkgPath"
@@ -203,11 +206,13 @@ analyzePkgTypeAnns(pkgPath :: AbstractString) = begin
             ind -> dfSumm.sum[ind] < totalta,
             [7, 8, 9]
         )
-        dfta = df[.!(ismissing.(df.ImprUseSiteVariance)) .&& 
+        dfta  = df[.!(ismissing.(df.ImprUseSiteVariance)) .&& 
             (.!df.ImprUseSiteVariance .|| .!df.RestrictedScope .|| .!df.ClosedLowerBound), :]
-        dfus = df[.!(ismissing.(df.UseSiteVariance)) .&& .!df.UseSiteVariance, :]
-        dfta.Package = fill(pkgPath, size(dfta, 1))      
-        dfus.Package = fill(pkgPath, size(dfus, 1))
+        dfus  = df[.!(ismissing.(df.UseSiteVariance)) .&& .!df.UseSiteVariance, :]
+        dfius = df[.!(ismissing.(df.ImprUseSiteVariance)) .&& .!df.ImprUseSiteVariance, :]
+        dfta.Package  = fill(pkgPath, size(dfta,  1))      
+        dfus.Package  = fill(pkgPath, size(dfus,  1))
+        dfius.Package = fill(pkgPath, size(dfius, 1))
         Dict(
             :goodPkg    => 1, 
             :badPkg     => 0,
@@ -219,6 +224,7 @@ analyzePkgTypeAnns(pkgPath :: AbstractString) = begin
             :pkgintr    => strongRestrictionFailed ? [pkgPath] : [],
             :tasintr    => dfta,
             :tasusvar   => dfus,
+            :tasiusvar   => dfius,
         )
     catch err
         @error "Problem when processing CSVs" err

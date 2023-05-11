@@ -44,7 +44,8 @@ end
 Returns type annotations from `expr` concatenated with the list `tyAnns`
 if `expr` is a method definition.
 
-FIXME: currently only extracts a method signature
+FIXME: currently only extracts a method signature,
+but we might be interested in type assertions, too
 """
 collectFunDefTypeAnnotations(expr, tyAnns :: TypeAnnInfoList) = begin
     isFunDef(expr) || return tyAnns

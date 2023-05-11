@@ -269,7 +269,13 @@ end
     @test !tyVarUsedOnce(tvsRefPair)
     @test !tyVarOccursAsUsedSiteVariance(tvsRefPair)
     @test !tyVarOccursAsImpredicativeUsedSiteVariance(tvsRefPair)
-    @test tyVarRestrictedScopePreserved(tvsPair)
+    @test tyVarRestrictedScopePreserved(tvsRefPair)
+
+    tvsRefTuplePair = collectTyVarsSummary(:(Ref{Tuple{Pair{T, T} where T}}))[1]
+    @test !tyVarUsedOnce(tvsRefTuplePair)
+    @test !tyVarOccursAsUsedSiteVariance(tvsRefTuplePair)
+    @test !tyVarOccursAsImpredicativeUsedSiteVariance(tvsRefTuplePair)
+    @test tyVarRestrictedScopePreserved(tvsRefTuplePair)
 
     tvsTuple = collectTyVarsSummary(:(Tuple{T, Tuple{T, Int}} where T))[1]
     @test !tyVarUsedOnce(tvsTuple)
