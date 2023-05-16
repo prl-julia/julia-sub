@@ -3,12 +3,12 @@
 # and user-defined type declarations
 #######################################################################
 
+"Type of AST expression representing a Julia type"
+JlASTTypeExpr = Any
+
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 # Extracting type annotations
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-"Type of AST expression representing a Julia type"
-JlASTTypeExpr = Any
 
 """
 Kind of a type annotation:
@@ -18,7 +18,7 @@ Kind of a type annotation:
 """
 @enum TypeAnnKind mtsig retty tyassorann
 
-"Information about a type annotation in some file"
+"Information about a type annotation"
 struct TypeAnnInfo
     funName :: JlASTTypeExpr
     kind    :: TypeAnnKind
@@ -32,6 +32,33 @@ TypeAnnInfoList = LinkedList{TypeAnnInfo}
 SplitFunDef = Dict{Symbol, Any}
 
 NOTAFUNSIG = "<NOT A FUNSIG>"
+
+
+#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+# Extracting type declarations
+#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+"""
+Kind of a user-defined type declaration:
+- abstract type
+- primitive type
+- struct
+- mutable struct
+"""
+@enum TypeDeclKind tdabst tdprim tdstrc tdmtbl
+
+"Information about a user-defined type declaration"
+struct TypeDeclInfo
+    kind    :: TypeDeclKind
+    tyDecl  :: JlASTTypeExpr
+    tySuper :: JlASTTypeExpr
+    # name    :: Symbol
+    # tyargs  :: JlASTTypeExpr
+end
+
+"List of type declaration infos"
+TypeDeclInfoList = LinkedList{TypeDeclInfo}
+
 
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 # Analyzing type annotations
@@ -150,6 +177,8 @@ TypeTransInfo(expr :: JlASTTypeExpr) =
 #--------------------------------------------------
 
 Base.:(==)(v1 :: TypeAnnInfo,  v2 :: TypeAnnInfo)   = structEqual(v1, v2)
+
+Base.:(==)(v1 :: TypeDeclInfo, v2 :: TypeDeclInfo)  = structEqual(v1, v2)
 
 Base.:(==)(v1 :: TyVarInfo,    v2 :: TyVarInfo)     = structEqual(v1, v2)
 

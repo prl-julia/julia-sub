@@ -36,7 +36,7 @@ collectTypeAnnotations(expr) :: TypeAnnInfoList = begin
         catch err
             @error "Couldn't process expression" e err
         end
-        e # return expr for `prewalk` to work
+        e # return for `prewalk` to work
     end
     MacroTools.prewalk(recordTyAnns, expr)
     tyAnns

@@ -18,7 +18,7 @@ using Main.JuliaSub: tyVarRestrictedScopePreserved, tyVarOccursAsImpredicativeUs
 using Main.JuliaSub: tyVarOccursAsUsedSiteVariance, tyVarUsedOnce, tyVarIsNotInLowerBound
 
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-# Aux values and functions
+# Aux values
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 fdefNoArg = :(
@@ -172,7 +172,6 @@ end
         )
 end
 
-# FIXME: collectFunDefTypeSignature currently extracts only method signature
 @testset "types-analysis :: collect all ty-anns in expr " begin
     @test collectTypeAnnotations(:(x)) == nil()
 
@@ -195,7 +194,6 @@ end
     )
 end
 
-# FIXME: collectFunDefTypeSignature currently extracts only method signature
 @testset "types-analysis :: collect all ty-anns in file " begin
     @test parseAndCollectTypeAnnotations(testFilePath("empty.jl")) == nil()
 
