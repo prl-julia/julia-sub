@@ -33,8 +33,8 @@ tryrm(path :: AbstractString) =
 
 JuliaSub.setVerbose(false)
 
-#include("utils.jl")
-#include("lb-analysis.jl")
-#include("types-analysis.jl")
+include("utils.jl")
+include("lb-analysis.jl")
+include("types-analysis.jl")
 include("typedecls-analysis.jl")
-#include("pkg-process.jl")
+include("pkg-process.jl")

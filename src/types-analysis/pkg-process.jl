@@ -1,5 +1,5 @@
 #######################################################################
-# Processing package source code for type annotations
+# Processing package source code for type annotations and declarations
 ###############################
 #
 # TODO collection ana analysis of type annotations
