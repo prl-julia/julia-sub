@@ -14,13 +14,6 @@
 #   4) field type annotations
 #######################################################################
 
-parseAndCollectTypeAnnotations(
-    juliaFileName :: AbstractString
-) :: TypeAnnInfoList = begin
-    expr = parseJuliaFile(juliaFileName)
-    collectTypeAnnotations(expr)
-end
-
 """
     :: Any → TypeAnnInfoList
 Collects type annotations from all method definitions in `expr`

@@ -23,7 +23,7 @@ include("types-analysis/lib.jl")
 # Exports
 #--------------------------------------------------
 
-export collectAndSaveTypeAnns2CSV, analyzePkgTypeAnnsAndSave2CSV
+export collectAndSaveTypeInfo2CSV, analyzePkgTypeAnnsAndSave2CSV
 export collectTyVarsSummary
 
 #--------------------------------------------------

@@ -2,9 +2,19 @@
 # Processing package source code for type annotations and declarations
 ###############################
 #
-# TODO collection ana analysis of type annotations
+# Collection ana analysis of type annotations and declarations
 #
 #######################################################################
+
+parseAndCollectTypeInfo(
+    juliaFileName :: AbstractString
+) :: TypeInfo = begin
+    expr = parseJuliaFile(juliaFileName)
+    TypeInfo(
+        collectTypeAnnotations(expr),
+        collectTypeDeclarations(expr)
+    )
+end
 
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 # Collecting type annotations
@@ -14,11 +24,13 @@ const TYPE_ANNS_FNAME = "type-annotations.csv"
 const TYPE_ANNS_ANALYSIS_FNAME = "analyzed-type-annotations.csv"
 const TYPE_ANNS_SUMMARY_FNAME = "summary.csv"
 
+const TYPE_DECLS_FNAME = "type-declarations.csv"
+
 const INTR_TYPE_ANNS_FNAME = "interesting-type-annotations.csv"
 const USESITE_TYPE_ANNS_FNAME = "non-use-site-type-annotations.csv"
 const IMPUSESITE_TYPE_ANNS_FNAME = "non-imp-use-site-type-annotations.csv"
 
-collectAndSaveTypeAnns2CSV(
+collectAndSaveTypeInfo2CSV(
     pkgsDirPath :: AbstractString, destDirPath :: AbstractString
 ) = begin
     if !isdir(pkgsDirPath)
@@ -37,8 +49,7 @@ collectAndSaveTypeAnns2CSV(
         @status "Processing $pkgDir..."
         destPkgInfoPath = joinpath(destDirPath, pkgDir)
         isdir(destPkgInfoPath) || mkdir(destPkgInfoPath)
-        tyAnnFilePath = joinpath(destPkgInfoPath, TYPE_ANNS_FNAME)
-        pkgLog = collectAndSavePkgTypeAnns2CSV(pkgPath, tyAnnFilePath)
+        pkgLog = collectAndSavePkgTypeInfo2CSV(pkgPath, destPkgInfoPath)
         @status "$pkgDir done"
         pkgDir => pkgLog
     end
@@ -47,8 +58,11 @@ collectAndSaveTypeAnns2CSV(
     Dict(mapfunc(processPkg, pkgsWithPaths))
 end
 
-collectAndSavePkgTypeAnns2CSV(
-    pkgPath :: AbstractString, destFilePath :: AbstractString
+"""
+ASSUMES: `destInfoDirPath` directory exists
+"""
+collectAndSavePkgTypeInfo2CSV(
+    pkgPath :: AbstractString, destInfoDirPath :: AbstractString
 ) = begin
     # make sure pkgPath ends with "/" for consistency
     endswith(pkgPath, "/") ||
@@ -56,34 +70,39 @@ collectAndSavePkgTypeAnns2CSV(
     # handy for extracting paths within the package
     pkgPathLen1 = length(pkgPath) + 1
     filesLog = Dict(:succ => String[], :fail => String[])
-    destFileIO = open(destFilePath, "w")
+    destFileIOAnns  = open(joinpath(destInfoDirPath, TYPE_ANNS_FNAME), "w")
+    destFileIODecls = open(joinpath(destInfoDirPath, TYPE_DECLS_FNAME), "w")
     # recursively walk all Julia files in the package
     try 
-        write(destFileIO, "File,Function,Kind,TypeAnnotation\n")
+        write(destFileIOAnns,  "File,Function,Kind,TypeAnnotation\n")
+        write(destFileIODecls, "File,Kind,TypeDeclaration,Supertype\n")
         for (pkgSubDir, _, files) in walkdir(pkgPath)
-            collectAndWritePkgDirTypeAnns2IO!(
+            collectAndWritePkgDirTypeInfo2IO!(
                 pkgPathLen1, pkgSubDir, files,
-                destFileIO, filesLog
+                destFileIOAnns, destFileIODecls, filesLog
             )
         end
     catch err
         @error "Problem when processing $pkgPath" err
     finally 
-        close(destFileIO)
+        close(destFileIOAnns)
+        close(destFileIODecls)
     end
     filesLog
 end
 
-collectAndWritePkgDirTypeAnns2IO!(
+collectAndWritePkgDirTypeInfo2IO!(
     pkgPathLen1 :: Int, pkgSubdir :: AbstractString, files :: Vector,
-    destFileIO :: IOStream, filesLog :: Dict{Symbol, Vector{String}}
+    destFileIOAnns :: IOStream, destFileIODecls :: IOStream, 
+    filesLog :: Dict{Symbol, Vector{String}}
 ) = begin
     for fileName in files
         filePath = joinpath(pkgSubdir, fileName)
         # process only Julia files
         isfile(filePath) && isJuliaFile(filePath) || continue
         try
-            collectAndWritePkgFileTypeAnns2IO!(pkgPathLen1, filePath, destFileIO)
+            collectAndWritePkgFileTypeInfo2IO!(
+                pkgPathLen1, filePath, destFileIOAnns, destFileIODecls)
             push!(filesLog[:succ], filePath)
         catch err
             @error "Problem when processing $filePath" err
@@ -92,24 +111,36 @@ collectAndWritePkgDirTypeAnns2IO!(
     end
 end
 
-collectAndWritePkgFileTypeAnns2IO!(
+collectAndWritePkgFileTypeInfo2IO!(
     pkgPathLen1 :: Int, jlFilePath :: AbstractString,
-    destFileIO :: IOStream
+    destFileIOAnns :: IOStream, destFileIODecls :: IOStream
 ) = begin
-    reversedTypeAnns = parseAndCollectTypeAnnotations(jlFilePath)
+    typeInfo = parseAndCollectTypeInfo(jlFilePath)
     jlFilePathInPkg = jlFilePath[pkgPathLen1:end]
-    for tyAnn in reverse(reversedTypeAnns)
-        #=write(
-            destFileIO,
-            jlFilePathInPkg * "," * csvLineString(tyAnn)
-        )=#
-        for info in [jlFilePathInPkg, tyAnn.funName, tyAnn.kind]
-            show(destFileIO, string(info))
-            write(destFileIO, ",")
-        end
-        show(destFileIO, string(tyAnn.tyExpr))
-        write(destFileIO, "\n")
+    for tyAnn in reverse(typeInfo.tyAnns)
+        printFieldsToCSV!(
+            [jlFilePathInPkg, tyAnn.funName, tyAnn.kind, tyAnn.tyExpr],
+            destFileIOAnns
+        )
     end
+    for tyDecl in reverse(typeInfo.tyDecls)
+        printFieldsToCSV!(
+            [jlFilePathInPkg, tyDecl.kind, tyDecl.tyDecl, tyDecl.tySuper],
+            destFileIODecls
+        )
+    end
+end
+
+"""
+ASSUMES: `fields` is not empty
+"""
+printFieldsToCSV!(fields :: Vector, destFileIO :: IOStream) = begin
+    for info in fields[begin:end-1] 
+        show(destFileIO, string(info))
+        write(destFileIO, ",")
+    end
+    show(destFileIO, string(fields[end]))
+    write(destFileIO, "\n")
 end
 
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

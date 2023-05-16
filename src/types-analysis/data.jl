@@ -61,6 +61,17 @@ TypeDeclInfoList = LinkedList{TypeDeclInfo}
 
 
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+# All type info
+#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+struct TypeInfo
+    tyAnns  :: TypeAnnInfoList
+    tyDecls :: TypeDeclInfoList
+end
+
+TypeInfo() = TypeInfo(nil(TypeAnnInfo), nil(TypeDeclInfo))
+
+#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 # Analyzing type annotations
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -176,15 +187,17 @@ TypeTransInfo(expr :: JlASTTypeExpr) =
 # Equality
 #--------------------------------------------------
 
-Base.:(==)(v1 :: TypeAnnInfo,  v2 :: TypeAnnInfo)   = structEqual(v1, v2)
+Base.:(==)(v1 :: TypeAnnInfo,   v2 :: TypeAnnInfo)      = structEqual(v1, v2)
 
-Base.:(==)(v1 :: TypeDeclInfo, v2 :: TypeDeclInfo)  = structEqual(v1, v2)
+Base.:(==)(v1 :: TypeDeclInfo,  v2 :: TypeDeclInfo)     = structEqual(v1, v2)
 
-Base.:(==)(v1 :: TyVarInfo,    v2 :: TyVarInfo)     = structEqual(v1, v2)
+Base.:(==)(v1 :: TypeInfo,      v2 :: TypeInfo)         = structEqual(v1, v2)
 
-Base.:(==)(v1 :: TyVarSummary, v2 :: TyVarSummary)  = structEqual(v1, v2)
+Base.:(==)(v1 :: TyVarInfo,     v2 :: TyVarInfo)        = structEqual(v1, v2)
 
-Base.:(==)(v1 :: TypeTransInfo, v2 :: TypeTransInfo)= structEqual(v1, v2)
+Base.:(==)(v1 :: TyVarSummary,  v2 :: TyVarSummary)     = structEqual(v1, v2)
+
+Base.:(==)(v1 :: TypeTransInfo, v2 :: TypeTransInfo)    = structEqual(v1, v2)
 
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 # Extra functions
