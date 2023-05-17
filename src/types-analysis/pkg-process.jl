@@ -22,9 +22,11 @@ end
 
 const TYPE_ANNS_FNAME = "type-annotations.csv"
 const TYPE_ANNS_ANALYSIS_FNAME = "analyzed-type-annotations.csv"
-const TYPE_ANNS_SUMMARY_FNAME = "summary.csv"
+const TYPE_ANNS_SUMMARY_FNAME = "summary-type-annotations.csv"
 
 const TYPE_DECLS_FNAME = "type-declarations.csv"
+const TYPE_DECLS_ANALYSIS_FNAME = "analyzed-type-declarations.csv"
+const TYPE_DECLS_SUMMARY_FNAME = "summary-type-declarations.csv"
 
 const INTR_TYPE_ANNS_FNAME = "interesting-type-annotations.csv"
 const USESITE_TYPE_ANNS_FNAME = "non-use-site-type-annotations.csv"
@@ -75,7 +77,7 @@ collectAndSavePkgTypeInfo2CSV(
     # recursively walk all Julia files in the package
     try 
         write(destFileIOAnns,  "File,Function,Kind,TypeAnnotation\n")
-        write(destFileIODecls, "File,Kind,TypeDeclaration,Supertype\n")
+        write(destFileIODecls, "File,Name,Kind,TypeDeclaration,Supertype\n")
         for (pkgSubDir, _, files) in walkdir(pkgPath)
             collectAndWritePkgDirTypeInfo2IO!(
                 pkgPathLen1, pkgSubDir, files,
@@ -125,7 +127,7 @@ collectAndWritePkgFileTypeInfo2IO!(
     end
     for tyDecl in reverse(typeInfo.tyDecls)
         printFieldsToCSV!(
-            [jlFilePathInPkg, tyDecl.kind, tyDecl.tyDecl, tyDecl.tySuper],
+            [jlFilePathInPkg, tyDecl.name, tyDecl.kind, tyDecl.tyDecl, tyDecl.tySuper],
             destFileIODecls
         )
     end
@@ -147,12 +149,16 @@ end
 # Analysing type annotations
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-"Should coincide with the new columns in `addTypeAnnsAnalysis!`"
-const ANALYSIS_COLS = [
-    :Error, :Warning,
+const ANALYSIS_COLS_ANNS_NOERR = [
     :VarCnt, :HasWhere, :VarsUsedOnce, :UseSiteVariance,
     :ImprUseSiteVariance, :RestrictedScope, :ClosedLowerBound
 ]
+
+"Should coincide with the new columns added in `addTypeAnnsAnalysis!`"
+const ANALYSIS_COLS_ANNS = vcat(
+    [:Error, :Warning],
+    ANALYSIS_COLS_ANNS_NOERR
+)
 
 analyzePkgTypeAnnsAndSave2CSV(
     pkgsDirPath :: AbstractString
@@ -203,8 +209,8 @@ analyzePkgTypeAnns(pkgPath :: AbstractString) = begin
         :goodPkg        => 0, 
         :badPkg         => 1,
         :totalta        => 0,
-        :statnames      => ANALYSIS_COLS,
-        :statsums       => fill(0, length(ANALYSIS_COLS)),
+        :statnames      => ANALYSIS_COLS_ANNS,
+        :statsums       => fill(0, length(ANALYSIS_COLS_ANNS)),
         :pkgwarn        => [],
         :pkgusesite     => [],
         :pkgintr        => [],
@@ -264,56 +270,177 @@ analyzePkgTypeAnns(pkgPath :: AbstractString) = begin
 end
 
 addTypeAnnsAnalysis!(df :: DataFrame) = begin
-    df.UnrolledTypeAnnotation = ByRow(tastr -> 
-        try
-            string(transformShortHand(Meta.parse(tastr)).expr)
-        catch err
-            @error "Couldn't transform type annotation" tastr err
-            missing
-        end
-    )(df.TypeAnnotation)
-    df.TypeVarsSummary = ByRow(tastr -> (ismissing(tastr) ? missing :
-        try
-            collectTyVarsSummary(Meta.parse(tastr))
-        catch err
-            @error "Couldn't analyze type annotation" tastr err
-            missing
-        end)
-    )(df.UnrolledTypeAnnotation)
-    df.Error = ByRow(ismissing)(df.TypeVarsSummary)
-    df.Warning = ByRow(
-        tasumm -> ismissing(tasumm) ? true : tasumm[2]
-    )(df.TypeVarsSummary) 
-    df.VarCnt = mkDFAnalysisFunction(length, df.TypeVarsSummary)
-    df.HasWhere = ByRow(
-        varcnt -> ismissing(varcnt) ? missing : varcnt > 0
-    )(df.VarCnt)
-    for (col, fun) in [
-       :VarsUsedOnce        => tyVarUsedOnce,
-       :UseSiteVariance     => tyVarOccursAsUsedSiteVariance,
-       :ImprUseSiteVariance => tyVarOccursAsImpredicativeUsedSiteVariance,
-       :RestrictedScope     => tyVarRestrictedScopePreserved,
-       :ClosedLowerBound    => tyVarIsNotInLowerBound,
-    ]
-        df[!, col] = mkDFAnalysisFunction(fun, df.TypeVarsSummary)
-    end
+    transform!(
+        df, :, 
+        :TypeAnnotation => ByRow(unrollAndSummarizeVars) => [
+            :UnrolledTypeAnnotation, :TypeVarsSummary,
+            :Error, :Warning
+        ]
+    )
+    transform!(
+        df, :, 
+        :TypeVarsSummary => ByRow(getTypeAnnsAnalyses) => 
+            ANALYSIS_COLS_ANNS_NOERR
+    )
     df
 end
 
-mkDFAnalysisFunction(fun :: Function, dfrow) = ByRow(tasumm ->
-    ismissing(tasumm) ? 
-    missing :
+unrollAndSummarizeVars(tastr) = begin
     try
-        fun(tasumm[1])
+        ta = Meta.parse(tastr)
+        taFull = transformShortHand(ta).expr
+        taSumm = collectTyVarsSummary(taFull)
+        [string(taFull), taSumm[1], false, taSumm[2]]
     catch err
-        @error "Couldn't analyze $(Symbol(fun)) for type vars summary" tasumm[1] err
+        @error "Couldn't process type annotation" tastr err
+        [missing, missing, true, true]
+    end
+end
+
+getTypeAnnsAnalyses(tasumm) = 
+    if ismissing(tasumm)
+        # excluding Error and Warning
+        fill(missing, length(ANALYSIS_COLS_ANNS_NOERR))
+    else
+        # the number and order of functions 
+        # should correspond to the elements of ANALYSIS_COLS_ANNS_NOERR
+        varCnt = length(tasumm)
+        hasWhere = varCnt > 0
+        varsAnalyses = map(
+            fun -> mkAnalysisFunction(fun)(tasumm),
+            [
+                tyVarUsedOnce,
+                tyVarOccursAsUsedSiteVariance,
+                tyVarOccursAsImpredicativeUsedSiteVariance,
+                tyVarRestrictedScopePreserved,
+                tyVarIsNotInLowerBound,
+            ]
+        )
+        vcat(Any[varCnt, hasWhere], varsAnalyses)
+    end
+
+mkAnalysisFunction(fun :: Function) = (tasumm ->
+    try
+        fun(tasumm)
+    catch err
+        @error "Couldn't analyze $(Symbol(fun)) for type vars summary" tasumm err
         missing
     end
-)(dfrow)
+)
 
 summarizeTypeAnnsAnalysis(df :: DataFrame) = describe(df, 
     :mean, :min, :median, :max,
     :nmissing,
     sum => :sum,
-    cols = ANALYSIS_COLS
+    cols = ANALYSIS_COLS_ANNS
 )
+
+#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+# Analysing type declarations
+#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+"Should coincide with the new columns in `addTypeDeclsAnalysis!`"
+const ANALYSIS_COLS_DECLS = [
+    :Error, :Warning,
+    :VarCnt, 
+    :TyDeclUseSiteVariance, :SuperUseSiteVariance,
+]
+
+analyzePkgTypeDecls(pkgPath :: AbstractString) = begin
+    failedResult = Dict(
+        :goodPkg        => 0, 
+        :badPkg         => 1,
+        :totaltd        => 0,
+        :statnames      => ANALYSIS_COLS_DECLS,
+        :statsums       => fill(0, length(ANALYSIS_COLS_DECLS)),
+        :pkgwarn        => [],
+        :pkgusesite     => [],
+        :tasusvar       => DataFrame(),
+    )
+    if !isdir(pkgPath)
+        @error "Packages directory doesn't exist: $pkgPath"
+        return failedResult
+    end
+    typeDeclsPath = joinpath(pkgPath, TYPE_DECLS_FNAME)
+    if !isfile(typeDeclsPath)
+        @error "Type declarations file doesn't exist: $typeDeclsPath"
+        return failedResult
+    end
+    try
+        df = CSV.read(typeDeclsPath, DataFrame; escapechar='\\')
+        df = addTypeDeclsAnalysis!(df)
+        dfSumm = summarizeTypeDeclsAnalysis(df)
+        # CSV.write(
+        #     joinpath(pkgPath, TYPE_DECLS_ANALYSIS_FNAME),
+        #     #df[:, [:File, :Function, :Kind, :TypeAnnotation, :Error, :Warning, :VarCnt, :HasWhere, :VarsUsedOnce, :UseSiteVariance, :RestrictedScope]]
+        #     df[:, Not("TypeVarsSummary")]
+        # )
+        # CSV.write(joinpath(pkgPath, TYPE_ANNS_SUMMARY_FNAME), dfSumm)
+        # errOrWarn = dfSumm.sum[1] > 0 || dfSumm.sum[2] > 0
+        # totalta = size(df, 1)
+        # strongRestrictionFailed = any(
+        #     ind -> dfSumm.sum[ind] < totalta,
+        #     [7, 8, 9]
+        # )
+        # dfta  = df[.!(ismissing.(df.ImprUseSiteVariance)) .&& 
+        #     (.!df.ImprUseSiteVariance .|| .!df.RestrictedScope .|| .!df.ClosedLowerBound), :]
+        # dfus  = df[.!(ismissing.(df.UseSiteVariance)) .&& .!df.UseSiteVariance, :]
+        # dfius = df[.!(ismissing.(df.ImprUseSiteVariance)) .&& .!df.ImprUseSiteVariance, :]
+        # dfta.Package  = fill(pkgPath, size(dfta,  1))      
+        # dfus.Package  = fill(pkgPath, size(dfus,  1))
+        # dfius.Package = fill(pkgPath, size(dfius, 1))
+        # Dict(
+        #     :goodPkg    => 1, 
+        #     :badPkg     => 0,
+        #     :totalta    => totalta,
+        #     :statnames  => dfSumm.variable,
+        #     :statsums   => dfSumm.sum,
+        #     :pkgwarn    => errOrWarn ? [pkgPath] : [],
+        #     :pkgusesite => dfSumm.sum[6] < totalta ? [pkgPath] : [],
+        #     :pkgintr    => strongRestrictionFailed ? [pkgPath] : [],
+        #     :tasintr    => dfta,
+        #     :tasusvar   => dfus,
+        #     :tasiusvar   => dfius,
+        # )
+    catch err
+        @error "Problem when processing CSVs" err
+        failedResult
+    end
+end
+
+addTypeDeclsAnalysis!(df :: DataFrame) = begin
+    # df.UnrolledTypeAnnotation = ByRow(tastr -> 
+    #     try
+    #         string(transformShortHand(Meta.parse(tastr)).expr)
+    #     catch err
+    #         @error "Couldn't transform type annotation" tastr err
+    #         missing
+    #     end
+    # )(df.TypeAnnotation)
+    # df.TypeVarsSummary = ByRow(tastr -> (ismissing(tastr) ? missing :
+    #     try
+    #         collectTyVarsSummary(Meta.parse(tastr))
+    #     catch err
+    #         @error "Couldn't analyze type annotation" tastr err
+    #         missing
+    #     end)
+    # )(df.UnrolledTypeAnnotation)
+    # df.Error = ByRow(ismissing)(df.TypeVarsSummary)
+    # df.Warning = ByRow(
+    #     tasumm -> ismissing(tasumm) ? true : tasumm[2]
+    # )(df.TypeVarsSummary) 
+    # df.VarCnt = mkDFAnalysisFunction(length, df.TypeVarsSummary)
+    # df.HasWhere = ByRow(
+    #     varcnt -> ismissing(varcnt) ? missing : varcnt > 0
+    # )(df.VarCnt)
+    # for (col, fun) in [
+    #    :VarsUsedOnce        => tyVarUsedOnce,
+    #    :UseSiteVariance     => tyVarOccursAsUsedSiteVariance,
+    #    :ImprUseSiteVariance => tyVarOccursAsImpredicativeUsedSiteVariance,
+    #    :RestrictedScope     => tyVarRestrictedScopePreserved,
+    #    :ClosedLowerBound    => tyVarIsNotInLowerBound,
+    # ]
+    #     df[!, col] = mkDFAnalysisFunction(fun, df.TypeVarsSummary)
+    # end
+    # df
+end

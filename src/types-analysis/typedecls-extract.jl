@@ -66,18 +66,17 @@ collectTypeDeclaration(expr, tyDecls :: TypeDeclInfoList) = begin
     else
         return (expr, tyDecls)
     end
-    # # We also want to extract info about arguments
-    # name    = Symbol("<NA-typename>")
-    # tyargs  = Any[]
-    # if @capture(tyDecl, N_{ARGS__})
-    #     (name, tyargs) = (N, ARGS)
-    # else
-    #     @assert tyDecl isa Symbol "type declaration $tyDecl is expected to be a Symbol"
-    #     name = tyDecl
-    # end
+    # We also want to extract info about arguments
+    name    = Symbol("<NA-typename>")
+    if @capture(tyDecl, N_{ARGS__})
+        name = N
+    else
+        @assert tyDecl isa Symbol "type declaration $tyDecl is expected to be a Symbol"
+        name = tyDecl
+    end
     (   :(), 
         cons(TypeDeclInfo(
-            kind, tyDecl, tySuper
+            name, kind, tyDecl, tySuper
         ), tyDecls))
 end
 

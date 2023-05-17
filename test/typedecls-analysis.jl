@@ -55,17 +55,17 @@ end)
     @test collectTypeDeclarations(:(module M end)) == nil()
 
     @test collectTypeDeclarations(tdSingleStruct) == list(
-        TypeDeclInfo(tdstrc, :( Bar{X} ), :Any)
+        TypeDeclInfo(:Bar, tdstrc, :( Bar{X} ), :Any)
     )
 
     @test collectTypeDeclarations(tdAllDecls) == reverse(list(
-        TypeDeclInfo(tdabst, :( Zoo{X,Y} ), :Any),
-        TypeDeclInfo(tdstrc, :( Foo{T<:Ref{T} where T} ), :( Zoo{T,T} )),
-        TypeDeclInfo(tdprim, :( MyBits ), :Any),
-        TypeDeclInfo(tdprim, :( MyBitsVec ), :( AbstractVector{Bool} )),
-        TypeDeclInfo(tdabst, :( Bar{T<:Number} ), :Number),
-        TypeDeclInfo(tdstrc, :Baz, :( Bar{Int} )),
-        TypeDeclInfo(tdmtbl, :( MBar{X, Y<:Vector{X}} ), :( Bar{X} )),
-        TypeDeclInfo(tdmtbl, :( MyRef{T} ), :Any)
+        TypeDeclInfo(:Zoo, tdabst, :( Zoo{X,Y} ), :Any),
+        TypeDeclInfo(:Foo, tdstrc, :( Foo{T<:Ref{T} where T} ), :( Zoo{T,T} )),
+        TypeDeclInfo(:MyBits, tdprim, :( MyBits ), :Any),
+        TypeDeclInfo(:MyBitsVec, tdprim, :( MyBitsVec ), :( AbstractVector{Bool} )),
+        TypeDeclInfo(:Bar, tdabst, :( Bar{T<:Number} ), :Number),
+        TypeDeclInfo(:Baz, tdstrc, :Baz, :( Bar{Int} )),
+        TypeDeclInfo(:MBar, tdmtbl, :( MBar{X, Y<:Vector{X}} ), :( Bar{X} )),
+        TypeDeclInfo(:MyRef, tdmtbl, :( MyRef{T} ), :Any)
     ))
 end

@@ -30,7 +30,7 @@ using Main.JuliaSub: TypeInfo, parseAndCollectTypeInfo
                 TypeAnnInfo(NOTAFUNSIG, tyassorann, :( Dict{T,Int} ))
             ),
             list(
-                TypeDeclInfo(tdstrc, :( Multiset{T} ), :( AbstractSet{T} ))
+                TypeDeclInfo(:Multiset, tdstrc, :( Multiset{T} ), :( AbstractSet{T} ))
             )
         )
 end
@@ -53,8 +53,8 @@ end
     taanalysis = analyzePkgTypeAnnsAndSave2CSV(testFilePath("ta-info/2"))
     @JuliaSub.status taanalysis
     @test isfile(testFilePath("ta-info/2/DataStructures.jl/analyzed-type-annotations.csv"))
-    @test isfile(testFilePath("ta-info/2/DataStructures.jl/summary.csv"))
-    @test isfile(testFilePath("ta-info/2/Gen.jl/summary.csv"))
+    @test isfile(testFilePath("ta-info/2/DataStructures.jl/summary-type-annotations.csv"))
+    @test isfile(testFilePath("ta-info/2/Gen.jl/summary-type-annotations.csv"))
 
     @test isfile(testFilePath("ta-info/2/interesting-type-annotations.csv"))
 

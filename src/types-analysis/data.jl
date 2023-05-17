@@ -47,13 +47,18 @@ Kind of a user-defined type declaration:
 """
 @enum TypeDeclKind tdabst tdprim tdstrc tdmtbl
 
+struct TyDeclArgInfo
+    var :: Symbol
+    lb  :: JlASTTypeExpr
+    ub  :: JlASTTypeExpr
+end
+
 "Information about a user-defined type declaration"
 struct TypeDeclInfo
+    name    :: Symbol
     kind    :: TypeDeclKind
     tyDecl  :: JlASTTypeExpr
     tySuper :: JlASTTypeExpr
-    # name    :: Symbol
-    # tyargs  :: JlASTTypeExpr
 end
 
 "List of type declaration infos"
@@ -190,6 +195,8 @@ TypeTransInfo(expr :: JlASTTypeExpr) =
 Base.:(==)(v1 :: TypeAnnInfo,   v2 :: TypeAnnInfo)      = structEqual(v1, v2)
 
 Base.:(==)(v1 :: TypeDeclInfo,  v2 :: TypeDeclInfo)     = structEqual(v1, v2)
+
+Base.:(==)(v1 :: TyDeclArgInfo, v2 :: TyDeclArgInfo)     = structEqual(v1, v2)
 
 Base.:(==)(v1 :: TypeInfo,      v2 :: TypeInfo)         = structEqual(v1, v2)
 
