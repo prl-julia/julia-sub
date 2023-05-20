@@ -113,6 +113,9 @@ and stand-alone type assertions.
 
 ## Running type annotations analysis
 
+**Note.** Output and error streams are redirected to a file.
+To print to the terminal, remove `> data...`
+
 To extract type annotations:
 
 ```

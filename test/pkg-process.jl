@@ -50,13 +50,21 @@ end
     @test isfile(testFilePath("ta-info/2/Gen.jl/type-annotations.csv"))
     @test isfile(testFilePath("ta-info/2/Gen.jl/type-declarations.csv"))
 
-    taanalysis = analyzePkgTypeAnnsAndSave2CSV(testFilePath("ta-info/2"))
-    @JuliaSub.status taanalysis
+    tyanalysis = analyzePkgTypesAndSave2CSV(testFilePath("ta-info/2"))
+    @JuliaSub.status tyanalysis
     @test isfile(testFilePath("ta-info/2/DataStructures.jl/analyzed-type-annotations.csv"))
     @test isfile(testFilePath("ta-info/2/DataStructures.jl/summary-type-annotations.csv"))
+    @test isfile(testFilePath("ta-info/2/Gen.jl/analyzed-type-annotations.csv"))
     @test isfile(testFilePath("ta-info/2/Gen.jl/summary-type-annotations.csv"))
+    @test isfile(testFilePath("ta-info/2/DataStructures.jl/analyzed-type-declarations.csv"))
+    @test isfile(testFilePath("ta-info/2/DataStructures.jl/summary-type-declarations.csv"))
+    @test isfile(testFilePath("ta-info/2/Gen.jl/analyzed-type-declarations.csv"))
+    @test isfile(testFilePath("ta-info/2/Gen.jl/summary-type-declarations.csv"))
 
     @test isfile(testFilePath("ta-info/2/interesting-type-annotations.csv"))
+    @test isfile(testFilePath("ta-info/2/non-use-site-type-annotations.csv"))
+    @test isfile(testFilePath("ta-info/2/non-imp-use-site-type-annotations.csv"))
+    @test isfile(testFilePath("ta-info/2/non-use-site-type-declarations.csv"))
 
     tryrm(testFilePath("ta-info"))
 end

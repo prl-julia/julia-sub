@@ -55,7 +55,7 @@ end
 
 "Information about a user-defined type declaration"
 struct TypeDeclInfo
-    name    :: Symbol
+    name    :: JlASTTypeExpr
     kind    :: TypeDeclKind
     tyDecl  :: JlASTTypeExpr
     tySuper :: JlASTTypeExpr

@@ -32,6 +32,8 @@ const INTR_TYPE_ANNS_FNAME = "interesting-type-annotations.csv"
 const USESITE_TYPE_ANNS_FNAME = "non-use-site-type-annotations.csv"
 const IMPUSESITE_TYPE_ANNS_FNAME = "non-imp-use-site-type-annotations.csv"
 
+const USESITE_TYPE_DECLS_FNAME = "non-use-site-type-declarations.csv"
+
 collectAndSaveTypeInfo2CSV(
     pkgsDirPath :: AbstractString, destDirPath :: AbstractString
 ) = begin
@@ -146,21 +148,10 @@ printFieldsToCSV!(fields :: Vector, destFileIO :: IOStream) = begin
 end
 
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-# Analysing type annotations
+# Analysing type information
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-const ANALYSIS_COLS_ANNS_NOERR = [
-    :VarCnt, :HasWhere, :VarsUsedOnce, :UseSiteVariance,
-    :ImprUseSiteVariance, :RestrictedScope, :ClosedLowerBound
-]
-
-"Should coincide with the new columns added in `addTypeAnnsAnalysis!`"
-const ANALYSIS_COLS_ANNS = vcat(
-    [:Error, :Warning],
-    ANALYSIS_COLS_ANNS_NOERR
-)
-
-analyzePkgTypeAnnsAndSave2CSV(
+analyzePkgTypesAndSave2CSV(
     pkgsDirPath :: AbstractString
 ) = begin
     if !isdir(pkgsDirPath)
@@ -176,35 +167,59 @@ analyzePkgTypeAnnsAndSave2CSV(
 
     processPkg((pkgDir, pkgPath)) = begin
         @status "Processing $pkgDir..."
-        analyzePkgTypeAnns(pkgPath)
+        (analyzePkgTypeAnns(pkgPath), analyzePkgTypeDecls(pkgPath))
     end
     mapfunc = nprocs() > 1 ? pmap : map
     pkgResults = mapfunc(processPkg, pkgsWithPaths)
 
-    combineResults(d1, d2) = begin
-        d = Dict{Symbol, Any}()
-        for key in [:goodPkg, :badPkg, :totalta, :statsums]
-            d[key] = d1[key] + d2[key]
+    combineSum!(dr, d1, d2, keys) =
+        for key in keys
+            dr[key] = d1[key] + d2[key]
         end
-        d[:statnames] = d1[:statnames]
-        for key in [:pkgwarn, :pkgusesite, :pkgintr, :tasintr, :tasusvar, :tasiusvar]
-            d[key] = vcat(d1[key], d2[key])
+    combineVCat!(dr, d1, d2, keys) =
+        for key in keys
+            dr[key] = vcat(d1[key], d2[key])
         end
-        d
+    combineResults((dta1, dtd1), (dta2, dtd2)) = begin
+        (dta, dtd) = (Dict{Symbol, Any}(), Dict{Symbol, Any}())
+        combineSum!(dta, dta1, dta2, [:goodPkg, :badPkg, :totalta, :statsums])
+        combineSum!(dtd, dtd1, dtd2, [:goodPkg, :badPkg, :totaltd, :statsums])
+        dta[:statnames] = dta1[:statnames]
+        dtd[:statnames] = dtd1[:statnames]
+        combineVCat!(dta, dta1, dta2, 
+            [:pkgwarn, :pkgusesite, :pkgintr, :tasintr, :tasusvar, :tasiusvar])
+        combineVCat!(dtd, dtd1, dtd2, [:pkgwarn, :pkgusesite, :tdsusvar])
+        (dta, dtd)
     end
-    rslt = reduce(combineResults, pkgResults)
+    (rsltta, rslttd) = reduce(combineResults, pkgResults)
 
     try 
-        CSV.write(joinpath(pkgsDirPath, INTR_TYPE_ANNS_FNAME), rslt[:tasintr])
-        CSV.write(joinpath(pkgsDirPath, USESITE_TYPE_ANNS_FNAME), rslt[:tasusvar])
-        CSV.write(joinpath(pkgsDirPath, IMPUSESITE_TYPE_ANNS_FNAME), rslt[:tasiusvar])
+        CSV.write(joinpath(pkgsDirPath, INTR_TYPE_ANNS_FNAME), rsltta[:tasintr])
+        CSV.write(joinpath(pkgsDirPath, USESITE_TYPE_ANNS_FNAME), rsltta[:tasusvar])
+        CSV.write(joinpath(pkgsDirPath, IMPUSESITE_TYPE_ANNS_FNAME), rsltta[:tasiusvar])
+        CSV.write(joinpath(pkgsDirPath, USESITE_TYPE_DECLS_FNAME), rslttd[:tdsusvar])
     catch err
-        @error "Problem when saving interesting type annotations" err
+        @error "Problem when saving interesting type info" err
     end
-    rslt
+    (rsltta, rslttd)
 end
 
-analyzePkgTypeAnns(pkgPath :: AbstractString) = begin
+#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+# Analysing type annotations
+#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+const ANALYSIS_COLS_ANNS_NOERR = [
+    :VarCnt, :HasWhere, :VarsUsedOnce, :UseSiteVariance,
+    :ImprUseSiteVariance, :RestrictedScope, :ClosedLowerBound
+]
+
+"Should coincide with the new columns added in `addTypeAnnsAnalysis!`"
+const ANALYSIS_COLS_ANNS = vcat(
+    [:Error, :Warning],
+    ANALYSIS_COLS_ANNS_NOERR
+)
+
+analyzePkgTypeAnns(pkgPath :: AbstractString) :: Dict = begin
     failedResult = Dict(
         :goodPkg        => 0, 
         :badPkg         => 1,
@@ -218,10 +233,10 @@ analyzePkgTypeAnns(pkgPath :: AbstractString) = begin
         :tasusvar       => DataFrame(),
         :tasiusvar      => DataFrame(),
     )
-    if !isdir(pkgPath)
-        @error "Packages directory doesn't exist: $pkgPath"
-        return failedResult
-    end
+    # if !isdir(pkgPath)
+    #     @error "Packages directory doesn't exist: $pkgPath"
+    #     return failedResult
+    # end
     typeAnnsPath = joinpath(pkgPath, TYPE_ANNS_FNAME)
     if !isfile(typeAnnsPath)
         @error "Type annotations file doesn't exist: $typeAnnsPath"
@@ -261,10 +276,10 @@ analyzePkgTypeAnns(pkgPath :: AbstractString) = begin
             :pkgintr    => strongRestrictionFailed ? [pkgPath] : [],
             :tasintr    => dfta,
             :tasusvar   => dfus,
-            :tasiusvar   => dfius,
+            :tasiusvar  => dfius,
         )
     catch err
-        @error "Problem when processing CSVs" err
+        @error "Problem when processing CSVs with type annptations" err
         failedResult
     end
 end
@@ -339,14 +354,13 @@ summarizeTypeAnnsAnalysis(df :: DataFrame) = describe(df,
 # Analysing type declarations
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-"Should coincide with the new columns in `addTypeDeclsAnalysis!`"
+"Should coincide with the new columns added in `addTypeDeclsAnalysis!`"
 const ANALYSIS_COLS_DECLS = [
     :Error, :Warning,
-    :VarCnt, 
     :TyDeclUseSiteVariance, :SuperUseSiteVariance,
 ]
 
-analyzePkgTypeDecls(pkgPath :: AbstractString) = begin
+analyzePkgTypeDecls(pkgPath :: AbstractString) :: Dict = begin
     failedResult = Dict(
         :goodPkg        => 0, 
         :badPkg         => 1,
@@ -355,12 +369,12 @@ analyzePkgTypeDecls(pkgPath :: AbstractString) = begin
         :statsums       => fill(0, length(ANALYSIS_COLS_DECLS)),
         :pkgwarn        => [],
         :pkgusesite     => [],
-        :tasusvar       => DataFrame(),
+        :tdsusvar       => DataFrame(),
     )
-    if !isdir(pkgPath)
-        @error "Packages directory doesn't exist: $pkgPath"
-        return failedResult
-    end
+    # if !isdir(pkgPath)
+    #     @error "Packages directory doesn't exist: $pkgPath"
+    #     return failedResult
+    # end
     typeDeclsPath = joinpath(pkgPath, TYPE_DECLS_FNAME)
     if !isfile(typeDeclsPath)
         @error "Type declarations file doesn't exist: $typeDeclsPath"
@@ -370,77 +384,71 @@ analyzePkgTypeDecls(pkgPath :: AbstractString) = begin
         df = CSV.read(typeDeclsPath, DataFrame; escapechar='\\')
         df = addTypeDeclsAnalysis!(df)
         dfSumm = summarizeTypeDeclsAnalysis(df)
-        # CSV.write(
-        #     joinpath(pkgPath, TYPE_DECLS_ANALYSIS_FNAME),
-        #     #df[:, [:File, :Function, :Kind, :TypeAnnotation, :Error, :Warning, :VarCnt, :HasWhere, :VarsUsedOnce, :UseSiteVariance, :RestrictedScope]]
-        #     df[:, Not("TypeVarsSummary")]
-        # )
-        # CSV.write(joinpath(pkgPath, TYPE_ANNS_SUMMARY_FNAME), dfSumm)
-        # errOrWarn = dfSumm.sum[1] > 0 || dfSumm.sum[2] > 0
-        # totalta = size(df, 1)
-        # strongRestrictionFailed = any(
-        #     ind -> dfSumm.sum[ind] < totalta,
-        #     [7, 8, 9]
-        # )
-        # dfta  = df[.!(ismissing.(df.ImprUseSiteVariance)) .&& 
-        #     (.!df.ImprUseSiteVariance .|| .!df.RestrictedScope .|| .!df.ClosedLowerBound), :]
-        # dfus  = df[.!(ismissing.(df.UseSiteVariance)) .&& .!df.UseSiteVariance, :]
-        # dfius = df[.!(ismissing.(df.ImprUseSiteVariance)) .&& .!df.ImprUseSiteVariance, :]
-        # dfta.Package  = fill(pkgPath, size(dfta,  1))      
-        # dfus.Package  = fill(pkgPath, size(dfus,  1))
-        # dfius.Package = fill(pkgPath, size(dfius, 1))
-        # Dict(
-        #     :goodPkg    => 1, 
-        #     :badPkg     => 0,
-        #     :totalta    => totalta,
-        #     :statnames  => dfSumm.variable,
-        #     :statsums   => dfSumm.sum,
-        #     :pkgwarn    => errOrWarn ? [pkgPath] : [],
-        #     :pkgusesite => dfSumm.sum[6] < totalta ? [pkgPath] : [],
-        #     :pkgintr    => strongRestrictionFailed ? [pkgPath] : [],
-        #     :tasintr    => dfta,
-        #     :tasusvar   => dfus,
-        #     :tasiusvar   => dfius,
-        # )
+        CSV.write(
+            joinpath(pkgPath, TYPE_DECLS_ANALYSIS_FNAME),
+            df
+        )
+        CSV.write(joinpath(pkgPath, TYPE_DECLS_SUMMARY_FNAME), dfSumm)
+        errOrWarn = dfSumm.sum[1] > 0 || dfSumm.sum[2] > 0
+        totaltd = size(df, 1)
+        dftd  = df[.!(ismissing.(df.TyDeclUseSiteVariance)) .&& 
+            (.!df.TyDeclUseSiteVariance .|| .!df.SuperUseSiteVariance), :]
+        dftd.Package = fill(pkgPath, size(dftd,  1))      
+        Dict(
+            :goodPkg    => 1, 
+            :badPkg     => 0,
+            :totaltd    => totaltd,
+            :statnames  => dfSumm.variable,
+            :statsums   => dfSumm.sum,
+            :pkgwarn    => errOrWarn ? [pkgPath] : [],
+            :pkgusesite => 
+                (dfSumm.sum[3] < totaltd || dfSumm.sum[4] < totaltd) ? [pkgPath] : [],
+            :tdsusvar   => dftd,
+        )
     catch err
-        @error "Problem when processing CSVs" err
+        @error "Problem when processing CSVs with type declarations" err
         failedResult
     end
 end
 
 addTypeDeclsAnalysis!(df :: DataFrame) = begin
-    # df.UnrolledTypeAnnotation = ByRow(tastr -> 
-    #     try
-    #         string(transformShortHand(Meta.parse(tastr)).expr)
-    #     catch err
-    #         @error "Couldn't transform type annotation" tastr err
-    #         missing
-    #     end
-    # )(df.TypeAnnotation)
-    # df.TypeVarsSummary = ByRow(tastr -> (ismissing(tastr) ? missing :
-    #     try
-    #         collectTyVarsSummary(Meta.parse(tastr))
-    #     catch err
-    #         @error "Couldn't analyze type annotation" tastr err
-    #         missing
-    #     end)
-    # )(df.UnrolledTypeAnnotation)
-    # df.Error = ByRow(ismissing)(df.TypeVarsSummary)
-    # df.Warning = ByRow(
-    #     tasumm -> ismissing(tasumm) ? true : tasumm[2]
-    # )(df.TypeVarsSummary) 
-    # df.VarCnt = mkDFAnalysisFunction(length, df.TypeVarsSummary)
-    # df.HasWhere = ByRow(
-    #     varcnt -> ismissing(varcnt) ? missing : varcnt > 0
-    # )(df.VarCnt)
-    # for (col, fun) in [
-    #    :VarsUsedOnce        => tyVarUsedOnce,
-    #    :UseSiteVariance     => tyVarOccursAsUsedSiteVariance,
-    #    :ImprUseSiteVariance => tyVarOccursAsImpredicativeUsedSiteVariance,
-    #    :RestrictedScope     => tyVarRestrictedScopePreserved,
-    #    :ClosedLowerBound    => tyVarIsNotInLowerBound,
-    # ]
-    #     df[!, col] = mkDFAnalysisFunction(fun, df.TypeVarsSummary)
-    # end
-    # df
+    transform!(
+        df, :, 
+        [:TypeDeclaration,:Supertype] => ByRow(analyzeTypeDecl) => [
+            :Error, :Warning,
+            :ProcessedTypeDecl, :ProcessedSuper,
+            #:TypeDeclVarsSummary, :SuperVarsSummary,
+            :TyDeclUseSiteVariance, :SuperUseSiteVariance,
+        ]
+    )
+    df
 end
+
+analyzeTypeDecl(tyDeclStr, superStr) = begin
+    try
+        td = Meta.parse(tyDeclStr)
+        ts = Meta.parse(superStr)
+        (tdTy, tsTy) = tyDeclAndSuper2FullTypes(td, ts)
+        tdTyFull = transformShortHand(tdTy).expr
+        tsTyFull = transformShortHand(tsTy).expr
+        tdSumm = collectTyVarsSummary(tdTyFull)
+        tsSumm = collectTyVarsSummary(tsTyFull)
+        [
+            false, tdSumm[2] || tsSumm[2],
+            string(tdTyFull), string(tsTyFull), 
+            #tdSumm[1], tsSumm[1],
+            tyVarOccursAsUsedSiteVariance(tdSumm[1]), 
+            tyVarOccursAsUsedSiteVariance(tsSumm[1]),
+        ]
+    catch err
+        @error "Couldn't process type declaration" tyDeclStr superStr err
+        [true, true, missing, missing, missing, missing]
+    end
+end
+
+summarizeTypeDeclsAnalysis(df :: DataFrame) = describe(df, 
+    :mean, :min, :median, :max,
+    :nmissing,
+    sum => :sum,
+    cols = ANALYSIS_COLS_DECLS
+)

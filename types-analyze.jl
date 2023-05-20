@@ -47,13 +47,19 @@ const PARAMS = parse_command_line_args()
 # Main
 #--------------------------------------------------
 
-@info "Initiating type annotations analysis..."
-resultStats = analyzePkgTypeAnnsAndSave2CSV(PARAMS["pkginfos"])
-for (k,v) in resultStats
-    !(k in [:statnames, :statsums]) &&
-        @info "Total $k:" v
-end
-for i in 1:length(resultStats[:statnames])
-    @info "Total $(resultStats[:statnames][i]):\n $(resultStats[:statsums][i])"
+printResult(resultStats) = begin
+    for (k,v) in resultStats
+        !(k in [:statnames, :statsums]) &&
+            @info "Total $k:" v
+    end
+    for i in 1:length(resultStats[:statnames])
+        @info "Total $(resultStats[:statnames][i]):\n $(resultStats[:statsums][i])"
+    end
 end
 
+@info "Initiating type annotations analysis..."
+(resultStatsTA, resultStatsTD) = analyzePkgTypesAndSave2CSV(PARAMS["pkginfos"])
+@info "*** TYPE ANNOTATIONS\n"
+printResult(resultStatsTA)
+@info "\n*** TYPE DECLARATIONS\n"
+printResult(resultStatsTD)

@@ -71,8 +71,11 @@ collectTypeDeclaration(expr, tyDecls :: TypeDeclInfoList) = begin
     if @capture(tyDecl, N_{ARGS__})
         name = N
     else
-        @assert tyDecl isa Symbol "type declaration $tyDecl is expected to be a Symbol"
-        name = tyDecl
+        if tyDecl isa Symbol
+            name = tyDecl
+        else
+            @error "type declaration $tyDecl is expected to be a Symbol"
+        end
     end
     (   :(), 
         cons(TypeDeclInfo(
