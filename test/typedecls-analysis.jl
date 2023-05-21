@@ -77,10 +77,10 @@ end
 #--------------------------------------------------
 
 @testset "typedecls-analysis :: extract var name        " begin
-    @test splitTyDecl(:(Bar))    == (:Bar, [])
-    @test splitTyDecl(:(Zoo{T})) == (:(Zoo{T}), [:T])
+    @test splitTyDecl(:(Bar))    == (:Bar, [], [])
+    @test splitTyDecl(:(Zoo{T})) == (:(Zoo{T}), [:T], [:T])
     @test splitTyDecl(:(Foo{Int<:X<:Number, Y<:Vector{X}})) == 
-        (:(Foo{X, Y}), [:(Int<:X<:Number), :(Y<:Vector{X})])
+        (:(Foo{X, Y}), [:(Int<:X<:Number), :(Y<:Vector{X})], [:X, :Y])
 end
 
 @testset "typedecls-analysis :: split type decl         " begin
@@ -106,12 +106,13 @@ end
         :(Baz{X, Vector{X}} where Int<:X<:Number)
 end
 
-@testset "typedecls-analysis :: trnsfrm ty-decl & spr   " begin
-    @test tyDeclAndSuper2FullTypes(:Bar, :Foo) == (:Bar, :Foo)
+@testset "typedecls-analysis :: trnsfrm ty-decl & super " begin
+    @test tyDeclAndSuper2FullTypes(:Bar, :Foo) == (:Bar, 0, :Foo)
     @test tyDeclAndSuper2FullTypes(:(Ref{X}), :AbsRef) == 
-        (:(Ref{X} where X), :(AbsRef where X))
+        (:(Ref{X} where X), 1, :(AbsRef where X))
     @test tyDeclAndSuper2FullTypes(:(Foo{T<:Number, S<:Vector{T}}), :(Bar{T, T})) == 
         (:(Foo{T, S} where S<:Vector{T} where T<:Number), 
-         :(Bar{T, T} where S<:Vector{T} where T<:Number))
+         2,
+         :(Bar{T, T} where S where T))
 end
 

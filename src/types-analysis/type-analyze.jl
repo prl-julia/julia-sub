@@ -305,7 +305,7 @@ transformShortHand(ty :: JlASTTypeExpr) :: TypeTransInfo =
     TypeTransInfo(ty) :
     begin
         #@warn "Unsupported type annotation" ty
-        @error "Unsupported type annotation" ty typeof(ty)
+        @error "Unsupported type annotation in shorthand" ty typeof(ty)
         throw(TypesAnlsUnsupportedTypeAnnotation(ty))
     end
 

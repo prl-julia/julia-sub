@@ -134,7 +134,12 @@ $ julia -p 32 types-analyze.jl data/ta-info/all > data/ta-info/log-analysis-all.
 
 **Getting packages data:**
 
-Assumes `../utils/JuliaPkgsList.jl`
+Assumes `../utils/JuliaPkgsList.jl` and `../utils/JuliaPkgDownloader.jl`.
+
+**Note.** Sometimes because of network issues, some packages are not downloaded.
+If in the case of all packages, the number of failed packages is > 50,
+run downloading again.
+Several dozen packages will remain broken for other reasons.
 
 ```
 $ ../utils/JuliaPkgsList.jl/gen-pkgs-list.jl 100 -p data/julia-pkgs-info.json --name --includeversion --includeuuid -o data/pkgs-list/top-pkgs-list.txt

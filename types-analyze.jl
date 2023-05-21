@@ -58,8 +58,11 @@ printResult(resultStats) = begin
 end
 
 @info "Initiating type annotations analysis..."
-(resultStatsTA, resultStatsTD) = analyzePkgTypesAndSave2CSV(PARAMS["pkginfos"])
-@info "*** TYPE ANNOTATIONS\n"
-printResult(resultStatsTA)
-@info "\n*** TYPE DECLARATIONS\n"
-printResult(resultStatsTD)
+rslt = analyzePkgTypesAndSave2CSV(PARAMS["pkginfos"])
+if rslt !== nothing 
+    (resultStatsTA, resultStatsTD) = rslt
+    @info "*** TYPE ANNOTATIONS\n"
+    printResult(resultStatsTA)
+    @info "\n*** TYPE DECLARATIONS\n"
+    printResult(resultStatsTD)
+end

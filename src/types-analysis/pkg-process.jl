@@ -357,7 +357,7 @@ summarizeTypeAnnsAnalysis(df :: DataFrame) = describe(df,
 "Should coincide with the new columns added in `addTypeDeclsAnalysis!`"
 const ANALYSIS_COLS_DECLS = [
     :Error, :Warning,
-    :TyDeclUseSiteVariance, :SuperUseSiteVariance,
+    :VarCnt, :TyDeclUseSiteVariance, :SuperUseSiteVariance,
 ]
 
 analyzePkgTypeDecls(pkgPath :: AbstractString) :: Dict = begin
@@ -402,7 +402,7 @@ analyzePkgTypeDecls(pkgPath :: AbstractString) :: Dict = begin
             :statsums   => dfSumm.sum,
             :pkgwarn    => errOrWarn ? [pkgPath] : [],
             :pkgusesite => 
-                (dfSumm.sum[3] < totaltd || dfSumm.sum[4] < totaltd) ? [pkgPath] : [],
+                (dfSumm.sum[4] < totaltd || dfSumm.sum[5] < totaltd) ? [pkgPath] : [],
             :tdsusvar   => dftd,
         )
     catch err
@@ -416,6 +416,7 @@ addTypeDeclsAnalysis!(df :: DataFrame) = begin
         df, :, 
         [:TypeDeclaration,:Supertype] => ByRow(analyzeTypeDecl) => [
             :Error, :Warning,
+            :VarCnt,
             :ProcessedTypeDecl, :ProcessedSuper,
             #:TypeDeclVarsSummary, :SuperVarsSummary,
             :TyDeclUseSiteVariance, :SuperUseSiteVariance,
@@ -428,13 +429,14 @@ analyzeTypeDecl(tyDeclStr, superStr) = begin
     try
         td = Meta.parse(tyDeclStr)
         ts = Meta.parse(superStr)
-        (tdTy, tsTy) = tyDeclAndSuper2FullTypes(td, ts)
+        (tdTy, varCnt, tsTy) = tyDeclAndSuper2FullTypes(td, ts)
         tdTyFull = transformShortHand(tdTy).expr
         tsTyFull = transformShortHand(tsTy).expr
         tdSumm = collectTyVarsSummary(tdTyFull)
         tsSumm = collectTyVarsSummary(tsTyFull)
         [
             false, tdSumm[2] || tsSumm[2],
+            varCnt,
             string(tdTyFull), string(tsTyFull), 
             #tdSumm[1], tsSumm[1],
             tyVarOccursAsUsedSiteVariance(tdSumm[1]), 
@@ -442,7 +444,7 @@ analyzeTypeDecl(tyDeclStr, superStr) = begin
         ]
     catch err
         @error "Couldn't process type declaration" tyDeclStr superStr err
-        [true, true, missing, missing, missing, missing]
+        [true, true, missing, missing, missing, missing, missing]
     end
 end
 
