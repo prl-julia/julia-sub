@@ -302,8 +302,7 @@ end
 
 unrollAndSummarizeVars(tastr) = begin
     try
-        ta = Meta.parse(tastr)
-        ta !== nothing || throw(TypesAnlsUnsupportedTypeAnnotation(tastr))
+        ta = tryParseAndHandleSharp(tastr)
         taFull = transformShortHand(ta).expr
         taSumm = collectTyVarsSummary(taFull)
         [string(taFull), taSumm[1], false, taSumm[2]]
@@ -428,10 +427,8 @@ end
 
 analyzeTypeDecl(tyDeclStr, superStr) = begin
     try
-        td = Meta.parse(tyDeclStr)
-        td !== nothing || throw(TypesAnlsUnsupportedTypeAnnotation(tyDeclStr))
-        ts = Meta.parse(superStr)
-        ts !== nothing || throw(TypesAnlsUnsupportedTypeAnnotation(superStr))
+        td = tryParseAndHandleSharp(tyDeclStr)
+        ts = tryParseAndHandleSharp(superStr)
         (tdTy, varCnt, tsTy) = tyDeclAndSuper2FullTypes(td, ts)
         tdTyFull = transformShortHand(tdTy).expr
         tsTyFull = transformShortHand(tsTy).expr
@@ -457,3 +454,17 @@ summarizeTypeDeclsAnalysis(df :: DataFrame) = describe(df,
     sum => :sum,
     cols = ANALYSIS_COLS_DECLS
 )
+
+#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+# Aux
+#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+tryParseAndHandleSharp(str) = begin
+    t = Meta.parse(str)
+    # this might be the case due to strings like ##ANON#1
+    if t === nothing
+        t = Meta.parse(replace(str, '#' => 'X'))
+        t !== nothing || throw(TypesAnlsUnsupportedTypeAnnotation(str))
+    end
+    t
+end
