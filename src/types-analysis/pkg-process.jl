@@ -303,6 +303,7 @@ end
 unrollAndSummarizeVars(tastr) = begin
     try
         ta = Meta.parse(tastr)
+        ta !== nothing || throw(TypesAnlsUnsupportedTypeAnnotation(tastr))
         taFull = transformShortHand(ta).expr
         taSumm = collectTyVarsSummary(taFull)
         [string(taFull), taSumm[1], false, taSumm[2]]
@@ -428,7 +429,9 @@ end
 analyzeTypeDecl(tyDeclStr, superStr) = begin
     try
         td = Meta.parse(tyDeclStr)
+        td !== nothing || throw(TypesAnlsUnsupportedTypeAnnotation(tyDeclStr))
         ts = Meta.parse(superStr)
+        ts !== nothing || throw(TypesAnlsUnsupportedTypeAnnotation(superStr))
         (tdTy, varCnt, tsTy) = tyDeclAndSuper2FullTypes(td, ts)
         tdTyFull = transformShortHand(tdTy).expr
         tsTyFull = transformShortHand(tsTy).expr
