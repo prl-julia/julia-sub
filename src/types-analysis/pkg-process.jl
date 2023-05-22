@@ -261,9 +261,10 @@ analyzePkgTypeAnns(pkgPath :: AbstractString) :: Dict = begin
             df[:, Not("TypeVarsSummary")]
         )
         CSV.write(joinpath(pkgPath, TYPE_ANNS_SUMMARY_FNAME), dfSumm)
-        errOrWarn = dfSumm.sum[1] > 0 || dfSumm.sum[2] > 0
         totalta = size(df, 1)
-        strongRestrictionFailed = any(
+        dataIsNotEmpty = totalta > 0
+        errOrWarn = dataIsNotEmpty && (dfSumm.sum[1] > 0 || dfSumm.sum[2] > 0)
+        strongRestrictionFailed = dataIsNotEmpty && any(
             ind -> dfSumm.sum[ind] < totalta,
             [7, 8, 9]
         )
@@ -281,7 +282,8 @@ analyzePkgTypeAnns(pkgPath :: AbstractString) :: Dict = begin
             :statnames  => dfSumm.variable,
             :statsums   => dfSumm.sum,
             :pkgwarn    => errOrWarn ? [pkgPath] : [],
-            :pkgusesite => dfSumm.sum[6] < totalta ? [pkgPath] : [],
+            :pkgusesite => (dataIsNotEmpty && dfSumm.sum[6] < totalta) ? 
+                [pkgPath] : [],
             :pkgintr    => strongRestrictionFailed ? [pkgPath] : [],
             :tasintr    => dfta,
             :tasusvar   => dfus,
@@ -396,8 +398,9 @@ analyzePkgTypeDecls(pkgPath :: AbstractString) :: Dict = begin
             df
         )
         CSV.write(joinpath(pkgPath, TYPE_DECLS_SUMMARY_FNAME), dfSumm)
-        errOrWarn = dfSumm.sum[1] > 0 || dfSumm.sum[2] > 0
         totaltd = size(df, 1)
+        dataIsNotEmpty = totaltd > 0
+        errOrWarn = dataIsNotEmpty && (dfSumm.sum[1] > 0 || dfSumm.sum[2] > 0)
         dftd  = df[.!(ismissing.(df.TyDeclUseSiteVariance)) .&& 
             (.!df.TyDeclUseSiteVariance .|| .!df.SuperUseSiteVariance), :]
         dftd.Package = fill(pkgPath, size(dftd,  1))      
@@ -408,8 +411,8 @@ analyzePkgTypeDecls(pkgPath :: AbstractString) :: Dict = begin
             :statnames  => dfSumm.variable,
             :statsums   => dfSumm.sum,
             :pkgwarn    => errOrWarn ? [pkgPath] : [],
-            :pkgusesite => 
-                (dfSumm.sum[4] < totaltd || dfSumm.sum[5] < totaltd) ? [pkgPath] : [],
+            :pkgusesite => (dataIsNotEmpty &&
+                (dfSumm.sum[4] < totaltd || dfSumm.sum[5] < totaltd)) ? [pkgPath] : [],
             :tdsusvar   => dftd,
         )
     catch err

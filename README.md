@@ -16,7 +16,6 @@ they are trivially equivalent to `Tuple{Ref{T} where T}`.
 
 ## Static analysis of types
 
-
 ### Type annotations
 
 Usually, type annotations appear after `::` in the code:
