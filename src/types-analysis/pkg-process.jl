@@ -198,6 +198,15 @@ analyzePkgTypesAndSave2CSV(
         CSV.write(joinpath(pkgsDirPath, USESITE_TYPE_ANNS_FNAME), rsltta[:tasusvar])
         CSV.write(joinpath(pkgsDirPath, IMPUSESITE_TYPE_ANNS_FNAME), rsltta[:tasiusvar])
         CSV.write(joinpath(pkgsDirPath, USESITE_TYPE_DECLS_FNAME), rslttd[:tdsusvar])
+
+        CSV.write(
+            joinpath(pkgsDirPath, "summary-non-imp-use-site-type-annotations.csv"),
+            summarizeAnalysis(rsltta[:tasiusvar], ANALYSIS_COLS_ANNS)
+        )
+        CSV.write(
+            joinpath(pkgsDirPath, "summary-non-use-site-type-declarations.csv"),
+            summarizeAnalysis(rslttd[:tdsusvar], ANALYSIS_COLS_DECLS)
+        )
     catch err
         @error "Problem when saving interesting type info" err
     end
@@ -245,7 +254,7 @@ analyzePkgTypeAnns(pkgPath :: AbstractString) :: Dict = begin
     try
         df = CSV.read(typeAnnsPath, DataFrame; escapechar='\\')
         df = addTypeAnnsAnalysis!(df)
-        dfSumm = summarizeTypeAnnsAnalysis(df)
+        dfSumm = summarizeAnalysis(df, ANALYSIS_COLS_ANNS)
         CSV.write(
             joinpath(pkgPath, TYPE_ANNS_ANALYSIS_FNAME),
             #df[:, [:File, :Function, :Kind, :TypeAnnotation, :Error, :Warning, :VarCnt, :HasWhere, :VarsUsedOnce, :UseSiteVariance, :RestrictedScope]]
@@ -343,13 +352,6 @@ mkAnalysisFunction(fun :: Function) = (tasumm ->
     end
 )
 
-summarizeTypeAnnsAnalysis(df :: DataFrame) = describe(df, 
-    :mean, :min, :median, :max,
-    :nmissing,
-    sum => :sum,
-    cols = ANALYSIS_COLS_ANNS
-)
-
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 # Analysing type declarations
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -383,7 +385,7 @@ analyzePkgTypeDecls(pkgPath :: AbstractString) :: Dict = begin
     try
         df = CSV.read(typeDeclsPath, DataFrame; escapechar='\\')
         df = addTypeDeclsAnalysis!(df)
-        dfSumm = summarizeTypeDeclsAnalysis(df)
+        dfSumm = summarizeAnalysis(df, ANALYSIS_COLS_DECLS)
         CSV.write(
             joinpath(pkgPath, TYPE_DECLS_ANALYSIS_FNAME),
             df
@@ -448,16 +450,19 @@ analyzeTypeDecl(tyDeclStr, superStr) = begin
     end
 end
 
-summarizeTypeDeclsAnalysis(df :: DataFrame) = describe(df, 
-    :mean, :min, :median, :max,
-    :nmissing,
-    sum => :sum,
-    cols = ANALYSIS_COLS_DECLS
-)
-
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 # Aux
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+summarizeAnalysis(df :: DataFrame, analysisCols) = 
+    size(df)[1] > 0 ?
+        describe(df, 
+            :mean, :min, :median, :max, :nmissing,
+            sum => :sum,
+            cols = analysisCols
+        ) :
+        DataFrame([col => [] for col in 
+            [:mean, :min, :median, :max, :nmissing, :sum]])
 
 tryParseAndHandleSharp(str) = begin
     t = Meta.parse(str)
