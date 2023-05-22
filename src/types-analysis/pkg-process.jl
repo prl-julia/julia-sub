@@ -294,18 +294,23 @@ analyzePkgTypeAnns(pkgPath :: AbstractString) :: Dict = begin
 end
 
 addTypeAnnsAnalysis!(df :: DataFrame) = begin
-    transform!(
-        df, :, 
-        :TypeAnnotation => ByRow(unrollAndSummarizeVars) => [
-            :UnrolledTypeAnnotation, :TypeVarsSummary,
-            :Error, :Warning
-        ]
-    )
-    transform!(
-        df, :, 
-        :TypeVarsSummary => ByRow(getTypeAnnsAnalyses) => 
-            ANALYSIS_COLS_ANNS_NOERR
-    )
+    newColsPre = [
+        :UnrolledTypeAnnotation, :TypeVarsSummary,
+        :Error, :Warning
+    ]
+    newCols = vcat(newColsPre, ANALYSIS_COLS_ANNS_NOERR)
+    if size(df)[1] > 0  
+        transform!(
+            df, :, :TypeAnnotation => 
+                ByRow(unrollAndSummarizeVars) => newColsPre
+        )
+        transform!(
+            df, :, :TypeVarsSummary => ByRow(getTypeAnnsAnalyses) => 
+                ANALYSIS_COLS_ANNS_NOERR
+        )
+    else
+        insertcols!(df, [col => [] for col in newCols]...)
+    end
     df
 end
 
@@ -414,16 +419,21 @@ analyzePkgTypeDecls(pkgPath :: AbstractString) :: Dict = begin
 end
 
 addTypeDeclsAnalysis!(df :: DataFrame) = begin
-    transform!(
-        df, :, 
-        [:TypeDeclaration,:Supertype] => ByRow(analyzeTypeDecl) => [
-            :Error, :Warning,
-            :VarCnt,
-            :ProcessedTypeDecl, :ProcessedSuper,
-            #:TypeDeclVarsSummary, :SuperVarsSummary,
-            :TyDeclUseSiteVariance, :SuperUseSiteVariance,
-        ]
-    )
+    newCols = [
+        :Error, :Warning,
+        :VarCnt,
+        :ProcessedTypeDecl, :ProcessedSuper,
+        #:TypeDeclVarsSummary, :SuperVarsSummary,
+        :TyDeclUseSiteVariance, :SuperUseSiteVariance,
+    ]
+    if size(df)[1] > 0  
+        transform!(
+            df, :, [:TypeDeclaration,:Supertype] => 
+                ByRow(analyzeTypeDecl) => newCols
+        )
+    else
+        insertcols!(df, [col => [] for col in newCols]...)
+    end
     df
 end
 
@@ -462,7 +472,7 @@ summarizeAnalysis(df :: DataFrame, analysisCols) =
             cols = analysisCols
         ) :
         DataFrame([col => [] for col in 
-            [:mean, :min, :median, :max, :nmissing, :sum]])
+            [:variable, :mean, :min, :median, :max, :nmissing, :sum]])
 
 tryParseAndHandleSharp(str) = begin
     t = Meta.parse(str)

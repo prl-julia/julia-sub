@@ -9,11 +9,15 @@ Developing decidable subtyping for the Julia language.
 - We need to analyze type annotations used in Julia programs to see if they
   satisfy either the scoping or wildcards-like restriction.
 
-**TODO:** count annotations that do not literally correspond to the restriction
-from JB's thesis proposal on decidable subtyping.
-Currently, types that can be equivalently rewritten are not reported.
+**Note.** Some annotations that do not literally correspond to the restriction
+from JB's thesis proposal on decidable subtyping are not reported.
+In particular, cases like `Tuple{Ref{T}} where T` are not reported because
+they are trivially equivalent to `Tuple{Ref{T} where T}`.
 
 ## Static analysis of types
+
+
+### Type annotations
 
 Usually, type annotations appear after `::` in the code:
 - as a part of the method signature
@@ -30,18 +34,22 @@ in the method signature, outside of the argument list.
 - `foo(x :: T, xs :: Vector{T}) where T`
 - `x :: Int`
 
+We collect method type signatures and all other type annotations to the right
+of `::`, which includes type assertions and types of fields.
+
 **Note.** `MacroTools.jl` package has a handy function `isdef` to check
 for function definitions, but it seems to
 [always return true](https://github.com/FluxML/MacroTools.jl/issues/172).
 ~~We can use that to process method signatures.~~
-
-But we also want to collect information from nested function definitions
-and stand-alone type assertions.
-
 - `longdef` turns all functions into long forms, including nested expressions
 - `splitdef` conveniently processes any function definition form
   (short, long, anonymous) except for the do-notation
 
+But we also want to collect information from nested function definitions
+and stand-alone type assertions.
+This is done manually with `@capture`.
+
+### Type declarations
 
 ## Repository Organization
 
