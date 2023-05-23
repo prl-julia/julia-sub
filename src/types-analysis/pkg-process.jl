@@ -230,6 +230,12 @@ const ANALYSIS_COLS_ANNS = vcat(
     [:Error, :Warning],
     ANALYSIS_COLS_ANNS_NOERR
 )
+# const ANN_COLS = vcat(
+#     [:File, :Function, :Kind, :TypeAnnotation],
+#     ANALYSIS_COLS_ANNS,
+#     [:TypeVarsSummary]
+# )
+# genEmptyAnnsDF() = DataFrame([col => [] for col in ANN_COLS])
 
 analyzePkgTypeAnns(pkgPath :: AbstractString) :: Dict = begin
     failedResult = Dict(
@@ -372,6 +378,12 @@ const ANALYSIS_COLS_DECLS = [
     :VarCnt, :TyDeclUseSiteVariance, :SuperUseSiteVariance,
     :TyDeclImpUseSiteVariance, :SuperImpUseSiteVariance
 ]
+# const DECL_COLS = vcat(
+#     [:File, :Name, :Kind, :TypeDeclaration, :Supertype],
+#     ANALYSIS_COLS_DECLS,
+#     [:ProcessedTypeDecl, :ProcessedSuper]
+# )
+# genEmptyDeclsDF() = DataFrame([col => [] for col in DECL_COLS])
 
 analyzePkgTypeDecls(pkgPath :: AbstractString) :: Dict = begin
     failedResult = Dict(
@@ -420,7 +432,8 @@ analyzePkgTypeDecls(pkgPath :: AbstractString) :: Dict = begin
             :statsums   => dfSumm.sum,
             :pkgwarn    => errOrWarn ? [pkgPath] : [],
             :pkgusesite => (dataIsNotEmpty &&
-                (dfSumm.sum[4] < totaltd || dfSumm.sum[5] < totaltd)) ? [pkgPath] : [],
+                (dfSumm.sum[4] < totaltd || dfSumm.sum[5] < totaltd)) ? 
+                [pkgPath] : [],
             :tdsusvar   => dftd,
             :tdsiusvar  => dftdi,
         )
@@ -486,8 +499,13 @@ summarizeAnalysis(df :: DataFrame, analysisCols) =
             sum => :sum,
             cols = analysisCols
         ) :
-        DataFrame([col => [] for col in 
-            [:variable, :mean, :min, :median, :max, :nmissing, :sum]])
+        begin
+            dfSumm = DataFrame(
+                [col => fill(0, length(analysisCols)) for col in 
+                [:mean, :min, :median, :max, :nmissing, :sum]])
+            dfSumm.variable = analysisCols
+            dfSumm
+        end
 
 tryParseAndHandleSharp(str) = begin
     t = Meta.parse(str)
