@@ -33,6 +33,7 @@ const USESITE_TYPE_ANNS_FNAME = "non-use-site-type-annotations.csv"
 const IMPUSESITE_TYPE_ANNS_FNAME = "non-imp-use-site-type-annotations.csv"
 
 const USESITE_TYPE_DECLS_FNAME = "non-use-site-type-declarations.csv"
+const IMPUSESITE_TYPE_DECLS_FNAME = "non-imp-use-site-type-declarations.csv"
 
 collectAndSaveTypeInfo2CSV(
     pkgsDirPath :: AbstractString, destDirPath :: AbstractString
@@ -188,7 +189,8 @@ analyzePkgTypesAndSave2CSV(
         dtd[:statnames] = dtd1[:statnames]
         combineVCat!(dta, dta1, dta2, 
             [:pkgwarn, :pkgusesite, :pkgintr, :tasintr, :tasusvar, :tasiusvar])
-        combineVCat!(dtd, dtd1, dtd2, [:pkgwarn, :pkgusesite, :tdsusvar])
+        combineVCat!(dtd, dtd1, dtd2, 
+            [:pkgwarn, :pkgusesite, :tdsusvar, :tdsiusvar])
         (dta, dtd)
     end
     (rsltta, rslttd) = reduce(combineResults, pkgResults)
@@ -198,6 +200,7 @@ analyzePkgTypesAndSave2CSV(
         CSV.write(joinpath(pkgsDirPath, USESITE_TYPE_ANNS_FNAME), rsltta[:tasusvar])
         CSV.write(joinpath(pkgsDirPath, IMPUSESITE_TYPE_ANNS_FNAME), rsltta[:tasiusvar])
         CSV.write(joinpath(pkgsDirPath, USESITE_TYPE_DECLS_FNAME), rslttd[:tdsusvar])
+        CSV.write(joinpath(pkgsDirPath, IMPUSESITE_TYPE_DECLS_FNAME), rslttd[:tdsiusvar])
 
         CSV.write(
             joinpath(pkgsDirPath, "summary-non-imp-use-site-type-annotations.csv"),
@@ -367,6 +370,7 @@ mkAnalysisFunction(fun :: Function) = (tasumm ->
 const ANALYSIS_COLS_DECLS = [
     :Error, :Warning,
     :VarCnt, :TyDeclUseSiteVariance, :SuperUseSiteVariance,
+    :TyDeclImpUseSiteVariance, :SuperImpUseSiteVariance
 ]
 
 analyzePkgTypeDecls(pkgPath :: AbstractString) :: Dict = begin
@@ -379,6 +383,7 @@ analyzePkgTypeDecls(pkgPath :: AbstractString) :: Dict = begin
         :pkgwarn        => [],
         :pkgusesite     => [],
         :tdsusvar       => DataFrame(),
+        :tdsiusvar      => DataFrame(),
     )
     # if !isdir(pkgPath)
     #     @error "Packages directory doesn't exist: $pkgPath"
@@ -403,7 +408,10 @@ analyzePkgTypeDecls(pkgPath :: AbstractString) :: Dict = begin
         errOrWarn = dataIsNotEmpty && (dfSumm.sum[1] > 0 || dfSumm.sum[2] > 0)
         dftd  = df[.!(ismissing.(df.TyDeclUseSiteVariance)) .&& 
             (.!df.TyDeclUseSiteVariance .|| .!df.SuperUseSiteVariance), :]
-        dftd.Package = fill(pkgPath, size(dftd,  1))      
+        dftdi = df[.!(ismissing.(df.TyDeclImpUseSiteVariance)) .&& 
+            (.!df.TyDeclImpUseSiteVariance .|| .!df.SuperImpUseSiteVariance), :]
+        dftd.Package = fill(pkgPath, size(dftd,  1))
+        dftdi.Package = fill(pkgPath, size(dftdi,  1))
         Dict(
             :goodPkg    => 1, 
             :badPkg     => 0,
@@ -414,6 +422,7 @@ analyzePkgTypeDecls(pkgPath :: AbstractString) :: Dict = begin
             :pkgusesite => (dataIsNotEmpty &&
                 (dfSumm.sum[4] < totaltd || dfSumm.sum[5] < totaltd)) ? [pkgPath] : [],
             :tdsusvar   => dftd,
+            :tdsiusvar  => dftdi,
         )
     catch err
         @error "Problem when processing CSVs with type declarations" err
@@ -428,6 +437,7 @@ addTypeDeclsAnalysis!(df :: DataFrame) = begin
         :ProcessedTypeDecl, :ProcessedSuper,
         #:TypeDeclVarsSummary, :SuperVarsSummary,
         :TyDeclUseSiteVariance, :SuperUseSiteVariance,
+        :TyDeclImpUseSiteVariance, :SuperImpUseSiteVariance,
     ]
     if size(df)[1] > 0  
         transform!(
@@ -456,10 +466,12 @@ analyzeTypeDecl(tyDeclStr, superStr) = begin
             #tdSumm[1], tsSumm[1],
             tyVarOccursAsUsedSiteVariance(tdSumm[1]), 
             tyVarOccursAsUsedSiteVariance(tsSumm[1]),
+            tyVarOccursAsImpredicativeUsedSiteVariance(tdSumm[1]), 
+            tyVarOccursAsImpredicativeUsedSiteVariance(tsSumm[1]),
         ]
     catch err
         @error "Couldn't process type declaration" tyDeclStr superStr err
-        [true, true, missing, missing, missing, missing, missing]
+        vcat([true, true], fill(missing, 7))
     end
 end
 

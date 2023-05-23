@@ -65,6 +65,7 @@ end
     @test isfile(testFilePath("ta-info/2/non-use-site-type-annotations.csv"))
     @test isfile(testFilePath("ta-info/2/non-imp-use-site-type-annotations.csv"))
     @test isfile(testFilePath("ta-info/2/non-use-site-type-declarations.csv"))
+    @test isfile(testFilePath("ta-info/2/non-imp-use-site-type-declarations.csv"))
 
     tryrm(testFilePath("ta-info"))
 end

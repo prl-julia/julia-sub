@@ -50,6 +50,15 @@ This is done manually with `@capture`.
 
 ### Type declarations
 
+We collect all user-defined type declarations and record the declaration
+itself and its declared supertype.
+Then, we check whether they satisfy use-site variance when treated as complete
+types. For example, `Foo{X, Y<:Ref{X}}` is analyzed as
+`Foo{X, Y} where Y<:Ref{X} where X`.
+Decidable subtyping doesn't require type declarations to satisfy use-site
+variance, but it is a nice indicator of the complexity.
+
+
 ## Repository Organization
 
 - [``]()
@@ -80,6 +89,23 @@ This is done manually with `@capture`.
     - [`process-pkgs.jl`](src/lb-analysis/process-pkgs.jl)
       lower-bounds analysis of files, packages, and folders with packages
   - [`types-analysis`](src/types-analysis) analysis of type annotations
+    - [`lib.jl`](src/types-analysis/lib.jl)
+      main file combining everything related to the analysis
+    - [`data.jl`](src/types-analysis/data.jl)
+      data types used for the analysis
+    - [`types-extract.jl`](src/types-analysis/types-extract.jl)
+      extraction of type annotations
+    - [`typedecls-extract.jl`](src/types-analysis/typedecls-extract.jl)
+      extraction of type declarations
+    - [`type-analyze.jl`](src/types-analysis/type-analyze.jl)
+      analysis of type annotations
+    - [`typedecl-analyze.jl`](src/types-analysis/typedecl-analyze.jl)
+      analysis of type declarations
+    - [`pkg-process.jl`](src/types-analysis/pkg-process.jl)
+      processing of packages:
+      extraction of type annotations and declarations into a CSV,
+      an analysis of type annotations and declarations read from a CSV
+      and saving interesting results into another CSV
   - [`utils`](src/utils) auxiliary
     - [`lib.jl`](src/utils/lib.jl)
       main file combining all utilities
