@@ -1,3 +1,8 @@
+`SymFourthOrderTensorValue{D, T, L}` in Gridlab has some bad uses, but they seem
+to be related to dimensions.
+
+723 packages have bad declarations out of 9000.
+
 
 ## Scoping restriction
 

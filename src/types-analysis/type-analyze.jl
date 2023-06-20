@@ -97,6 +97,17 @@ tyVarUsedOnce(tytvs :: TypeTyVarsSummary) =
 tyVarUsedOnce(tvs :: TyVarSummary) = length(tvs.occurrs) == 1
 
 
+"At least one existential type is declared inside an invariant constructor"
+existIsDeclaredInInv(tytvs :: TypeTyVarsSummary) = 
+    any(existIsDeclaredInInv, tytvs)
+
+existIsDeclaredInInv(tvs :: TyVarSummary) = containsInv(tvs.context)
+
+containsInv(constrStack :: Nil{TypeConstructor}) = false
+containsInv(constrStack :: Cons{TypeConstructor}) = 
+    (DataStructures.head(constrStack) == TCInvar) ||
+    containsInv(DataStructures.tail(constrStack))
+
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 # Summarizing type variable usage
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

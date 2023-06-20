@@ -31,6 +31,7 @@ const TYPE_DECLS_SUMMARY_FNAME = "summary-type-declarations.csv"
 const INTR_TYPE_ANNS_FNAME = "interesting-type-annotations.csv"
 const USESITE_TYPE_ANNS_FNAME = "non-use-site-type-annotations.csv"
 const IMPUSESITE_TYPE_ANNS_FNAME = "non-imp-use-site-type-annotations.csv"
+const EXISTININV_TYPE_ANNS_FNAME = "exist-in-inv-type-annotations.csv"
 
 const USESITE_TYPE_DECLS_FNAME = "non-use-site-type-declarations.csv"
 const IMPUSESITE_TYPE_DECLS_FNAME = "non-imp-use-site-type-declarations.csv"
@@ -188,7 +189,7 @@ analyzePkgTypesAndSave2CSV(
         dta[:statnames] = dta1[:statnames]
         dtd[:statnames] = dtd1[:statnames]
         combineVCat!(dta, dta1, dta2, 
-            [:pkgwarn, :pkgusesite, :pkgintr, :tasintr, :tasusvar, :tasiusvar])
+            [:pkgwarn, :pkgusesite, :pkgintr, :tasintr, :tasusvar, :tasiusvar, :tasexininv])
         combineVCat!(dtd, dtd1, dtd2, 
             [:pkgwarn, :pkgusesite, :tdsusvar, :tdsiusvar])
         (dta, dtd)
@@ -199,8 +200,10 @@ analyzePkgTypesAndSave2CSV(
         CSV.write(joinpath(pkgsDirPath, INTR_TYPE_ANNS_FNAME), rsltta[:tasintr])
         CSV.write(joinpath(pkgsDirPath, USESITE_TYPE_ANNS_FNAME), rsltta[:tasusvar])
         CSV.write(joinpath(pkgsDirPath, IMPUSESITE_TYPE_ANNS_FNAME), rsltta[:tasiusvar])
+        CSV.write(joinpath(pkgsDirPath, EXISTININV_TYPE_ANNS_FNAME), rsltta[:tasexininv])
         CSV.write(joinpath(pkgsDirPath, USESITE_TYPE_DECLS_FNAME), rslttd[:tdsusvar])
         CSV.write(joinpath(pkgsDirPath, IMPUSESITE_TYPE_DECLS_FNAME), rslttd[:tdsiusvar])
+        
 
         CSV.write(
             joinpath(pkgsDirPath, "summary-non-imp-use-site-type-annotations.csv"),
@@ -222,7 +225,7 @@ end
 
 const ANALYSIS_COLS_ANNS_NOERR = [
     :VarCnt, :HasWhere, :VarsUsedOnce, :UseSiteVariance,
-    :ImprUseSiteVariance, :RestrictedScope, :ClosedLowerBound
+    :ImprUseSiteVariance, :ExistInInv, :RestrictedScope, :ClosedLowerBound
 ]
 
 "Should coincide with the new columns added in `addTypeAnnsAnalysis!`"
@@ -250,6 +253,7 @@ analyzePkgTypeAnns(pkgPath :: AbstractString) :: Dict = begin
         :tasintr        => DataFrame(),
         :tasusvar       => DataFrame(),
         :tasiusvar      => DataFrame(),
+        :tasexininv     => DataFrame(),
     )
     # if !isdir(pkgPath)
     #     @error "Packages directory doesn't exist: $pkgPath"
@@ -281,9 +285,14 @@ analyzePkgTypeAnns(pkgPath :: AbstractString) :: Dict = begin
             (.!df.ImprUseSiteVariance .|| .!df.RestrictedScope .|| .!df.ClosedLowerBound), :]
         dfus  = df[.!(ismissing.(df.UseSiteVariance)) .&& .!df.UseSiteVariance, :]
         dfius = df[.!(ismissing.(df.ImprUseSiteVariance)) .&& .!df.ImprUseSiteVariance, :]
-        dfta.Package  = fill(pkgPath, size(dfta,  1))      
-        dfus.Package  = fill(pkgPath, size(dfus,  1))
-        dfius.Package = fill(pkgPath, size(dfius, 1))
+        dfeii = df[.!(ismissing.(df.ExistInInv)) .&& df.ExistInInv, :]
+        for df in [dfta, dfus, dfius, dfeii]
+            df.Package  = fill(pkgPath, size(df, 1))
+        end
+        # dfta.Package  = fill(pkgPath, size(dfta,  1))      
+        # dfus.Package  = fill(pkgPath, size(dfus,  1))
+        # dfius.Package = fill(pkgPath, size(dfius, 1))
+        # dfeii.Package = fill(pkgPath, size(dfeii, 1))
         Dict(
             :goodPkg    => 1, 
             :badPkg     => 0,
@@ -297,6 +306,7 @@ analyzePkgTypeAnns(pkgPath :: AbstractString) :: Dict = begin
             :tasintr    => dfta,
             :tasusvar   => dfus,
             :tasiusvar  => dfius,
+            :tasexininv => dfeii,
         )
     catch err
         @error "Problem when processing CSVs with type annptations" err
@@ -352,6 +362,7 @@ getTypeAnnsAnalyses(tasumm) =
                 tyVarUsedOnce,
                 tyVarOccursAsUsedSiteVariance,
                 tyVarOccursAsImpredicativeUsedSiteVariance,
+                existIsDeclaredInInv,
                 tyVarRestrictedScopePreserved,
                 tyVarIsNotInLowerBound,
             ]

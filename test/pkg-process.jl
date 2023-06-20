@@ -36,7 +36,7 @@ using Main.JuliaSub: TypeInfo, parseAndCollectTypeInfo
 end
 
 @testset "JuliaSub.jl :: packages processing            " begin
-    mkdir(testFilePath("ta-info"))
+    mkpath(testFilePath("ta-info"))
 
     tainfo = collectAndSaveTypeInfo2CSV(
         testFilePath("pkgs-ta/3"), testFilePath("ta-info/3")
@@ -64,6 +64,7 @@ end
     @test isfile(testFilePath("ta-info/3/interesting-type-annotations.csv"))
     @test isfile(testFilePath("ta-info/3/non-use-site-type-annotations.csv"))
     @test isfile(testFilePath("ta-info/3/non-imp-use-site-type-annotations.csv"))
+    @test isfile(testFilePath("ta-info/3/exist-in-inv-type-annotations.csv"))
     @test isfile(testFilePath("ta-info/3/non-use-site-type-declarations.csv"))
     @test isfile(testFilePath("ta-info/3/non-imp-use-site-type-declarations.csv"))
 
