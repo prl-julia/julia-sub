@@ -32,9 +32,11 @@ const INTR_TYPE_ANNS_FNAME = "interesting-type-annotations.csv"
 const USESITE_TYPE_ANNS_FNAME = "non-use-site-type-annotations.csv"
 const IMPUSESITE_TYPE_ANNS_FNAME = "non-imp-use-site-type-annotations.csv"
 const EXISTININV_TYPE_ANNS_FNAME = "exist-in-inv-type-annotations.csv"
+const NONTRIVCONSBNDS_TYPE_ANNS_FNAME = "non-triv-consist-bnds-type-annotations.csv"
 
 const USESITE_TYPE_DECLS_FNAME = "non-use-site-type-declarations.csv"
 const IMPUSESITE_TYPE_DECLS_FNAME = "non-imp-use-site-type-declarations.csv"
+const NONTRIVCONSBNDS_TYPE_DECLS_FNAME = "non-triv-consist-bnds-type-declarations.csv"
 
 collectAndSaveTypeInfo2CSV(
     pkgsDirPath :: AbstractString, destDirPath :: AbstractString
@@ -189,9 +191,10 @@ analyzePkgTypesAndSave2CSV(
         dta[:statnames] = dta1[:statnames]
         dtd[:statnames] = dtd1[:statnames]
         combineVCat!(dta, dta1, dta2, 
-            [:pkgwarn, :pkgusesite, :pkgintr, :tasintr, :tasusvar, :tasiusvar, :tasexininv])
+            [:pkgwarn, :pkgusesite, :pkgintr, :tasintr, :tasusvar, :tasiusvar, 
+             :tasexininv, :tasntrvbnd])
         combineVCat!(dtd, dtd1, dtd2, 
-            [:pkgwarn, :pkgusesite, :tdsusvar, :tdsiusvar])
+            [:pkgwarn, :pkgusesite, :tdsusvar, :tdsiusvar, :tdsntrvbnd])
         (dta, dtd)
     end
     (rsltta, rslttd) = reduce(combineResults, pkgResults)
@@ -201,8 +204,10 @@ analyzePkgTypesAndSave2CSV(
         CSV.write(joinpath(pkgsDirPath, USESITE_TYPE_ANNS_FNAME), rsltta[:tasusvar])
         CSV.write(joinpath(pkgsDirPath, IMPUSESITE_TYPE_ANNS_FNAME), rsltta[:tasiusvar])
         CSV.write(joinpath(pkgsDirPath, EXISTININV_TYPE_ANNS_FNAME), rsltta[:tasexininv])
+        CSV.write(joinpath(pkgsDirPath, NONTRIVCONSBNDS_TYPE_ANNS_FNAME), rsltta[:tasntrvbnd])
         CSV.write(joinpath(pkgsDirPath, USESITE_TYPE_DECLS_FNAME), rslttd[:tdsusvar])
         CSV.write(joinpath(pkgsDirPath, IMPUSESITE_TYPE_DECLS_FNAME), rslttd[:tdsiusvar])
+        CSV.write(joinpath(pkgsDirPath, NONTRIVCONSBNDS_TYPE_DECLS_FNAME), rslttd[:tdsntrvbnd])
         
 
         CSV.write(
@@ -224,8 +229,8 @@ end
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 const ANALYSIS_COLS_ANNS_NOERR = [
-    :VarCnt, :HasWhere, :VarsUsedOnce, :UseSiteVariance,
-    :ImprUseSiteVariance, :ExistInInv, :RestrictedScope, :ClosedLowerBound
+    :VarCnt, :HasWhere, :VarsUsedOnce, :UseSiteVariance, :ImprUseSiteVariance,
+    :ExistInInv, :RestrictedScope, :ClosedLowerBound, :TrivConsistBounds
 ]
 
 "Should coincide with the new columns added in `addTypeAnnsAnalysis!`"
@@ -254,6 +259,7 @@ analyzePkgTypeAnns(pkgPath :: AbstractString) :: Dict = begin
         :tasusvar       => DataFrame(),
         :tasiusvar      => DataFrame(),
         :tasexininv     => DataFrame(),
+        :tasntrvbnd     => DataFrame(),
     )
     # if !isdir(pkgPath)
     #     @error "Packages directory doesn't exist: $pkgPath"
@@ -282,11 +288,13 @@ analyzePkgTypeAnns(pkgPath :: AbstractString) :: Dict = begin
             [7, 8, 9]
         )
         dfta  = df[.!(ismissing.(df.ImprUseSiteVariance)) .&& 
-            (.!df.ImprUseSiteVariance .|| .!df.RestrictedScope .|| .!df.ClosedLowerBound), :]
+            (.!df.ImprUseSiteVariance .|| .!df.RestrictedScope .|| 
+             .!df.ClosedLowerBound .|| df.ExistInInv .|| .!df.TrivConsistBounds), :]
         dfus  = df[.!(ismissing.(df.UseSiteVariance)) .&& .!df.UseSiteVariance, :]
         dfius = df[.!(ismissing.(df.ImprUseSiteVariance)) .&& .!df.ImprUseSiteVariance, :]
         dfeii = df[.!(ismissing.(df.ExistInInv)) .&& df.ExistInInv, :]
-        for df in [dfta, dfus, dfius, dfeii]
+        dfntb = df[.!(ismissing.(df.TrivConsistBounds)) .&& .!df.TrivConsistBounds, :]
+        for df in [dfta, dfus, dfius, dfeii, dfntb]
             df.Package  = fill(pkgPath, size(df, 1))
         end
         # dfta.Package  = fill(pkgPath, size(dfta,  1))      
@@ -307,9 +315,10 @@ analyzePkgTypeAnns(pkgPath :: AbstractString) :: Dict = begin
             :tasusvar   => dfus,
             :tasiusvar  => dfius,
             :tasexininv => dfeii,
+            :tasntrvbnd => dfntb,
         )
     catch err
-        @error "Problem when processing CSVs with type annptations" err
+        @error "Problem when processing CSVs with type annotations" err
         failedResult
     end
 end
@@ -365,6 +374,7 @@ getTypeAnnsAnalyses(tasumm) =
                 existIsDeclaredInInv,
                 tyVarRestrictedScopePreserved,
                 tyVarIsNotInLowerBound,
+                tyVarBoundsTrivConsistent,
             ]
         )
         vcat(Any[varCnt, hasWhere], varsAnalyses)
@@ -387,7 +397,7 @@ mkAnalysisFunction(fun :: Function) = (tasumm ->
 const ANALYSIS_COLS_DECLS = [
     :Error, :Warning,
     :VarCnt, :TyDeclUseSiteVariance, :SuperUseSiteVariance,
-    :TyDeclImpUseSiteVariance, :SuperImpUseSiteVariance
+    :TyDeclImpUseSiteVariance, :SuperImpUseSiteVariance, :TrivConsistBounds
 ]
 # const DECL_COLS = vcat(
 #     [:File, :Name, :Kind, :TypeDeclaration, :Supertype],
@@ -407,6 +417,7 @@ analyzePkgTypeDecls(pkgPath :: AbstractString) :: Dict = begin
         :pkgusesite     => [],
         :tdsusvar       => DataFrame(),
         :tdsiusvar      => DataFrame(),
+        :tdsntrvbnd     => DataFrame(),
     )
     # if !isdir(pkgPath)
     #     @error "Packages directory doesn't exist: $pkgPath"
@@ -430,11 +441,15 @@ analyzePkgTypeDecls(pkgPath :: AbstractString) :: Dict = begin
         dataIsNotEmpty = totaltd > 0
         errOrWarn = dataIsNotEmpty && (dfSumm.sum[1] > 0 || dfSumm.sum[2] > 0)
         dftd  = df[.!(ismissing.(df.TyDeclUseSiteVariance)) .&& 
-            (.!df.TyDeclUseSiteVariance .|| .!df.SuperUseSiteVariance), :]
+            (.!df.TyDeclUseSiteVariance .|| .!df.SuperUseSiteVariance .||
+             .!df.TrivConsistBounds), :]
         dftdi = df[.!(ismissing.(df.TyDeclImpUseSiteVariance)) .&& 
             (.!df.TyDeclImpUseSiteVariance .|| .!df.SuperImpUseSiteVariance), :]
-        dftd.Package = fill(pkgPath, size(dftd,  1))
-        dftdi.Package = fill(pkgPath, size(dftdi,  1))
+        dfntb = df[.!(ismissing.(df.TrivConsistBounds)) .&& 
+            (.!df.TrivConsistBounds), :]
+        for df in [dftd, dftdi, dfntb]
+            df.Package  = fill(pkgPath, size(df, 1))
+        end
         Dict(
             :goodPkg    => 1, 
             :badPkg     => 0,
@@ -447,6 +462,7 @@ analyzePkgTypeDecls(pkgPath :: AbstractString) :: Dict = begin
                 [pkgPath] : [],
             :tdsusvar   => dftd,
             :tdsiusvar  => dftdi,
+            :tdsntrvbnd => dfntb,
         )
     catch err
         @error "Problem when processing CSVs with type declarations" err
@@ -462,6 +478,7 @@ addTypeDeclsAnalysis!(df :: DataFrame) = begin
         #:TypeDeclVarsSummary, :SuperVarsSummary,
         :TyDeclUseSiteVariance, :SuperUseSiteVariance,
         :TyDeclImpUseSiteVariance, :SuperImpUseSiteVariance,
+        :TrivConsistBounds
     ]
     if size(df)[1] > 0  
         transform!(
@@ -492,10 +509,11 @@ analyzeTypeDecl(tyDeclStr, superStr) = begin
             tyVarOccursAsUsedSiteVariance(tsSumm[1]),
             tyVarOccursAsImpredicativeUsedSiteVariance(tdSumm[1]), 
             tyVarOccursAsImpredicativeUsedSiteVariance(tsSumm[1]),
+            tyVarBoundsTrivConsistent(tdSumm[1]) && tyVarBoundsTrivConsistent(tsSumm[1]),
         ]
     catch err
         @error "Couldn't process type declaration" tyDeclStr superStr err
-        vcat([true, true], fill(missing, 7))
+        vcat([true, true], fill(missing, 8))
     end
 end
 

@@ -195,8 +195,34 @@ $ julia -p 32 types-analyze.jl data/ta-info/all > data/ta-info/log-analysis-all.
 
 ## Adding more analyses
 
-To extend the output CSV of the analysis:
-- 
+To extend the output CSV of the analysis and have a new CSV with 
+types of interest:
+
+- In `src/types-analysis/pkg-process.jl`:
+  + extend `ANALYSIS_COLS_ANNS_NOERR`
+  + in `analyzePkgTypeAnns`, 
+    * extend `failedResult`
+    * extend `dfta`
+    * add a `df*` var and extend the for-loop right after
+    * extend the resulting `Dict`
+  + in `getTypeAnnsAnalyses`, extend `map` in `varsAnalyses`
+  + extend `ANALYSIS_COLS_DECLS`
+  + in `analyzePkgTypeDecls`, 
+    * extend `failedResult`
+    * extend `dftd`
+    * add a `df*` var and extend the for-loop right after
+    * extend the resulting `Dict`
+  + in `addTypeDeclsAnalysis!`, extend `newCols`
+  + in `analyzeTypeDecl`, extend the resulting array 
+    and increment in `fill`
+  + in `analyzePkgTypesAndSave2CSV`, 
+    * extend both `combineVCat!`
+    * add a `CSV.write`
+
+- In tests, make sure to add `isfile` in `pkg-process.jl` for new CSV files.
+  Furthermore, manually check that necessary annotations/declarations are 
+  reported, as it is easy to make mistakes when copying stuff
+  in dataframe-related code...
 
 ---
 

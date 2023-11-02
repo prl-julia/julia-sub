@@ -423,8 +423,8 @@ end
     @test tyVarBoundsTrivConsistent(tvsTrivLbUb3)
     tvsNonTrivLbUb = collectTyVarsSummary(:(Ref{T} where Int<:T<:Vector{Int}))[1]
     @test !tyVarBoundsTrivConsistent(tvsNonTrivLbUb)
-    tvsNonTrivLbUbInner = collectTyVarsSummary(:
-        (Tuple{S, Ref{T} where Int<:T<:Number} where S)
+    tvsNonTrivLbUbInner = collectTyVarsSummary(
+        :(Tuple{S, Ref{T} where Int<:T<:Number} where S)
     )[1]
     @test !tyVarBoundsTrivConsistent(tvsNonTrivLbUbInner)
 end
