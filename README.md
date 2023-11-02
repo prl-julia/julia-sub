@@ -147,7 +147,7 @@ variance, but it is a nice indicator of the complexity.
 * [JuliaPkgDownloader.jl](https://github.com/julbinb/JuliaPkgDownloader.jl)
 
 
-**Getting packages data:**
+### Getting packages data
 
 Assumes `../utils/JuliaPkgsList.jl` and `../utils/JuliaPkgDownloader.jl`.
 - For both packages, run `init-script.jl` first.
@@ -172,6 +172,8 @@ $ julia -p 32 ../utils/JuliaPkgDownloader.jl/download-pkgs.jl -s data/pkgs-list/
 
 
 ## Running type annotations analysis
+
+Run `init-script.jl` first.
 
 **Note.** Output and error streams are redirected to a file.
 To print to the terminal, remove `> data...`
