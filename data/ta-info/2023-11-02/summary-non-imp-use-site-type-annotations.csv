@@ -1,0 +1,12 @@
+variable,mean,min,median,max,nmissing,sum
+Error,0.0,false,0.0,false,0,0
+Warning,0.0,false,0.0,false,0,0
+VarCnt,2.6666666666666665,1,2.5,5,0,16
+HasWhere,1.0,true,1.0,true,0,6
+VarsUsedOnce,0.5,false,0.5,true,0,3
+UseSiteVariance,0.0,false,0.0,false,0,0
+ImprUseSiteVariance,0.0,false,0.0,false,0,0
+ExistInInv,1.0,true,1.0,true,0,6
+RestrictedScope,0.3333333333333333,false,0.0,true,0,2
+ClosedLowerBound,1.0,true,1.0,true,0,6
+TrivConsistBounds,1.0,true,1.0,true,0,6
