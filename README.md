@@ -16,6 +16,9 @@ from JB's thesis proposal/paper on decidable subtyping are not reported.
 In particular, cases like `Tuple{Ref{T}} where T` are not reported because
 they are trivially equivalent to `Tuple{Ref{T} where T}`.
 
+**Analysis results** for the May 2023 corpus used for the thesis/paper
+can be found [here](data/ta-info/2023-11-02).
+
 ## Static analysis of types
 
 ### Type annotations
