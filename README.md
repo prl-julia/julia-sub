@@ -3,14 +3,16 @@
 [![Build Status](https://github.com/julbinb/julia-sub/workflows/CI/badge.svg)](https://github.com/julbinb/julia-sub/actions?query=workflow%3ACI+branch%3Amain)
 [![codecov.io](http://codecov.io/github/julbinb/julia-sub/coverage.svg?branch=main)](http://codecov.io/github/julbinb/julia-sub?branch=main)
 
-Developing decidable subtyping for the Julia language.
+Currently, this project contains
+empirical evaluation to support a restriction on Julia types
+to provide for decidable subtyping for the Julia language.
 
-- Lower bounds aren't the only reason for the undecidability of Julia subtyping.
-- We need to analyze type annotations used in Julia programs to see if they
-  satisfy either the scoping or wildcards-like restriction.
+Thus, we need to analyze type annotations used in Julia programs to see
+if they satisfy a wildcards-like restriction
+(there is also an analysis of scoping, lower bounds, lower+upper bounds).
 
 **Note.** Some annotations that do not literally correspond to the restriction
-from JB's thesis proposal on decidable subtyping are not reported.
+from JB's thesis proposal/paper on decidable subtyping are not reported.
 In particular, cases like `Tuple{Ref{T}} where T` are not reported because
 they are trivially equivalent to `Tuple{Ref{T} where T}`.
 
@@ -141,8 +143,33 @@ variance, but it is a nice indicator of the complexity.
   - `Distributed.jl`
   - `ArgParse`
 
-???
-  - `JSON`
+* [JuliaPkgsList.jl](https://github.com/julbinb/JuliaPkgsList.jl)
+* [JuliaPkgDownloader.jl](https://github.com/julbinb/JuliaPkgDownloader.jl)
+
+
+**Getting packages data:**
+
+Assumes `../utils/JuliaPkgsList.jl` and `../utils/JuliaPkgDownloader.jl`.
+- For both packages, run `init-script.jl` first.
+- `JuliaPkgsList.jl` should be "patched" with an empty `data/excluded.txt` file
+to make it easier to track which entries are invalid 
+(since the file is outdated now anyway).
+
+**Note.** Sometimes because of network issues, some packages are not downloaded.
+If in the case of all packages, the number of failed packages is > 50,
+run downloading again.
+Several dozen packages will remain broken for other reasons.
+
+```
+$ ../utils/JuliaPkgsList.jl/gen-pkgs-list.jl 100 -p data/julia-pkgs-info.json --name --includeversion --includeuuid -o data/pkgs-list/top-pkgs-list.txt
+
+$ ../utils/JuliaPkgsList.jl/gen-pkgs-list.jl 0 -p data/julia-pkgs-info.json --name --includeversion --includeuuid -o data/pkgs-list/all-pkgs-list.txt
+
+$ julia -p 32 ../utils/JuliaPkgDownloader.jl/download-pkgs.jl -s data/pkgs-list/100-top-pkgs-list.txt -d data/100
+
+$ julia -p 32 ../utils/JuliaPkgDownloader.jl/download-pkgs.jl -s data/pkgs-list/all-pkgs-list.txt -d data/all
+```
+
 
 ## Running type annotations analysis
 
@@ -165,93 +192,6 @@ $ julia -p 32 types-analyze.jl data/ta-info/100 > data/ta-info/log-analysis-100.
 $ julia -p 32 types-analyze.jl data/ta-info/all > data/ta-info/log-analysis-all.txt 2>&1
 ```
 
-**Getting packages data:**
-
-Assumes `../utils/JuliaPkgsList.jl` and `../utils/JuliaPkgDownloader.jl`.
-
-**Note.** Sometimes because of network issues, some packages are not downloaded.
-If in the case of all packages, the number of failed packages is > 50,
-run downloading again.
-Several dozen packages will remain broken for other reasons.
-
-```
-$ ../utils/JuliaPkgsList.jl/gen-pkgs-list.jl 100 -p data/julia-pkgs-info.json --name --includeversion --includeuuid -o data/pkgs-list/top-pkgs-list.txt
-
-$ ../utils/JuliaPkgsList.jl/gen-pkgs-list.jl 0 -p data/julia-pkgs-info.json --name --includeversion --includeuuid -o data/pkgs-list/all-pkgs-list.txt
-
-$ julia -p 32 ../utils/JuliaPkgDownloader.jl/download-pkgs.jl -s data/pkgs-list/100-top-pkgs-list.txt -d data/100
-
-$ julia -p 32 ../utils/JuliaPkgDownloader.jl/download-pkgs.jl -s data/pkgs-list/all-pkgs-list.txt -d data/all
-```
-
 ---
 
-# Notes from 2021
-
-- We know that Julia subtyping is undecidable due to lower bounds.
-- Can we restrict lower bounds to make subtyping decidable,
-  at the same time allowing all the practical uses of lower bounds
-  in the existing Julia code?
-
-Using static analysis, we find uses of lower bounds in Julia packages
-and manually inspect them.
-
-
-## Static analysis of lower bounds
-
-As of Julia 1.5.3, there are only two accepted patterns of lower bounds
-in the full form of where-types,
-
-1. `where T >: Int`
-2. `where Int <: T <: Number`
-
-as well as one shorthand form `Vector{>:Int}`
-(which means `Vector{T} where T>:Int`).
-
-Everything else (e.g. `where Int <: T`) doesn't work,
-and [`test/lb-analysis.jl`](test/lb-analysis.jl) tests for that
-in the tests set `"lb-analysis :: type bounds format"`.
-
-The three patterns can be found in `extractLowerBound` function,
-[`src/lb-analysis/process-code.jl`](src/lb-analysis/process-code.jl).
-
-**Note.** Not all lower bounds that we find are in function definitions
-because we don't specifically match `where`, just `T >: LB`.
-Thus, we also find run-time checks for lower bounds.
-
-### Getting the data
-
-Assuming the directory structure:
-```
-.
-|
--- julia-sub
--- utils
-     |
-     -- JuliaPkgsList.jl
-     -- JuliaPkgDownloader
-```
-
-**Old stuff below**
-
-and `jl-wa` with a clonning script
-
-```
-$ ../../utils/JuliaPkgsList.jl/gen-pkgs-list.jl 0 -o pkgs-list/pkgs-list.txt -r
-
-$ julia -p 8 ../../jl-wa/src/utils/clone.jl -s pkgs-list/pkgs-list.txt -d pkgs/4886/
-```
-
-### Running the analysis
-
-```
-$ julia analysis-script.jl <pkgs>
-```
-
-where `<pkgs` is a folder with Julia packages.
-
-lia analysis-script.jl <pkgs>
-```
-
-where `<pkgs` is a folder with Julia packages.
-
+[Old README from 2021](notes/2021-notes.md)
