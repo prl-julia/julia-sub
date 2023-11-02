@@ -192,6 +192,12 @@ $ julia -p 32 types-analyze.jl data/ta-info/100 > data/ta-info/log-analysis-100.
 $ julia -p 32 types-analyze.jl data/ta-info/all > data/ta-info/log-analysis-all.txt 2>&1
 ```
 
+
+## Adding more analyses
+
+To extend the output CSV of the analysis:
+- 
+
 ---
 
 [Old README from 2021](notes/2021-notes.md)

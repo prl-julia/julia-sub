@@ -108,6 +108,18 @@ containsInv(constrStack :: Cons{TypeConstructor}) =
     (DataStructures.head(constrStack) == TCInvar) ||
     containsInv(DataStructures.tail(constrStack))
 
+
+"""
+Variable bounds are trivially consistent, i.e.,
+only one of the variable bounds is non-trivial
+"""
+tyVarBoundsTrivConsistent(tytvs :: TypeTyVarsSummary) = 
+    all(tyVarBoundsTrivConsistent, tytvs)
+
+tyVarBoundsTrivConsistent(tvs :: TyVarSummary) =
+    (tvs.lb == DEFAULT_LB) || (tvs.ub == DEFAULT_UB)
+
+
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 # Summarizing type variable usage
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

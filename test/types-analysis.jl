@@ -15,6 +15,7 @@ using Main.JuliaSub: TCTuple, TCInvar, TCUnion, TCWhere, TCLoBnd, TCUpBnd, TCVar
 using Main.JuliaSub: collectTyVarsSummary
 using Main.JuliaSub: tyVarRestrictedScopePreserved, tyVarOccursAsImpredicativeUsedSiteVariance
 using Main.JuliaSub: tyVarOccursAsUsedSiteVariance, tyVarUsedOnce, tyVarIsNotInLowerBound, existIsDeclaredInInv
+using Main.JuliaSub: tyVarBoundsTrivConsistent
 
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 # Aux values
@@ -249,6 +250,7 @@ end
     @test tyVarRestrictedScopePreserved(tvsInt)
     @test tyVarIsNotInLowerBound(tvsInt)
     @test !existIsDeclaredInInv(tvsInt)
+    @test tyVarBoundsTrivConsistent(tvsInt)
 
     tvsVector = collectTyVarsSummary(:(Vector{T} where T))[1]
     @test tyVarUsedOnce(tvsVector)
@@ -257,6 +259,7 @@ end
     @test tyVarRestrictedScopePreserved(tvsVector)
     @test tyVarIsNotInLowerBound(tvsVector)
     @test !existIsDeclaredInInv(tvsVector)
+    @test tyVarBoundsTrivConsistent(tvsVector)
 
     tvsPair = collectTyVarsSummary(:(Pair{T, T} where T))[1]
     @test !tyVarUsedOnce(tvsPair)
@@ -264,6 +267,7 @@ end
     @test tyVarOccursAsImpredicativeUsedSiteVariance(tvsPair)
     @test tyVarRestrictedScopePreserved(tvsPair)
     @test !existIsDeclaredInInv(tvsPair)
+    @test tyVarBoundsTrivConsistent(tvsPair)
 
     tvsRefPair = collectTyVarsSummary(:(Ref{Pair{T, T} where T}))[1]
     @test !tyVarUsedOnce(tvsRefPair)
@@ -346,6 +350,7 @@ end
     @test tyVarRestrictedScopePreserved(tvsPairWherePair[1]) # T
     @test !tyVarRestrictedScopePreserved(tvsPairWherePair[2]) # S
     @test existIsDeclaredInInv(tvsPairWherePair)
+    @test tyVarBoundsTrivConsistent(tvsPairWherePair)
 
     tvsTupleWherePair = collectTyVarsSummary(:(Tuple{S, Pair{T, S} where T<:S} where S))[1]
     @test !tyVarUsedOnce(tvsTupleWherePair)
@@ -365,6 +370,7 @@ end
     @test tyVarRestrictedScopePreserved(tvsPairInLb)
     @test tyVarIsNotInLowerBound(tvsPairInLb)
     @test !existIsDeclaredInInv(tvsPairInLb)
+    @test tyVarBoundsTrivConsistent(tvsPairInLb)
 
     tvsTupleRefLB = collectTyVarsSummary(:(Tuple{Ref{T} where T>:S} where S))[1]
     @test tyVarUsedOnce(tvsTupleRefLB)
@@ -407,4 +413,18 @@ end
     @test tyVarRestrictedScopePreserved(tvsTupleUBRefRef)
     @test tyVarIsNotInLowerBound(tvsTupleUBRefRef)
     @test existIsDeclaredInInv(tvsTupleUBRefRef)
+    @test tyVarBoundsTrivConsistent(tvsTupleUBRefRef)
+
+    tvsTrivLbUb1 = collectTyVarsSummary(:(Ref{T} where Union{}<:T<:Any))[1]
+    @test tyVarBoundsTrivConsistent(tvsTrivLbUb1)
+    tvsTrivLbUb2 = collectTyVarsSummary(:(Ref{T} where Int<:T<:Any))[1]
+    @test tyVarBoundsTrivConsistent(tvsTrivLbUb2)
+    tvsTrivLbUb3 = collectTyVarsSummary(:(Ref{T} where Union{}<:T<:Number))[1]
+    @test tyVarBoundsTrivConsistent(tvsTrivLbUb3)
+    tvsNonTrivLbUb = collectTyVarsSummary(:(Ref{T} where Int<:T<:Vector{Int}))[1]
+    @test !tyVarBoundsTrivConsistent(tvsNonTrivLbUb)
+    tvsNonTrivLbUbInner = collectTyVarsSummary(:
+        (Tuple{S, Ref{T} where Int<:T<:Number} where S)
+    )[1]
+    @test !tyVarBoundsTrivConsistent(tvsNonTrivLbUbInner)
 end
