@@ -271,7 +271,9 @@ analyzePkgTypeAnns(pkgPath :: AbstractString) :: Dict = begin
         return failedResult
     end
     try
-        df = CSV.read(typeAnnsPath, DataFrame; escapechar='\\')
+        #df = CSV.read(typeAnnsPath, DataFrame; escapechar='\\')
+        df = CSV.read(typeAnnsPath, DataFrame; escapechar='\\', delim=';', 
+            header=[:TypeAnnotation])
         df = addTypeAnnsAnalysis!(df)
         dfSumm = summarizeAnalysis(df, ANALYSIS_COLS_ANNS)
         CSV.write(
