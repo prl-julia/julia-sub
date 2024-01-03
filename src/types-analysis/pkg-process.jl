@@ -271,9 +271,13 @@ analyzePkgTypeAnns(pkgPath :: AbstractString) :: Dict = begin
         return failedResult
     end
     try
-        #df = CSV.read(typeAnnsPath, DataFrame; escapechar='\\')
-        df = CSV.read(typeAnnsPath, DataFrame; escapechar='\\', delim=';', 
-            header=[:TypeAnnotation])
+        ## reading type anns extracted from source code
+        df = CSV.read(typeAnnsPath, DataFrame; escapechar='\\')
+        ## reading type anns recorded dynamically
+        #df = CSV.read(typeAnnsPath, DataFrame; escapechar='\\', delim=';', 
+        #    header=[:TypeAnnotation])
+        # TODO: either make statically exctracted CSVs use ';' or make
+        # a better switch between static and dynamic info
         df = addTypeAnnsAnalysis!(df)
         dfSumm = summarizeAnalysis(df, ANALYSIS_COLS_ANNS)
         CSV.write(
